@@ -4450,5 +4450,76 @@
     }
    ]
   }
- }
+ },
+ "terms": [
+  {
+   "id": "t1",
+   "name": "First Term: Scratch",
+   "ready": true
+  },
+  {
+   "id": "t2",
+   "name": "Second Term: HTML & CSS",
+   "ready": false,
+   "weeks": [
+    [
+     "1-2",
+     "Understanding HTML structure and basic tags"
+    ],
+    [
+     "3",
+     "Basic CSS styling and formatting"
+    ],
+    [
+     "4",
+     "Advanced CSS: box model and positioning"
+    ],
+    [
+     "5-6",
+     "Responsive design basics with media queries"
+    ],
+    [
+     "7-8",
+     "HTML forms and input handling"
+    ],
+    [
+     "9-10",
+     "Basic JavaScript for interactivity"
+    ]
+   ],
+   "project": "Develop a form with basic validation using JS"
+  },
+  {
+   "id": "t3",
+   "name": "Third Term: JavaScript and PHP",
+   "ready": false,
+   "weeks": [
+    [
+     "1-2",
+     "Basic syntax, variables and data types"
+    ],
+    [
+     "3",
+     "Conditional statements and loops"
+    ],
+    [
+     "4",
+     "Functions and scope"
+    ],
+    [
+     "5-6",
+     "DOM manipulation and basic event handling"
+    ],
+    [
+     "7-8",
+     "Basic PHP syntax and variables"
+    ],
+    [
+     "9-10",
+     "Control structures and functions in PHP"
+    ]
+   ],
+   "project": "Create interactive elements on a webpage"
+  }
+ ]
 }

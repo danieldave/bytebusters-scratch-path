@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const { cmd, P } = require('../lib/redis');
 const ids = require('../lib/ids');
+const share = require('../lib/share');
 const { body, send, limited } = require('../lib/http');
 const SCHOOLS = { MHS: 'Methodist High School Arigbajo', UHS: 'Unity High School', YWS: 'Yewa College Ilaro' };
 function pinOk(pin) {
@@ -33,13 +34,20 @@ module.exports = async (req, res) => {
     const a = b.action;
     if (a === 'list') {
       const roster = await allRoster();
+      const seenH = (await cmd('HGETALL', P + 'seen')) || [];
+      const seen = {}; for (let i = 0; i < seenH.length; i += 2) seen[seenH[i]] = Number(seenH[i + 1]);
       for (const r of roster) {
         const p = (await cmd('HGETALL', P + 'prog:' + r.id)) || [];
-        let done = 0, stars = 0;
-        for (let i = 0; i < p.length; i += 2) { const o = JSON.parse(p[i + 1]); if (o.done) done++; stars += o.quiz || 0; }
-        r.done = done; r.stars = stars;
+        let done = 0, stars = 0, last = 0; r.progress = {}; r.badges = [];
+        for (let i = 0; i < p.length; i += 2) {
+          if (p[i] === 'b') { r.badges = JSON.parse(p[i + 1]); continue; }
+          const o = JSON.parse(p[i + 1]); r.progress[p[i]] = o;
+          if (/^w\d+$/.test(p[i])) { if (o.done) done++; stars += o.quiz || 0; }
+          last = Math.max(last, o.at || 0);
+        }
+        r.done = done; r.stars = stars; r.last = last; r.seen = seen[r.id] || 0;
       }
-      return send(res, 200, { roster });
+      return send(res, 200, { roster, now: Date.now() });
     }
     if (a === 'seed') { // load the mock IDs from data/roster.seed.json (skips ones that exist)
       const seed = require('../data/roster.seed.json');
@@ -87,7 +95,7 @@ module.exports = async (req, res) => {
     }
     if (a === 'delete') {
       const id = ids.normalise(b.id);
-      await cmd('HDEL', P + 'roster', id); await cmd('DEL', P + 'prog:' + id);
+      await cmd('HDEL', P + 'roster', id); await cmd('DEL', P + 'prog:' + id); await share.drop(id);
       return send(res, 200, { ok: true });
     }
     if (a === 'resetprogress') {

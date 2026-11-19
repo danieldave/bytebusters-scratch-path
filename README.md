@@ -25,6 +25,16 @@ Lost card? Find the child in the table on `/admin` and read out their ID. A wron
 ## ID format
 `SCHOOL-XXXX`: school code (MHS/UHS/YWS) + 3 random characters + 1 check character. No 0/O/1/I/L. Rebuild IDs with `node scripts/gen-ids.js 40`.
 
+## What the site does
+- **Lessons** (10 weeks per school) with Read mode, a Download button and a quick quiz.
+- **Play the game** inside the lesson (self-hosted Scratch player, about 4 MB the first time, then cached; games play silently).
+- **Did I build it right?** The child picks their saved `.sb3`; the browser compares it with the goal and gives hints. It never blocks finishing a week. Real scripts earn the Variable / If / Loop / Event badges and the Builder badge.
+- **Certificate** (Week 10 done) is printable / save as PDF.
+- **Parent link**: each child has a private read-only page showing first name, weeks and badges (no ID). Share it from the child's home screen.
+- **Offline**: lessons and played games are cached; progress saved offline syncs when the phone is online. Change `VERSION` in `public/sw.js` after editing app files.
+- **Trainer page** (`/admin`): class summary, who needs a nudge (quiet 10+ days / never logged in), hardest quiz questions, week-by-week grid, CSV and ID cards.
+- **Terms 2 and 3** (HTML/CSS, JavaScript/PHP) appear as locked week outlines taken from your curriculum. Their lessons are not written yet.
+
 ## Notes
 - The ID is the only key a learner needs (no password), so keep names to first names. Login is rate limited per IP.
 - Test locally with no database: `node test/dev.js` (fake Upstash), then open http://localhost:3111 and /admin (PIN 1234).

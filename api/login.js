@@ -1,5 +1,6 @@
 const { cmd, P } = require('../lib/redis');
 const ids = require('../lib/ids');
+const share = require('../lib/share');
 const { body, send, limited } = require('../lib/http');
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return send(res, 405, { error: 'POST only' });
@@ -13,9 +14,11 @@ module.exports = async (req, res) => {
     if (!raw) return send(res, 404, { error: 'This ID is not on the list yet. Ask your trainer.' });
     const learner = JSON.parse(raw);
     const prog = await cmd('HGETALL', P + 'prog:' + id);
-    const progress = {};
-    for (let i = 0; i < (prog || []).length; i += 2) progress[prog[i]] = JSON.parse(prog[i + 1]);
+    const progress = {}; let badges = [];
+    for (let i = 0; i < (prog || []).length; i += 2) {
+      if (prog[i] === 'b') badges = JSON.parse(prog[i + 1]); else progress[prog[i]] = JSON.parse(prog[i + 1]);
+    }
     await cmd('HSET', P + 'seen', id, Date.now());
-    send(res, 200, { id, name: learner.name || '', school: learner.school || id.slice(0, 3), progress });
+    send(res, 200, { id, name: learner.name || '', school: learner.school || id.slice(0, 3), progress, badges, share: await share.tokenFor(id) });
   } catch (e) { send(res, 500, { error: 'Something went wrong. Try again.' }); }
 };

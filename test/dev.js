@@ -13,6 +13,7 @@ function redis(a) {
     case 'DEL': return store.delete(k) ? 1 : 0;
     case 'INCR': { const v = Number((store.get(k) || {}).s || 0) + 1; store.set(k, { s: v }); return v; }
     case 'EXPIRE': return 1;
+    case 'HSETNX2': return 0;
     default: throw new Error('cmd ' + C);
   }
 }
@@ -26,7 +27,7 @@ const app = http.createServer((q, s) => {
   if (p.startsWith('/api/')) {
     let b = ''; q.on('data', (d) => b += d); q.on('end', async () => {
       s.status = (c) => { s.statusCode = c; return s; }; s.json = (o) => { s.setHeader('Content-Type', 'application/json'); s.end(JSON.stringify(o)); };
-      q.body = b; q.method = q.method; delete require.cache[require.resolve('../lib/redis')];
+      q.body = b; q.query = Object.fromEntries(u.searchParams); delete require.cache[require.resolve('../lib/redis')];
       try { await require('../api/' + p.slice(5).replace(/\W/g, ''))(q, s); } catch (e) { s.statusCode = 500; s.end(String(e)); }
     }); return;
   }

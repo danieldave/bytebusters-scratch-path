@@ -9,21 +9,54 @@
 <div class="card noprint"><h2>1. Load the mock IDs</h2><p>Puts the 120 practice IDs into the database (safe to press again).</p><button class="btn" id="seed">Load mock IDs</button> <span id="seedmsg"></span></div>
 <div class="card noprint"><h2>2. Put real names on the IDs</h2><p>Paste one per line: <code>ID,Real Name</code>. Their progress stays.</p><textarea id="bulk" rows="5" placeholder="UHS-4K7M,Ade Bello"></textarea><p><button class="btn" id="bulkgo">Save names</button> <span id="bulkmsg"></span></p></div>
 <div class="card noprint"><h2>3. Or make brand-new IDs</h2><select id="sch"><option value="MHS">Methodist High School Arigbajo</option><option value="UHS">Unity High School</option><option value="YWS">Yewa College Ilaro</option></select><p><textarea id="names" rows="4" placeholder="One real name per line"></textarea></p><button class="btn" id="addgo">Make IDs</button> <span id="addmsg"></span></div>
-<div class="card noprint"><h2>Learners</h2><p><button class="btn alt" id="ref">Refresh</button> <button class="btn alt" id="csv">Download CSV</button> <button class="btn alt" id="print">Print ID cards</button></p><div style="overflow:auto"><table id="tb"></table></div></div>
+<div class="card noprint"><h2>Class view</h2><p><select id="fsch" style="font-size:16px"><option value="">All schools</option><option value="MHS">Methodist</option><option value="UHS">Unity</option><option value="YWS">Yewa</option></select> <button class="btn alt" id="ref">Refresh</button></p><div id="sum"></div></div>
+<div class="card noprint"><h2>Who needs a nudge</h2><p class="why">Started but quiet for 10+ days, or never logged in.</p><div id="stuck"></div></div>
+<div class="card noprint"><h2>Hardest quiz questions</h2><p class="why">Re-teach these first.</p><div id="hard"></div></div>
+<div class="card noprint"><h2>Week-by-week grid</h2><p class="why">Green = finished, amber = started, grey = not yet. The number is scripts built (from the checker).</p><div style="overflow:auto" id="grid"></div></div>
+<div class="card noprint"><h2>All learners</h2><p><button class="btn alt" id="csv">Download CSV</button> <button class="btn alt" id="print">Print ID cards</button></p><div style="overflow:auto"><table id="tb"></table></div></div>
 <div id="cards"></div>
 </div></div>
 <script>
-(function(){var pin='',R=[];function $(i){return document.getElementById(i)}
-function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+(function(){var pin='',R=[],NOW=Date.now(),DATA=null,DAY=86400000;function $(i){return document.getElementById(i)}
+function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function api(a,o){o=o||{};o.action=a;o.pin=pin;return fetch('/api/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error);return j})})}
-function load(){return api('list').then(function(j){R=j.roster;var h='<tr><th>ID</th><th>Name</th><th>Weeks</th><th>⭐</th><th></th></tr>';R.forEach(function(r){h+='<tr><td><b>'+esc(r.id)+'</b></td><td>'+esc(r.name)+(r.mock?' <span class="chip grey">mock</span>':'')+'</td><td>'+r.done+'/10</td><td>'+r.stars+'</td><td><button class="btn alt" style="min-height:32px;padding:2px 8px" data-d="'+esc(r.id)+'">Delete</button></td></tr>'});$('tb').innerHTML=h;
-[].forEach.call($('tb').querySelectorAll('[data-d]'),function(b){b.onclick=function(){if(confirm('Delete '+b.dataset.d+' and their progress?'))api('delete',{id:b.dataset.d}).then(load)}})})}
-$('in').onclick=function(){pin=$('pin').value;api('list').then(function(){$('gate').className='hide';$('main').className='';load()}).catch(function(e){$('e').textContent=e.message})};
+var SN={MHS:'Methodist',UHS:'Unity',YWS:'Yewa'};
+function rows(){var f=$('fsch').value;return R.filter(function(r){return !f||r.school===f})}
+function furthest(r){var m=0;for(var w=1;w<=10;w++)if(r.progress['w'+w]&&r.progress['w'+w].done)m=w;return m}
+function started(o){return o&&(o.done||o.quiz!=null||o.check||(o.steps&&o.steps.some(Boolean)))}
+function render(){
+ var L=rows(),act=L.filter(function(r){return r.last>NOW-7*DAY}).length;
+ // summary per school
+ var h='<table><tr><th>School</th><th>Learners</th><th>Active 7 days</th><th>Avg weeks</th><th>Finished all 10</th></tr>';
+ Object.keys(SN).forEach(function(k){var x=L.filter(function(r){return r.school===k});if(!x.length)return;
+  h+='<tr><td>'+SN[k]+'</td><td>'+x.length+'</td><td>'+x.filter(function(r){return r.last>NOW-7*DAY}).length+'</td><td>'+(x.reduce(function(a,r){return a+r.done},0)/x.length).toFixed(1)+'</td><td>'+x.filter(function(r){return r.done>=10}).length+'</td></tr>'});
+ h+='</table>';
+ // where kids are stuck: week with most started-not-done
+ var cnt={};L.forEach(function(r){for(var w=1;w<=10;w++){var o=r.progress['w'+w];if(started(o)&&!o.done)cnt[w]=(cnt[w]||0)+1}});
+ var top=Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a]})[0];
+ h+='<p><b>Summary:</b> '+act+' of '+L.length+' learners were active in the last 7 days.'+(top?' Most children who are mid-way are on <b>Week '+top+'</b> ('+cnt[top]+' started, not finished).':(L.some(function(r){return r.last})?' Nobody is mid-week right now.':' Nobody has started a week yet.'))+'</p>';
+ $('sum').innerHTML=h;
+ // stuck
+ var st=L.filter(function(r){return r.done<10&&((r.last>0&&r.last<NOW-10*DAY)||(!r.seen&&!r.last))}).sort(function(a,b){return a.last-b.last});
+ $('stuck').innerHTML=st.length?'<table><tr><th>Learner</th><th>ID</th><th>Status</th></tr>'+st.slice(0,60).map(function(r){return '<tr><td>'+esc(r.name)+'</td><td>'+esc(r.id)+'</td><td>'+(r.last?'Quiet '+Math.floor((NOW-r.last)/DAY)+' days, done '+r.done+'/10':'Never logged in')+'</td></tr>'}).join('')+'</table>'+(st.length>60?'<p class="why">…and '+(st.length-60)+' more</p>':''):'<p>Nobody needs a nudge right now. 🎉</p>';
+ // hard questions
+ var q=[];if(DATA)L.forEach(function(r){for(var w=1;w<=10;w++){var o=r.progress['w'+w];if(o&&o.qa)o.qa.forEach(function(v,i){var k=r.school+'|'+w+'|'+i;var e=q.filter(function(z){return z.k===k})[0];if(!e){e={k:k,s:r.school,w:w,i:i,n:0,bad:0};q.push(e)}e.n++;if(!v)e.bad++})}});
+ q=q.filter(function(e){return e.n>=2}).sort(function(a,b){return b.bad/b.n-a.bad/a.n||b.n-a.n}).slice(0,8);
+ $('hard').innerHTML=q.length?'<table><tr><th>Question</th><th>Missed</th></tr>'+q.map(function(e){var Q=DATA.schools[e.s].lessons[e.w-1].quiz[e.i];return '<tr><td><span class="why">'+SN[e.s]+' · Week '+e.w+'</span><br>'+esc(Q?Q.q:'')+'</td><td>'+Math.round(100*e.bad/e.n)+'%<br><span class="why">'+e.bad+' of '+e.n+'</span></td></tr>'}).join('')+'</table>':'<p class="why">Not enough quiz answers yet (needs 2+ attempts per question).</p>';
+ // grid
+ var g='<table><tr><th>Learner</th>'+[1,2,3,4,5,6,7,8,9,10].map(function(w){return '<th>'+w+'</th>'}).join('')+'<th>🎖</th></tr>';
+ L.forEach(function(r){g+='<tr><td style="white-space:nowrap">'+esc(r.name||r.id)+'</td>';for(var w=1;w<=10;w++){var o=r.progress['w'+w];var c=o&&o.done?'#25a85a':started(o)?'#ffb800':'#d8d2c2';g+='<td><span style="display:inline-grid;place-items:center;min-width:24px;height:24px;border-radius:6px;background:'+c+';color:#111;font-size:12px">'+(o&&o.check?o.check.newFound:'')+'</span></td>'}g+='<td>'+(r.badges||[]).length+'</td></tr>'});
+ $('grid').innerHTML=g+'</table>';
+ var t='<tr><th>ID</th><th>Name</th><th>Weeks</th><th>⭐</th><th></th></tr>';L.forEach(function(r){t+='<tr><td><b>'+esc(r.id)+'</b></td><td>'+esc(r.name)+(r.mock?' <span class="chip grey">mock</span>':'')+'</td><td>'+r.done+'/10</td><td>'+r.stars+'</td><td><button class="btn alt" style="min-height:32px;padding:2px 8px" data-d="'+esc(r.id)+'">Delete</button></td></tr>'});$('tb').innerHTML=t;
+ [].forEach.call($('tb').querySelectorAll('[data-d]'),function(b){b.onclick=function(){if(confirm('Delete '+b.dataset.d+' and their progress?'))api('delete',{id:b.dataset.d}).then(load)}})}
+function load(){return api('list').then(function(j){R=j.roster;NOW=j.now||Date.now();render()})}
+$('in').onclick=function(){pin=$('pin').value;api('list').then(function(j){R=j.roster;NOW=j.now||Date.now();$('gate').className='hide';$('main').className='';fetch('/data/path.json').then(function(r){return r.json()}).then(function(d){DATA=d;render()})}).catch(function(e){$('e').textContent=e.message})};
+$('fsch').onchange=render;
 $('seed').onclick=function(){api('seed').then(function(j){$('seedmsg').textContent=j.added+' added';load()}).catch(function(e){$('seedmsg').textContent=e.message})};
 $('bulkgo').onclick=function(){api('bulkrename',{text:$('bulk').value}).then(function(j){$('bulkmsg').textContent=j.updated+' saved'+(j.skipped.length?'. Skipped: '+j.skipped.join(' | '):'');load()}).catch(function(e){$('bulkmsg').textContent=e.message})};
 $('addgo').onclick=function(){api('add',{school:$('sch').value,names:$('names').value}).then(function(j){$('addmsg').textContent=j.added.length+' IDs made';$('names').value='';load()}).catch(function(e){$('addmsg').textContent=e.message})};
 $('ref').onclick=load;
-$('csv').onclick=function(){var t='ID,Name,Weeks done,Stars\n'+R.map(function(r){return [r.id,'"'+(r.name||'').replace(/"/g,'""')+'"',r.done,r.stars].join(',')}).join('\n');var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/csv'}));a.download='bytebusters-learners.csv';a.click()};
-$('print').onclick=function(){$('cards').innerHTML=R.map(function(r){return '<div class="idc"><div>ByteBusters Scratch Path</div><b>'+esc(r.id)+'</b><div>'+esc(r.name)+'</div><div style="font-size:12px">'+location.host+'</div></div>'}).join('');window.print()};
+$('csv').onclick=function(){var t='ID,Name,School,Weeks done,Stars,Badges\n'+rows().map(function(r){return [r.id,'"'+(r.name||'').replace(/"/g,'""')+'"',r.school,r.done,r.stars,(r.badges||[]).length].join(',')}).join('\n');var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/csv'}));a.download='bytebusters-learners.csv';a.click()};
+$('print').onclick=function(){$('cards').innerHTML=rows().map(function(r){return '<div class="idc"><div>ByteBusters Scratch Path</div><b>'+esc(r.id)+'</b><div>'+esc(r.name)+'</div><div style="font-size:12px">'+location.host+'</div></div>'}).join('');window.print()};
 })();
 </script></body></html>
