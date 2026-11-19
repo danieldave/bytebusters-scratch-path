@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trainer page · ByteBusters Scratch Path</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css"><style>@media print{.noprint{display:none}.idc{break-inside:avoid}}.idc{display:inline-block;width:48%;border:2px dashed #999;padding:10px;margin:1%;border-radius:10px;text-align:center}.idc b{font-size:24px;letter-spacing:.1em}</style></head>
+<body><div class="bar noprint"><b>Trainer page</b><a href="/" style="color:inherit">Learner site</a></div>
+<div class="wrap">
+<div id="gate" class="card noprint"><h2>Trainer PIN</h2><input type="password" id="pin" placeholder="PIN"><p class="err" id="e"></p><button class="btn" id="in">Open</button></div>
+<div id="main" class="hide">
+<div class="card noprint"><h2>1. Load the mock IDs</h2><p>Puts the 120 practice IDs into the database (safe to press again).</p><button class="btn" id="seed">Load mock IDs</button> <span id="seedmsg"></span></div>
+<div class="card noprint"><h2>2. Put real names on the IDs</h2><p>Paste one per line: <code>ID,Real Name</code>. Their progress stays.</p><textarea id="bulk" rows="5" placeholder="UHS-4K7M,Ade Bello"></textarea><p><button class="btn" id="bulkgo">Save names</button> <span id="bulkmsg"></span></p></div>
+<div class="card noprint"><h2>3. Or make brand-new IDs</h2><select id="sch"><option value="MHS">Methodist High School Arigbajo</option><option value="UHS">Unity High School</option><option value="YWS">Yewa College Ilaro</option></select><p><textarea id="names" rows="4" placeholder="One real name per line"></textarea></p><button class="btn" id="addgo">Make IDs</button> <span id="addmsg"></span></div>
+<div class="card noprint"><h2>Learners</h2><p><button class="btn alt" id="ref">Refresh</button> <button class="btn alt" id="csv">Download CSV</button> <button class="btn alt" id="print">Print ID cards</button></p><div style="overflow:auto"><table id="tb"></table></div></div>
+<div id="cards"></div>
+</div></div>
+<script>
+(function(){var pin='',R=[];function $(i){return document.getElementById(i)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function api(a,o){o=o||{};o.action=a;o.pin=pin;return fetch('/api/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error);return j})})}
+function load(){return api('list').then(function(j){R=j.roster;var h='<tr><th>ID</th><th>Name</th><th>Weeks</th><th>⭐</th><th></th></tr>';R.forEach(function(r){h+='<tr><td><b>'+esc(r.id)+'</b></td><td>'+esc(r.name)+(r.mock?' <span class="chip grey">mock</span>':'')+'</td><td>'+r.done+'/10</td><td>'+r.stars+'</td><td><button class="btn alt" style="min-height:32px;padding:2px 8px" data-d="'+esc(r.id)+'">Delete</button></td></tr>'});$('tb').innerHTML=h;
+[].forEach.call($('tb').querySelectorAll('[data-d]'),function(b){b.onclick=function(){if(confirm('Delete '+b.dataset.d+' and their progress?'))api('delete',{id:b.dataset.d}).then(load)}})})}
+$('in').onclick=function(){pin=$('pin').value;api('list').then(function(){$('gate').className='hide';$('main').className='';load()}).catch(function(e){$('e').textContent=e.message})};
+$('seed').onclick=function(){api('seed').then(function(j){$('seedmsg').textContent=j.added+' added';load()}).catch(function(e){$('seedmsg').textContent=e.message})};
+$('bulkgo').onclick=function(){api('bulkrename',{text:$('bulk').value}).then(function(j){$('bulkmsg').textContent=j.updated+' saved'+(j.skipped.length?'. Skipped: '+j.skipped.join(' | '):'');load()}).catch(function(e){$('bulkmsg').textContent=e.message})};
+$('addgo').onclick=function(){api('add',{school:$('sch').value,names:$('names').value}).then(function(j){$('addmsg').textContent=j.added.length+' IDs made';$('names').value='';load()}).catch(function(e){$('addmsg').textContent=e.message})};
+$('ref').onclick=load;
+$('csv').onclick=function(){var t='ID,Name,Weeks done,Stars\n'+R.map(function(r){return [r.id,'"'+(r.name||'').replace(/"/g,'""')+'"',r.done,r.stars].join(',')}).join('\n');var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/csv'}));a.download='bytebusters-learners.csv';a.click()};
+$('print').onclick=function(){$('cards').innerHTML=R.map(function(r){return '<div class="idc"><div>ByteBusters Scratch Path</div><b>'+esc(r.id)+'</b><div>'+esc(r.name)+'</div><div style="font-size:12px">'+location.host+'</div></div>'}).join('');window.print()};
+})();
+</script></body></html>

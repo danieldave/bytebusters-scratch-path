@@ -1,0 +1,31 @@
+const { chromium, devices } = require('playwright');
+(async () => {
+  const b = await chromium.launch(); const c = await b.newContext({ ...devices['Pixel 5'] }); const p = await c.newPage();
+  const errs = []; p.on('pageerror', (e) => errs.push(e.message)); p.on('console', (m) => m.type() === 'error' && errs.push(m.text()));
+  await p.goto('http://localhost:3111/');
+  await p.fill('#id', 'UHS-ZZZZ'); await p.click('#go'); await p.waitForFunction(() => document.getElementById('err').textContent.length > 0);
+  console.log('bad:', await p.textContent('#err'));
+  const seed = require('../data/roster.seed.json').find((r) => r.school === 'UHS');
+  await p.fill('#id', seed.id.toLowerCase()); await p.click('#go'); await p.waitForSelector('.week');
+  console.log('home weeks:', await p.locator('.week').count(), '|', (await p.textContent('h1')));
+  await p.screenshot({ path: '/tmp/s_home.png' });
+  await p.click('a.week >> nth=3'); await p.waitForSelector('#quiz .opt');
+  console.log('lesson:', await p.textContent('h1'));
+  await p.check('#steps input >> nth=0');
+  for (let i = 0; i < 3; i++) { await p.click('#quiz .opt >> nth=0'); await p.click('#quiz .btn'); await p.waitForTimeout(50); }
+  await p.waitForSelector('#quiz b');
+  console.log('quiz:', await p.textContent('#quiz'));
+  await p.screenshot({ path: '/tmp/s_lesson.png', fullPage: true });
+  await p.click('#done'); await p.waitForTimeout(400);
+  await p.goto('http://localhost:3111/'); await p.reload(); await p.waitForSelector('.week');
+  console.log('after reload:', (await p.locator('.week.done').count()), 'done;', await p.textContent('.card b'));
+  const dl = await p.request.get('http://localhost:3111/files/middleman-maze-step1-starter.sb3'); console.log('file status', dl.status());
+  await p.goto('http://localhost:3111/admin'); await p.fill('#pin', '1234'); await p.click('#in'); await p.waitForSelector('#tb tr:nth-child(5)');
+  await p.fill('#bulk', seed.id + ',Ade Bello'); await p.click('#bulkgo'); await p.waitForFunction(() => document.getElementById('bulkmsg').textContent.includes('saved'));
+  await p.waitForTimeout(300);
+  console.log('admin row:', (await p.locator('#tb tr', { hasText: seed.id }).innerText()).replace(/\s+/g, ' '));
+  await p.fill('#names', 'Chidi One\nBola Two'); await p.click('#addgo'); await p.waitForFunction(() => document.getElementById('addmsg').textContent.includes('made'));
+  console.log('add:', await p.textContent('#addmsg'));
+  console.log('errors:', errs);
+  await b.close();
+})();

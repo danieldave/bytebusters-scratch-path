@@ -1,0 +1,4 @@
+{ "name": "bytebusters-scratch-path", "version": "1.0.0", "private": true,
+  "description": "10-week First Term Scratch path with saved progress per access ID",
+  "engines": { "node": ">=18" },
+  "scripts": { "ids": "node scripts/gen-ids.js 40", "test": "node test/run.js" } }

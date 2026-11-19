@@ -1,0 +1,4454 @@
+{
+ "version": "2026-11",
+ "colours": {
+  "blue": "Variables",
+  "red": "Conditionals",
+  "green": "Loops and Timers",
+  "purple": "Events"
+ },
+ "schools": {
+  "MHS": {
+   "code": "MHS",
+   "name": "Methodist High School Arigbajo",
+   "level": "junior",
+   "games": [
+    {
+     "id": "RF",
+     "name": "Real vs Fake"
+    },
+    {
+     "id": "FJ",
+     "name": "Family Job Board"
+    },
+    {
+     "id": "HS",
+     "name": "Honest Scale"
+    }
+   ],
+   "lessons": [
+    {
+     "week": 1,
+     "title": "Meet Scratch",
+     "topic": "Scratch interface, blocks and stage elements",
+     "colours": [],
+     "game": {
+      "id": "RF",
+      "name": "Real vs Fake",
+      "story": "You are a shopper learning to spot fake products (tomato paste, rice, milk, noodles). Tap the fake one and Oga Sharp tells you why it is fake."
+     },
+     "start": null,
+     "goal": "real-vs-fake-step1-starter.sb3",
+     "scripts": [],
+     "big": "Scratch has four parts you must know: the Stage (where the game plays), the Sprites (the characters), the Blocks (the code pieces) and the Script area (where you snap blocks together).",
+     "steps": [
+      "Download the starter file below and open it in Scratch.",
+      "Look at the Stage. This is Real vs Fake.",
+      "Find the sprite list under the Stage. Count the sprites. Can you find Tick and Cross?",
+      "Click a sprite, then open its Costumes tab. Each costume is a different picture.",
+      "The Script area is empty. That is on purpose. In the next weeks YOU will fill it."
+     ],
+     "turn": "Write down 3 sprite names from the list and one thing each one will do in the game. Show your list to your trainer.",
+     "play": "You are a shopper learning to spot fake products (tomato paste, rice, milk, noodles). Tap the fake one and Oga Sharp tells you why it is fake.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What is the Stage?",
+       "o": [
+        "The place where the game happens",
+        "A block that moves",
+        "A sound file"
+       ],
+       "a": 0,
+       "why": "The Stage is the picture area where your game plays."
+      },
+      {
+       "q": "What is a sprite?",
+       "o": [
+        "A character or object you can control",
+        "A colour of block",
+        "A type of score"
+       ],
+       "a": 0,
+       "why": "Sprites are the characters, buttons and things in your game."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in Real vs Fake?",
+       "o": [
+        "game over",
+        "Score",
+        "Play Button",
+        "Title"
+       ],
+       "a": 0,
+       "why": "'game over' is a message that sprites send to each other."
+      }
+     ]
+    },
+    {
+     "week": 2,
+     "title": "Your first blocks",
+     "topic": "Scratch blocks and the green flag",
+     "colours": [
+      "purple"
+     ],
+     "game": {
+      "id": "RF",
+      "name": "Real vs Fake",
+      "story": "You are a shopper learning to spot fake products (tomato paste, rice, milk, noodles). Tap the fake one and Oga Sharp tells you why it is fake."
+     },
+     "start": "real-vs-fake-step1-starter.sb3",
+     "goal": "real-vs-fake-step2-flag-hides.sb3",
+     "scripts": [
+      {
+       "sprite": "Title",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Tick",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Cross",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Oga Sharp",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Real Tomato Paste",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Fake Tomato Paste",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Tomato Paste Fake Talks",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Real Rice",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Fake Rice",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Rice Fake Talks",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Real Milk",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Fake Milk",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Milk Fake Talks",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Real Noodles",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Fake Noodles",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Noodles Fake Talks",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "Every script starts with a hat block. The most used one is 'when green flag clicked'. Today every sprite gets a tiny script: when the flag is clicked, hide. That way the game starts with a clean stage.",
+     "steps": [
+      "Open the Step 1 file (the starter).",
+      "Click Tick. From the purple Events group drag 'when green flag clicked' into the script area.",
+      "From Looks, snap 'hide' under it.",
+      "Click the green flag. Tick disappears. You just ran code!",
+      "Do the same for the other sprites in the list below, or open the goal file to see them all."
+     ],
+     "turn": "Make Tick hide when the flag is clicked, then add 'wait 1 seconds' and 'show' after the hide. What happens?",
+     "play": "You are a shopper learning to spot fake products (tomato paste, rice, milk, noodles). Tap the fake one and Oga Sharp tells you why it is fake.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "Which block starts a script when the green flag is clicked?",
+       "o": [
+        "when green flag clicked",
+        "hide",
+        "say Hello"
+       ],
+       "a": 0,
+       "why": "It is a purple Events block."
+      },
+      {
+       "q": "Why do we HIDE sprites when the flag is clicked?",
+       "o": [
+        "So the game starts with a clean stage",
+        "To delete them forever",
+        "To make the game slower"
+       ],
+       "a": 0,
+       "why": "We hide them now and show each one at the right time."
+      },
+      {
+       "q": "Which of these is a SPRITE in Real vs Fake?",
+       "o": [
+        "Fake Milk",
+        "fake found",
+        "show rice",
+        "real one tapped"
+       ],
+       "a": 0,
+       "why": "'Fake Milk' is a character or button on the stage."
+      }
+     ]
+    },
+    {
+     "week": 3,
+     "title": "Make it tell a story",
+     "topic": "Animation and storytelling",
+     "colours": [
+      "purple"
+     ],
+     "game": {
+      "id": "RF",
+      "name": "Real vs Fake",
+      "story": "You are a shopper learning to spot fake products (tomato paste, rice, milk, noodles). Tap the fake one and Oga Sharp tells you why it is fake."
+     },
+     "start": "real-vs-fake-step2-flag-hides.sb3",
+     "goal": "real-vs-fake-step3-title-play.sb3",
+     "scripts": [
+      {
+       "sprite": "Stage",
+       "hat": "when green flag clicked",
+       "tags": [
+        "variable",
+        "broadcast"
+       ],
+       "blocks": 5
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'show tomato paste'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 4
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'show tomato paste'",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "A game is a story told in small parts. Each part ends with a message (broadcast) and the next part starts when a sprite hears it (when I receive). Today you build the first two parts: the Title screen and the Play button.",
+     "steps": [
+      "Open the Step 2 file.",
+      "On the Stage, build the flag script: it sets the starting values and broadcasts 'show title screen'.",
+      "On Title and Play Button, build 'when I receive show title screen' then show.",
+      "On Play Button, build 'when this sprite clicked' then broadcast the next message.",
+      "Click the green flag, then click Play. The story moves on!"
+     ],
+     "turn": "Change the words the Title says, or add one more 'say' with your own sentence. Run it again.",
+     "play": "You are a shopper learning to spot fake products (tomato paste, rice, milk, noodles). Tap the fake one and Oga Sharp tells you why it is fake.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What does 'broadcast' do?",
+       "o": [
+        "Sends a message to other sprites",
+        "Plays a song",
+        "Adds to the score"
+       ],
+       "a": 0,
+       "why": "A broadcast is like shouting, 'Everybody, the next part is starting!'"
+      },
+      {
+       "q": "Which block waits for a message?",
+       "o": [
+        "when I receive",
+        "go to x y",
+        "set to 0"
+       ],
+       "a": 0,
+       "why": "'When I receive' lets a sprite wake up when the message comes."
+      },
+      {
+       "q": "Which of these is a VARIABLE in Real vs Fake?",
+       "o": [
+        "Cross",
+        "Play Button",
+        "Score",
+        "Real Rice"
+       ],
+       "a": 2,
+       "why": "'Score' is a blue variable box. The others are sprites."
+      }
+     ]
+    },
+    {
+     "week": 4,
+     "title": "Make sprites move",
+     "topic": "Sprites and movement",
+     "colours": [
+      "purple"
+     ],
+     "game": {
+      "id": "RF",
+      "name": "Real vs Fake",
+      "story": "You are a shopper learning to spot fake products (tomato paste, rice, milk, noodles). Tap the fake one and Oga Sharp tells you why it is fake."
+     },
+     "start": "real-vs-fake-step3-title-play.sb3",
+     "goal": "real-vs-fake-step4-first-half.sb3",
+     "scripts": [
+      {
+       "sprite": "Tick",
+       "hat": "when I receive 'fake found'",
+       "tags": [
+        "timer"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Cross",
+       "hat": "when I receive 'real one tapped'",
+       "tags": [
+        "timer"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Oga Sharp",
+       "hat": "when I receive 'show tomato paste'",
+       "tags": [],
+       "blocks": 6
+      },
+      {
+       "sprite": "Oga Sharp",
+       "hat": "when I receive 'game over'",
+       "tags": [],
+       "blocks": 6
+      },
+      {
+       "sprite": "Real Tomato Paste",
+       "hat": "when I receive 'show tomato paste'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Real Tomato Paste",
+       "hat": "when I receive 'hide tomato paste'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Real Tomato Paste",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 5
+      },
+      {
+       "sprite": "Fake Tomato Paste",
+       "hat": "when I receive 'show tomato paste'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Fake Tomato Paste",
+       "hat": "when I receive 'hide tomato paste'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Fake Tomato Paste",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Tomato Paste Fake Talks",
+       "hat": "when I receive 'explain tomato paste'",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Real Rice",
+       "hat": "when I receive 'show rice'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Real Rice",
+       "hat": "when I receive 'hide rice'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Real Rice",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 5
+      },
+      {
+       "sprite": "Fake Rice",
+       "hat": "when I receive 'show rice'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Fake Rice",
+       "hat": "when I receive 'hide rice'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Fake Rice",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Rice Fake Talks",
+       "hat": "when I receive 'explain rice'",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 6
+      }
+     ],
+     "big": "Sprites move with x and y. x goes left and right, y goes up and down. 'go to x y' jumps. 'glide' slides. 'change x by' walks. Movement makes a still picture feel alive.",
+     "steps": [
+      "Open the Step 3 file.",
+      "Pick 3 sprites from the list below, for example Tick and Cross.",
+      "Build their 'when I receive' scripts: show, go to, say and wait, in the same order as the goal file.",
+      "Run the game after each sprite. If something is wrong, compare with the goal file.",
+      "You do not have to build everything. Build 3 sprites yourself, then open the goal file to see the rest."
+     ],
+     "turn": "Make Tick move in a new way: change the x number in 'go to' or add 'change x by 10' inside a repeat. Write what changed.",
+     "play": "You are a shopper learning to spot fake products (tomato paste, rice, milk, noodles). Tap the fake one and Oga Sharp tells you why it is fake.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "Which block puts a sprite at an exact spot?",
+       "o": [
+        "go to x: y:",
+        "say",
+        "hide"
+       ],
+       "a": 0,
+       "why": "x is left-right and y is up-down."
+      },
+      {
+       "q": "To move a sprite to the right you ...",
+       "o": [
+        "change x by a positive number",
+        "change y by a positive number",
+        "hide it"
+       ],
+       "a": 0,
+       "why": "A bigger x means more to the right."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in Real vs Fake?",
+       "o": [
+        "Score",
+        "show rice",
+        "Title",
+        "Real Tomato Paste"
+       ],
+       "a": 1,
+       "why": "'show rice' is a message that sprites send to each other."
+      }
+     ]
+    },
+    {
+     "week": 5,
+     "title": "Keep the score",
+     "topic": "Game mechanics: scoring",
+     "colours": [
+      "blue",
+      "red",
+      "green",
+      "purple"
+     ],
+     "game": {
+      "id": "RF",
+      "name": "Real vs Fake",
+      "story": "You are a shopper learning to spot fake products (tomato paste, rice, milk, noodles). Tap the fake one and Oga Sharp tells you why it is fake."
+     },
+     "start": "real-vs-fake-step4-first-half.sb3",
+     "goal": "real-vs-fake-step5-finished.sb3",
+     "scripts": [
+      {
+       "sprite": "Real Milk",
+       "hat": "when I receive 'show milk'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Real Milk",
+       "hat": "when I receive 'hide milk'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Real Milk",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 5
+      },
+      {
+       "sprite": "Fake Milk",
+       "hat": "when I receive 'show milk'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Fake Milk",
+       "hat": "when I receive 'hide milk'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Fake Milk",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Milk Fake Talks",
+       "hat": "when I receive 'explain milk'",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Real Noodles",
+       "hat": "when I receive 'show noodles'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Real Noodles",
+       "hat": "when I receive 'hide noodles'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Real Noodles",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 5
+      },
+      {
+       "sprite": "Fake Noodles",
+       "hat": "when I receive 'show noodles'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Fake Noodles",
+       "hat": "when I receive 'hide noodles'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Fake Noodles",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Noodles Fake Talks",
+       "hat": "when I receive 'explain noodles'",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 6
+      }
+     ],
+     "big": "A variable is a box with a name that remembers a number. In Real vs Fake the variable 'Score' is one of them. 'set' puts a new number in the box. 'change by' adds to what is already there.",
+     "steps": [
+      "Open the Step 4 file and click the green flag.",
+      "Open the Variables (blue) group. Find 'Score'.",
+      "Finish the game: build the last scripts from the list below.",
+      "Play to the end and watch 'Score' change.",
+      "Open the goal file and compare your game with it.",
+      "Timer lesson: in the blue-green Sensing group find 'timer'. It counts seconds by itself. Games in this path use a variable called Time with wait blocks, but the timer block does the same job."
+     ],
+     "turn": "Challenge: add a Timer. Make a sprite say 'Time: ' joined with the timer after the game ends. Then try 'reset timer' at the start.",
+     "play": "You are a shopper learning to spot fake products (tomato paste, rice, milk, noodles). Tap the fake one and Oga Sharp tells you why it is fake.",
+     "addons": [
+      "RED IF block: IF Score = 4, Oga Sharp says PERFECT. ELSE he tells you to look at your Score.",
+      "GREEN LOOP: repeat 3 times, Oga Sharp grows and shrinks to celebrate. The same steps again and again."
+     ],
+     "quiz": [
+      {
+       "q": "What is a variable?",
+       "o": [
+        "A box that holds a number or word and can change",
+        "A kind of sprite",
+        "A sound"
+       ],
+       "a": 0,
+       "why": "Like a score board that changes as you play."
+      },
+      {
+       "q": "Which block adds 1 to Score?",
+       "o": [
+        "change Score by 1",
+        "set Score to 0",
+        "hide variable"
+       ],
+       "a": 0,
+       "why": "'change by' adds to the old number. 'set to' replaces it."
+      },
+      {
+       "q": "Which of these is a SPRITE in Real vs Fake?",
+       "o": [
+        "Tomato Paste Fake Talks",
+        "show milk",
+        "hide rice",
+        "show tomato paste"
+       ],
+       "a": 0,
+       "why": "'Tomato Paste Fake Talks' is a character or button on the stage."
+      }
+     ]
+    },
+    {
+     "week": 6,
+     "title": "Touch and decide",
+     "topic": "Game mechanics: collisions",
+     "colours": [
+      "red",
+      "blue"
+     ],
+     "game": {
+      "id": "FJ",
+      "name": "Family Job Board",
+      "story": "Tayo must do the right chores before Daddy comes home. Tap the right chore, avoid the wrong one, and Mum keeps the score."
+     },
+     "start": "family-job-board-step3-title-play.sb3",
+     "goal": "family-job-board-step4-first-half.sb3",
+     "scripts": [
+      {
+       "sprite": "Mum",
+       "hat": "when I receive 'chore 1'",
+       "tags": [],
+       "blocks": 6
+      },
+      {
+       "sprite": "Mum",
+       "hat": "when I receive 'chore 2'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Mum",
+       "hat": "when I receive 'chore 3'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Mum",
+       "hat": "when I receive 'chore 4'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Mum",
+       "hat": "when I receive 'chores done'",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 5
+      },
+      {
+       "sprite": "Mum",
+       "hat": "when I receive 'daddy comes home'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Tayo",
+       "hat": "when I receive 'chore 1'",
+       "tags": [],
+       "blocks": 5
+      },
+      {
+       "sprite": "Tayo",
+       "hat": "when I receive 'tayo washes the clothes'",
+       "tags": [],
+       "blocks": 6
+      },
+      {
+       "sprite": "Tayo",
+       "hat": "when I receive 'tayo sweeps the compound'",
+       "tags": [],
+       "blocks": 6
+      },
+      {
+       "sprite": "Tayo",
+       "hat": "when I receive 'tayo fetches water'",
+       "tags": [],
+       "blocks": 6
+      },
+      {
+       "sprite": "Tayo",
+       "hat": "when I receive 'tayo washes the plates'",
+       "tags": [],
+       "blocks": 6
+      },
+      {
+       "sprite": "Clothes 1",
+       "hat": "when I receive 'chore 1'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Clothes 1",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Clothes 1",
+       "hat": "when I receive 'chore 2'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Water 1",
+       "hat": "when I receive 'chore 1'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Water 1",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 4
+      },
+      {
+       "sprite": "Water 1",
+       "hat": "when I receive 'chore 2'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Sweep 2",
+       "hat": "when I receive 'chore 2'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Sweep 2",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Sweep 2",
+       "hat": "when I receive 'chore 3'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Plates 2",
+       "hat": "when I receive 'chore 2'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Plates 2",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 4
+      },
+      {
+       "sprite": "Plates 2",
+       "hat": "when I receive 'chore 3'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Tick",
+       "hat": "when I receive 'right chore'",
+       "tags": [
+        "timer"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Cross",
+       "hat": "when I receive 'wrong chore'",
+       "tags": [
+        "timer"
+       ],
+       "blocks": 8
+      }
+     ],
+     "big": "'If' asks a question. If the answer is yes, the blocks inside run. Touching is a great question: 'if touching sprite' lets your game know when two things meet, which is how scoring by catching, bumping or tapping works.",
+     "steps": [
+      "You now work on a second game: Family Job Board. Open the Step 3 file.",
+      "Read the story: Tayo must do the right chores before Daddy comes home. Tap the right chore, avoid the wrong one, and Mum keeps the score.",
+      "Build the first half of the game from the list below, or as many sprites as you can.",
+      "Watch for scripts tagged 'if'. These are the red blocks.",
+      "Open the goal file and test it."
+     ],
+     "turn": "Touch challenge: add a new script to Mum: forever, if touching Tayo then say 'Touched!' for 1 second. Then change it to add 1 to a variable.",
+     "play": "Tayo must do the right chores before Daddy comes home. Tap the right chore, avoid the wrong one, and Mum keeps the score.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "Which colour is the 'if' block?",
+       "o": [
+        "Red (Conditionals)",
+        "Blue (Variables)",
+        "Green (Loops)"
+       ],
+       "a": 0,
+       "why": "Red blocks ask a question: 'if this is true, then do that'."
+      },
+      {
+       "q": "'If touching Tick then change Score by 1'. When does the score go up?",
+       "o": [
+        "Only when the sprite touches Tick",
+        "Every second no matter what",
+        "Never"
+       ],
+       "a": 0,
+       "why": "The 'if' only runs the inside blocks when the question is true."
+      },
+      {
+       "q": "Which of these is a VARIABLE in Family Job Board?",
+       "o": [
+        "Tick",
+        "Mum",
+        "Score",
+        "Rubbish 3"
+       ],
+       "a": 2,
+       "why": "'Score' is a blue variable box. The others are sprites."
+      }
+     ]
+    },
+    {
+     "week": 7,
+     "title": "Levels and characters",
+     "topic": "Game design: levels and characters",
+     "colours": [
+      "green",
+      "blue"
+     ],
+     "game": {
+      "id": "FJ",
+      "name": "Family Job Board",
+      "story": "Tayo must do the right chores before Daddy comes home. Tap the right chore, avoid the wrong one, and Mum keeps the score."
+     },
+     "start": "family-job-board-step4-first-half.sb3",
+     "goal": "family-job-board-step5-finished.sb3",
+     "scripts": [
+      {
+       "sprite": "Stage",
+       "hat": "when I receive 'daddy comes home'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Water 3",
+       "hat": "when I receive 'chore 3'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Water 3",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Water 3",
+       "hat": "when I receive 'chore 4'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Rubbish 3",
+       "hat": "when I receive 'chore 3'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Rubbish 3",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 4
+      },
+      {
+       "sprite": "Rubbish 3",
+       "hat": "when I receive 'chore 4'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Plates 4",
+       "hat": "when I receive 'chore 4'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Plates 4",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Plates 4",
+       "hat": "when I receive 'chores done'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Chairs 4",
+       "hat": "when I receive 'chore 4'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Chairs 4",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 4
+      },
+      {
+       "sprite": "Chairs 4",
+       "hat": "when I receive 'chores done'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Daddy Car",
+       "hat": "when I receive 'daddy comes home'",
+       "tags": [
+        "loop",
+        "timer"
+       ],
+       "blocks": 8
+      }
+     ],
+     "big": "Good games have levels (steps that get harder or different) and characters with their own look. A loop (green) repeats blocks, which makes animation easy: repeat 10 [change size, wait] makes a bounce.",
+     "steps": [
+      "Open the Step 4 file of Family Job Board.",
+      "Build the second half from the list below.",
+      "Find a loop in the finished game (a green 'repeat' or 'forever').",
+      "Try changing the repeat number. What happens to the animation?",
+      "Give one character a new costume or a new name."
+     ],
+     "turn": "Make one character react when something happens: a repeat 3 bounce (change size by 10, wait 0.2, change size by -10, wait 0.2).",
+     "play": "Tayo must do the right chores before Daddy comes home. Tap the right chore, avoid the wrong one, and Mum keeps the score.",
+     "addons": [
+      "RED IF block: IF Score = 4, Mum says PERFECT. ELSE she says good try. The game checks the Score and chooses.",
+      "GREEN LOOP: repeat 3 times, Tayo grows, waits, shrinks. The loop does the same steps again and again."
+     ],
+     "quiz": [
+      {
+       "q": "What does 'repeat 10' do?",
+       "o": [
+        "Does the blocks inside 10 times",
+        "Waits 10 seconds",
+        "Makes the score 10"
+       ],
+       "a": 0,
+       "why": "A loop saves you from placing the same blocks again and again."
+      },
+      {
+       "q": "Which block lets a character look different?",
+       "o": [
+        "switch costume",
+        "set Score",
+        "broadcast"
+       ],
+       "a": 0,
+       "why": "Costumes are the different pictures of one sprite."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in Family Job Board?",
+       "o": [
+        "Title",
+        "tayo sweeps the compound",
+        "Clothes 1",
+        "Water 1"
+       ],
+       "a": 1,
+       "why": "'tayo sweeps the compound' is a message that sprites send to each other."
+      }
+     ]
+    },
+    {
+     "week": 8,
+     "title": "Design your own level",
+     "topic": "Game design: levels and characters",
+     "colours": [
+      "red",
+      "green"
+     ],
+     "game": {
+      "id": "HS",
+      "name": "Honest Scale",
+      "story": "You sell goods at Mama T's shop. Weigh the order honestly, give full weight, and keep your customers' trust."
+     },
+     "start": "honest-scale-step1-starter.sb3",
+     "goal": "honest-scale-step3-title-play.sb3",
+     "scripts": [
+      {
+       "sprite": "Title",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Walker",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Mama T",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Scale",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Trust Meter",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Order Ticket",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Plus Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Minus Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Sell Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Caption",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Stage",
+       "hat": "when green flag clicked",
+       "tags": [
+        "variable",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'next customer comes'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 4
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'next customer comes'",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "Now you design. This is your third game: Honest Scale. You will rebuild its start, then plan one new level or new character of your own.",
+     "steps": [
+      "Open the starter file.",
+      "Rebuild the flag-hides scripts and the Title and Play parts. You did this before, it should be quicker now.",
+      "On paper, draw ONE new level or character idea for the game.",
+      "Write the rule: what must the player do to win this level?",
+      "Share the idea with a classmate."
+     ],
+     "turn": "Write your level rule using 'if': 'If ___ then ___ else ___'. Use real names from the game, like Customer and Walker.",
+     "play": "You sell goods at Mama T's shop. Weigh the order honestly, give full weight, and keep your customers' trust.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "When you design a new level, what should you decide first?",
+       "o": [
+        "What the player must do and how they win",
+        "Which colour the sky is",
+        "Nothing, just copy"
+       ],
+       "a": 0,
+       "why": "A good level has a clear goal."
+      },
+      {
+       "q": "What does 'if / else' give you?",
+       "o": [
+        "Two paths: one when true, one when false",
+        "Two scores",
+        "Two stages"
+       ],
+       "a": 0,
+       "why": "If the question is true do one thing, else do the other."
+      },
+      {
+       "q": "Which of these is a SPRITE in Honest Scale?",
+       "o": [
+        "show the order",
+        "mama t checks trust",
+        "shop closes",
+        "Minus Button"
+       ],
+       "a": 3,
+       "why": "'Minus Button' is a character or button on the stage."
+      }
+     ]
+    },
+    {
+     "week": 9,
+     "title": "Buttons and feedback",
+     "topic": "User interaction",
+     "colours": [
+      "purple",
+      "red"
+     ],
+     "game": {
+      "id": "HS",
+      "name": "Honest Scale",
+      "story": "You sell goods at Mama T's shop. Weigh the order honestly, give full weight, and keep your customers' trust."
+     },
+     "start": "honest-scale-step3-title-play.sb3",
+     "goal": "honest-scale-step4-first-half.sb3",
+     "scripts": [
+      {
+       "sprite": "Walker",
+       "hat": "when I receive 'next customer comes'",
+       "tags": [
+        "variable",
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 22
+      },
+      {
+       "sprite": "Walker",
+       "hat": "when I receive 'customer was cheated'",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 5
+      },
+      {
+       "sprite": "Walker",
+       "hat": "when I receive 'customer got full weight'",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 3
+      },
+      {
+       "sprite": "Walker",
+       "hat": "when I receive 'customer leaves'",
+       "tags": [
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 15
+      },
+      {
+       "sprite": "Scale",
+       "hat": "when I receive 'next customer comes'",
+       "tags": [
+        "if",
+        "loop"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Order Ticket",
+       "hat": "when I receive 'show the order'",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Order Ticket",
+       "hat": "when I receive 'mama t checks trust'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Order Ticket",
+       "hat": "when I receive 'count the customers'",
+       "tags": [
+        "if",
+        "broadcast"
+       ],
+       "blocks": 5
+      },
+      {
+       "sprite": "Plus Button",
+       "hat": "when I receive 'start weighing'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Plus Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Plus Button",
+       "hat": "when I receive 'customer leaves'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Minus Button",
+       "hat": "when I receive 'start weighing'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Minus Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Minus Button",
+       "hat": "when I receive 'customer leaves'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Sell Button",
+       "hat": "when I receive 'start weighing'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Sell Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "loop",
+        "broadcast"
+       ],
+       "blocks": 13
+      }
+     ],
+     "big": "Buttons make a game interactive. 'When this sprite clicked' waits for a tap. Feedback (a sound, a tick, a message) tells the player what happened. A game with no feedback feels broken.",
+     "steps": [
+      "Open the Step 3 file of Honest Scale.",
+      "Build the first-half scripts, especially the ones starting with 'when this sprite clicked'.",
+      "For each button, check: what does the player see or hear after tapping?",
+      "Add one sound or one 'say' where feedback is missing.",
+      "Compare with the goal file."
+     ],
+     "turn": "Add feedback to one button: a 'say' message or sound, plus a change to a variable.",
+     "play": "You sell goods at Mama T's shop. Weigh the order honestly, give full weight, and keep your customers' trust.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "A button in your game needs which hat block?",
+       "o": [
+        "when this sprite clicked",
+        "when green flag clicked",
+        "when I receive"
+       ],
+       "a": 0,
+       "why": "This hat block runs when the player taps the sprite."
+      },
+      {
+       "q": "Why do we give the player feedback (say, sound, tick)?",
+       "o": [
+        "So they know if they were right",
+        "To fill space",
+        "To slow the game"
+       ],
+       "a": 0,
+       "why": "Good games always answer the player."
+      },
+      {
+       "q": "Which of these is a VARIABLE in Honest Scale?",
+       "o": [
+        "Walker",
+        "Plus Button",
+        "Minus Button",
+        "Wanted"
+       ],
+       "a": 3,
+       "why": "'Wanted' is a blue variable box. The others are sprites."
+      }
+     ]
+    },
+    {
+     "week": 10,
+     "title": "Test, fix, show",
+     "topic": "Refining and presenting",
+     "colours": [
+      "blue",
+      "red",
+      "green",
+      "purple"
+     ],
+     "game": {
+      "id": "HS",
+      "name": "Honest Scale",
+      "story": "You sell goods at Mama T's shop. Weigh the order honestly, give full weight, and keep your customers' trust."
+     },
+     "start": "honest-scale-step4-first-half.sb3",
+     "goal": "honest-scale-step5-finished.sb3",
+     "scripts": [
+      {
+       "sprite": "Mama T",
+       "hat": "when I receive 'next customer comes'",
+       "tags": [],
+       "blocks": 5
+      },
+      {
+       "sprite": "Mama T",
+       "hat": "when I receive 'start weighing'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Mama T",
+       "hat": "when I receive 'customer was cheated'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Mama T",
+       "hat": "when I receive 'customer got full weight'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Mama T",
+       "hat": "when I receive 'mama t checks trust'",
+       "tags": [
+        "if",
+        "broadcast"
+       ],
+       "blocks": 7
+      },
+      {
+       "sprite": "Mama T",
+       "hat": "when I receive 'end of the day'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Trust Meter",
+       "hat": "when I receive 'next customer comes'",
+       "tags": [
+        "if",
+        "loop"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Caption",
+       "hat": "when I receive 'shop closes'",
+       "tags": [],
+       "blocks": 5
+      },
+      {
+       "sprite": "Caption",
+       "hat": "when I receive 'end of the day'",
+       "tags": [
+        "if"
+       ],
+       "blocks": 9
+      }
+     ],
+     "big": "Professional makers test and fix. Today you finish Honest Scale, playtest it with a friend, and write down what to improve. Your finished game should use all four logic colours: blue Variables, red Conditionals, green Loops, purple Events.",
+     "steps": [
+      "Open the Step 4 file and build the last scripts from the list.",
+      "Open the goal file and compare.",
+      "Playtest: ask a friend to play without help. Where do they get stuck?",
+      "Fix one bug or add one small improvement.",
+      "Get ready to show your game: say what each colour does in it."
+     ],
+     "turn": "Finish this sentence for your trainer: 'In Honest Scale my blue variable is ___, my red if checks ___, my green loop repeats ___, and my purple event is ___.'",
+     "play": "You sell goods at Mama T's shop. Weigh the order honestly, give full weight, and keep your customers' trust.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What do you do in a playtest?",
+       "o": [
+        "Play, look for bugs, and fix them",
+        "Only look at the pictures",
+        "Delete the project"
+       ],
+       "a": 0,
+       "why": "Testing is how every real game gets better."
+      },
+      {
+       "q": "Which four colours should your best game use?",
+       "o": [
+        "Variables, Conditionals, Loops, Events",
+        "Only Events",
+        "Only Motion"
+       ],
+       "a": 0,
+       "why": "Blue, red, green and purple logic together make a full game."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in Honest Scale?",
+       "o": [
+        "customer got full weight",
+        "Trust Meter",
+        "Mama T",
+        "Walker"
+       ],
+       "a": 0,
+       "why": "'customer got full weight' is a message that sprites send to each other."
+      }
+     ]
+    }
+   ]
+  },
+  "UHS": {
+   "code": "UHS",
+   "name": "Unity High School",
+   "level": "senior",
+   "games": [
+    {
+     "id": "MM",
+     "name": "Middleman Maze"
+    },
+    {
+     "id": "SN",
+     "name": "Shrinking Naira"
+    },
+    {
+     "id": "EB",
+     "name": "The Empty Barn"
+    }
+   ],
+   "lessons": [
+    {
+     "week": 1,
+     "title": "Meet Scratch",
+     "topic": "Scratch interface, blocks and stage elements",
+     "colours": [],
+     "game": {
+      "id": "MM",
+      "name": "Middleman Maze",
+      "story": "A farmer sells produce, but many middlemen stand between the farm and the market. Follow the trip and see how the price grows at each gate."
+     },
+     "start": null,
+     "goal": "middleman-maze-step1-starter.sb3",
+     "scripts": [],
+     "big": "Scratch has four parts you must know: the Stage (where the game plays), the Sprites (the characters), the Blocks (the code pieces) and the Script area (where you snap blocks together).",
+     "steps": [
+      "Download the starter file below and open it in Scratch.",
+      "Look at the Stage. This is Middleman Maze.",
+      "Find the sprite list under the Stage. Count the sprites. Can you find Farmer and Truck?",
+      "Click a sprite, then open its Costumes tab. Each costume is a different picture.",
+      "The Script area is empty. That is on purpose. In the next weeks YOU will fill it."
+     ],
+     "turn": "Write down 3 sprite names from the list and one thing each one will do in the game. Show your list to your trainer.",
+     "play": "A farmer sells produce, but many middlemen stand between the farm and the market. Follow the trip and see how the price grows at each gate.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What is the Stage?",
+       "o": [
+        "The place where the game happens",
+        "A block that moves",
+        "A sound file"
+       ],
+       "a": 0,
+       "why": "The Stage is the picture area where your game plays."
+      },
+      {
+       "q": "What is a sprite?",
+       "o": [
+        "A character or object you can control",
+        "A colour of block",
+        "A type of score"
+       ],
+       "a": 0,
+       "why": "Sprites are the characters, buttons and things in your game."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in Middleman Maze?",
+       "o": [
+        "Trip",
+        "drive to market",
+        "Farmer",
+        "Village Buyer"
+       ],
+       "a": 1,
+       "why": "'drive to market' is a message that sprites send to each other."
+      }
+     ]
+    },
+    {
+     "week": 2,
+     "title": "Your first blocks",
+     "topic": "Scratch blocks and the green flag",
+     "colours": [
+      "purple"
+     ],
+     "game": {
+      "id": "MM",
+      "name": "Middleman Maze",
+      "story": "A farmer sells produce, but many middlemen stand between the farm and the market. Follow the trip and see how the price grows at each gate."
+     },
+     "start": "middleman-maze-step1-starter.sb3",
+     "goal": "middleman-maze-step2-flag-hides.sb3",
+     "scripts": [
+      {
+       "sprite": "Title",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Farmer",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Truck",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Village Buyer",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Transporter",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Market Seller",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "Every script starts with a hat block. The most used one is 'when green flag clicked'. Today every sprite gets a tiny script: when the flag is clicked, hide. That way the game starts with a clean stage.",
+     "steps": [
+      "Open the Step 1 file (the starter).",
+      "Click Farmer. From the purple Events group drag 'when green flag clicked' into the script area.",
+      "From Looks, snap 'hide' under it.",
+      "Click the green flag. Farmer disappears. You just ran code!",
+      "Do the same for the other sprites in the list below, or open the goal file to see them all."
+     ],
+     "turn": "Make Farmer hide when the flag is clicked, then add 'wait 1 seconds' and 'show' after the hide. What happens?",
+     "play": "A farmer sells produce, but many middlemen stand between the farm and the market. Follow the trip and see how the price grows at each gate.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "Which block starts a script when the green flag is clicked?",
+       "o": [
+        "when green flag clicked",
+        "hide",
+        "say Hello"
+       ],
+       "a": 0,
+       "why": "It is a purple Events block."
+      },
+      {
+       "q": "Why do we HIDE sprites when the flag is clicked?",
+       "o": [
+        "So the game starts with a clean stage",
+        "To delete them forever",
+        "To make the game slower"
+       ],
+       "a": 0,
+       "why": "We hide them now and show each one at the right time."
+      },
+      {
+       "q": "Which of these is a SPRITE in Middleman Maze?",
+       "o": [
+        "Farmer Gets ₦",
+        "drive to gate 3",
+        "Transporter",
+        "show title screen"
+       ],
+       "a": 2,
+       "why": "'Transporter' is a character or button on the stage."
+      }
+     ]
+    },
+    {
+     "week": 3,
+     "title": "Make it tell a story",
+     "topic": "Animation and storytelling",
+     "colours": [
+      "purple"
+     ],
+     "game": {
+      "id": "MM",
+      "name": "Middleman Maze",
+      "story": "A farmer sells produce, but many middlemen stand between the farm and the market. Follow the trip and see how the price grows at each gate."
+     },
+     "start": "middleman-maze-step2-flag-hides.sb3",
+     "goal": "middleman-maze-step3-title-play.sb3",
+     "scripts": [
+      {
+       "sprite": "Stage",
+       "hat": "when green flag clicked",
+       "tags": [
+        "variable",
+        "broadcast"
+       ],
+       "blocks": 7
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'trip starts'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 4
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'trip starts'",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "A game is a story told in small parts. Each part ends with a message (broadcast) and the next part starts when a sprite hears it (when I receive). Today you build the first two parts: the Title screen and the Play button.",
+     "steps": [
+      "Open the Step 2 file.",
+      "On the Stage, build the flag script: it sets the starting values and broadcasts 'show title screen'.",
+      "On Title and Play Button, build 'when I receive show title screen' then show.",
+      "On Play Button, build 'when this sprite clicked' then broadcast the next message.",
+      "Click the green flag, then click Play. The story moves on!"
+     ],
+     "turn": "Change the words the Title says, or add one more 'say' with your own sentence. Run it again.",
+     "play": "A farmer sells produce, but many middlemen stand between the farm and the market. Follow the trip and see how the price grows at each gate.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What does 'broadcast' do?",
+       "o": [
+        "Sends a message to other sprites",
+        "Plays a song",
+        "Adds to the score"
+       ],
+       "a": 0,
+       "why": "A broadcast is like shouting, 'Everybody, the next part is starting!'"
+      },
+      {
+       "q": "Which block waits for a message?",
+       "o": [
+        "when I receive",
+        "go to x y",
+        "set to 0"
+       ],
+       "a": 0,
+       "why": "'When I receive' lets a sprite wake up when the message comes."
+      },
+      {
+       "q": "Which of these is a VARIABLE in Middleman Maze?",
+       "o": [
+        "Trip",
+        "Play Button",
+        "Farmer",
+        "Village Buyer"
+       ],
+       "a": 0,
+       "why": "'Trip' is a blue variable box. The others are sprites."
+      }
+     ]
+    },
+    {
+     "week": 4,
+     "title": "Make sprites move",
+     "topic": "Sprites and movement",
+     "colours": [
+      "purple"
+     ],
+     "game": {
+      "id": "MM",
+      "name": "Middleman Maze",
+      "story": "A farmer sells produce, but many middlemen stand between the farm and the market. Follow the trip and see how the price grows at each gate."
+     },
+     "start": "middleman-maze-step3-title-play.sb3",
+     "goal": "middleman-maze-step4-first-half.sb3",
+     "scripts": [
+      {
+       "sprite": "Farmer",
+       "hat": "when I receive 'trip starts'",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 15
+      },
+      {
+       "sprite": "Farmer",
+       "hat": "when I receive 'truck reaches the market'",
+       "tags": [
+        "if",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Truck",
+       "hat": "when I receive 'trip starts'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Truck",
+       "hat": "when I receive 'drive to gate 1'",
+       "tags": [
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Truck",
+       "hat": "when I receive 'drive to gate 2'",
+       "tags": [
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Truck",
+       "hat": "when I receive 'drive to gate 3'",
+       "tags": [
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Truck",
+       "hat": "when I receive 'drive to market'",
+       "tags": [
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Village Buyer",
+       "hat": "when I receive 'trip starts'",
+       "tags": [],
+       "blocks": 5
+      },
+      {
+       "sprite": "Village Buyer",
+       "hat": "when I receive 'truck reaches gate 1'",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 13
+      }
+     ],
+     "big": "Sprites move with x and y. x goes left and right, y goes up and down. 'go to x y' jumps. 'glide' slides. 'change x by' walks. Movement makes a still picture feel alive.",
+     "steps": [
+      "Open the Step 3 file.",
+      "Pick 3 sprites from the list below, for example Farmer and Truck.",
+      "Build their 'when I receive' scripts: show, go to, say and wait, in the same order as the goal file.",
+      "Run the game after each sprite. If something is wrong, compare with the goal file.",
+      "You do not have to build everything. Build 3 sprites yourself, then open the goal file to see the rest."
+     ],
+     "turn": "Make Farmer move in a new way: change the x number in 'go to' or add 'change x by 10' inside a repeat. Write what changed.",
+     "play": "A farmer sells produce, but many middlemen stand between the farm and the market. Follow the trip and see how the price grows at each gate.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "Which block puts a sprite at an exact spot?",
+       "o": [
+        "go to x: y:",
+        "say",
+        "hide"
+       ],
+       "a": 0,
+       "why": "x is left-right and y is up-down."
+      },
+      {
+       "q": "To move a sprite to the right you ...",
+       "o": [
+        "change x by a positive number",
+        "change y by a positive number",
+        "hide it"
+       ],
+       "a": 0,
+       "why": "A bigger x means more to the right."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in Middleman Maze?",
+       "o": [
+        "Trip",
+        "Transporter",
+        "Play Button",
+        "truck reaches gate 2"
+       ],
+       "a": 3,
+       "why": "'truck reaches gate 2' is a message that sprites send to each other."
+      }
+     ]
+    },
+    {
+     "week": 5,
+     "title": "Keep the score",
+     "topic": "Game mechanics: scoring",
+     "colours": [
+      "blue",
+      "red",
+      "green",
+      "purple"
+     ],
+     "game": {
+      "id": "MM",
+      "name": "Middleman Maze",
+      "story": "A farmer sells produce, but many middlemen stand between the farm and the market. Follow the trip and see how the price grows at each gate."
+     },
+     "start": "middleman-maze-step4-first-half.sb3",
+     "goal": "middleman-maze-step5-finished.sb3",
+     "scripts": [
+      {
+       "sprite": "Transporter",
+       "hat": "when I receive 'trip starts'",
+       "tags": [],
+       "blocks": 5
+      },
+      {
+       "sprite": "Transporter",
+       "hat": "when I receive 'truck reaches gate 2'",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 14
+      },
+      {
+       "sprite": "Market Seller",
+       "hat": "when I receive 'trip starts'",
+       "tags": [],
+       "blocks": 5
+      },
+      {
+       "sprite": "Market Seller",
+       "hat": "when I receive 'truck reaches gate 3'",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 13
+      }
+     ],
+     "big": "A variable is a box with a name that remembers a number. In Middleman Maze the variable 'Trip' is one of them. 'set' puts a new number in the box. 'change by' adds to what is already there.",
+     "steps": [
+      "Open the Step 4 file and click the green flag.",
+      "Open the Variables (blue) group. Find 'Trip'.",
+      "Finish the game: build the last scripts from the list below.",
+      "Play to the end and watch 'Trip' change.",
+      "Open the goal file and compare your game with it.",
+      "Timer lesson: in the blue-green Sensing group find 'timer'. It counts seconds by itself. Games in this path use a variable called Time with wait blocks, but the timer block does the same job."
+     ],
+     "turn": "Challenge: add a Timer. Make a sprite say 'Time: ' joined with the timer after the game ends. Then try 'reset timer' at the start.",
+     "play": "A farmer sells produce, but many middlemen stand between the farm and the market. Follow the trip and see how the price grows at each gate.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What is a variable?",
+       "o": [
+        "A box that holds a number or word and can change",
+        "A kind of sprite",
+        "A sound"
+       ],
+       "a": 0,
+       "why": "Like a score board that changes as you play."
+      },
+      {
+       "q": "Which block adds 1 to Score?",
+       "o": [
+        "change Score by 1",
+        "set Score to 0",
+        "hide variable"
+       ],
+       "a": 0,
+       "why": "'change by' adds to the old number. 'set to' replaces it."
+      },
+      {
+       "q": "Which of these is a SPRITE in Middleman Maze?",
+       "o": [
+        "drive to gate 3",
+        "truck reaches the market",
+        "Price ₦",
+        "Market Seller"
+       ],
+       "a": 3,
+       "why": "'Market Seller' is a character or button on the stage."
+      }
+     ]
+    },
+    {
+     "week": 6,
+     "title": "Touch and decide",
+     "topic": "Game mechanics: collisions",
+     "colours": [
+      "red",
+      "blue"
+     ],
+     "game": {
+      "id": "SN",
+      "name": "Shrinking Naira",
+      "story": "Money does not buy the same things every month. Shop with Mum, watch the prices go up, and see your naira shrink."
+     },
+     "start": "shrinking-naira-step3-title-play.sb3",
+     "goal": "shrinking-naira-step4-first-half.sb3",
+     "scripts": [
+      {
+       "sprite": "Calendar",
+       "hat": "when I receive 'new month starts'",
+       "tags": [
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Calendar",
+       "hat": "when I receive 'show the lesson'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Mum",
+       "hat": "when I receive 'new month starts'",
+       "tags": [],
+       "blocks": 5
+      },
+      {
+       "sprite": "Mum",
+       "hat": "when I receive 'too expensive'",
+       "tags": [],
+       "blocks": 6
+      },
+      {
+       "sprite": "Mum",
+       "hat": "when I receive 'market closes'",
+       "tags": [
+        "if",
+        "broadcast"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Mum",
+       "hat": "when I receive 'show the lesson'",
+       "tags": [],
+       "blocks": 4
+      },
+      {
+       "sprite": "Iya Oja",
+       "hat": "when I receive 'iya oja talks'",
+       "tags": [
+        "if",
+        "broadcast"
+       ],
+       "blocks": 12
+      },
+      {
+       "sprite": "Basket",
+       "hat": "when I receive 'market opens'",
+       "tags": [
+        "variable",
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Rice",
+       "hat": "when I receive 'market opens'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Rice",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Rice",
+       "hat": "when I receive 'market closes'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Bread",
+       "hat": "when I receive 'market opens'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Bread",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Bread",
+       "hat": "when I receive 'market closes'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Eggs",
+       "hat": "when I receive 'market opens'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Eggs",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Eggs",
+       "hat": "when I receive 'market closes'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Tomatoes",
+       "hat": "when I receive 'market opens'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Tomatoes",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Tomatoes",
+       "hat": "when I receive 'market closes'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Palm Oil",
+       "hat": "when I receive 'market opens'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Palm Oil",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Palm Oil",
+       "hat": "when I receive 'market closes'",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "'If' asks a question. If the answer is yes, the blocks inside run. Touching is a great question: 'if touching sprite' lets your game know when two things meet, which is how scoring by catching, bumping or tapping works.",
+     "steps": [
+      "You now work on a second game: Shrinking Naira. Open the Step 3 file.",
+      "Read the story: Money does not buy the same things every month. Shop with Mum, watch the prices go up, and see your naira shrink.",
+      "Build the first half of the game from the list below, or as many sprites as you can.",
+      "Watch for scripts tagged 'if'. These are the red blocks.",
+      "Open the goal file and test it."
+     ],
+     "turn": "Touch challenge: add a new script to Calendar: forever, if touching Mum then say 'Touched!' for 1 second. Then change it to add 1 to a variable.",
+     "play": "Money does not buy the same things every month. Shop with Mum, watch the prices go up, and see your naira shrink.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "Which colour is the 'if' block?",
+       "o": [
+        "Red (Conditionals)",
+        "Blue (Variables)",
+        "Green (Loops)"
+       ],
+       "a": 0,
+       "why": "Red blocks ask a question: 'if this is true, then do that'."
+      },
+      {
+       "q": "'If touching Tick then change Score by 1'. When does the score go up?",
+       "o": [
+        "Only when the sprite touches Tick",
+        "Every second no matter what",
+        "Never"
+       ],
+       "a": 0,
+       "why": "The 'if' only runs the inside blocks when the question is true."
+      },
+      {
+       "q": "Which of these is a VARIABLE in Shrinking Naira?",
+       "o": [
+        "Palm Oil",
+        "Oil ₦",
+        "Basket",
+        "Freeze Overlay"
+       ],
+       "a": 1,
+       "why": "'Oil ₦' is a blue variable box. The others are sprites."
+      }
+     ]
+    },
+    {
+     "week": 7,
+     "title": "Levels and characters",
+     "topic": "Game design: levels and characters",
+     "colours": [
+      "green",
+      "blue"
+     ],
+     "game": {
+      "id": "SN",
+      "name": "Shrinking Naira",
+      "story": "Money does not buy the same things every month. Shop with Mum, watch the prices go up, and see your naira shrink."
+     },
+     "start": "shrinking-naira-step4-first-half.sb3",
+     "goal": "shrinking-naira-step5-finished.sb3",
+     "scripts": [
+      {
+       "sprite": "Freeze Button",
+       "hat": "when I receive 'new month starts'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Freeze Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 2
+      },
+      {
+       "sprite": "Price Arrow",
+       "hat": "when I receive 'prices go up'",
+       "tags": [
+        "variable",
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 18
+      },
+      {
+       "sprite": "Caption",
+       "hat": "when I receive 'show the lesson'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Freeze Overlay",
+       "hat": "when f key pressed",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 2
+      },
+      {
+       "sprite": "Freeze Overlay",
+       "hat": "when I receive 'freeze or unfreeze'",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Freeze Overlay",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 2
+      }
+     ],
+     "big": "Good games have levels (steps that get harder or different) and characters with their own look. A loop (green) repeats blocks, which makes animation easy: repeat 10 [change size, wait] makes a bounce.",
+     "steps": [
+      "Open the Step 4 file of Shrinking Naira.",
+      "Build the second half from the list below.",
+      "Find a loop in the finished game (a green 'repeat' or 'forever').",
+      "Try changing the repeat number. What happens to the animation?",
+      "Give one character a new costume or a new name."
+     ],
+     "turn": "Make one character react when something happens: a repeat 3 bounce (change size by 10, wait 0.2, change size by -10, wait 0.2).",
+     "play": "Money does not buy the same things every month. Shop with Mum, watch the prices go up, and see your naira shrink.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What does 'repeat 10' do?",
+       "o": [
+        "Does the blocks inside 10 times",
+        "Waits 10 seconds",
+        "Makes the score 10"
+       ],
+       "a": 0,
+       "why": "A loop saves you from placing the same blocks again and again."
+      },
+      {
+       "q": "Which block lets a character look different?",
+       "o": [
+        "switch costume",
+        "set Score",
+        "broadcast"
+       ],
+       "a": 0,
+       "why": "Costumes are the different pictures of one sprite."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in Shrinking Naira?",
+       "o": [
+        "Bread ₦",
+        "show the lesson",
+        "Play Button",
+        "Title"
+       ],
+       "a": 1,
+       "why": "'show the lesson' is a message that sprites send to each other."
+      }
+     ]
+    },
+    {
+     "week": 8,
+     "title": "Design your own level",
+     "topic": "Game design: levels and characters",
+     "colours": [
+      "red",
+      "green"
+     ],
+     "game": {
+      "id": "EB",
+      "name": "The Empty Barn",
+      "story": "A sickness is coming to the farm. Use your vaccines wisely before sunset so your animals do not disappear."
+     },
+     "start": "the-empty-barn-step1-starter.sb3",
+     "goal": "the-empty-barn-step3-title-play.sb3",
+     "scripts": [
+      {
+       "sprite": "Title",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Farmer",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Farmhand",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Goat",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Chicken",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Sheep",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Duck",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Goat 2",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Chicken 2",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Vaccine Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Sunset",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Caption",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Stage",
+       "hat": "when green flag clicked",
+       "tags": [
+        "variable",
+        "broadcast"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'farmer explains'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 4
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'farmer explains'",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "Now you design. This is your third game: The Empty Barn. You will rebuild its start, then plan one new level or new character of your own.",
+     "steps": [
+      "Open the starter file.",
+      "Rebuild the flag-hides scripts and the Title and Play parts. You did this before, it should be quicker now.",
+      "On paper, draw ONE new level or character idea for the game.",
+      "Write the rule: what must the player do to win this level?",
+      "Share the idea with a classmate."
+     ],
+     "turn": "Write your level rule using 'if': 'If ___ then ___ else ___'. Use real names from the game, like Time and Farmer.",
+     "play": "A sickness is coming to the farm. Use your vaccines wisely before sunset so your animals do not disappear.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "When you design a new level, what should you decide first?",
+       "o": [
+        "What the player must do and how they win",
+        "Which colour the sky is",
+        "Nothing, just copy"
+       ],
+       "a": 0,
+       "why": "A good level has a clear goal."
+      },
+      {
+       "q": "What does 'if / else' give you?",
+       "o": [
+        "Two paths: one when true, one when false",
+        "Two scores",
+        "Two stages"
+       ],
+       "a": 0,
+       "why": "If the question is true do one thing, else do the other."
+      },
+      {
+       "q": "Which of these is a SPRITE in The Empty Barn?",
+       "o": [
+        "Animals Left",
+        "Vaccines Left",
+        "Chicken",
+        "farmer gives the result"
+       ],
+       "a": 2,
+       "why": "'Chicken' is a character or button on the stage."
+      }
+     ]
+    },
+    {
+     "week": 9,
+     "title": "Buttons and feedback",
+     "topic": "User interaction",
+     "colours": [
+      "purple",
+      "red"
+     ],
+     "game": {
+      "id": "EB",
+      "name": "The Empty Barn",
+      "story": "A sickness is coming to the farm. Use your vaccines wisely before sunset so your animals do not disappear."
+     },
+     "start": "the-empty-barn-step3-title-play.sb3",
+     "goal": "the-empty-barn-step4-first-half.sb3",
+     "scripts": [
+      {
+       "sprite": "Farmer",
+       "hat": "when I receive 'farmer explains'",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 7
+      },
+      {
+       "sprite": "Farmer",
+       "hat": "when I receive 'farmer gives the result'",
+       "tags": [
+        "if"
+       ],
+       "blocks": 14
+      },
+      {
+       "sprite": "Farmhand",
+       "hat": "when I receive 'farm day starts'",
+       "tags": [
+        "variable",
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Goat",
+       "hat": "when I receive 'farm day starts'",
+       "tags": [
+        "variable",
+        "if",
+        "loop",
+        "timer"
+       ],
+       "blocks": 24
+      },
+      {
+       "sprite": "Goat",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 17
+      },
+      {
+       "sprite": "Goat",
+       "hat": "when I receive 'vaccine heals the sick'",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Goat",
+       "hat": "when I receive 'sunset comes'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Chicken",
+       "hat": "when I receive 'farm day starts'",
+       "tags": [
+        "variable",
+        "if",
+        "loop",
+        "timer"
+       ],
+       "blocks": 24
+      },
+      {
+       "sprite": "Chicken",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 17
+      },
+      {
+       "sprite": "Chicken",
+       "hat": "when I receive 'vaccine heals the sick'",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Chicken",
+       "hat": "when I receive 'sunset comes'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Sheep",
+       "hat": "when I receive 'farm day starts'",
+       "tags": [
+        "variable",
+        "if",
+        "loop",
+        "timer"
+       ],
+       "blocks": 24
+      },
+      {
+       "sprite": "Sheep",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 17
+      },
+      {
+       "sprite": "Sheep",
+       "hat": "when I receive 'vaccine heals the sick'",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Sheep",
+       "hat": "when I receive 'sunset comes'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Duck",
+       "hat": "when I receive 'farm day starts'",
+       "tags": [
+        "variable",
+        "if",
+        "loop",
+        "timer"
+       ],
+       "blocks": 24
+      },
+      {
+       "sprite": "Duck",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 17
+      },
+      {
+       "sprite": "Duck",
+       "hat": "when I receive 'vaccine heals the sick'",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Duck",
+       "hat": "when I receive 'sunset comes'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Goat 2",
+       "hat": "when I receive 'farm day starts'",
+       "tags": [
+        "variable",
+        "if",
+        "loop",
+        "timer"
+       ],
+       "blocks": 24
+      },
+      {
+       "sprite": "Goat 2",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 17
+      },
+      {
+       "sprite": "Goat 2",
+       "hat": "when I receive 'vaccine heals the sick'",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Goat 2",
+       "hat": "when I receive 'sunset comes'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Chicken 2",
+       "hat": "when I receive 'farm day starts'",
+       "tags": [
+        "variable",
+        "if",
+        "loop",
+        "timer"
+       ],
+       "blocks": 24
+      },
+      {
+       "sprite": "Chicken 2",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 17
+      },
+      {
+       "sprite": "Chicken 2",
+       "hat": "when I receive 'vaccine heals the sick'",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Chicken 2",
+       "hat": "when I receive 'sunset comes'",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "Buttons make a game interactive. 'When this sprite clicked' waits for a tap. Feedback (a sound, a tick, a message) tells the player what happened. A game with no feedback feels broken.",
+     "steps": [
+      "Open the Step 3 file of The Empty Barn.",
+      "Build the first-half scripts, especially the ones starting with 'when this sprite clicked'.",
+      "For each button, check: what does the player see or hear after tapping?",
+      "Add one sound or one 'say' where feedback is missing.",
+      "Compare with the goal file."
+     ],
+     "turn": "Add feedback to one button: a 'say' message or sound, plus a change to a variable.",
+     "play": "A sickness is coming to the farm. Use your vaccines wisely before sunset so your animals do not disappear.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "A button in your game needs which hat block?",
+       "o": [
+        "when this sprite clicked",
+        "when green flag clicked",
+        "when I receive"
+       ],
+       "a": 0,
+       "why": "This hat block runs when the player taps the sprite."
+      },
+      {
+       "q": "Why do we give the player feedback (say, sound, tick)?",
+       "o": [
+        "So they know if they were right",
+        "To fill space",
+        "To slow the game"
+       ],
+       "a": 0,
+       "why": "Good games always answer the player."
+      },
+      {
+       "q": "Which of these is a VARIABLE in The Empty Barn?",
+       "o": [
+        "Duck",
+        "Goat 2",
+        "Farmhand",
+        "Score"
+       ],
+       "a": 3,
+       "why": "'Score' is a blue variable box. The others are sprites."
+      }
+     ]
+    },
+    {
+     "week": 10,
+     "title": "Test, fix, show",
+     "topic": "Refining and presenting",
+     "colours": [
+      "blue",
+      "red",
+      "green",
+      "purple"
+     ],
+     "game": {
+      "id": "EB",
+      "name": "The Empty Barn",
+      "story": "A sickness is coming to the farm. Use your vaccines wisely before sunset so your animals do not disappear."
+     },
+     "start": "the-empty-barn-step4-first-half.sb3",
+     "goal": "the-empty-barn-step5-finished.sb3",
+     "scripts": [
+      {
+       "sprite": "Vaccine Button",
+       "hat": "when I receive 'farm day starts'",
+       "tags": [],
+       "blocks": 5
+      },
+      {
+       "sprite": "Vaccine Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 11
+      },
+      {
+       "sprite": "Sunset",
+       "hat": "when I receive 'sunset comes'",
+       "tags": [],
+       "blocks": 4
+      },
+      {
+       "sprite": "Caption",
+       "hat": "when I receive 'sunset comes'",
+       "tags": [
+        "if",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 12
+      }
+     ],
+     "big": "Professional makers test and fix. Today you finish The Empty Barn, playtest it with a friend, and write down what to improve. Your finished game should use all four logic colours: blue Variables, red Conditionals, green Loops, purple Events.",
+     "steps": [
+      "Open the Step 4 file and build the last scripts from the list.",
+      "Open the goal file and compare.",
+      "Playtest: ask a friend to play without help. Where do they get stuck?",
+      "Fix one bug or add one small improvement.",
+      "Get ready to show your game: say what each colour does in it."
+     ],
+     "turn": "Finish this sentence for your trainer: 'In The Empty Barn my blue variable is ___, my red if checks ___, my green loop repeats ___, and my purple event is ___.'",
+     "play": "A sickness is coming to the farm. Use your vaccines wisely before sunset so your animals do not disappear.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What do you do in a playtest?",
+       "o": [
+        "Play, look for bugs, and fix them",
+        "Only look at the pictures",
+        "Delete the project"
+       ],
+       "a": 0,
+       "why": "Testing is how every real game gets better."
+      },
+      {
+       "q": "Which four colours should your best game use?",
+       "o": [
+        "Variables, Conditionals, Loops, Events",
+        "Only Events",
+        "Only Motion"
+       ],
+       "a": 0,
+       "why": "Blue, red, green and purple logic together make a full game."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in The Empty Barn?",
+       "o": [
+        "Score",
+        "sunset comes",
+        "Animals Left",
+        "Goat"
+       ],
+       "a": 1,
+       "why": "'sunset comes' is a message that sprites send to each other."
+      }
+     ]
+    }
+   ]
+  },
+  "YWS": {
+   "code": "YWS",
+   "name": "Yewa College Ilaro",
+   "level": "senior",
+   "games": [
+    {
+     "id": "RR",
+     "name": "Race Against Rot"
+    },
+    {
+     "id": "NW",
+     "name": "Naira Wise"
+    },
+    {
+     "id": "OB",
+     "name": "The Great Owambe Budget"
+    }
+   ],
+   "lessons": [
+    {
+     "week": 1,
+     "title": "Meet Scratch",
+     "topic": "Scratch interface, blocks and stage elements",
+     "colours": [],
+     "game": {
+      "id": "RR",
+      "name": "Race Against Rot",
+      "story": "Your tomatoes are rotting fast! Choose how to store them, drive to the market in time, and earn the most money."
+     },
+     "start": null,
+     "goal": "race-against-rot-step1-starter.sb3",
+     "scripts": [],
+     "big": "Scratch has four parts you must know: the Stage (where the game plays), the Sprites (the characters), the Blocks (the code pieces) and the Script area (where you snap blocks together).",
+     "steps": [
+      "Download the starter file below and open it in Scratch.",
+      "Look at the Stage. This is Race Against Rot.",
+      "Find the sprite list under the Stage. Count the sprites. Can you find Farmer and Open Air Card?",
+      "Click a sprite, then open its Costumes tab. Each costume is a different picture.",
+      "The Script area is empty. That is on purpose. In the next weeks YOU will fill it."
+     ],
+     "turn": "Write down 3 sprite names from the list and one thing each one will do in the game. Show your list to your trainer.",
+     "play": "Your tomatoes are rotting fast! Choose how to store them, drive to the market in time, and earn the most money.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What is the Stage?",
+       "o": [
+        "The place where the game happens",
+        "A block that moves",
+        "A sound file"
+       ],
+       "a": 0,
+       "why": "The Stage is the picture area where your game plays."
+      },
+      {
+       "q": "What is a sprite?",
+       "o": [
+        "A character or object you can control",
+        "A colour of block",
+        "A type of score"
+       ],
+       "a": 0,
+       "why": "Sprites are the characters, buttons and things in your game."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in Race Against Rot?",
+       "o": [
+        "Price ₦",
+        "Sun-Dry Card",
+        "buyer pays",
+        "Rot"
+       ],
+       "a": 2,
+       "why": "'buyer pays' is a message that sprites send to each other."
+      }
+     ]
+    },
+    {
+     "week": 2,
+     "title": "Your first blocks",
+     "topic": "Scratch blocks and the green flag",
+     "colours": [
+      "purple"
+     ],
+     "game": {
+      "id": "RR",
+      "name": "Race Against Rot",
+      "story": "Your tomatoes are rotting fast! Choose how to store them, drive to the market in time, and earn the most money."
+     },
+     "start": "race-against-rot-step1-starter.sb3",
+     "goal": "race-against-rot-step2-flag-hides.sb3",
+     "scripts": [
+      {
+       "sprite": "Title",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Farmer",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Open Air Card",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Clay Pot Card",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Sun-Dry Card",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Truck",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Trip Map",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Buyer",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "Every script starts with a hat block. The most used one is 'when green flag clicked'. Today every sprite gets a tiny script: when the flag is clicked, hide. That way the game starts with a clean stage.",
+     "steps": [
+      "Open the Step 1 file (the starter).",
+      "Click Farmer. From the purple Events group drag 'when green flag clicked' into the script area.",
+      "From Looks, snap 'hide' under it.",
+      "Click the green flag. Farmer disappears. You just ran code!",
+      "Do the same for the other sprites in the list below, or open the goal file to see them all."
+     ],
+     "turn": "Make Farmer hide when the flag is clicked, then add 'wait 1 seconds' and 'show' after the hide. What happens?",
+     "play": "Your tomatoes are rotting fast! Choose how to store them, drive to the market in time, and earn the most money.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "Which block starts a script when the green flag is clicked?",
+       "o": [
+        "when green flag clicked",
+        "hide",
+        "say Hello"
+       ],
+       "a": 0,
+       "why": "It is a purple Events block."
+      },
+      {
+       "q": "Why do we HIDE sprites when the flag is clicked?",
+       "o": [
+        "So the game starts with a clean stage",
+        "To delete them forever",
+        "To make the game slower"
+       ],
+       "a": 0,
+       "why": "We hide them now and show each one at the right time."
+      },
+      {
+       "q": "Which of these is a SPRITE in Race Against Rot?",
+       "o": [
+        "drive to market",
+        "Truck",
+        "Tomatoes",
+        "show title screen"
+       ],
+       "a": 1,
+       "why": "'Truck' is a character or button on the stage."
+      }
+     ]
+    },
+    {
+     "week": 3,
+     "title": "Make it tell a story",
+     "topic": "Animation and storytelling",
+     "colours": [
+      "purple"
+     ],
+     "game": {
+      "id": "RR",
+      "name": "Race Against Rot",
+      "story": "Your tomatoes are rotting fast! Choose how to store them, drive to the market in time, and earn the most money."
+     },
+     "start": "race-against-rot-step2-flag-hides.sb3",
+     "goal": "race-against-rot-step3-title-play.sb3",
+     "scripts": [
+      {
+       "sprite": "Stage",
+       "hat": "when green flag clicked",
+       "tags": [
+        "variable",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'farmer explains'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 4
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'farmer explains'",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "A game is a story told in small parts. Each part ends with a message (broadcast) and the next part starts when a sprite hears it (when I receive). Today you build the first two parts: the Title screen and the Play button.",
+     "steps": [
+      "Open the Step 2 file.",
+      "On the Stage, build the flag script: it sets the starting values and broadcasts 'show title screen'.",
+      "On Title and Play Button, build 'when I receive show title screen' then show.",
+      "On Play Button, build 'when this sprite clicked' then broadcast the next message.",
+      "Click the green flag, then click Play. The story moves on!"
+     ],
+     "turn": "Change the words the Title says, or add one more 'say' with your own sentence. Run it again.",
+     "play": "Your tomatoes are rotting fast! Choose how to store them, drive to the market in time, and earn the most money.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What does 'broadcast' do?",
+       "o": [
+        "Sends a message to other sprites",
+        "Plays a song",
+        "Adds to the score"
+       ],
+       "a": 0,
+       "why": "A broadcast is like shouting, 'Everybody, the next part is starting!'"
+      },
+      {
+       "q": "Which block waits for a message?",
+       "o": [
+        "when I receive",
+        "go to x y",
+        "set to 0"
+       ],
+       "a": 0,
+       "why": "'When I receive' lets a sprite wake up when the message comes."
+      },
+      {
+       "q": "Which of these is a VARIABLE in Race Against Rot?",
+       "o": [
+        "Play Button",
+        "Price ₦",
+        "Title",
+        "Open Air Card"
+       ],
+       "a": 1,
+       "why": "'Price ₦' is a blue variable box. The others are sprites."
+      }
+     ]
+    },
+    {
+     "week": 4,
+     "title": "Make sprites move",
+     "topic": "Sprites and movement",
+     "colours": [
+      "purple"
+     ],
+     "game": {
+      "id": "RR",
+      "name": "Race Against Rot",
+      "story": "Your tomatoes are rotting fast! Choose how to store them, drive to the market in time, and earn the most money."
+     },
+     "start": "race-against-rot-step3-title-play.sb3",
+     "goal": "race-against-rot-step4-first-half.sb3",
+     "scripts": [
+      {
+       "sprite": "Farmer",
+       "hat": "when I receive 'farmer explains'",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Farmer",
+       "hat": "when I receive 'drive to market'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Farmer",
+       "hat": "when I receive 'farmer checks the money'",
+       "tags": [
+        "if"
+       ],
+       "blocks": 15
+      },
+      {
+       "sprite": "Open Air Card",
+       "hat": "when I receive 'show storage cards'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Open Air Card",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Open Air Card",
+       "hat": "when I receive 'drive to market'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Clay Pot Card",
+       "hat": "when I receive 'show storage cards'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Clay Pot Card",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Clay Pot Card",
+       "hat": "when I receive 'drive to market'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Sun-Dry Card",
+       "hat": "when I receive 'show storage cards'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Sun-Dry Card",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Sun-Dry Card",
+       "hat": "when I receive 'drive to market'",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "Sprites move with x and y. x goes left and right, y goes up and down. 'go to x y' jumps. 'glide' slides. 'change x by' walks. Movement makes a still picture feel alive.",
+     "steps": [
+      "Open the Step 3 file.",
+      "Pick 3 sprites from the list below, for example Farmer and Open Air Card.",
+      "Build their 'when I receive' scripts: show, go to, say and wait, in the same order as the goal file.",
+      "Run the game after each sprite. If something is wrong, compare with the goal file.",
+      "You do not have to build everything. Build 3 sprites yourself, then open the goal file to see the rest."
+     ],
+     "turn": "Make Farmer move in a new way: change the x number in 'go to' or add 'change x by 10' inside a repeat. Write what changed.",
+     "play": "Your tomatoes are rotting fast! Choose how to store them, drive to the market in time, and earn the most money.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "Which block puts a sprite at an exact spot?",
+       "o": [
+        "go to x: y:",
+        "say",
+        "hide"
+       ],
+       "a": 0,
+       "why": "x is left-right and y is up-down."
+      },
+      {
+       "q": "To move a sprite to the right you ...",
+       "o": [
+        "change x by a positive number",
+        "change y by a positive number",
+        "hide it"
+       ],
+       "a": 0,
+       "why": "A bigger x means more to the right."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in Race Against Rot?",
+       "o": [
+        "Time",
+        "Title",
+        "Tomatoes",
+        "show title screen"
+       ],
+       "a": 3,
+       "why": "'show title screen' is a message that sprites send to each other."
+      }
+     ]
+    },
+    {
+     "week": 5,
+     "title": "Keep the score",
+     "topic": "Game mechanics: scoring",
+     "colours": [
+      "blue",
+      "red",
+      "green",
+      "purple"
+     ],
+     "game": {
+      "id": "RR",
+      "name": "Race Against Rot",
+      "story": "Your tomatoes are rotting fast! Choose how to store them, drive to the market in time, and earn the most money."
+     },
+     "start": "race-against-rot-step4-first-half.sb3",
+     "goal": "race-against-rot-step5-finished.sb3",
+     "scripts": [
+      {
+       "sprite": "Stage",
+       "hat": "when I receive 'drive to market'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Stage",
+       "hat": "when I receive 'buyer pays'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Truck",
+       "hat": "when I receive 'drive to market'",
+       "tags": [
+        "loop",
+        "timer"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Truck",
+       "hat": "when I receive 'buyer pays'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Trip Map",
+       "hat": "when I receive 'drive to market'",
+       "tags": [
+        "variable",
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 12
+      },
+      {
+       "sprite": "Trip Map",
+       "hat": "when I receive 'buyer pays'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Buyer",
+       "hat": "when I receive 'buyer pays'",
+       "tags": [
+        "variable",
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 15
+      }
+     ],
+     "big": "A variable is a box with a name that remembers a number. In Race Against Rot the variable 'Time' is one of them. 'set' puts a new number in the box. 'change by' adds to what is already there.",
+     "steps": [
+      "Open the Step 4 file and click the green flag.",
+      "Open the Variables (blue) group. Find 'Time'.",
+      "Finish the game: build the last scripts from the list below.",
+      "Play to the end and watch 'Time' change.",
+      "Open the goal file and compare your game with it.",
+      "Timer lesson: in the blue-green Sensing group find 'timer'. It counts seconds by itself. Games in this path use a variable called Time with wait blocks, but the timer block does the same job."
+     ],
+     "turn": "Challenge: add a Timer. Make a sprite say 'Time: ' joined with the timer after the game ends. Then try 'reset timer' at the start.",
+     "play": "Your tomatoes are rotting fast! Choose how to store them, drive to the market in time, and earn the most money.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What is a variable?",
+       "o": [
+        "A box that holds a number or word and can change",
+        "A kind of sprite",
+        "A sound"
+       ],
+       "a": 0,
+       "why": "Like a score board that changes as you play."
+      },
+      {
+       "q": "Which block adds 1 to Score?",
+       "o": [
+        "change Score by 1",
+        "set Score to 0",
+        "hide variable"
+       ],
+       "a": 0,
+       "why": "'change by' adds to the old number. 'set to' replaces it."
+      },
+      {
+       "q": "Which of these is a SPRITE in Race Against Rot?",
+       "o": [
+        "Tomatoes",
+        "Sun-Dry Card",
+        "show storage cards",
+        "Time"
+       ],
+       "a": 1,
+       "why": "'Sun-Dry Card' is a character or button on the stage."
+      }
+     ]
+    },
+    {
+     "week": 6,
+     "title": "Touch and decide",
+     "topic": "Game mechanics: collisions",
+     "colours": [
+      "red",
+      "blue"
+     ],
+     "game": {
+      "id": "NW",
+      "name": "Naira Wise",
+      "story": "Ada gets pocket money every week. Share it into Save, Spend and Give jars before the clock runs out and reach her goal."
+     },
+     "start": "naira-wise-step3-title-play.sb3",
+     "goal": "naira-wise-step4-first-half.sb3",
+     "scripts": [
+      {
+       "sprite": "Week Banner",
+       "hat": "when I receive 'new week starts'",
+       "tags": [
+        "variable",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 11
+      },
+      {
+       "sprite": "Week Banner",
+       "hat": "when I receive 'check if 3 weeks are done'",
+       "tags": [
+        "if",
+        "broadcast"
+       ],
+       "blocks": 5
+      },
+      {
+       "sprite": "Mum",
+       "hat": "when I receive 'mum gives pocket money'",
+       "tags": [
+        "variable",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Ada",
+       "hat": "when I receive 'ada checks the week'",
+       "tags": [
+        "if",
+        "broadcast"
+       ],
+       "blocks": 13
+      },
+      {
+       "sprite": "Ada",
+       "hat": "when I receive 'time is up'",
+       "tags": [
+        "if",
+        "broadcast"
+       ],
+       "blocks": 11
+      },
+      {
+       "sprite": "Ada",
+       "hat": "when I receive 'ada checks her kolo'",
+       "tags": [
+        "if",
+        "broadcast"
+       ],
+       "blocks": 14
+      },
+      {
+       "sprite": "Time Bar",
+       "hat": "when I receive 'jars and 10 second clock start'",
+       "tags": [
+        "variable",
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 12
+      },
+      {
+       "sprite": "Save Jar",
+       "hat": "when I receive 'jars and 10 second clock start'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Save Jar",
+       "hat": "when I receive 'time is up'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Save Jar",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 11
+      },
+      {
+       "sprite": "Spend Jar",
+       "hat": "when I receive 'jars and 10 second clock start'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Spend Jar",
+       "hat": "when I receive 'time is up'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Spend Jar",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Give Jar",
+       "hat": "when I receive 'jars and 10 second clock start'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Give Jar",
+       "hat": "when I receive 'time is up'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Give Jar",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 10
+      }
+     ],
+     "big": "'If' asks a question. If the answer is yes, the blocks inside run. Touching is a great question: 'if touching sprite' lets your game know when two things meet, which is how scoring by catching, bumping or tapping works.",
+     "steps": [
+      "You now work on a second game: Naira Wise. Open the Step 3 file.",
+      "Read the story: Ada gets pocket money every week. Share it into Save, Spend and Give jars before the clock runs out and reach her goal.",
+      "Build the first half of the game from the list below, or as many sprites as you can.",
+      "Watch for scripts tagged 'if'. These are the red blocks.",
+      "Open the goal file and test it."
+     ],
+     "turn": "Touch challenge: add a new script to Week Banner: forever, if touching Mum then say 'Touched!' for 1 second. Then change it to add 1 to a variable.",
+     "play": "Ada gets pocket money every week. Share it into Save, Spend and Give jars before the clock runs out and reach her goal.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "Which colour is the 'if' block?",
+       "o": [
+        "Red (Conditionals)",
+        "Blue (Variables)",
+        "Green (Loops)"
+       ],
+       "a": 0,
+       "why": "Red blocks ask a question: 'if this is true, then do that'."
+      },
+      {
+       "q": "'If touching Tick then change Score by 1'. When does the score go up?",
+       "o": [
+        "Only when the sprite touches Tick",
+        "Every second no matter what",
+        "Never"
+       ],
+       "a": 0,
+       "why": "The 'if' only runs the inside blocks when the question is true."
+      },
+      {
+       "q": "Which of these is a VARIABLE in Naira Wise?",
+       "o": [
+        "Mum",
+        "Play Button",
+        "Cobbler",
+        "Kolo ₦"
+       ],
+       "a": 3,
+       "why": "'Kolo ₦' is a blue variable box. The others are sprites."
+      }
+     ]
+    },
+    {
+     "week": 7,
+     "title": "Levels and characters",
+     "topic": "Game design: levels and characters",
+     "colours": [
+      "green",
+      "blue"
+     ],
+     "game": {
+      "id": "NW",
+      "name": "Naira Wise",
+      "story": "Ada gets pocket money every week. Share it into Save, Spend and Give jars before the clock runs out and reach her goal."
+     },
+     "start": "naira-wise-step4-first-half.sb3",
+     "goal": "naira-wise-step5-finished.sb3",
+     "scripts": [
+      {
+       "sprite": "Emergency",
+       "hat": "when I receive 'sandal breaks'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Emergency",
+       "hat": "when I receive 'jars and 10 second clock start'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Cobbler",
+       "hat": "when I receive 'sandal breaks'",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 12
+      },
+      {
+       "sprite": "Leak Note",
+       "hat": "when I receive 'leftover money disappears'",
+       "tags": [
+        "variable"
+       ],
+       "blocks": 6
+      },
+      {
+       "sprite": "Storybook",
+       "hat": "when I receive 'buy the storybook'",
+       "tags": [
+        "variable",
+        "loop",
+        "timer"
+       ],
+       "blocks": 9
+      }
+     ],
+     "big": "Good games have levels (steps that get harder or different) and characters with their own look. A loop (green) repeats blocks, which makes animation easy: repeat 10 [change size, wait] makes a bounce.",
+     "steps": [
+      "Open the Step 4 file of Naira Wise.",
+      "Build the second half from the list below.",
+      "Find a loop in the finished game (a green 'repeat' or 'forever').",
+      "Try changing the repeat number. What happens to the animation?",
+      "Give one character a new costume or a new name."
+     ],
+     "turn": "Make one character react when something happens: a repeat 3 bounce (change size by 10, wait 0.2, change size by -10, wait 0.2).",
+     "play": "Ada gets pocket money every week. Share it into Save, Spend and Give jars before the clock runs out and reach her goal.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What does 'repeat 10' do?",
+       "o": [
+        "Does the blocks inside 10 times",
+        "Waits 10 seconds",
+        "Makes the score 10"
+       ],
+       "a": 0,
+       "why": "A loop saves you from placing the same blocks again and again."
+      },
+      {
+       "q": "Which block lets a character look different?",
+       "o": [
+        "switch costume",
+        "set Score",
+        "broadcast"
+       ],
+       "a": 0,
+       "why": "Costumes are the different pictures of one sprite."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in Naira Wise?",
+       "o": [
+        "Week Banner",
+        "Kolo ₦",
+        "Ada",
+        "new week starts"
+       ],
+       "a": 3,
+       "why": "'new week starts' is a message that sprites send to each other."
+      }
+     ]
+    },
+    {
+     "week": 8,
+     "title": "Design your own level",
+     "topic": "Game design: levels and characters",
+     "colours": [
+      "red",
+      "green"
+     ],
+     "game": {
+      "id": "OB",
+      "name": "The Great Owambe Budget",
+      "story": "You are planning a big owambe party on a budget. Pick the cards you can pay for, and think carefully before you borrow."
+     },
+     "start": "the-great-owambe-budget-step1-starter.sb3",
+     "goal": "the-great-owambe-budget-step3-title-play.sb3",
+     "scripts": [
+      {
+       "sprite": "Title",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Host",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Jollof Card",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Canopy Card",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "DJ Card",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Aso-ebi Card",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Decoration Card",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Small chops Card",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Borrow Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Lender",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Party Time Button",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Caption",
+       "hat": "when green flag clicked",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Stage",
+       "hat": "when green flag clicked",
+       "tags": [
+        "variable",
+        "broadcast"
+       ],
+       "blocks": 8
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Title",
+       "hat": "when I receive 'host explains'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'show title screen'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 4
+      },
+      {
+       "sprite": "Play Button",
+       "hat": "when I receive 'host explains'",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "Now you design. This is your third game: The Great Owambe Budget. You will rebuild its start, then plan one new level or new character of your own.",
+     "steps": [
+      "Open the starter file.",
+      "Rebuild the flag-hides scripts and the Title and Play parts. You did this before, it should be quicker now.",
+      "On paper, draw ONE new level or character idea for the game.",
+      "Write the rule: what must the player do to win this level?",
+      "Share the idea with a classmate."
+     ],
+     "turn": "Write your level rule using 'if': 'If ___ then ___ else ___'. Use real names from the game, like Time and Host.",
+     "play": "You are planning a big owambe party on a budget. Pick the cards you can pay for, and think carefully before you borrow.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "When you design a new level, what should you decide first?",
+       "o": [
+        "What the player must do and how they win",
+        "Which colour the sky is",
+        "Nothing, just copy"
+       ],
+       "a": 0,
+       "why": "A good level has a clear goal."
+      },
+      {
+       "q": "What does 'if / else' give you?",
+       "o": [
+        "Two paths: one when true, one when false",
+        "Two scores",
+        "Two stages"
+       ],
+       "a": 0,
+       "why": "If the question is true do one thing, else do the other."
+      },
+      {
+       "q": "Which of these is a SPRITE in The Great Owambe Budget?",
+       "o": [
+        "check for debt",
+        "monday comes",
+        "Party Time Button",
+        "too expensive"
+       ],
+       "a": 2,
+       "why": "'Party Time Button' is a character or button on the stage."
+      }
+     ]
+    },
+    {
+     "week": 9,
+     "title": "Buttons and feedback",
+     "topic": "User interaction",
+     "colours": [
+      "purple",
+      "red"
+     ],
+     "game": {
+      "id": "OB",
+      "name": "The Great Owambe Budget",
+      "story": "You are planning a big owambe party on a budget. Pick the cards you can pay for, and think carefully before you borrow."
+     },
+     "start": "the-great-owambe-budget-step3-title-play.sb3",
+     "goal": "the-great-owambe-budget-step4-first-half.sb3",
+     "scripts": [
+      {
+       "sprite": "Host",
+       "hat": "when I receive 'host explains'",
+       "tags": [
+        "broadcast"
+       ],
+       "blocks": 7
+      },
+      {
+       "sprite": "Host",
+       "hat": "when I receive 'too expensive'",
+       "tags": [],
+       "blocks": 6
+      },
+      {
+       "sprite": "Host",
+       "hat": "when I receive 'party starts'",
+       "tags": [
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Host",
+       "hat": "when I receive 'monday comes'",
+       "tags": [],
+       "blocks": 4
+      },
+      {
+       "sprite": "Jollof Card",
+       "hat": "when I receive 'start planning'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Jollof Card",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Jollof Card",
+       "hat": "when I receive 'party starts'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Canopy Card",
+       "hat": "when I receive 'start planning'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Canopy Card",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Canopy Card",
+       "hat": "when I receive 'party starts'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "DJ Card",
+       "hat": "when I receive 'start planning'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "DJ Card",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "DJ Card",
+       "hat": "when I receive 'party starts'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Aso-ebi Card",
+       "hat": "when I receive 'start planning'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Aso-ebi Card",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Aso-ebi Card",
+       "hat": "when I receive 'party starts'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Decoration Card",
+       "hat": "when I receive 'start planning'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Decoration Card",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Decoration Card",
+       "hat": "when I receive 'party starts'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Small chops Card",
+       "hat": "when I receive 'start planning'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Small chops Card",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Small chops Card",
+       "hat": "when I receive 'party starts'",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "Buttons make a game interactive. 'When this sprite clicked' waits for a tap. Feedback (a sound, a tick, a message) tells the player what happened. A game with no feedback feels broken.",
+     "steps": [
+      "Open the Step 3 file of The Great Owambe Budget.",
+      "Build the first-half scripts, especially the ones starting with 'when this sprite clicked'.",
+      "For each button, check: what does the player see or hear after tapping?",
+      "Add one sound or one 'say' where feedback is missing.",
+      "Compare with the goal file."
+     ],
+     "turn": "Add feedback to one button: a 'say' message or sound, plus a change to a variable.",
+     "play": "You are planning a big owambe party on a budget. Pick the cards you can pay for, and think carefully before you borrow.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "A button in your game needs which hat block?",
+       "o": [
+        "when this sprite clicked",
+        "when green flag clicked",
+        "when I receive"
+       ],
+       "a": 0,
+       "why": "This hat block runs when the player taps the sprite."
+      },
+      {
+       "q": "Why do we give the player feedback (say, sound, tick)?",
+       "o": [
+        "So they know if they were right",
+        "To fill space",
+        "To slow the game"
+       ],
+       "a": 0,
+       "why": "Good games always answer the player."
+      },
+      {
+       "q": "Which of these is a VARIABLE in The Great Owambe Budget?",
+       "o": [
+        "Caption",
+        "Host",
+        "Joy",
+        "Title"
+       ],
+       "a": 2,
+       "why": "'Joy' is a blue variable box. The others are sprites."
+      }
+     ]
+    },
+    {
+     "week": 10,
+     "title": "Test, fix, show",
+     "topic": "Refining and presenting",
+     "colours": [
+      "blue",
+      "red",
+      "green",
+      "purple"
+     ],
+     "game": {
+      "id": "OB",
+      "name": "The Great Owambe Budget",
+      "story": "You are planning a big owambe party on a budget. Pick the cards you can pay for, and think carefully before you borrow."
+     },
+     "start": "the-great-owambe-budget-step4-first-half.sb3",
+     "goal": "the-great-owambe-budget-step5-finished.sb3",
+     "scripts": [
+      {
+       "sprite": "Stage",
+       "hat": "when I receive 'party starts'",
+       "tags": [],
+       "blocks": 5
+      },
+      {
+       "sprite": "Stage",
+       "hat": "when I receive 'monday comes'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Borrow Button",
+       "hat": "when I receive 'start planning'",
+       "tags": [],
+       "blocks": 3
+      },
+      {
+       "sprite": "Borrow Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if",
+        "broadcast"
+       ],
+       "blocks": 11
+      },
+      {
+       "sprite": "Borrow Button",
+       "hat": "when I receive 'party starts'",
+       "tags": [],
+       "blocks": 2
+      },
+      {
+       "sprite": "Lender",
+       "hat": "when I receive 'lender gives loan'",
+       "tags": [],
+       "blocks": 5
+      },
+      {
+       "sprite": "Lender",
+       "hat": "when I receive 'monday comes'",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 10
+      },
+      {
+       "sprite": "Party Time Button",
+       "hat": "when I receive 'start planning'",
+       "tags": [
+        "variable",
+        "loop",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 9
+      },
+      {
+       "sprite": "Party Time Button",
+       "hat": "when this sprite clicked",
+       "tags": [
+        "variable",
+        "if"
+       ],
+       "blocks": 5
+      },
+      {
+       "sprite": "Caption",
+       "hat": "when I receive 'check for debt'",
+       "tags": [
+        "if",
+        "timer",
+        "broadcast"
+       ],
+       "blocks": 11
+      },
+      {
+       "sprite": "Caption",
+       "hat": "when I receive 'monday comes'",
+       "tags": [],
+       "blocks": 2
+      }
+     ],
+     "big": "Professional makers test and fix. Today you finish The Great Owambe Budget, playtest it with a friend, and write down what to improve. Your finished game should use all four logic colours: blue Variables, red Conditionals, green Loops, purple Events.",
+     "steps": [
+      "Open the Step 4 file and build the last scripts from the list.",
+      "Open the goal file and compare.",
+      "Playtest: ask a friend to play without help. Where do they get stuck?",
+      "Fix one bug or add one small improvement.",
+      "Get ready to show your game: say what each colour does in it."
+     ],
+     "turn": "Finish this sentence for your trainer: 'In The Great Owambe Budget my blue variable is ___, my red if checks ___, my green loop repeats ___, and my purple event is ___.'",
+     "play": "You are planning a big owambe party on a budget. Pick the cards you can pay for, and think carefully before you borrow.",
+     "addons": [],
+     "quiz": [
+      {
+       "q": "What do you do in a playtest?",
+       "o": [
+        "Play, look for bugs, and fix them",
+        "Only look at the pictures",
+        "Delete the project"
+       ],
+       "a": 0,
+       "why": "Testing is how every real game gets better."
+      },
+      {
+       "q": "Which four colours should your best game use?",
+       "o": [
+        "Variables, Conditionals, Loops, Events",
+        "Only Events",
+        "Only Motion"
+       ],
+       "a": 0,
+       "why": "Blue, red, green and purple logic together make a full game."
+      },
+      {
+       "q": "Which of these is a MESSAGE (broadcast) used in The Great Owambe Budget?",
+       "o": [
+        "Jollof Card",
+        "lender gives loan",
+        "Canopy Card",
+        "Debt ₦"
+       ],
+       "a": 1,
+       "why": "'lender gives loan' is a message that sprites send to each other."
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

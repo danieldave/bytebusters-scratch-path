@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "outputDirectory": "public",
+  "headers": [
+    { "source": "/files/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }] },
+    { "source": "/data/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }] }
+  ]
+}
