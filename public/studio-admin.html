@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Content Studio · ByteBusters</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+<style>
+.wrap{max-width:900px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select,textarea{font:inherit;padding:9px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);width:100%}
+label{display:block;font-weight:700;font-size:14px;margin:10px 0 3px}.hint{font-weight:400;color:var(--mut);font-size:13px}
+textarea{min-height:90px;font-family:ui-monospace,Menlo,monospace;font-size:14px}
+.item{display:flex;gap:8px;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 10px;margin:6px 0}
+.item.hid{opacity:.55}.item .t{flex:1;min-width:0}.item small{color:var(--mut)}
+.sm{padding:6px 10px;min-height:0;font-size:14px;border-radius:9px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}@media(max-width:560px){.g2{grid-template-columns:1fr}}
+.err{color:var(--red);font-weight:700}.okk{color:var(--green);font-weight:700}
+.tag{display:inline-block;border-radius:8px;padding:1px 8px;font-size:12px;font-weight:700;background:var(--line);margin-right:4px}
+</style></head><body>
+<div class="bar"><b>Content Studio</b><span><a href="/admin" style="color:inherit">Dashboard</a> · <a href="/studio" style="color:inherit">Learner view</a></span></div>
+<div class="wrap" id="app"></div><div class="toast" id="toast"></div>
+<script src="studio-rules.js"></script>
+<script>
+var PIN=sessionStorage.getItem('bb_pin')||'',D=null,TAB='p',ED=null,Q='';
+var app=document.getElementById('app');
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.className='toast on';setTimeout(function(){t.className='toast'},2500)}
+function api(b){b.pin=PIN;return fetch('/api/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||'Error');return j})})}
+function login(){app.innerHTML='<div class="card"><h2 style="margin-top:0">Trainer PIN</h2><input id="pin" type="password" placeholder="PIN"><p id="e" class="err"></p><button class="btn" id="go">Open</button></div>';
+  document.getElementById('go').onclick=function(){PIN=document.getElementById('pin').value;load().catch(function(e){document.getElementById('e').textContent=e.message})}}
+function load(){return api({action:'cget'}).then(function(j){D=j;sessionStorage.setItem('bb_pin',PIN);list()})}
+var PK=['scratch','web','ai'];
+function list(){
+  var items=(TAB==='p'?D.projects:D.puzzles).filter(function(x){return !Q||JSON.stringify(x).toLowerCase().indexOf(Q)>=0});
+  var h='<h1>Content Studio</h1><p style="color:var(--mut)">Add, edit or hide projects and puzzles. Changes show to learners within a minute. You never need to touch the code.</p>';
+  h+='<div class="tabs"><button class="'+(TAB==='p'?'on':'')+'" id="tp">Projects ('+D.projects.length+')</button><button class="'+(TAB==='z'?'on':'')+'" id="tz">Puzzles ('+D.puzzles.length+')</button></div>';
+  h+='<div class="row"><input id="q" placeholder="Search…" style="flex:1" value="'+esc(Q)+'"><button class="btn" id="new">+ New '+(TAB==='p'?'project':'puzzle')+'</button></div>';
+  h+=items.map(function(x){var name=TAB==='p'?x.emoji+' '+x.title:(x.q||x.title||x.id);
+    return '<div class="item '+(x.hidden?'hid':'')+'"><div class="t"><b>'+esc(name).slice(0,90)+'</b><br><small><span class="tag">'+esc(TAB==='p'?x.kind:x.type)+'</span><span class="tag">'+x.src+'</span>'+(x.showcase?'<span class="tag">showcase</span>':'')+(x.hidden?'<span class="tag" style="background:#f5c">hidden</span>':'')+'</small></div>'+
+    '<button class="btn alt sm" data-a="edit" data-id="'+x.id+'">Edit</button><button class="btn alt sm" data-a="vis" data-id="'+x.id+'">'+(x.hidden?'Show':'Hide')+'</button></div>'}).join('');
+  app.innerHTML=h;
+  document.getElementById('tp').onclick=function(){TAB='p';Q='';list()};document.getElementById('tz').onclick=function(){TAB='z';Q='';list()};
+  document.getElementById('q').oninput=function(){Q=this.value.toLowerCase();var p=this.selectionStart;list();var q=document.getElementById('q');q.focus();q.setSelectionRange(p,p)};
+  document.getElementById('new').onclick=function(){edit(null)};
+  [].forEach.call(app.querySelectorAll('[data-a]'),function(b){b.onclick=function(){var id=b.dataset.id;if(b.dataset.a==='edit')edit(id);else{var it=(TAB==='p'?D.projects:D.puzzles).filter(function(x){return x.id===id})[0];api({action:'cvis',what:TAB==='p'?'project':'puzzle',itemId:id,hidden:!it.hidden}).then(function(){it.hidden=!it.hidden;toast(it.hidden?'Hidden from learners':'Visible again');list()}).catch(function(e){toast(e.message)})}}});
+}
+function ruleTxt(r){if(!r)return '';if(r.p)return r.p;if(r.count)return r.count+'>='+(r.min==null?1:r.min);return ''}
+function ruleParse(t){t=t.trim();if(!t)return undefined;var m=t.match(/^(\w+)\s*>=\s*(\d+)$/);if(m)return {count:m[1],min:+m[2]};return {p:t}}
+function blank(){return TAB==='p'?{id:'',kind:'scratch',title:'',emoji:'⭐',level:1,themes:[],hook:'',problem:'',learn:[],steps:[{t:'',b:''}],missions:[],ask:'',remix:'',showcase:false}:{id:'',type:'quiz',track:'scratch',level:1,q:'',o:['',''],a:0,why:''}}
+function edit(id){
+  var src=id?(TAB==='p'?D.projects:D.puzzles).filter(function(x){return x.id===id})[0]:null;
+  ED={orig:src,item:JSON.parse(JSON.stringify(src||blank())),json:false};form()
+}
+function L(a){return (a||[]).join('\n')}
+function form(){
+  var it=ED.item,h='<p><a href="#" id="back">← Back to list</a></p><h1>'+(ED.orig?'Edit':'New')+' '+(TAB==='p'?'project':'puzzle')+'</h1>';
+  h+='<div class="row"><button class="btn alt sm" id="mode">'+(ED.json?'Use the form':'Edit as JSON (advanced)')+'</button></div>';
+  if(ED.json){h+='<label>JSON</label><textarea id="js" style="min-height:420px">'+esc(JSON.stringify(it,null,2))+'</textarea>'}
+  else if(TAB==='p'){
+    h+='<div class="g2"><div><label>ID <span class="hint">lowercase, dashes (cannot change later)</span></label><input id="f_id" value="'+esc(it.id)+'" '+(ED.orig?'disabled':'')+'></div><div><label>Title</label><input id="f_title" value="'+esc(it.title)+'"></div>'+
+      '<div><label>Kind</label><select id="f_kind">'+PK.map(function(k){return '<option '+(it.kind===k?'selected':'')+'>'+k+'</option>'}).join('')+'</select></div><div><label>Emoji</label><input id="f_emoji" value="'+esc(it.emoji)+'"></div>'+
+      '<div><label>Level (1 Starter, 2 Builder, 3 Pro)</label><select id="f_level">'+[1,2,3].map(function(n){return '<option '+(it.level===n?'selected':'')+'>'+n+'</option>'}).join('')+'</select></div>'+
+      '<div><label>School <span class="hint">(optional)</span></label><select id="f_school"><option value="">any</option>'+['MHS','UHS','YWS'].map(function(k){return '<option '+(it.school===k?'selected':'')+'>'+k+'</option>'}).join('')+'</select></div></div>';
+    h+='<label>Themes</label><div class="row">'+[['naija-world','Nigeria meets the world'],['real-world','Real-world problem'],['fun','Creative & fun']].map(function(t){return '<label style="font-weight:400"><input type="checkbox" style="width:auto" class="th" value="'+t[0]+'" '+((it.themes||[]).indexOf(t[0])>=0?'checked':'')+'> '+t[1]+'</label>'}).join('')+'<label style="font-weight:400"><input type="checkbox" style="width:auto" id="f_show" '+(it.showcase?'checked':'')+'> 🏆 Showcase project</label></div>';
+    h+='<label>Hook <span class="hint">one exciting line</span></label><input id="f_hook" value="'+esc(it.hook)+'"><label>Why it matters</label><textarea id="f_problem" style="min-height:60px">'+esc(it.problem)+'</textarea>';
+    h+='<label>You will learn <span class="hint">one per line</span></label><textarea id="f_learn" style="min-height:60px">'+esc(L(it.learn))+'</textarea>';
+    h+='<label>Steps <span class="hint">one per line: Title :: what to do</span></label><textarea id="f_steps">'+esc((it.steps||[]).map(function(s){return s.t+' :: '+s.b}).join('\n'))+'</textarea>';
+    h+='<label>Missions <span class="hint">one per line: text :: check  (check can be: '+Object.keys(SRules.PRESETS).join(', ')+', or sprites>=3 / backdrops / variables / costumes / scripts / blocks). Leave blank for a tick-yourself mission.</span></label><textarea id="f_missions">'+esc((it.missions||[]).map(function(m){return m.t+(m.rule?' :: '+ruleTxt(m.rule):'')}).join('\n'))+'</textarea>';
+    h+='<label>Go and ask 🔎 <span class="hint">a tiny research task</span></label><input id="f_ask" value="'+esc(it.ask)+'"><label>Make it yours 🎨</label><input id="f_remix" value="'+esc(it.remix)+'"><label>Live link <span class="hint">(optional, https)</span></label><input id="f_link" value="'+esc(it.link||'')+'">';
+  }else{
+    h+='<div class="g2"><div><label>ID</label><input id="f_id" value="'+esc(it.id)+'" '+(ED.orig?'disabled':'')+'></div><div><label>Type</label><select id="f_type">'+['quiz','read','order','fix'].map(function(k){return '<option value="'+k+'" '+(it.type===k?'selected':'')+'>'+({quiz:'quiz (multiple choice)',read:'read (what will this script do?)',order:'order (tap in the right order)',fix:'fix (find the wrong block)'})[k]+'</option>'}).join('')+'</select></div><div><label>Track</label><select id="f_track">'+PK.map(function(k){return '<option '+(it.track===k?'selected':'')+'>'+k+'</option>'}).join('')+'</select></div><div><label>Level</label><select id="f_level">'+[1,2,3].map(function(n){return '<option '+(it.level===n?'selected':'')+'>'+n+'</option>'}).join('')+'</select></div></div>';
+    if(it.type==='quiz'||it.type==='read'){
+      if(it.type==='read')h+='<label>Scratch blocks <span class="hint">scratchblocks text, one block per line</span></label><textarea id="f_script">'+esc(it.script||'')+'</textarea>';
+      h+='<label>Question</label><input id="f_q" value="'+esc(it.q||'')+'"><label>Options <span class="hint">one per line</span></label><textarea id="f_o" style="min-height:70px">'+esc(L(it.o))+'</textarea><label>Right answer number <span class="hint">1 = first option</span></label><input id="f_a" type="number" min="1" value="'+((it.a||0)+1)+'">';
+    }else{
+      h+='<label>Instruction</label><input id="f_title" value="'+esc(it.title||'')+'"><label>Blocks <span class="hint">in the RIGHT order, one per line</span></label><textarea id="f_blocks">'+esc(L(it.blocks))+'</textarea>';
+      if(it.type==='fix')h+='<label>Which block is wrong? <span class="hint">number, 1 = first</span></label><input id="f_bad" type="number" min="1" value="'+((it.bad||0)+1)+'">';
+    }
+    h+='<label>Why <span class="hint">shown after the answer</span></label><textarea id="f_why" style="min-height:60px">'+esc(it.why||'')+'</textarea>';
+  }
+  h+='<p id="msg"></p><div class="row"><button class="btn" id="save">💾 Save and publish</button>'+(ED.orig&&ED.orig.src!=='seed'?'<button class="btn alt" id="rev">'+(ED.orig.src==='new'?'Delete':'Undo my edits')+'</button>':'')+'</div>';
+  app.innerHTML=h;
+  document.getElementById('back').onclick=function(e){e.preventDefault();list()};
+  document.getElementById('mode').onclick=function(){collect(true);ED.json=!ED.json;form()};
+  document.getElementById('save').onclick=save;var rv=document.getElementById('rev');if(rv)rv.onclick=function(){if(!confirm('Sure?'))return;api({action:'crevert',what:TAB==='p'?'project':'puzzle',itemId:ED.orig.id}).then(function(){return load()}).then(function(){toast('Done');TAB=TAB;list()}).catch(function(e){toast(e.message)})};
+  var tp=document.getElementById('f_type');if(tp)tp.onchange=function(){collect(true);ED.item.type=tp.value;if(!ED.item.script&&tp.value==='read')ED.item.script='when green flag clicked\nsay [Hello!]';form()};
+}
+function V(id){var e=document.getElementById(id);return e?e.value:''}
+function lines(id){return V(id).split('\n').map(function(s){return s.trim()}).filter(Boolean)}
+function collect(soft){
+  var it=ED.item;
+  if(ED.json){try{ED.item=JSON.parse(V('js'))}catch(e){if(!soft)throw new Error('The JSON has a mistake: '+e.message)}return}
+  if(!document.getElementById('f_id'))return;
+  if(!ED.orig)it.id=V('f_id').trim().toLowerCase();
+  if(TAB==='p'){it.title=V('f_title');it.kind=V('f_kind');it.emoji=V('f_emoji');it.level=+V('f_level');it.school=V('f_school')||undefined;
+    it.themes=[].map.call(document.querySelectorAll('.th:checked'),function(c){return c.value});it.showcase=document.getElementById('f_show').checked;
+    it.hook=V('f_hook');it.problem=V('f_problem');it.learn=lines('f_learn');
+    it.steps=lines('f_steps').map(function(l){var i=l.indexOf('::');return i<0?{t:l,b:''}:{t:l.slice(0,i).trim(),b:l.slice(i+2).trim()}});
+    it.missions=lines('f_missions').map(function(l){var i=l.lastIndexOf('::');var o={t:(i<0?l:l.slice(0,i)).trim()};var r=i<0?undefined:ruleParse(l.slice(i+2));if(r)o.rule=r;return o});
+    it.ask=V('f_ask');it.remix=V('f_remix');it.link=V('f_link').trim()||undefined}
+  else{it.type=V('f_type');it.track=V('f_track');it.level=+V('f_level');it.why=V('f_why');
+    if(it.type==='quiz'||it.type==='read'){it.q=V('f_q');it.o=lines('f_o');it.a=(+V('f_a'))-1;if(it.type==='read')it.script=V('f_script')}
+    else{it.title=V('f_title');it.blocks=lines('f_blocks');if(it.type==='fix')it.bad=(+V('f_bad'))-1}}
+}
+function save(){
+  var m=document.getElementById('msg');m.className='';m.textContent='Saving…';
+  try{collect(false)}catch(e){m.className='err';m.textContent=e.message;return}
+  api({action:'csave',what:TAB==='p'?'project':'puzzle',item:ED.item}).then(function(){return load()}).then(function(){toast('Saved. Learners will see it shortly.');TAB=TAB;list()}).catch(function(e){m.className='err';m.textContent=e.message})
+}
+if(PIN)load().catch(login);else login();
+</script></body></html>

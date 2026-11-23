@@ -41,3 +41,14 @@ Lost card? Find the child in the table on `/admin` and read out their ID. A wron
 - The ID is the only key a learner needs (no password), so keep names to first names. Login is rate limited per IP.
 - Test locally with no database: `node test/dev.js` (fake Upstash), then open http://localhost:3111 and /admin (PIN 1234).
 - Lessons: `public/data/path.json`. Game checkpoint files: `public/files/` (5 per game: starter, flag-hides, title-play, first-half, finished).
+
+
+## ByteBusters Studio (projects and puzzles)
+
+- Learners open **/studio** (also linked from the home screen). No ID needed to browse and play; with an ID their stars follow them to any phone.
+- **28 projects**: all 15 showcase projects (9 Scratch, 3 Web, 3 Gen AI, with their live links) and 13 new international Scratch projects, each in small steps with a "Go and ask" mini-research task and a "Make it yours" idea.
+- **51 puzzles**: read-the-blocks, put-in-order, find-the-bug and quick quizzes for Scratch, Websites and Gen AI. A new puzzle of the day appears automatically.
+- **Scratch checker**: kids pick their saved .sb3 file; the check runs on their device against simple rules (uses a loop, 3+ sprites, etc.).
+- **Content Studio** (**/studio-admin**, same TRAINER_PIN): add, edit, hide or undo anything. Your edits are stored in the database and win over the built-in content, so you never edit code.
+- Built-in content lives in `public/data/content.json` (made by `content/sp_projects.py` and `content/sp_puzzles.py`).
+- Note: the Gen AI and Web showcase entries are guided tours of the live sites with tick-yourself missions. The Scratch Path lessons stay as they are.

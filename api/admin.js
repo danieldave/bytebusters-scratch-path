@@ -3,6 +3,7 @@ const { cmd, P } = require('../lib/redis');
 const ids = require('../lib/ids');
 const share = require('../lib/share');
 const { body, send, limited } = require('../lib/http');
+const content = require('../lib/content');
 const SCHOOLS = { MHS: 'Methodist High School Arigbajo', UHS: 'Unity High School', YWS: 'Yewa College Ilaro' };
 function pinOk(pin) {
   const want = process.env.TRAINER_PIN || '';
@@ -101,13 +102,46 @@ module.exports = async (req, res) => {
       }
       return send(res, 200, { added: out });
     }
+    if (a === 'cget') return send(res, 200, await content.load(true));
+    if (a === 'csave') {
+      try {
+        const kind = b.what === 'puzzle' ? 'z' : 'p';
+        const item = kind === 'z' ? content.cleanPuzzle(b.item || {}) : content.cleanProject(b.item || {});
+        await cmd('HSET', P + 'content', kind + ':' + item.id, JSON.stringify(item));
+        return send(res, 200, { ok: true, item });
+      } catch (e) { return send(res, 400, { error: e.message }); }
+    }
+    if (a === 'cvis') {
+      const pre = b.what === 'puzzle' ? 'z' : 'p', id = String(b.itemId || '');
+      if (!/^[a-z0-9-]{2,50}$/.test(id)) return send(res, 400, { error: 'Bad id' });
+      if (b.hidden) await cmd('HSET', P + 'content', 'h:' + pre + ':' + id, '1'); else await cmd('HDEL', P + 'content', 'h:' + pre + ':' + id);
+      return send(res, 200, { ok: true });
+    }
+    if (a === 'crevert') { // drop trainer edits of an item; seed version returns (new items are deleted)
+      const pre = b.what === 'puzzle' ? 'z' : 'p', id = String(b.itemId || '');
+      if (!/^[a-z0-9-]{2,50}$/.test(id)) return send(res, 400, { error: 'Bad id' });
+      await cmd('HDEL', P + 'content', pre + ':' + id); await cmd('HDEL', P + 'content', 'h:' + pre + ':' + id);
+      return send(res, 200, { ok: true });
+    }
+    if (a === 'sstats') { // Studio stars per child
+      const roster = await allRoster(); const out = {};
+      for (const r of roster) {
+        const h = (await cmd('HGETALL', P + 'sp:' + r.id)) || []; let p = 0, z = 0, last = 0;
+        for (let i = 0; i < h.length; i += 2) {
+          if (h[i].startsWith('p:')) { try { const o = JSON.parse(h[i + 1]); if ((o.s || []).length) p++; if (o.t > last) last = o.t; } catch (e) { } }
+          else if (h[i] .startsWith('z:') && h[i + 1] === '1') z++;
+        }
+        out[r.id] = { p, z, last };
+      }
+      return send(res, 200, { stats: out });
+    }
     if (a === 'delete') {
       const id = ids.normalise(b.id);
-      await cmd('HDEL', P + 'roster', id); await cmd('DEL', P + 'prog:' + id); await share.drop(id); await cmd('DEL', P + 'code:' + id);
+      await cmd('HDEL', P + 'roster', id); await cmd('DEL', P + 'prog:' + id); await share.drop(id); await cmd('DEL', P + 'code:' + id); await cmd('DEL', P + 'sp:' + id);
       return send(res, 200, { ok: true });
     }
     if (a === 'resetprogress') {
-      await cmd('DEL', P + 'prog:' + ids.normalise(b.id));
+      await cmd('DEL', P + 'prog:' + ids.normalise(b.id)); await cmd('DEL', P + 'sp:' + ids.normalise(b.id));
       return send(res, 200, { ok: true });
     }
     return send(res, 400, { error: 'Unknown action' });
