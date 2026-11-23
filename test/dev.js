@@ -31,6 +31,6 @@ const app = http.createServer((q, s) => {
       try { await require('../api/' + p.slice(5).replace(/\W/g, ''))(q, s); } catch (e) { s.statusCode = 500; s.end(String(e)); }
     }); return;
   }
-  let f = path.join(__dirname, '../public', p === '/' ? 'index.html' : p); if (!path.extname(f)) f += '.html';
+  let f = p === '/_labtest.html' ? path.join(__dirname, 'labtest.html') : path.join(__dirname, '../public', p === '/' ? 'index.html' : p); if (!path.extname(f)) f += '.html';
   fs.readFile(f, (e, d) => { if (e) { s.statusCode = 404; return s.end('nf'); } s.setHeader('Content-Type', MIME[path.extname(f)] || 'text/plain'); s.end(d); });
 }).listen(Number(process.env.PORT || 3111), () => console.log('dev on', app.address().port));

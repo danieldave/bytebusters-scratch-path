@@ -43,11 +43,19 @@ module.exports = async (req, res) => {
           if (p[i] === 'b') { r.badges = JSON.parse(p[i + 1]); continue; }
           const o = JSON.parse(p[i + 1]); r.progress[p[i]] = o;
           if (/^w\d+$/.test(p[i])) { if (o.done) done++; stars += o.quiz || 0; }
+          else if (/^t[23]w\d+$/.test(p[i])) { const tk = p[i].slice(0, 2); r[tk] = (r[tk] || 0) + (o.done ? 1 : 0); r[tk + 'lab'] = (r[tk + 'lab'] || 0) + ((o.lab && o.lab.total && o.lab.passed >= o.lab.total) ? 1 : 0); }
           last = Math.max(last, o.at || 0);
         }
-        r.done = done; r.stars = stars; r.last = last; r.seen = seen[r.id] || 0;
+        r.done = done; r.stars = stars; r.last = last; r.seen = seen[r.id] || 0; r.t2 = r.t2 || 0; r.t3 = r.t3 || 0; r.t2lab = r.t2lab || 0; r.t3lab = r.t3lab || 0;
       }
-      return send(res, 200, { roster, now: Date.now() });
+      const cf = (await cmd('HGETALL', P + 'cfg')) || []; const open = { t1: true, t2: false, t3: false };
+      for (let i = 0; i < cf.length; i += 2) if (cf[i] in open) open[cf[i]] = cf[i + 1] === '1';
+      return send(res, 200, { roster, now: Date.now(), open });
+    }
+    if (a === 'setterm') {
+      if (!['t2', 't3'].includes(b.term)) return send(res, 400, { error: 'Bad term' });
+      await cmd('HSET', P + 'cfg', b.term, b.open ? '1' : '0');
+      return send(res, 200, { ok: true });
     }
     if (a === 'seed') { // load the mock IDs from data/roster.seed.json (skips ones that exist)
       const seed = require('../data/roster.seed.json');
@@ -95,7 +103,7 @@ module.exports = async (req, res) => {
     }
     if (a === 'delete') {
       const id = ids.normalise(b.id);
-      await cmd('HDEL', P + 'roster', id); await cmd('DEL', P + 'prog:' + id); await share.drop(id);
+      await cmd('HDEL', P + 'roster', id); await cmd('DEL', P + 'prog:' + id); await share.drop(id); await cmd('DEL', P + 'code:' + id);
       return send(res, 200, { ok: true });
     }
     if (a === 'resetprogress') {

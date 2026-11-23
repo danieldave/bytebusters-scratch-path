@@ -33,7 +33,9 @@ Lost card? Find the child in the table on `/admin` and read out their ID. A wron
 - **Parent link**: each child has a private read-only page showing first name, weeks and badges (no ID). Share it from the child's home screen.
 - **Offline**: lessons and played games are cached; progress saved offline syncs when the phone is online. Change `VERSION` in `public/sw.js` after editing app files.
 - **Trainer page** (`/admin`): class summary, who needs a nudge (quiet 10+ days / never logged in), hardest quiz questions, week-by-week grid, CSV and ID cards.
-- **Terms 2 and 3** (HTML/CSS, JavaScript/PHP) appear as locked week outlines taken from your curriculum. Their lessons are not written yet.
+- **Terms 2 and 3** are full Code Labs (HTML/CSS; JavaScript then PHP). Kids type real code in the page, press Run, and missions tick automatically. Each school gets its own theme (shop, farm stall, small-chops stand). Code is saved to the child's ID.
+- Terms 2 and 3 are **locked until you open them** in Admin (Term open/close card).
+- PHP runs in "PHP-lite", a small in-browser interpreter that covers the beginner subset (echo, variables, if, loops, arrays, functions, string functions). It was checked against real PHP 8.3 on 16 programs. It does not do databases or forms.
 
 ## Notes
 - The ID is the only key a learner needs (no password), so keep names to first names. Login is rate limited per IP.

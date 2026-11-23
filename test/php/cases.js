@@ -1,0 +1,18 @@
+module.exports = [
+`<?php echo "Hello, Ade!"; ?>`,
+`<?php $name = "Ade"; $age = 12; echo "Name: $name, Age: $age\\n"; echo 'No $interp\\n' . "\\n"; echo "Next year: " . ($age + 1) . "\\n"; ?>`,
+`<?php $a = 7; $b = 2; echo $a + $b, " ", $a - $b, " ", $a * $b, " ", $a / $b, " ", $a % $b, " ", $a ** $b, "\\n"; echo 10/4, " ", 10/5, " ", 0.1+0.2, " ", 1/3, "\\n"; ?>`,
+`<?php $price = 500; $qty = 3; $total = $price * $qty; echo "Total: ₦" . number_format($total) . "\\n"; echo number_format(1234567.891, 2), "\\n"; echo round(3.14159, 2), " ", round(2.5), " ", floor(2.9), " ", ceil(2.1), "\\n"; ?>`,
+`<?php $items = ["Tomatoes", "Rice", "Palm oil"]; echo count($items), "\\n"; echo $items[0], " ", $items[2], "\\n"; $items[] = "Yam"; foreach ($items as $i => $item) { echo ($i + 1) . ". " . $item . "\\n"; } echo implode(", ", $items), "\\n"; ?>`,
+`<?php $p = ["Tomatoes" => 500, "Rice" => 300]; $p["Yam"] = 700; foreach ($p as $name => $cost) { echo "$name costs ₦$cost\\n"; } echo $p["Rice"], " ", count($p), " ", array_sum($p), "\\n"; echo "Rice: {$p['Rice']}\\n"; ?>`,
+`<?php $age = 12; if ($age >= 13) { echo "Teen"; } elseif ($age >= 10) { echo "Pre-teen"; } else { echo "Child"; } echo "\\n"; $ok = ($age > 5 && $age < 20); echo $ok ? "yes" : "no", "\\n"; var_dump($ok); var_dump(5 == "5", 5 === "5", "abc" == 0, null == false, "1" == "01", 100 == "1e2"); ?>`,
+`<?php for ($i = 1; $i <= 5; $i++) { echo $i * 2, " "; } echo "\\n"; $n = 3; while ($n > 0) { echo $n--, ","; } echo "\\n"; for ($i = 1; $i <= 10; $i++) { if ($i % 2 == 0) continue; if ($i > 7) break; echo $i; } echo "\\n"; ?>`,
+`<?php function greet($name, $greeting = "Hello") { return $greeting . ", " . $name . "!"; } echo greet("Ade"), "\\n", greet("Bola", "Good morning"), "\\n"; function total($price, $qty) { return $price * $qty; } echo total(250, 4), "\\n"; function fact($n) { return $n <= 1 ? 1 : $n * fact($n - 1); } echo fact(6), "\\n"; ?>`,
+`<?php function addTax($amt) { $tax = $amt * 0.075; return $amt + $tax; } $x = 100; echo addTax($x), " ", $x, "\\n"; $s = "Hello World"; echo strlen($s), strtoupper($s), strtolower($s), ucfirst("ade"), str_repeat("=", 5), "\\n"; echo strrev("abc"), substr("Nigeria", 0, 3), strpos("abc", "c"), "\\n"; ?>`,
+`<html><body><h1><?php echo "Hi " . "there"; ?></h1><?= 2 + 3 ?><p><?php $x = 5; ?>x is <?= $x ?></p></body></html>`,
+`<?php $a = "5"; $b = 3; echo $a + $b, "\\n"; echo "5" . 3, "\\n"; echo 7 <=> 3, "\\n"; echo gettype(1), gettype(1.5), gettype("a"), gettype(true), gettype([1]), gettype(null), "\\n"; echo max(3, 9, 2), min([4, 1, 8]), abs(-5), "\\n"; ?>`,
+`<?php $x = 10; $x += 5; $x -= 3; $x *= 2; $x /= 4; echo $x, "\\n"; $s = "a"; $s .= "b"; $s .= "c"; echo $s, "\\n"; $i = 5; echo $i++, $i, ++$i, "\\n"; echo true, "|", false, "|", null, "|\\n"; ?>`,
+`<?php $m = [[1,2],[3,4]]; echo $m[1][0], count($m), "\\n"; $c = ["a" => ["x" => 1]]; $c["a"]["y"] = 2; echo $c["a"]["y"], "\\n"; $arr = [3,1,2]; sort($arr); echo implode(",", $arr), "\\n"; rsort($arr); echo implode(",", $arr), "\\n"; echo in_array(2, $arr) ? "y" : "n", "\\n"; print_r(["a" => 1, "b" => [1,2]]); ?>`,
+`<?php $name = "Ade"; echo "Hello $name's shop\\n"; echo "Cost: \\$5 \\"quoted\\" \\\\ done\\n"; $list = ["x" => 5]; echo "v=$list[x]\\n"; echo 'single \\'quoted\\'', "\\n"; echo isset($name) ? "set" : "not", isset($nope) ? "set" : "not", "\\n"; echo $nope ?? "default", "\\n"; ?>`,
+`<?php $i = 0; while (true) { $i++; if ($i >= 3) break; } echo $i, "\\n"; foreach ([1,2,3] as $v) { if ($v == 2) continue; echo $v; } echo "\\n"; echo intval("42abc"), is_numeric("12.5") ? "num" : "no", is_numeric("abc") ? "num" : "no", "\\n"; echo 7 % 3, -7 % 3, "\\n"; echo 2 + 3 . "5", "\\n"; ?>`,
+];

@@ -1,0 +1,30 @@
+const { chromium, devices } = require('playwright');
+const B = 'http://localhost:3111';
+const J = (u, b) => fetch(B + u, { method: 'POST', body: JSON.stringify(b) }).then((r) => r.json());
+(async () => {
+  await J('/api/admin', { pin: '1234', action: 'seed' });
+  const id = require('../data/roster.seed.json').filter((r) => r.school === 'YWS')[1].id;
+  const b = await chromium.launch();
+  const ctx = await b.newContext({ ...devices['Pixel 5'] }); const p = await ctx.newPage(); const errs = []; p.on('pageerror', (e) => errs.push(e.message));
+  await p.goto(B + '/'); await p.fill('#id', id); await p.click('#go'); await p.waitForSelector('.week');
+  await p.click('.tabs button >> nth=1'); console.log('T2 closed:', (await p.textContent('.card h2')).trim());
+  console.log('open via admin:', JSON.stringify(await J('/api/admin', { pin: '1234', action: 'setterm', term: 't2', open: true })));
+  await p.goto(B + '/'); await p.reload(); await p.waitForSelector('.tabs'); await p.click('.tabs button >> nth=1'); await p.waitForSelector('a.week');
+  console.log('T2 lessons:', await p.locator('a.week').count());
+  await p.click('a.week >> nth=2'); await p.waitForSelector('#ed');
+  console.log('lab:', (await p.textContent('h1')), '| missions', await p.textContent('#mcount'));
+  // type the solution for week 3 into the editor, check missions tick
+  const sol = (await (await fetch(B + '/data/web.json')).json()).terms.t2.lessons[2].solution.replace(/\{\{SHOP\}\}/g, 'Owambe Small-Chops Stand').replace(/\{\{CLR\}\}/g, '#8a6d00').replace(/\{\{I(\d)\}\}/g, 'Item$1').replace(/\{\{P(\d)\}\}/g, '₦100');
+  await p.fill('#ed', sol); await p.waitForFunction(() => /^4\/4$/.test(document.getElementById('mcount').textContent), null, { timeout: 15000 });
+  console.log('after typing the answer:', await p.textContent('#mcount'), '| win visible:', await p.isVisible('#win').catch(() => 'tab-hidden'));
+  await p.click('#tabs button[data-p=result]'); await p.waitForTimeout(500); await p.screenshot({ path: '/tmp/lab_result.png' });
+  await p.click('#tabs button[data-p=code]'); await p.screenshot({ path: '/tmp/lab_code.png' });
+  await p.waitForTimeout(3200);
+  const lg = await J('/api/login', { id }); console.log('server progress t2w3:', JSON.stringify(lg.progress.t2w3 && lg.progress.t2w3.lab));
+  const code = await J('/api/code', { id, key: 't2w3', action: 'get' }); console.log('server has code:', (code.code || '').length > 100);
+  await J('/api/admin',{pin:'1234',action:'setterm',term:'t3',open:true}); await p.goto(B+'/'); await p.reload(); await p.waitForSelector('.tabs');
+  await p.goto(B + '/#t3w10'); await p.waitForSelector('#ed'); await p.waitForTimeout(500); console.log('php lab missions:', await p.textContent('#mcount'));
+  await p.click('#tabs button[data-p=result]'); console.log('php output has error?', await p.locator('.oerr').count());
+  await p.goto(B + '/#t3w3'); await p.waitForSelector('#ed'); await p.fill('#ed', 'let n = 0; while (true) { n++; }'); await p.click('#run'); await p.waitForSelector('.oerr', { timeout: 6000 }); console.log('infinite loop handled:', (await p.textContent('.oerr')).slice(0, 50));
+  console.log('page errors:', errs); await b.close();
+})();

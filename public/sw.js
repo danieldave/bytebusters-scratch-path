@@ -1,6 +1,6 @@
 // Offline support. Bump VERSION when you change app files so phones refresh.
-const VERSION = 'bbp-v2';
-const SHELL = ['/', '/style.css', '/app.js', '/data/path.json', '/data/manifests.json', '/manifest.webmanifest', '/icon.svg'];
+const VERSION = 'bbp-v3';
+const SHELL = ['/', '/style.css', '/app.js', '/data/path.json', '/data/manifests.json', '/manifest.webmanifest', '/icon.svg', '/lab.js', '/php-lite.js', '/data/web.json', '/assets/stall.svg', '/assets/basket.svg', '/assets/coin.svg'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== VERSION).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', (e) => {

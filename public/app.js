@@ -10,8 +10,12 @@ function lsj(k,v){if(v===undefined){try{return JSON.parse(ls(k)||'null')}catch(e
 function post(u,b){return fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}).then(function(r){return r.json().then(function(j){if(!r.ok){var e=new Error(j.error||'Error');e.http=true;throw e}return j})})}
 function chips(c){return (c||[]).map(function(x){return '<span class="chip '+x+'">'+CN[x]+'</span>'}).join('')}
 function school(){return DATA.schools[ME.school]}
-function prog(w){return (ME.progress['w'+w])||{}}
-function doneCount(){var n=0;for(var w=1;w<=10;w++)if(prog(w).done)n++;return n}
+function wkey(w,term){return (!term||term==='t1'?'w':term+'w')+w}
+function prog(w,term){return (ME.progress[wkey(w,term)])||{}}
+function doneCount(term){var n=0;for(var w=1;w<=10;w++)if(prog(w,term).done)n++;return n}
+function labCount(term){var n=0;for(var w=1;w<=10;w++){var l=prog(w,term).lab;if(l&&l.total&&l.passed>=l.total)n++}return n}
+var CFG=lsj('bb_cfg')||{t1:true,t2:false,t3:false},WEB=null;
+function termOpen(t){return t==='t1'||!!CFG[t]}
 function has(b){return (ME.badges||[]).indexOf(b)>=0}
 
 /* ---- offline queue: progress is never lost, it syncs when the phone is online ---- */
@@ -48,10 +52,7 @@ function home(){
   who.innerHTML=esc(ME.name||ME.id)+' · <button id="out">Exit</button>';document.getElementById('out').onclick=logout;
   var h='<h1>Hello'+(ME.name?', '+esc(ME.name.split(' ')[0]):'')+'!</h1><p style="color:var(--mut)">'+esc(S.name)+' · your ID <b>'+esc(ME.id)+'</b></p>';
   h+='<div class="tabs">'+DATA.terms.map(function(t){return '<button data-t="'+t.id+'" class="'+(t.id===term?'on':'')+'">'+esc(t.name.split(':')[0])+(t.ready?'':' 🔒')+'</button>'}).join('')+'</div>';
-  if(term!=='t1'){
-    var T=DATA.terms.filter(function(x){return x.id===term})[0];
-    h+='<div class="card"><h2 style="margin-top:0">'+esc(T.name)+'</h2><p class="why">Coming soon. This is what you will learn:</p><ul>'+T.weeks.map(function(w){return '<li><b>Week '+w[0]+':</b> '+esc(w[1])+'</li>'}).join('')+'</ul><p><b>Project:</b> '+esc(T.project)+'</p></div>';
-    app.innerHTML=h;bindTabs();return}
+  if(term!=='t1'){h+=termHome(term);app.innerHTML=h;bindTabs();window.scrollTo(0,0);return}
   h+='<div class="card"><b>'+n+' of 10 weeks done</b><div class="prog" style="margin-top:8px"><i style="width:'+n*10+'%"></i></div><p style="margin:.7em 0 0">'+badgeRow()+'</p></div>';
   h+='<div class="card"><b>Your 3 games</b><p style="margin:.3em 0">'+S.games.map(function(g){return esc(g.name)}).join(' → ')+'</p><p class="why">You finish with a game that uses all 4 logic colours.</p><p>'+chips(['blue','red','green','purple'])+'</p></div>';
   S.lessons.forEach(function(L){var p=prog(L.week);
@@ -63,6 +64,56 @@ function home(){
   var link=location.origin+'/parent?t='+ME.share;
   document.getElementById('par').onclick=function(){window.open('https://wa.me/?text='+encodeURIComponent('See my ByteBusters Scratch progress: '+link),'_blank')};
   document.getElementById('parc').onclick=function(){try{navigator.clipboard.writeText(link).then(function(){toast('Link copied')},function(){prompt('Copy this link',link)})}catch(e){prompt('Copy this link',link)}};
+}
+function termHome(term){
+  var T=DATA.terms.filter(function(x){return x.id===term})[0],h='';
+  if(!termOpen(term)){
+    h+='<div class="card"><h2 style="margin-top:0">🔒 '+esc(T.name)+'</h2><p>This term opens when your trainer says so. Here is what is coming:</p><ul>'+T.weeks.map(function(w){return '<li><b>Week '+w[0]+':</b> '+esc(w[1])+'</li>'}).join('')+'</ul><p><b>Project:</b> '+esc(T.project)+'</p></div>';return h}
+  if(!WEB){h+='<div class="card">Loading lessons…</div>';fetch('/data/web.json').then(function(r){return r.json()}).then(function(d){WEB=d;home()}).catch(function(){});return h}
+  var W=WEB.terms[term],th=WEB.themes[ME.school],n=doneCount(term),lc=labCount(term);
+  h+='<div class="card"><b>'+n+' of 10 weeks done</b> <span class="why">· '+lc+' labs complete</span><div class="prog" style="margin-top:8px"><i style="width:'+n*10+'%"></i></div>';
+  if(term==='t2')h+='<p style="margin:.7em 0 0">'+webBadge('web')+'</p>';else h+='<p style="margin:.7em 0 0">'+webBadge('js')+webBadge('php')+'</p>';
+  h+='</div><div class="card"><b>Your project: '+esc(th.SHOP)+'</b><p class="why">'+(term==='t2'?'Your stall gets a real web page and an order form that checks itself.':'Your stall goes digital: a cash register in JavaScript, then receipts in PHP.')+' All prices are examples. Change them to real prices from your market.</p></div>';
+  W.lessons.forEach(function(L){var p=prog(L.week,term),lb=p.lab;
+    h+='<a class="card week'+(p.done?' done':'')+'" href="#'+term+'w'+L.week+'"><span class="n">'+(p.done?'✓':L.week)+'</span><span><b>'+esc(L.title)+'</b><small>'+esc(L.topic)+'</small><small>'+L.chips.map(function(c){return esc(c)}).join(' · ')+(lb&&lb.total?' · Lab '+lb.passed+'/'+lb.total:'')+'</small>'+(p.quiz!=null?'<small>Quiz: '+'⭐'.repeat(p.quiz)+'☆'.repeat(Math.max(0,3-p.quiz))+'</small>':'')+'</span></a>'});
+  return h}
+var WB={web:['🌐','Web Builder'],js:['⚡','JS Maker'],php:['🐘','PHP Starter']};
+function webBadge(b){var on=has(b);return '<span class="badge '+(on?'on ':'')+'" title="'+WB[b][1]+'"><i>'+WB[b][0]+'</i>'+WB[b][1]+'</span>'}
+function loadScript(src){return new Promise(function(ok,no){if(document.querySelector('script[data-s="'+src+'"]'))return ok();var s=document.createElement('script');s.src=src;s.dataset.s=src;s.onload=ok;s.onerror=no;document.head.appendChild(s)})}
+function webLesson(term,w){
+  if(!termOpen(term)){location.hash='';return}
+  var ready=WEB?Promise.resolve():fetch('/data/web.json').then(function(r){return r.json()}).then(function(d){WEB=d});
+  app.innerHTML='<p><a href="#">← All weeks</a></p><div class="card">Loading your lab…</div>';
+  ready.then(function(){var L=WEB.terms[term].lessons[w-1];if(!L)return home();return Promise.all([loadScript('/lab.js'),L.kind==='php'?loadScript('/php-lite.js'):null]).then(function(){drawWeb(term,w,L)})}).catch(function(){app.innerHTML='<p><a href="#">← All weeks</a></p><p class="err">Could not load the lab. Check your data and try again.</p>'});
+}
+function drawWeb(term,w,L){
+  var th=WEB.themes[ME.school],p=prog(w,term),F=function(x){return window.BBLab.fill(x,th)};
+  var h='<p><a href="#">← All weeks</a></p><h1>Week '+w+': '+esc(L.title)+'</h1><p>'+L.chips.map(function(c){return '<span class="chip web">'+esc(c)+'</span>'}).join('')+'</p><p class="why">Curriculum: '+esc(L.cur)+' · '+esc(L.topic)+'</p>';
+  h+='<h2>The big idea</h2><p>'+esc(F(L.big))+'</p><div class="card story">'+esc(F(L.analogy))+'</div>';
+  h+='<h2>Learn this first</h2><ul class="learn">'+L.steps.map(function(x){return '<li>'+esc(F(x))+'</li>'}).join('')+'</ul>';
+  h+='<div id="labroot"></div>';
+  h+='<h2>Your turn</h2><div class="card">'+esc(F(L.turn))+'</div>';
+  h+='<h2>Quick check</h2><div id="quiz"></div>';
+  h+='<div class="card" style="text-align:center"><button class="btn" id="done" style="width:100%">'+(p.done?'✓ Week done (tap to undo)':'I finished this week')+'</button></div>';
+  h+='<p style="display:flex;justify-content:space-between">'+(w>1?'<a href="#'+term+'w'+(w-1)+'">← Week '+(w-1)+'</a>':'<span></span>')+(w<10?'<a href="#'+term+'w'+(w+1)+'">Week '+(w+1)+' →</a>':'')+'</p>';
+  app.innerHTML=h;window.scrollTo(0,0);
+  document.getElementById('done').onclick=function(){var d=!prog(w,term).done;save(w,{done:d},term).then(function(){toast(d?'Well done! ⭐':'Okay');checkWebBadges(term);drawWeb(term,w,L)})};
+  quiz(w,{quiz:L.quiz},term);
+  window.BBLabRoot=document.getElementById('labroot');
+  window.BBLab.renderLab(document.getElementById('labroot'),term,L,th,{
+    id:ME.id,progress:function(){return prog(w,term)},
+    loadServer:function(key){return post('/api/code',{id:ME.id,key:key,action:'get'}).catch(function(){return null})},
+    saveServer:function(key,code){post('/api/code',{id:ME.id,key:key,code:code}).catch(function(){})},
+    onLab:function(lab,won){var cur=prog(w,term).lab||{};if(lab.passed>(cur.passed||0)||lab.peeked!==!!cur.peeked||(lab.total&&!cur.total)){save(w,{lab:lab},term).then(function(){checkWebBadges(term)})}if(won){toast('🎉 Lab complete!')}}
+  });
+}
+function checkWebBadges(term){
+  var add=[];
+  function all(a,b){for(var w=a;w<=b;w++){var l=prog(w,term).lab;if(!(l&&l.total&&l.passed>=l.total))return false}return true}
+  if(term==='t2'&&all(1,10)&&!has('web'))add.push('web');
+  if(term==='t3'&&all(1,6)&&!has('js'))add.push('js');
+  if(term==='t3'&&all(7,10)&&!has('php'))add.push('php');
+  if(add.length){ME.badges=(ME.badges||[]).concat(add);toast('🎖 New badge: '+add.map(function(b){return WB[b][1]}).join(', '));post('/api/progress',{id:ME.id,week:10,term:term,badges:add}).catch(function(){})}
 }
 function bindTabs(){[].forEach.call(document.querySelectorAll('.tabs button'),function(b){b.onclick=function(){ls('bb_term',b.dataset.t);home()}})}
 
@@ -145,29 +196,30 @@ function runCheck(file,w,L,LS){
   }).catch(function(){out.innerHTML='<p class="err">I could not read that file. Save from Scratch with File → Save to your computer, and pick the .sb3 file.</p>'})
 }
 
-function save(w,o){
-  var cur=ME.progress['w'+w]||{};for(var k in o)if(k!=='badges')cur[k]=o[k];ME.progress['w'+w]=cur;cacheMe();
-  var payload={};for(var k2 in o)payload[k2]=o[k2];payload.id=ME.id;payload.week=w;
-  return post('/api/progress',payload).then(function(j){ME.progress['w'+w]=j.saved;if(j.badges)ME.badges=j.badges;cacheMe();return j}).catch(function(e){if(!e.http){queue(payload);toast('Saved on this phone. It will sync when you are online.')}else toast('Could not save. Try again.')});
+function save(w,o,term){
+  var K=wkey(w,term),cur=ME.progress[K]||{};for(var k in o)if(k!=='badges')cur[k]=o[k];ME.progress[K]=cur;cacheMe();
+  var payload={};for(var k2 in o)payload[k2]=o[k2];payload.id=ME.id;payload.week=w;if(term&&term!=='t1')payload.term=term;
+  return post('/api/progress',payload).then(function(j){ME.progress[K]=j.saved;if(j.badges)ME.badges=j.badges;cacheMe();return j}).catch(function(e){if(!e.http){queue(payload);toast('Saved on this phone. It will sync when you are online.')}else toast('Could not save. Try again.')});
 }
-function quiz(w,L){
+function quiz(w,L,term){
   var box=document.getElementById('quiz'),i=0,score=0,qs=L.quiz,qa=[];
   function show(){
-    if(i>=qs.length){box.innerHTML='<div class="card"><b>You got '+score+' of '+qs.length+'!</b> '+'⭐'.repeat(score)+'</div>';save(w,{quiz:score,qa:qa});return}
+    if(i>=qs.length){box.innerHTML='<div class="card"><b>You got '+score+' of '+qs.length+'!</b> '+'⭐'.repeat(score)+'</div>';save(w,{quiz:score,qa:qa},term);return}
     var q=qs[i];box.innerHTML='<div class="card"><p><b>'+(i+1)+'/'+qs.length+'. '+esc(q.q)+'</b></p>'+q.o.map(function(o,k){return '<button class="opt" data-k="'+k+'">'+esc(o)+'</button>'}).join('')+'<p class="why" id="why"></p></div>';
     [].forEach.call(box.querySelectorAll('.opt'),function(b){b.onclick=function(){
       var k=+b.dataset.k;[].forEach.call(box.querySelectorAll('.opt'),function(x){x.disabled=true;if(+x.dataset.k===q.a)x.className+=' ok'});
       if(k===q.a){score++;qa.push(1)}else{b.className+=' no';qa.push(0)}document.getElementById('why').textContent=q.why;
       var nx=document.createElement('button');nx.className='btn';nx.textContent='Next';nx.onclick=function(){i++;show()};box.firstChild.appendChild(nx)}})
   }
-  var p=prog(w);if(p.quiz!=null){box.innerHTML='<div class="card">Your best: '+'⭐'.repeat(p.quiz)+'☆'.repeat(Math.max(0,qs.length-p.quiz))+' <button class="btn alt" id="again">Try again</button></div>';document.getElementById('again').onclick=function(){i=0;score=0;qa=[];show()}}else show();
+  var p=prog(w,term);if(p.quiz!=null){box.innerHTML='<div class="card">Your best: '+'⭐'.repeat(p.quiz)+'☆'.repeat(Math.max(0,qs.length-p.quiz))+' <button class="btn alt" id="again">Try again</button></div>';document.getElementById('again').onclick=function(){i=0;score=0;qa=[];show()}}else show();
 }
 function route(){
-  if(!DATA||!ME)return;var m=/^#w(\d+)/.exec(location.hash);if(location.hash==='#cert')cert();else if(m)lesson(+m[1]);else home();
+  if(!DATA||!ME)return;var m=/^#w(\d+)/.exec(location.hash),m2=/^#(t[23])w(\d+)/.exec(location.hash);if(window.BBLabRoot&&window.BBLabRoot._off){window.BBLabRoot._off();window.BBLabRoot=null}if(location.hash==='#cert')cert();else if(m2)webLesson(m2[1],+m2[2]);else if(m)lesson(+m[1]);else home();
 }
 window.addEventListener('hashchange',route);
 if('serviceWorker' in navigator)window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});
 banner();
+fetch('/api/config').then(function(r){return r.json()}).then(function(j){CFG=j.open;lsj('bb_cfg',CFG);if(ME)route()}).catch(function(){});
 fetch('/data/path.json').then(function(r){return r.json()}).then(function(d){
   DATA=d;var id=ls('bb_id');
   if(id)doLogin(id).then(route).catch(function(){login()});else login();

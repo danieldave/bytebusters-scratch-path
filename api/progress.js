@@ -2,7 +2,7 @@ const { cmd, P } = require('../lib/redis');
 const ids = require('../lib/ids');
 const { body, send, limited } = require('../lib/http');
 const TERMS = ['t1', 't2', 't3'];
-const BADGES = ['blue', 'red', 'green', 'purple', 'builder'];
+const BADGES = ['blue', 'red', 'green', 'purple', 'builder', 'web', 'js', 'php'];
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return send(res, 405, { error: 'POST only' });
   try {
@@ -27,6 +27,11 @@ module.exports = async (req, res) => {
     if (b.check && typeof b.check === 'object') {
       const c = b.check, n = (x) => Math.max(0, Math.min(999, Number(x) | 0));
       next.check = { found: n(c.found), total: n(c.total), newFound: n(c.newFound), newTotal: n(c.newTotal), at: Date.now() };
+    }
+    if (b.lab && typeof b.lab === 'object') {
+      const c = b.lab, n = (x) => Math.max(0, Math.min(99, Number(x) | 0));
+      const prev = cur.lab || {};
+      next.lab = { passed: Math.max(n(c.passed), prev.passed || 0), total: n(c.total), peeked: !!(c.peeked || prev.peeked), at: Date.now() };
     }
     await cmd('HSET', P + 'prog:' + id, key, JSON.stringify(next));
     let badges = [];

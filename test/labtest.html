@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><body><div id="r"></div>
+<script src="/php-lite.js"></script><script src="/lab.js"></script>
+<script>
+var q=new URLSearchParams(location.search),term=q.get('term'),w=+q.get('w'),sch=q.get('s'),mode=q.get('mode');
+fetch('/data/web.json').then(r=>r.json()).then(W=>{
+  var L=JSON.parse(JSON.stringify(W.terms[term].lessons[w-1]));if(mode==='solution')L.starter=L.solution;
+  var th=W.themes[sch];window.__done=false;
+  BBLab.renderLab(document.getElementById('r'),term,L,th,{id:'TEST'+mode+sch,progress:()=>({}),loadServer:()=>Promise.resolve(null),saveServer:()=>{},
+    onLab:function(lab){window.__res=lab;window.__done=true}});
+});
+</script>
