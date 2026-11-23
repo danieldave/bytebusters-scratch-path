@@ -46,8 +46,8 @@ Lost card? Find the child in the table on `/admin` and read out their ID. A wron
 ## ByteBusters Studio (projects and puzzles)
 
 - Learners open **/studio** (also linked from the home screen). No ID needed to browse and play; with an ID their stars follow them to any phone.
-- **40 projects**: all 15 showcase projects (9 Scratch, 3 Web, 3 Gen AI, with their live links) 13 new international Scratch projects, and 12 **Web Creator** projects, each in small steps with a "Go and ask" mini-research task and a "Make it yours" idea.
-- **51 puzzles**: read-the-blocks, put-in-order, find-the-bug and quick quizzes for Scratch, Websites and Gen AI. A new puzzle of the day appears automatically.
+- **52 projects**: all 15 showcase projects (9 Scratch, 3 Web, 3 Gen AI, with their live links) 13 new international Scratch projects, and 12 **Web Creator** projects, each in small steps with a "Go and ask" mini-research task and a "Make it yours" idea.
+- **59 puzzles**: read-the-blocks, put-in-order, find-the-bug and quick quizzes for Scratch, Websites and Gen AI. A new puzzle of the day appears automatically.
 - **Scratch checker**: kids pick their saved .sb3 file; the check runs on their device against simple rules (uses a loop, 3+ sprites, etc.).
 - **Content Studio** (**/studio-admin**, same TRAINER_PIN): add, edit, hide or undo anything. Your edits are stored in the database and win over the built-in content, so you never edit code.
 - Built-in content lives in `public/data/content.json` (made by `content/sp_projects.py` and `content/sp_puzzles.py`).
@@ -58,3 +58,11 @@ Lost card? Find the child in the table on `/admin` and read out their ID. A wron
 - Each opens a live editor with auto-checked missions (the same Code Lab as Terms 2/3). Code and stars save to the child's ID and follow them to any phone.
 - In the Content Studio, Web Creator projects can be edited with the "Edit as JSON" button (the `lab` field holds the starter code, answer and mission tests).
 - Built from `content/sp_web.py`; run `python3 content/build_studio.py` to rebuild `public/data/content.json`. `test/wc.js` checks that every starter fails and every answer passes.
+
+### Gen AI Prompt Lab (safe, no API key)
+- 12 Gen AI projects (Ask Like a Pro, Inflation in Kid Words, Letter to the Chairman, Safe Chat Shield, Study Buddy Coach, and more). Kids write a prompt; a checklist (task, audience, format, local example...) ticks as it gets clearer.
+- The "Practice AI" is a **simulator**: the replies are written in advance, and a better prompt gets a better reply. Nothing is sent to any AI service, so it costs nothing and is safe for kids. The screen says so.
+- A privacy guard stops prompts containing phone numbers, emails or home addresses.
+- 8 "Spot the AI fib" puzzles teach kids to check what AI says.
+- Edit any lab in the Content Studio with "Edit as JSON" (field `ai`). Built from `content/sp_ai.py`; `node test/ai.js` checks every example prompt scores full marks.
+- Live AI can be added later (it needs an API key and a server function). It is not switched on.

@@ -25,7 +25,7 @@ function persist(){if(ME)lsj('bbs_c_'+ME.id,PR);else lsj('bbs_guest',PR)}
 function savePrj(pid){persist();stars();if(!ME)return;post('/api/studio',{id:ME.id,action:'set',pid:pid,s:PR.p[pid].s,m:PR.p[pid].m,lab:PR.p[pid].l?{passed:PR.p[pid].l[0],total:PR.p[pid].l[1]}:undefined}).catch(function(){toast('Saved on this phone.')})}
 function saveZ(zid,ok){var was=PR.z[zid];PR.z[zid]=ok||was===true;persist();stars();if(ME)post('/api/studio',{id:ME.id,action:'z',zid:zid,ok:ok?1:0}).catch(function(){})}
 /* ---------- stars ---------- */
-function pstars(p){var d=PR.p[p.id]||{s:[],m:[]};if(p.lab){var l=d.l||[0,p.lab.missions.length],n0=0;if(l[0]>=1)n0=1;if(l[0]>=Math.ceil(l[1]/2))n0=2;if(l[1]&&l[0]>=l[1])n0=3;return n0}var s=(d.s||[]).length,m=(d.m||[]).length,n=0;if(s>=1)n=1;if(s>=p.steps.length)n=2;if(n===2&&(!p.missions.length||m>=p.missions.length))n=3;return n}
+function pstars(p){var d=PR.p[p.id]||{s:[],m:[]};if(p.lab||p.ai){var l=d.l||[0,p.lab?p.lab.missions.length:p.ai.checks.length],n0=0;if(l[0]>=1)n0=1;if(l[0]>=Math.ceil(l[1]/2))n0=2;if(l[1]&&l[0]>=l[1])n0=3;return n0}var s=(d.s||[]).length,m=(d.m||[]).length,n=0;if(s>=1)n=1;if(s>=p.steps.length)n=2;if(n===2&&(!p.missions.length||m>=p.missions.length))n=3;return n}
 function total(){var t=0;(C.projects||[]).forEach(function(p){t+=pstars(p)});(C.puzzles||[]).forEach(function(z){if(PR.z[z.id])t++});return t}
 function stars(){var e=document.getElementById('stars');if(e&&C)e.textContent='⭐ '+total()}
 function starTxt(n){return '⭐'.repeat(n)+'☆'.repeat(3-n)}
@@ -59,7 +59,7 @@ function home(){
 }
 function chip(k,v,t){var on=String(F[k])===String(v);return '<button class="fchip '+(on?'on':'')+'" data-k="'+k+'" data-v="'+v+'">'+t+'</button>'}
 function card(p){var n=pstars(p),d=PR.p[p.id]||{s:[]},pc=Math.round(100*(d.s||[]).length/Math.max(1,p.steps.length));
-  return '<a class="pcard" href="#/p/'+p.id+'"><span class="st">'+(n?'⭐'.repeat(n):'')+'</span><div class="em">'+esc(p.emoji)+'</div><h3>'+esc(p.title)+'</h3><p>'+esc(p.hook)+'</p><div class="meta"><span class="tag '+p.kind+'">'+KIND[p.kind]+'</span>'+(p.showcase?'<span class="tag show">🏆 Showcase</span>':'')+(p.lab?'<span class="tag">🛠 Build here</span>':'')+'<span>Level '+p.level+'</span></div><div class="prog"><i style="width:'+pc+'%"></i></div></a>'}
+  return '<a class="pcard" href="#/p/'+p.id+'"><span class="st">'+(n?'⭐'.repeat(n):'')+'</span><div class="em">'+esc(p.emoji)+'</div><h3>'+esc(p.title)+'</h3><p>'+esc(p.hook)+'</p><div class="meta"><span class="tag '+p.kind+'">'+KIND[p.kind]+'</span>'+(p.showcase?'<span class="tag show">🏆 Showcase</span>':'')+((p.lab||p.ai)?'<span class="tag">'+(p.ai?'🧪 Prompt Lab':'🛠 Build here')+'</span>':'')+'<span>Level '+p.level+'</span></div><div class="prog"><i style="width:'+pc+'%"></i></div></a>'}
 function dayIndex(n){var d=new Date();return (Math.floor(d.getTime()/864e5)+7*0)%Math.max(1,n)}
 function daily(){if(!C.puzzles.length)return '';var z=C.puzzles[dayIndex(C.puzzles.length)];var done=PR.z[z.id];
   return '<div class="daily" id="dz" style="cursor:pointer"><b>🎯 Today\'s puzzle</b> '+(done?'✅':'')+'<br><span style="color:var(--mut)">One small puzzle a day. Takes one minute.</span></div>'}
@@ -75,8 +75,9 @@ function project(id){
   if(p.learn&&p.learn.length)h+='<div class="learnrow"><b>You will learn:</b><br>'+p.learn.map(function(l){return '<span>'+esc(l)+'</span>'}).join('')+'</div>';
   if(p.link)h+='<p><a class="btn" href="'+esc(p.link)+'" target="_blank" rel="noopener">🔗 Open the live '+esc(p.title)+'</a></p>';
   h+='<h2 class="sec">Read first</h2><div id="steps"></div>';
+  if(p.ai)h+='<h2 class="sec">🧪 Prompt Lab</h2><div id="labroot"></div>';
   if(p.lab)h+='<h2 class="sec">🧪 Build it here</h2><p style="color:var(--mut);margin-top:0">Type in the editor. Press Run. Missions turn green when they work. It saves as you go.</p><div id="labroot"></div>';
-  if(p.missions.length&&!p.lab){h+='<h2 class="sec">Missions</h2><div id="mis"></div>';
+  if(p.missions.length&&!p.lab&&!p.ai){h+='<h2 class="sec">Missions</h2><div id="mis"></div>';
     if(p.kind==='scratch'&&p.missions.some(function(m){return m.rule}))h+='<div class="upl"><b>🔍 Check my Scratch project</b><p style="color:var(--mut);font-size:15px;margin:4px 0">On a PC: in Scratch choose File → Save to your computer. Then pick the .sb3 file here. Nothing is uploaded; it is checked on your device.</p><input type="file" id="sb3" accept=".sb3"><div id="chk" class="res"></div></div>'}
   if(p.ask)h+='<div class="ask"><b>🔎 Go and ask</b><br>'+esc(p.ask)+'</div>';
   if(p.remix)h+='<div class="remix"><b>🎨 Make it yours</b><br>'+esc(p.remix)+'</div>';
@@ -88,7 +89,18 @@ function project(id){
   if(M){M.innerHTML=p.missions.map(function(m,i){var on=d.m.indexOf(i)>=0;return '<button class="step '+(on?'done':'')+'" data-i="'+i+'"><span class="box">'+(on?'✓':'')+'</span><span class="mis"><span><b>'+esc(m.t)+'</b></span></span></button>'}).join('');
     [].forEach.call(M.querySelectorAll('.step'),function(b){b.onclick=function(){tog(d.m,+b.dataset.i);savePrj(id);afterTick(p,d,'m');project(id)}})}
   if(p.lab)mountLab(p,d);
+  if(p.ai)mountPrompt(p,d);
   var f=document.getElementById('sb3');if(f)f.onchange=function(){if(f.files[0])check(p,d,f.files[0])};
+}
+function mountPrompt(p,d){
+  var root=document.getElementById('labroot');PR.c=PR.c||{};var saved=PR.c[p.id]&&PR.c[p.id].code,winToast=false;
+  if(!window.PromptLab){root.innerHTML='<p>Loading…</p>';return}
+  window.PromptLab.mount(root,p.ai,{text:saved,
+    onChange:function(text,sc){PR.c[p.id]={code:text,t:Date.now()};var o=PR.p[p.id]=PR.p[p.id]||{s:[],m:[]},prev=o.l?o.l[0]:0;
+      if(sc.passed>prev||!o.l){o.l=[Math.max(prev,sc.passed),sc.total];o.m=[];for(var i=0;i<o.l[0];i++)o.m.push(i);savePrj(p.id)}else persist();
+      var e=document.getElementById('ps');if(e)e.textContent=starTxt(pstars(p));
+      if(ME)post('/api/studio',{id:ME.id,action:'code',pid:p.id,code:text}).catch(function(){})},
+    onWin:function(){if(!winToast){winToast=true;toast('🏆 Brilliant prompt!')}}});
 }
 var LABTH={SHOP:'',TAG:'',CLR:'',items:[]};
 function mountLab(p,d){
@@ -134,7 +146,7 @@ function runQ(){
     box.innerHTML=h;sbRender(box);
     [].forEach.call(box.querySelectorAll('.opt'),function(b){b.onclick=function(){var k=+b.dataset.k,ok=k===z.a;[].forEach.call(box.querySelectorAll('.opt'),function(x){x.disabled=true;if(+x.dataset.k===z.a)x.className+=' ok'});if(!ok)b.className+=' no';done(z,ok)}});
   }else if(z.type==='fix'){
-    h+='<p><b>'+esc(z.title)+'</b></p><div id="rows">'+z.blocks.map(function(b,k){return '<button class="zrow" data-k="'+k+'"><pre class="blocks">'+esc(b)+'</pre></button>'}).join('')+'</div><div id="fb"></div></div>';
+    h+='<p><b>'+esc(z.title)+'</b></p><div id="rows">'+z.blocks.map(function(b,k){return '<button class="zrow" data-k="'+k+'">'+(z.track==='scratch'?'<pre class="blocks">'+esc(b)+'</pre>':'<span>'+esc(b)+'</span>')+'</button>'}).join('')+'</div><div id="fb"></div></div>';
     box.innerHTML=h;sbRender(box);
     [].forEach.call(box.querySelectorAll('.zrow'),function(b){b.onclick=function(){var k=+b.dataset.k,ok=k===z.bad;[].forEach.call(box.querySelectorAll('.zrow'),function(x){x.disabled=true;if(+x.dataset.k===z.bad)x.className+=' no'});if(ok)b.className+=' ok';done(z,ok)}});
   }else{ // order

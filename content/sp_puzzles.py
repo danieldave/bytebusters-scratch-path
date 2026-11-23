@@ -68,3 +68,13 @@ for q in [
  ("What does an AI need to give a good answer?",["Clear facts and a clear goal","A lot of capital letters","A fast phone"],0,"Say who, what, and why."),
  ("What is a good first step when AI writes your homework?",["Read it, check it, and make it yours","Hand it in","Delete it"],0,"AI is a helper, not the boss. You must understand it.")]:
     Q('ai',1,*q)
+
+def SP(lvl,title,blocks,bad,why): add('fix','ai',lvl,title=title,blocks=blocks,bad=bad,why=why)
+SP(1,"The AI gave this answer about Nigeria. One sentence is a fib. Tap it.",["Nigeria's capital is Abuja.","Nigeria became independent in 1960.","Nigeria is in East Africa."],2,"Nigeria is in West Africa. AI can state wrong things very confidently, so always check.")
+SP(1,"Spot the AI fib about water.",["Water freezes at 0 degrees Celsius.","Water boils at 100 degrees Celsius.","Water is made of gold."],2,"Water is hydrogen and oxygen. Not gold!")
+SP(1,"Spot the fib about shapes.",["A triangle has 3 sides.","A square has 4 sides.","A circle has 6 corners."],2,"A circle has no corners.")
+SP(1,"Spot the fib about space.",["The sun is a star.","The sun rises in the east.","The sun goes round the Earth every day."],2,"The Earth goes round the sun. The sun only seems to move.")
+SP(1,"Spot the fib about Lagos.",["Lagos is a city in Nigeria.","Lagos is next to the Atlantic Ocean.","Lagos is the capital of Ghana."],2,"Lagos is in Nigeria. The capital of Ghana is Accra.")
+SP(1,"Spot the unsafe advice from a chatbot.",["Never share your password.","Never give your home address to a chatbot.","It is fine to share your phone number with any chatbot."],2,"Never share private details like phone numbers with a chatbot.")
+SP(2,"Which sentence is bad advice about prompts?",["A good prompt is clear.","A good prompt says who the answer is for.","A good prompt should be as short as one word."],2,"One-word prompts get vague answers. Add task, audience and length.")
+SP(2,"Which sentence shows a wrong way to use AI for school?",["Ask AI to explain a hard topic.","Ask AI to quiz you.","Copy AI's answer and hand it in as your own work."],2,"Copying teaches you nothing, and it is not honest. Use AI to learn, then write in your own words.")
