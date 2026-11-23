@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><body><div id="r"></div>
+<script src="/lab.js"></script>
+<script>
+var q=new URLSearchParams(location.search),id=q.get('id'),mode=q.get('mode');
+fetch('/data/content.json').then(r=>r.json()).then(C=>{
+  var p=C.projects.find(x=>x.id===id),L=JSON.parse(JSON.stringify(p.lab));L.week=1;if(mode==='solution')L.starter=L.solution;
+  window.__done=false;
+  BBLab.renderLab(document.getElementById('r'),'wc-'+id+mode,L,{SHOP:'',TAG:'',CLR:'',items:[]},{id:'T'+mode,progress:()=>({}),loadServer:()=>Promise.resolve(null),saveServer:()=>{},
+    onLab:function(lab){window.__res=lab;window.__done=true}});
+});
+</script>

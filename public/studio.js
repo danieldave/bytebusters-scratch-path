@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 var APP=document.getElementById('app'),TOAST=document.getElementById('toast');
-var C=null,ME=null,PR={p:{},z:{}},F={kind:'all',level:0,show:false};
+var C=null,ME=null,PR={p:{},z:{},c:{}},F={kind:'all',level:0,show:false};
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){}return null}
 function lsj(k,v){if(v===undefined){try{return JSON.parse(ls(k))}catch(e){return null}}ls(k,v===null?null:JSON.stringify(v))}
@@ -20,12 +20,12 @@ function loadProgress(){
     if(e.http===403){ls('bb_id',null);ME=null;PR=lsj('bbs_guest')||{p:{},z:{}};return}
     ME={id:id};PR=lsj('bbs_c_'+id)||{p:{},z:{}}});
 }
-function merge(a,b){b=b||{p:{},z:{}};var o={p:{},z:{}};['p','z'].forEach(function(k){for(var x in b[k])o[k][x]=b[k][x];for(var y in a[k])o[k][y]=a[k][y]});return o}
+function merge(a,b){b=b||{p:{},z:{},c:{}};var o={p:{},z:{},c:{}};['p','z','c'].forEach(function(k){for(var x in b[k])o[k][x]=b[k][x];for(var y in a[k])o[k][y]=a[k][y]});return o}
 function persist(){if(ME)lsj('bbs_c_'+ME.id,PR);else lsj('bbs_guest',PR)}
-function savePrj(pid){persist();stars();if(!ME)return;post('/api/studio',{id:ME.id,action:'set',pid:pid,s:PR.p[pid].s,m:PR.p[pid].m}).catch(function(){toast('Saved on this phone.')})}
+function savePrj(pid){persist();stars();if(!ME)return;post('/api/studio',{id:ME.id,action:'set',pid:pid,s:PR.p[pid].s,m:PR.p[pid].m,lab:PR.p[pid].l?{passed:PR.p[pid].l[0],total:PR.p[pid].l[1]}:undefined}).catch(function(){toast('Saved on this phone.')})}
 function saveZ(zid,ok){var was=PR.z[zid];PR.z[zid]=ok||was===true;persist();stars();if(ME)post('/api/studio',{id:ME.id,action:'z',zid:zid,ok:ok?1:0}).catch(function(){})}
 /* ---------- stars ---------- */
-function pstars(p){var d=PR.p[p.id]||{s:[],m:[]},s=(d.s||[]).length,m=(d.m||[]).length,n=0;if(s>=1)n=1;if(s>=p.steps.length)n=2;if(n===2&&(!p.missions.length||m>=p.missions.length))n=3;return n}
+function pstars(p){var d=PR.p[p.id]||{s:[],m:[]};if(p.lab){var l=d.l||[0,p.lab.missions.length],n0=0;if(l[0]>=1)n0=1;if(l[0]>=Math.ceil(l[1]/2))n0=2;if(l[1]&&l[0]>=l[1])n0=3;return n0}var s=(d.s||[]).length,m=(d.m||[]).length,n=0;if(s>=1)n=1;if(s>=p.steps.length)n=2;if(n===2&&(!p.missions.length||m>=p.missions.length))n=3;return n}
 function total(){var t=0;(C.projects||[]).forEach(function(p){t+=pstars(p)});(C.puzzles||[]).forEach(function(z){if(PR.z[z.id])t++});return t}
 function stars(){var e=document.getElementById('stars');if(e&&C)e.textContent='⭐ '+total()}
 function starTxt(n){return '⭐'.repeat(n)+'☆'.repeat(3-n)}
@@ -59,7 +59,7 @@ function home(){
 }
 function chip(k,v,t){var on=String(F[k])===String(v);return '<button class="fchip '+(on?'on':'')+'" data-k="'+k+'" data-v="'+v+'">'+t+'</button>'}
 function card(p){var n=pstars(p),d=PR.p[p.id]||{s:[]},pc=Math.round(100*(d.s||[]).length/Math.max(1,p.steps.length));
-  return '<a class="pcard" href="#/p/'+p.id+'"><span class="st">'+(n?'⭐'.repeat(n):'')+'</span><div class="em">'+esc(p.emoji)+'</div><h3>'+esc(p.title)+'</h3><p>'+esc(p.hook)+'</p><div class="meta"><span class="tag '+p.kind+'">'+KIND[p.kind]+'</span>'+(p.showcase?'<span class="tag show">🏆 Showcase</span>':'')+'<span>Level '+p.level+'</span></div><div class="prog"><i style="width:'+pc+'%"></i></div></a>'}
+  return '<a class="pcard" href="#/p/'+p.id+'"><span class="st">'+(n?'⭐'.repeat(n):'')+'</span><div class="em">'+esc(p.emoji)+'</div><h3>'+esc(p.title)+'</h3><p>'+esc(p.hook)+'</p><div class="meta"><span class="tag '+p.kind+'">'+KIND[p.kind]+'</span>'+(p.showcase?'<span class="tag show">🏆 Showcase</span>':'')+(p.lab?'<span class="tag">🛠 Build here</span>':'')+'<span>Level '+p.level+'</span></div><div class="prog"><i style="width:'+pc+'%"></i></div></a>'}
 function dayIndex(n){var d=new Date();return (Math.floor(d.getTime()/864e5)+7*0)%Math.max(1,n)}
 function daily(){if(!C.puzzles.length)return '';var z=C.puzzles[dayIndex(C.puzzles.length)];var done=PR.z[z.id];
   return '<div class="daily" id="dz" style="cursor:pointer"><b>🎯 Today\'s puzzle</b> '+(done?'✅':'')+'<br><span style="color:var(--mut)">One small puzzle a day. Takes one minute.</span></div>'}
@@ -74,8 +74,9 @@ function project(id){
   if(p.problem)h+='<div class="card"><b>🌍 Why this matters</b><p>'+esc(p.problem)+'</p></div>';
   if(p.learn&&p.learn.length)h+='<div class="learnrow"><b>You will learn:</b><br>'+p.learn.map(function(l){return '<span>'+esc(l)+'</span>'}).join('')+'</div>';
   if(p.link)h+='<p><a class="btn" href="'+esc(p.link)+'" target="_blank" rel="noopener">🔗 Open the live '+esc(p.title)+'</a></p>';
-  h+='<h2 class="sec">Small steps</h2><div id="steps"></div>';
-  if(p.missions.length){h+='<h2 class="sec">Missions</h2><div id="mis"></div>';
+  h+='<h2 class="sec">Read first</h2><div id="steps"></div>';
+  if(p.lab)h+='<h2 class="sec">🧪 Build it here</h2><p style="color:var(--mut);margin-top:0">Type in the editor. Press Run. Missions turn green when they work. It saves as you go.</p><div id="labroot"></div>';
+  if(p.missions.length&&!p.lab){h+='<h2 class="sec">Missions</h2><div id="mis"></div>';
     if(p.kind==='scratch'&&p.missions.some(function(m){return m.rule}))h+='<div class="upl"><b>🔍 Check my Scratch project</b><p style="color:var(--mut);font-size:15px;margin:4px 0">On a PC: in Scratch choose File → Save to your computer. Then pick the .sb3 file here. Nothing is uploaded; it is checked on your device.</p><input type="file" id="sb3" accept=".sb3"><div id="chk" class="res"></div></div>'}
   if(p.ask)h+='<div class="ask"><b>🔎 Go and ask</b><br>'+esc(p.ask)+'</div>';
   if(p.remix)h+='<div class="remix"><b>🎨 Make it yours</b><br>'+esc(p.remix)+'</div>';
@@ -86,7 +87,17 @@ function project(id){
   var M=document.getElementById('mis');
   if(M){M.innerHTML=p.missions.map(function(m,i){var on=d.m.indexOf(i)>=0;return '<button class="step '+(on?'done':'')+'" data-i="'+i+'"><span class="box">'+(on?'✓':'')+'</span><span class="mis"><span><b>'+esc(m.t)+'</b></span></span></button>'}).join('');
     [].forEach.call(M.querySelectorAll('.step'),function(b){b.onclick=function(){tog(d.m,+b.dataset.i);savePrj(id);afterTick(p,d,'m');project(id)}})}
+  if(p.lab)mountLab(p,d);
   var f=document.getElementById('sb3');if(f)f.onchange=function(){if(f.files[0])check(p,d,f.files[0])};
+}
+var LABTH={SHOP:'',TAG:'',CLR:'',items:[]};
+function mountLab(p,d){
+  var root=document.getElementById('labroot');if(!window.BBLab){setTimeout(function(){window.BBLab?mountLab(p,d):root.innerHTML='<p>The editor is loading…</p>'},800);return}
+  var L=JSON.parse(JSON.stringify(p.lab));L.week=1;PR.c=PR.c||{};
+  window.BBLab.renderLab(root,'wc-'+p.id,L,LABTH,{id:ME?ME.id:'guest',progress:function(){return {}},
+    loadServer:function(){return Promise.resolve(PR.c[p.id]||null)},
+    saveServer:function(k,code){PR.c[p.id]={code:code,t:Date.now()};persist();if(ME)post('/api/studio',{id:ME.id,action:'code',pid:p.id,code:code}).catch(function(){})},
+    onLab:function(lab,won){var o=PR.p[p.id]=PR.p[p.id]||{s:[],m:[]};o.l=[lab.passed,lab.total];o.m=[];for(var i=0;i<lab.passed;i++)o.m.push(i);savePrj(p.id);var e=document.getElementById('ps');if(e)e.textContent=starTxt(pstars(p));if(won)toast('🏆 Every mission is green!')}});
 }
 function tog(a,i){var k=a.indexOf(i);if(k>=0)a.splice(k,1);else a.push(i)}
 function afterTick(p,d,w){var n=pstars(p);if(w==='steps'&&d.s.length===p.steps.length)toast('🎉 All steps done!');if(n===3)toast('🏆 3 stars! You finished '+p.title)}

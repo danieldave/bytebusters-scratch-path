@@ -14,7 +14,13 @@ module.exports = async (req, res) => {
     if (b.action === 'set') {
       const pid = String(b.pid || '');
       if (!/^[a-z0-9-]{2,50}$/.test(pid)) return send(res, 400, { error: 'Bad project' });
-      await cmd('HSET', key, 'p:' + pid, JSON.stringify({ s: ints(b.s), m: ints(b.m), t: Date.now() }));
+      const rec = { s: ints(b.s), m: ints(b.m), t: Date.now() };
+      if (b.lab && typeof b.lab === 'object') rec.l = [Math.max(0, Math.min(20, Number(b.lab.passed) || 0)), Math.max(0, Math.min(20, Number(b.lab.total) || 0))];
+      await cmd('HSET', key, 'p:' + pid, JSON.stringify(rec));
+    } else if (b.action === 'code') {
+      const pid = String(b.pid || '');
+      if (!/^[a-z0-9-]{2,50}$/.test(pid)) return send(res, 400, { error: 'Bad project' });
+      await cmd('HSET', key, 'c:' + pid, JSON.stringify({ code: String(b.code == null ? '' : b.code).slice(0, 20000), t: Date.now() }));
     } else if (b.action === 'z') {
       const zid = String(b.zid || '');
       if (!/^[a-z0-9-]{2,30}$/.test(zid)) return send(res, 400, { error: 'Bad puzzle' });
@@ -22,9 +28,10 @@ module.exports = async (req, res) => {
       await cmd('HSET', key, 'z:' + zid, b.ok ? '1' : (old === '1' ? '1' : '0'));
     }
     const h = (await cmd('HGETALL', key)) || [];
-    const out = { p: {}, z: {} };
+    const out = { p: {}, z: {}, c: {} };
     for (let i = 0; i < h.length; i += 2) {
       if (h[i].startsWith('p:')) { try { out.p[h[i].slice(2)] = JSON.parse(h[i + 1]); } catch (e) { } }
+      else if (h[i].startsWith('c:')) { try { out.c[h[i].slice(2)] = JSON.parse(h[i + 1]); } catch (e) { } }
       else if (h[i].startsWith('z:')) out.z[h[i].slice(2)] = h[i + 1] === '1';
     }
     send(res, 200, out);
