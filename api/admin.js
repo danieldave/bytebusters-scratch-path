@@ -123,15 +123,17 @@ module.exports = async (req, res) => {
       await cmd('HDEL', P + 'content', pre + ':' + id); await cmd('HDEL', P + 'content', 'h:' + pre + ':' + id);
       return send(res, 200, { ok: true });
     }
-    if (a === 'sstats') { // Studio stars per child
+    if (a === 'sstats') { // Studio activity per child (fetched in parallel batches)
       const roster = await allRoster(); const out = {};
-      for (const r of roster) {
-        const h = (await cmd('HGETALL', P + 'sp:' + r.id)) || []; let p = 0, z = 0, last = 0;
-        for (let i = 0; i < h.length; i += 2) {
-          if (h[i].startsWith('p:')) { try { const o = JSON.parse(h[i + 1]); if ((o.s || []).length) p++; if (o.t > last) last = o.t; } catch (e) { } }
-          else if (h[i] .startsWith('z:') && h[i + 1] === '1') z++;
-        }
-        out[r.id] = { p, z, last };
+      for (let k = 0; k < roster.length; k += 20) {
+        await Promise.all(roster.slice(k, k + 20).map(async r => {
+          const h = (await cmd('HGETALL', P + 'sp:' + r.id)) || []; let p = 0, z = 0, st = 0, last = 0;
+          for (let i = 0; i < h.length; i += 2) {
+            if (h[i].startsWith('p:')) { try { const o = JSON.parse(h[i + 1]); if ((o.s || []).length || (o.l && o.l[0])) p++; if (o.l && o.l[1] && o.l[0] >= o.l[1]) st++; if (o.t > last) last = o.t; } catch (e) { } }
+            else if (h[i].startsWith('z:') && h[i + 1] === '1') z++;
+          }
+          out[r.id] = { p, z, done: st, last };
+        }));
       }
       return send(res, 200, { stats: out });
     }
