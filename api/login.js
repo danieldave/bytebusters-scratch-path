@@ -19,6 +19,6 @@ module.exports = async (req, res) => {
       if (prog[i] === 'b') badges = JSON.parse(prog[i + 1]); else progress[prog[i]] = JSON.parse(prog[i + 1]);
     }
     await cmd('HSET', P + 'seen', id, Date.now());
-    send(res, 200, { id, name: learner.name || '', school: learner.school || id.slice(0, 3), progress, badges, share: await share.tokenFor(id) });
+    send(res, 200, { id, name: learner.name || '', school: learner.school || id.slice(0, 3), track: learner.track || '', cls: learner.cls || '', progress, badges, share: await share.tokenFor(id) });
   } catch (e) { send(res, 500, { error: 'Something went wrong. Try again.' }); }
 };

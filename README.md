@@ -66,3 +66,24 @@ Lost card? Find the child in the table on `/admin` and read out their ID. A wron
 - 8 "Spot the AI fib" puzzles teach kids to check what AI says.
 - Edit any lab in the Content Studio with "Edit as JSON" (field `ai`). Built from `content/sp_ai.py`; `node test/ai.js` checks every example prompt scores full marks.
 - Live AI can be added later (it needs an API key and a server function). It is not switched on.
+
+## Real access IDs (Nov 2026)
+On `/admin` → **⭐ Paste the real roster**: one learner per line, `Name, School, Track, Class` (commas, or paste straight from Excel/Google Sheets). School = Yewa / Methodist / Unity (codes YWS/MHS/UHS also work). Track = Scratch / Web / GenAI.
+1. Press **Check the list** — bad rows are shown in red with the reason; nothing is saved yet.
+2. Press **Make IDs** — each learner gets a new ID in the usual format (`YWS-4K7M`, with check character).
+3. Filter by school/track, then **Print ID cards** (name, ID, school, class, track and "go to the site and type your ID") or **Download CSV** (now includes Track, Class and Web Dev weeks).
+4. Track and class can be changed per child in the All learners table (progress is kept).
+5. When everyone has a real ID, **Remove unused mock IDs** deletes only mock IDs that were never used. Until then the mock IDs keep working.
+No real names live in this repo — they only exist in your Upstash database.
+
+## Year 2 Web Development track (`/webdev`)
+10 short weeks: HTML (weeks 1–3) → CSS (4–5) → JavaScript with the four logic colours (6 events/purple, 7 variables/blue, 8 conditionals/red, 9 loops/green) → week 10 remix-and-showcase. Worked examples are the live Yewa projects: Scam Shield, Harvest Calendar Naija and Apprentice Pathway Explorer.
+Each week: goal, "look at a real site", **Go and find out** (one research question for real people), a tiny build with tick-off steps and example code, 3 check questions (2 right to finish), and a "Say it like this" line for judges. The next week opens only when the current one is finished.
+Progress saves to the learner's ID under term `wd` (keys `wdw1`–`wdw10`); week 10 earns the `webdev` badge. Works as a guest too (saved on the phone, merged into the ID when they log in) and offline (queued, synced later). Content: `public/data/webdev.json` — edit text there, then bump `VERSION` in `public/sw.js`.
+
+## What's left
+- [ ] Paste the real roster for all ~100 learners on `/admin`, print the cards, hand them out
+- [ ] Remove unused mock IDs after the first week of real logins
+- [ ] Show Web Dev weeks in the admin week-by-week grid (currently in the table and CSV only)
+- [ ] Gen AI 10-week track (same pattern as `/webdev`, safety rules first)
+- [ ] Trainer edit for `webdev.json` inside the Content Studio

@@ -1,8 +1,8 @@
 const { cmd, P } = require('../lib/redis');
 const ids = require('../lib/ids');
 const { body, send, limited } = require('../lib/http');
-const TERMS = ['t1', 't2', 't3'];
-const BADGES = ['blue', 'red', 'green', 'purple', 'builder', 'web', 'js', 'php'];
+const TERMS = ['t1', 't2', 't3', 'wd']; // wd = Year 2 Web Development track
+const BADGES = ['blue', 'red', 'green', 'purple', 'builder', 'web', 'js', 'php', 'webdev'];
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return send(res, 405, { error: 'POST only' });
   try {

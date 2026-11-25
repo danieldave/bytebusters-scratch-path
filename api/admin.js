@@ -5,6 +5,25 @@ const share = require('../lib/share');
 const { body, send, limited } = require('../lib/http');
 const content = require('../lib/content');
 const SCHOOLS = { MHS: 'Methodist High School Arigbajo', UHS: 'Unity High School', YWS: 'Yewa College Ilaro' };
+// Roster helpers: accept friendly names typed by the trainer.
+function schoolCode(s) {
+  const v = String(s || '').trim().toUpperCase();
+  if (SCHOOLS[v]) return v;
+  if (/YEWA|^YW/.test(v)) return 'YWS';
+  if (/METH|^MH/.test(v)) return 'MHS';
+  if (/UNITY|^UH/.test(v)) return 'UHS';
+  return '';
+}
+function trackName(s) {
+  const v = String(s || '').trim().toLowerCase().replace(/[\s_-]/g, '');
+  if (!v || v.startsWith('scr')) return 'Scratch';
+  if (v.startsWith('web') || v === 'wd') return 'Web';
+  if (v.startsWith('gen') || v === 'ai' || v === 'genai') return 'GenAI';
+  return '';
+}
+function splitLine(line) { // "Name, School, Track, Class" — commas or tabs (pasted from Excel/Sheets)
+  return line.split(line.includes('\t') ? '\t' : ',').map((x) => x.trim());
+}
 function pinOk(pin) {
   const want = process.env.TRAINER_PIN || '';
   if (!want || !pin) return false;
@@ -44,10 +63,11 @@ module.exports = async (req, res) => {
           if (p[i] === 'b') { r.badges = JSON.parse(p[i + 1]); continue; }
           const o = JSON.parse(p[i + 1]); r.progress[p[i]] = o;
           if (/^w\d+$/.test(p[i])) { if (o.done) done++; stars += o.quiz || 0; }
+          else if (/^wdw\d+$/.test(p[i])) { r.wd = (r.wd || 0) + (o.done ? 1 : 0); }
           else if (/^t[23]w\d+$/.test(p[i])) { const tk = p[i].slice(0, 2); r[tk] = (r[tk] || 0) + (o.done ? 1 : 0); r[tk + 'lab'] = (r[tk + 'lab'] || 0) + ((o.lab && o.lab.total && o.lab.passed >= o.lab.total) ? 1 : 0); }
           last = Math.max(last, o.at || 0);
         }
-        r.done = done; r.stars = stars; r.last = last; r.seen = seen[r.id] || 0; r.t2 = r.t2 || 0; r.t3 = r.t3 || 0; r.t2lab = r.t2lab || 0; r.t3lab = r.t3lab || 0;
+        r.done = done; r.stars = stars; r.last = last; r.seen = seen[r.id] || 0; r.t2 = r.t2 || 0; r.t3 = r.t3 || 0; r.t2lab = r.t2lab || 0; r.t3lab = r.t3lab || 0; r.wd = r.wd || 0;
       }
       const cf = (await cmd('HGETALL', P + 'cfg')) || []; const open = { t1: true, t2: false, t3: false };
       for (let i = 0; i < cf.length; i += 2) if (cf[i] in open) open[cf[i]] = cf[i + 1] === '1';
@@ -101,6 +121,46 @@ module.exports = async (req, res) => {
         out.push({ id, name: nm });
       }
       return send(res, 200, { added: out });
+    }
+    if (a === 'roster') { // lines "Name, School, Track, Class" -> brand-new IDs. dry:true only checks.
+      const out = [], bad = [];
+      const lines = String(b.text || '').split(/\r?\n/).filter((l) => l.trim()).slice(0, 400);
+      for (const line of lines) {
+        const [name, sch, tr, cls] = splitLine(line);
+        if (/^name$/i.test(name || '')) continue; // header row
+        const school = schoolCode(sch), track = trackName(tr);
+        if (!name || !school || !track) { bad.push({ line, why: !name ? 'no name' : !school ? 'school not Yewa / Methodist / Unity' : 'track not Scratch / Web / GenAI' }); continue; }
+        out.push({ name: name.slice(0, 40), school, track, cls: String(cls || '').slice(0, 20) });
+      }
+      if (b.dry) return send(res, 200, { ok: out, bad });
+      const made = [];
+      for (const r of out) {
+        const id = await newId(r.school);
+        await cmd('HSET', P + 'roster', id, JSON.stringify(r));
+        made.push({ id, ...r });
+      }
+      return send(res, 200, { added: made, bad });
+    }
+    if (a === 'setinfo') { // change track / class of one ID (keeps progress)
+      const id = ids.normalise(b.id);
+      const raw = await cmd('HGET', P + 'roster', id);
+      if (!raw) return send(res, 404, { error: 'ID not found' });
+      const o = JSON.parse(raw);
+      if (b.track !== undefined) { const t = trackName(b.track); if (!t) return send(res, 400, { error: 'Track must be Scratch, Web or GenAI' }); o.track = t; }
+      if (b.cls !== undefined) o.cls = String(b.cls).trim().slice(0, 20);
+      await cmd('HSET', P + 'roster', id, JSON.stringify(o));
+      return send(res, 200, { ok: true });
+    }
+    if (a === 'clearmock') { // remove every unused mock ID (never logged in, no progress)
+      const roster = await allRoster(); let n = 0;
+      for (const r of roster) {
+        if (!r.mock) continue;
+        const seen = await cmd('HGET', P + 'seen', r.id);
+        const prog = await cmd('HGETALL', P + 'prog:' + r.id);
+        if (seen || (prog && prog.length)) continue;
+        await cmd('HDEL', P + 'roster', r.id); n++;
+      }
+      return send(res, 200, { removed: n });
     }
     if (a === 'cget') return send(res, 200, await content.load(true));
     if (a === 'csave') {
