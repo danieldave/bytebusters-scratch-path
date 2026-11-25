@@ -1,142 +1,976 @@
 {
- "version": "2026-11-wd1",
+ "version": "2026-11-wd1-t",
  "title": "Year 2 Web Development Track",
  "intro": "10 short weeks. Each week: one goal, one thing to find out from real people, one tiny build, and 3 check questions. Our own Yewa College sites are the examples — you will learn how they were made.",
  "projects": {
-  "SS": { "name": "Scam Shield", "url": "https://scam-shield-blond.vercel.app/", "job": "Helps people spot scam messages before they lose money." },
-  "HC": { "name": "Harvest Calendar Naija", "url": "https://harvest-calendar-naija.vercel.app/", "job": "Shows which crops to plant and harvest each month." },
-  "AP": { "name": "Apprentice Pathway Explorer", "url": "https://apprentice-pathway-explorer.vercel.app/", "job": "Helps young people explore trades like tailoring, welding and hair styling." }
+  "SS": {
+   "name": "Scam Shield",
+   "url": "https://scam-shield-blond.vercel.app/",
+   "job": "Helps people spot scam messages before they lose money."
+  },
+  "HC": {
+   "name": "Harvest Calendar Naija",
+   "url": "https://harvest-calendar-naija.vercel.app/",
+   "job": "Shows which crops to plant and harvest each month."
+  },
+  "AP": {
+   "name": "Apprentice Pathway Explorer",
+   "url": "https://apprentice-pathway-explorer.vercel.app/",
+   "job": "Helps young people explore trades like tailoring, welding and hair styling."
+  }
  },
  "weeks": [
   {
-   "week": 1, "title": "What is a website, really?", "part": "HTML", "colours": [], "project": "SS",
+   "week": 1,
+   "title": "What is a website, really?",
+   "part": "HTML",
+   "colours": [],
+   "project": "SS",
    "goal": "Know that every website is just a text file the browser reads, and make your first page.",
    "look": "Open Scam Shield. Find the big title, a paragraph and a button. Those are three HTML tags.",
-   "research": { "q": "Ask 3 people at home: have you ever got a message you thought was a scam? What did it say?", "tip": "Write their answers in a few words. Real stories make your website matter." },
-   "build": { "task": "Make a page with a title and one paragraph about scams.", "steps": ["Open the Code Lab or any code app on the phone", "Type <h1>Stop Scams</h1>", "Under it type <p>Never send money to someone you do not know.</p>", "Press Run and look at your page"], "code": "<h1>Stop Scams</h1>\n<p>Never send money to someone you do not know.</p>" },
+   "research": {
+    "q": "Ask 3 people at home: have you ever got a message you thought was a scam? What did it say?",
+    "tip": "Write their answers in a few words. Real stories make your website matter."
+   },
+   "build": {
+    "task": "Make a page with a title and one paragraph about scams.",
+    "steps": [
+     "Open the Code Lab or any code app on the phone",
+     "Type <h1>Stop Scams</h1>",
+     "Under it type <p>Never send money to someone you do not know.</p>",
+     "Press Run and look at your page"
+    ],
+    "code": "<h1>Stop Scams</h1>\n<p>Never send money to someone you do not know.</p>"
+   },
    "check": [
-    { "q": "What does the browser read to show a website?", "opts": ["A picture", "A text file with HTML", "A video"], "a": 1 },
-    { "q": "Which tag makes the biggest heading?", "opts": ["<p>", "<h1>", "<a>"], "a": 1 },
-    { "q": "Why did Scam Shield get built?", "opts": ["To play music", "To help people spot scam messages", "To sell phones"], "a": 1 }
+    {
+     "q": "What does the browser read to show a website?",
+     "opts": [
+      "A picture",
+      "A text file with HTML",
+      "A video"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which tag makes the biggest heading?",
+     "opts": [
+      "<p>",
+      "<h1>",
+      "<a>"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why did Scam Shield get built?",
+     "opts": [
+      "To play music",
+      "To help people spot scam messages",
+      "To sell phones"
+     ],
+     "a": 1
+    }
    ],
-   "say": "A website is a text file. HTML tags tell the browser what each part is."
+   "say": "A website is a text file. HTML tags tell the browser what each part is.",
+   "trainer": {
+    "open": "Every website you have ever seen — Google, WhatsApp Web, Scam Shield — is just a text file. Today you'll write one.",
+    "props": [
+     "Phones with the Code Lab or any code app",
+     "Scam Shield open on one phone"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Show Scam Shield, then 'View source' (or show the code). 'This is all a website is — text.'"
+     ],
+     [
+      "5 min",
+      "Point out 3 tags: <h1>, <p>, <button>. Kids say what each does."
+     ],
+     [
+      "8 min",
+      "Kids type the h1 + p page and press Run. Pairs help each other."
+     ],
+     [
+      "4 min",
+      "Check questions; everyone says the line."
+     ]
+    ],
+    "lookfor": [
+     "Opens and closes each tag (<p> … </p>)",
+     "Can say what the browser reads",
+     "Changes the words to their own scam tip"
+    ],
+    "fix": [
+     [
+      "Forgets the closing tag",
+      "Tags are like brackets — every opening needs a closing. Find the missing /."
+     ],
+     [
+      "Types in a notes app, not a code app",
+      "Notes won't run code — open the Code Lab or the Studio Web Creator."
+     ]
+    ]
+   }
   },
   {
-   "week": 2, "title": "Headings, lists and links", "part": "HTML", "colours": [], "project": "HC",
+   "week": 2,
+   "title": "Headings, lists and links",
+   "part": "HTML",
+   "colours": [],
+   "project": "HC",
    "goal": "Put information in order with headings, lists and links.",
    "look": "Open Harvest Calendar Naija. Notice how months and crops are grouped. Grouping = structure.",
-   "research": { "q": "Ask a farmer, market seller or grandparent: which 3 crops are planted around the start of the rainy season?", "tip": "Write the crop and the month." },
-   "build": { "task": "Make a list of 3 crops with the months they are planted, and a link to Harvest Calendar.", "steps": ["Add <h2>Planting Time</h2>", "Make a list with <ul> and three <li> items", "Add a link: <a href=\"https://harvest-calendar-naija.vercel.app/\">See more</a>", "Run it and tap the link"], "code": "<h2>Planting Time</h2>\n<ul>\n  <li>Maize — March</li>\n  <li>Yam — February</li>\n  <li>Cassava — April</li>\n</ul>\n<a href=\"https://harvest-calendar-naija.vercel.app/\">See more</a>" },
+   "research": {
+    "q": "Ask a farmer, market seller or grandparent: which 3 crops are planted around the start of the rainy season?",
+    "tip": "Write the crop and the month."
+   },
+   "build": {
+    "task": "Make a list of 3 crops with the months they are planted, and a link to Harvest Calendar.",
+    "steps": [
+     "Add <h2>Planting Time</h2>",
+     "Make a list with <ul> and three <li> items",
+     "Add a link: <a href=\"https://harvest-calendar-naija.vercel.app/\">See more</a>",
+     "Run it and tap the link"
+    ],
+    "code": "<h2>Planting Time</h2>\n<ul>\n  <li>Maize — March</li>\n  <li>Yam — February</li>\n  <li>Cassava — April</li>\n</ul>\n<a href=\"https://harvest-calendar-naija.vercel.app/\">See more</a>"
+   },
    "check": [
-    { "q": "Which tag holds one item in a list?", "opts": ["<li>", "<ul>", "<h2>"], "a": 0 },
-    { "q": "What does <a href=\"...\"> make?", "opts": ["A picture", "A link", "A button colour"], "a": 1 },
-    { "q": "Why do websites use headings?", "opts": ["To make the page slow", "So people can find information fast", "Headings are not needed"], "a": 1 }
+    {
+     "q": "Which tag holds one item in a list?",
+     "opts": [
+      "<li>",
+      "<ul>",
+      "<h2>"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does <a href=\"...\"> make?",
+     "opts": [
+      "A picture",
+      "A link",
+      "A button colour"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why do websites use headings?",
+     "opts": [
+      "To make the page slow",
+      "So people can find information fast",
+      "Headings are not needed"
+     ],
+     "a": 1
+    }
    ],
-   "say": "Headings, lists and links put information in order so people find what they need fast."
+   "say": "Headings, lists and links put information in order so people find what they need fast.",
+   "trainer": {
+    "open": "Information is easier to use when it's in order. Today you'll organise like Harvest Calendar does — with headings, lists and links.",
+    "props": [
+     "Harvest Calendar open",
+     "Research answers about crops and months"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Show Harvest Calendar: how are months and crops grouped? Grouping = structure."
+     ],
+     [
+      "5 min",
+      "Teach <h2>, <ul>/<li> and <a href>. Build one list together."
+     ],
+     [
+      "8 min",
+      "Kids list 3 crops + planting months from their research, plus one link."
+     ],
+     [
+      "4 min",
+      "Swap phones: can a partner find a crop fast? Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Uses <li> inside <ul>",
+     "Link has a real href",
+     "Uses their own research, not copied examples"
+    ],
+    "fix": [
+     [
+      "Puts <li> without <ul>",
+      "A list item needs its list — wrap them in <ul> … </ul>."
+     ],
+     [
+      "Link doesn't open",
+      "Check the href has https:// and the quotes are closed."
+     ]
+    ]
+   }
   },
   {
-   "week": 3, "title": "Pictures and sections", "part": "HTML", "colours": [], "project": "AP",
+   "week": 3,
+   "title": "Pictures and sections",
+   "part": "HTML",
+   "colours": [],
+   "project": "AP",
    "goal": "Add a picture with alt text and group content in sections, like a trade card.",
    "look": "Open Apprentice Pathway Explorer. Each trade is a card: picture, name, short facts.",
-   "research": { "q": "Talk to one artisan near you (tailor, mechanic, hairdresser, welder). How long did they learn the trade? What tool matters most?", "tip": "Their answer becomes your card's facts." },
-   "build": { "task": "Make one trade card with a picture, a name and two facts.", "steps": ["Start with <section>", "Add <img src=\"tailor.jpg\" alt=\"A tailor sewing\">", "Add <h3> with the trade name and two <p> facts", "Close with </section>"], "code": "<section>\n  <img src=\"tailor.jpg\" alt=\"A tailor sewing a dress\" width=\"200\">\n  <h3>Tailoring</h3>\n  <p>Learning time: about 2 years</p>\n  <p>Key tool: sewing machine</p>\n</section>" },
+   "research": {
+    "q": "Talk to one artisan near you (tailor, mechanic, hairdresser, welder). How long did they learn the trade? What tool matters most?",
+    "tip": "Their answer becomes your card's facts."
+   },
+   "build": {
+    "task": "Make one trade card with a picture, a name and two facts.",
+    "steps": [
+     "Start with <section>",
+     "Add <img src=\"tailor.jpg\" alt=\"A tailor sewing\">",
+     "Add <h3> with the trade name and two <p> facts",
+     "Close with </section>"
+    ],
+    "code": "<section>\n  <img src=\"tailor.jpg\" alt=\"A tailor sewing a dress\" width=\"200\">\n  <h3>Tailoring</h3>\n  <p>Learning time: about 2 years</p>\n  <p>Key tool: sewing machine</p>\n</section>"
+   },
    "check": [
-    { "q": "What is alt text for?", "opts": ["Describing the picture for people who cannot see it", "Making the picture bigger", "Changing colour"], "a": 0 },
-    { "q": "What does <section> do?", "opts": ["Deletes content", "Groups related content together", "Plays a sound"], "a": 1 },
-    { "q": "Where did your card's facts come from?", "opts": ["I guessed", "A real artisan I asked", "Nowhere"], "a": 1 }
+    {
+     "q": "What is alt text for?",
+     "opts": [
+      "Describing the picture for people who cannot see it",
+      "Making the picture bigger",
+      "Changing colour"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does <section> do?",
+     "opts": [
+      "Deletes content",
+      "Groups related content together",
+      "Plays a sound"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Where did your card's facts come from?",
+     "opts": [
+      "I guessed",
+      "A real artisan I asked",
+      "Nowhere"
+     ],
+     "a": 1
+    }
    ],
-   "say": "Sections group things that belong together. Alt text makes pictures useful for everyone."
+   "say": "Sections group things that belong together. Alt text makes pictures useful for everyone.",
+   "trainer": {
+    "open": "Pictures make people stop and look. Today you'll build a trade card like Apprentice Pathway does — picture, name and facts.",
+    "props": [
+     "One trade picture link (or the sample)",
+     "Apprentice Pathway open"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Show a trade card on Apprentice Pathway. What parts does it have?"
+     ],
+     [
+      "5 min",
+      "Teach <img src alt> and <section>. Explain alt text helps blind users (screen readers)."
+     ],
+     [
+      "8 min",
+      "Kids build one trade card with a picture, name and 2 facts from their research."
+     ],
+     [
+      "4 min",
+      "Read alt texts aloud — would a blind person understand? Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Every <img> has helpful alt text",
+     "Card content is inside <section>",
+     "Facts come from talking to a real tradesperson"
+    ],
+    "fix": [
+     [
+      "Picture doesn't show",
+      "Check the src link is a direct image link and the quotes are closed."
+     ],
+     [
+      "alt='image'",
+      "Describe what's in it: alt='A tailor cutting fabric'."
+     ]
+    ]
+   }
   },
   {
-   "week": 4, "title": "CSS: colour and fonts", "part": "CSS", "colours": [], "project": "SS",
+   "week": 4,
+   "title": "CSS: colour and fonts",
+   "part": "CSS",
+   "colours": [],
+   "project": "SS",
    "goal": "Use CSS to change colours and text so the page feels trustworthy.",
    "look": "Look at Scam Shield's colours. Warning parts look different from safe parts. That is CSS.",
-   "research": { "q": "Show 3 classmates two colours: red and green. Ask: which one feels like danger? Which feels safe?", "tip": "Count the answers. Designers use what people already feel." },
-   "build": { "task": "Style your scam page: a calm background, a strong title colour, and a red warning line.", "steps": ["Add a <style> tag", "body { background: #fffaf0; font-family: sans-serif; }", "h1 { color: #1d2433; }", ".warn { color: #e0483a; font-weight: bold; }", "Give one paragraph class=\"warn\""], "code": "<style>\n  body { background: #fffaf0; font-family: sans-serif; }\n  h1 { color: #1d2433; }\n  .warn { color: #e0483a; font-weight: bold; }\n</style>\n<h1>Stop Scams</h1>\n<p class=\"warn\">Never share your BVN or PIN.</p>" },
+   "research": {
+    "q": "Show 3 classmates two colours: red and green. Ask: which one feels like danger? Which feels safe?",
+    "tip": "Count the answers. Designers use what people already feel."
+   },
+   "build": {
+    "task": "Style your scam page: a calm background, a strong title colour, and a red warning line.",
+    "steps": [
+     "Add a <style> tag",
+     "body { background: #fffaf0; font-family: sans-serif; }",
+     "h1 { color: #1d2433; }",
+     ".warn { color: #e0483a; font-weight: bold; }",
+     "Give one paragraph class=\"warn\""
+    ],
+    "code": "<style>\n  body { background: #fffaf0; font-family: sans-serif; }\n  h1 { color: #1d2433; }\n  .warn { color: #e0483a; font-weight: bold; }\n</style>\n<h1>Stop Scams</h1>\n<p class=\"warn\">Never share your BVN or PIN.</p>"
+   },
    "check": [
-    { "q": "HTML is the structure. CSS is…", "opts": ["The style (colours, sizes, layout)", "The database", "The internet"], "a": 0 },
-    { "q": "What does .warn mean in CSS?", "opts": ["A tag called warn", "Anything with class=\"warn\"", "An error"], "a": 1 },
-    { "q": "Why use red for warnings?", "opts": ["People already link red with danger", "Red is cheaper", "No reason"], "a": 0 }
+    {
+     "q": "HTML is the structure. CSS is…",
+     "opts": [
+      "The style (colours, sizes, layout)",
+      "The database",
+      "The internet"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does .warn mean in CSS?",
+     "opts": [
+      "A tag called warn",
+      "Anything with class=\"warn\"",
+      "An error"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why use red for warnings?",
+     "opts": [
+      "People already link red with danger",
+      "Red is cheaper",
+      "No reason"
+     ],
+     "a": 0
+    }
    ],
-   "say": "CSS is the style. We used red for warnings because people already feel red means danger."
+   "say": "CSS is the style. We used red for warnings because people already feel red means danger.",
+   "trainer": {
+    "open": "HTML is the skeleton. CSS is the clothes. Today you dress your scam page so people trust it.",
+    "props": [
+     "Your Week 1 page",
+     "Colour cards or a colour picker site"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Show the same page with and without CSS. Which feels safer to use?"
+     ],
+     [
+      "5 min",
+      "Teach selector { property: value; } with background, color, font-size."
+     ],
+     [
+      "8 min",
+      "Kids style their scam page: calm background, strong title, readable text."
+     ],
+     [
+      "4 min",
+      "Gallery walk: which page is easiest to read? Why? Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Uses a selector, braces and semicolons correctly",
+     "Text is readable (good contrast)",
+     "Can explain WHY they chose a colour"
+    ],
+    "fix": [
+     [
+      "Missing ; or }",
+      "CSS stops working after a mistake — check each line ends with ; and the block closes with }."
+     ],
+     [
+      "Bright yellow text on white",
+      "Ask a partner to read it from arm's length. Contrast matters."
+     ]
+    ]
+   }
   },
   {
-   "week": 5, "title": "Boxes that fit any phone", "part": "CSS", "colours": [], "project": "AP",
+   "week": 5,
+   "title": "Boxes that fit any phone",
+   "part": "CSS",
+   "colours": [],
+   "project": "AP",
    "goal": "Lay out cards in rows that wrap nicely on a small phone screen.",
    "look": "Open Apprentice Pathway on a phone, then on a bigger screen. The cards move to fit. That is a flexible layout.",
-   "research": { "q": "Ask 5 people: do you use the internet more on a phone or a computer?", "tip": "This is why we build phone-first." },
-   "build": { "task": "Put 3 trade cards side by side that wrap on a phone.", "steps": [".cards { display: flex; flex-wrap: wrap; gap: 12px; }", ".card { flex: 1 1 150px; padding: 12px; border-radius: 12px; background: white; }", "Wrap your 3 sections in <div class=\"cards\">", "Turn the phone sideways and watch"], "code": "<style>\n  .cards { display: flex; flex-wrap: wrap; gap: 12px; }\n  .card { flex: 1 1 150px; padding: 12px; border-radius: 12px; background: #fff; border: 2px solid #ffb800; }\n</style>\n<div class=\"cards\">\n  <section class=\"card\"><h3>Tailoring</h3></section>\n  <section class=\"card\"><h3>Welding</h3></section>\n  <section class=\"card\"><h3>Hair styling</h3></section>\n</div>" },
+   "research": {
+    "q": "Ask 5 people: do you use the internet more on a phone or a computer?",
+    "tip": "This is why we build phone-first."
+   },
+   "build": {
+    "task": "Put 3 trade cards side by side that wrap on a phone.",
+    "steps": [
+     ".cards { display: flex; flex-wrap: wrap; gap: 12px; }",
+     ".card { flex: 1 1 150px; padding: 12px; border-radius: 12px; background: white; }",
+     "Wrap your 3 sections in <div class=\"cards\">",
+     "Turn the phone sideways and watch"
+    ],
+    "code": "<style>\n  .cards { display: flex; flex-wrap: wrap; gap: 12px; }\n  .card { flex: 1 1 150px; padding: 12px; border-radius: 12px; background: #fff; border: 2px solid #ffb800; }\n</style>\n<div class=\"cards\">\n  <section class=\"card\"><h3>Tailoring</h3></section>\n  <section class=\"card\"><h3>Welding</h3></section>\n  <section class=\"card\"><h3>Hair styling</h3></section>\n</div>"
+   },
    "check": [
-    { "q": "What does flex-wrap: wrap do?", "opts": ["Moves boxes to the next line when space runs out", "Hides boxes", "Makes text bold"], "a": 0 },
-    { "q": "Why build phone-first in Nigeria?", "opts": ["Most people browse on phones", "Phones are banned", "Computers are faster"], "a": 0 },
-    { "q": "What is gap for?", "opts": ["Space between the boxes", "Colour", "Sound"], "a": 0 }
+    {
+     "q": "What does flex-wrap: wrap do?",
+     "opts": [
+      "Moves boxes to the next line when space runs out",
+      "Hides boxes",
+      "Makes text bold"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why build phone-first in Nigeria?",
+     "opts": [
+      "Most people browse on phones",
+      "Phones are banned",
+      "Computers are faster"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What is gap for?",
+     "opts": [
+      "Space between the boxes",
+      "Colour",
+      "Sound"
+     ],
+     "a": 0
+    }
    ],
-   "say": "Flexbox lets the cards move to fit any screen, because most of our users are on phones."
+   "say": "Flexbox lets the cards move to fit any screen, because most of our users are on phones.",
+   "trainer": {
+    "open": "Most people visit our sites on phones. Today you'll make boxes that fit any screen — like Apprentice Pathway's cards.",
+    "props": [
+     "3 trade cards from Week 3",
+     "A phone and a bigger screen to compare"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Open Apprentice Pathway on a phone, then a laptop. What moves?"
+     ],
+     [
+      "5 min",
+      "Teach display:flex, flex-wrap:wrap and gap. Show the box model (padding, margin)."
+     ],
+     [
+      "8 min",
+      "Kids put 3 cards side by side that wrap on small screens."
+     ],
+     [
+      "4 min",
+      "Turn phones sideways and back — do the cards still fit? Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Uses flex-wrap so cards wrap",
+     "Adds gap/padding so it's not cramped",
+     "Tests on a real phone"
+    ],
+    "fix": [
+     [
+      "Cards squash into thin strips",
+      "Give each card a min-width (e.g. 200px) so it wraps instead."
+     ],
+     [
+      "Forgets the container",
+      "flex goes on the box AROUND the cards, not on each card."
+     ]
+    ]
+   }
   },
   {
-   "week": 6, "title": "JavaScript events: when something happens", "part": "JavaScript", "colours": ["purple"], "project": "SS",
+   "week": 6,
+   "title": "JavaScript events: when something happens",
+   "part": "JavaScript",
+   "colours": [
+    "purple"
+   ],
+   "project": "SS",
    "goal": "Make a button do something when it is tapped (purple = events).",
    "look": "On Scam Shield, tap the check button. Something happens. That is an event: when tapped → do this.",
-   "research": { "q": "Ask someone who uses POS or bank apps: which button do you tap most? What happens after?", "tip": "Every app is 'when this happens → do that'." },
-   "build": { "task": "Make a button that shows a safety tip when tapped.", "steps": ["Add <button id=\"tip\">Show tip</button> and <p id=\"out\"></p>", "In <script>: document.getElementById('tip').onclick = function () { … }", "Inside: document.getElementById('out').textContent = 'Banks never ask for your PIN.';", "Run and tap"], "code": "<button id=\"tip\">Show tip</button>\n<p id=\"out\"></p>\n<script>\n  document.getElementById('tip').onclick = function () {\n    document.getElementById('out').textContent = 'Banks never ask for your PIN.';\n  };\n</script>" },
+   "research": {
+    "q": "Ask someone who uses POS or bank apps: which button do you tap most? What happens after?",
+    "tip": "Every app is 'when this happens → do that'."
+   },
+   "build": {
+    "task": "Make a button that shows a safety tip when tapped.",
+    "steps": [
+     "Add <button id=\"tip\">Show tip</button> and <p id=\"out\"></p>",
+     "In <script>: document.getElementById('tip').onclick = function () { … }",
+     "Inside: document.getElementById('out').textContent = 'Banks never ask for your PIN.';",
+     "Run and tap"
+    ],
+    "code": "<button id=\"tip\">Show tip</button>\n<p id=\"out\"></p>\n<script>\n  document.getElementById('tip').onclick = function () {\n    document.getElementById('out').textContent = 'Banks never ask for your PIN.';\n  };\n</script>"
+   },
    "check": [
-    { "q": "What is an event?", "opts": ["Something that happens, like a tap", "A colour", "A picture"], "a": 0 },
-    { "q": "Which logic colour is events?", "opts": ["Blue", "Purple", "Green"], "a": 1 },
-    { "q": "In Scratch, 'when this sprite clicked' is like which JavaScript?", "opts": ["onclick", "<h1>", "flex-wrap"], "a": 0 }
+    {
+     "q": "What is an event?",
+     "opts": [
+      "Something that happens, like a tap",
+      "A colour",
+      "A picture"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which logic colour is events?",
+     "opts": [
+      "Blue",
+      "Purple",
+      "Green"
+     ],
+     "a": 1
+    },
+    {
+     "q": "In Scratch, 'when this sprite clicked' is like which JavaScript?",
+     "opts": [
+      "onclick",
+      "<h1>",
+      "flex-wrap"
+     ],
+     "a": 0
+    }
    ],
-   "say": "Events are purple: when the button is tapped, the code runs. Same idea as 'when this sprite clicked' in Scratch."
+   "say": "Events are purple: when the button is tapped, the code runs. Same idea as 'when this sprite clicked' in Scratch.",
+   "trainer": {
+    "open": "Now we make the page DO something. In Scratch it was 'when this sprite clicked'. In JavaScript it's an event.",
+    "props": [
+     "Purple card: EVENTS",
+     "Scam Shield's tip button as the example"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Recall Scratch 'when clicked'. Same idea, new words: addEventListener('click')."
+     ],
+     [
+      "5 min",
+      "Live-code a button that shows a tip. Kids say each line in plain words."
+     ],
+     [
+      "8 min",
+      "Kids build their own tip button with a tip from their research."
+     ],
+     [
+      "4 min",
+      "Predict-then-run: what happens if we change 'click' to 'dblclick'? Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Can point to the event and the action",
+     "Uses getElementById correctly",
+     "Explains it as 'when … then …'"
+    ],
+    "fix": [
+     [
+      "Nothing happens on click",
+      "Check the id in HTML matches the id in JavaScript exactly — capital letters count."
+     ],
+     [
+      "Script runs before the button exists",
+      "Put the <script> at the bottom of the page."
+     ]
+    ]
+   }
   },
   {
-   "week": 7, "title": "Variables: boxes that remember", "part": "JavaScript", "colours": ["blue", "purple"], "project": "AP",
+   "week": 7,
+   "title": "Variables: boxes that remember",
+   "part": "JavaScript",
+   "colours": [
+    "blue",
+    "purple"
+   ],
+   "project": "AP",
    "goal": "Store what the user types in a variable and use it (blue = variables).",
    "look": "Apprentice Pathway remembers which trade you picked. A variable holds that choice.",
-   "research": { "q": "Ask 3 classmates: which trade would you like to learn, and why?", "tip": "Use their answers to test your page." },
-   "build": { "task": "Ask for a name and a trade, then greet the person.", "steps": ["Add two inputs with ids name and trade, and a button", "let name = document.getElementById('name').value;", "let trade = document.getElementById('trade').value;", "Show: 'Hi ' + name + ', ' + trade + ' is a great choice!'"], "code": "<input id=\"name\" placeholder=\"Your name\">\n<input id=\"trade\" placeholder=\"A trade\">\n<button id=\"go\">Go</button>\n<p id=\"out\"></p>\n<script>\n  document.getElementById('go').onclick = function () {\n    let name = document.getElementById('name').value;\n    let trade = document.getElementById('trade').value;\n    document.getElementById('out').textContent = 'Hi ' + name + ', ' + trade + ' is a great choice!';\n  };\n</script>" },
+   "research": {
+    "q": "Ask 3 classmates: which trade would you like to learn, and why?",
+    "tip": "Use their answers to test your page."
+   },
+   "build": {
+    "task": "Ask for a name and a trade, then greet the person.",
+    "steps": [
+     "Add two inputs with ids name and trade, and a button",
+     "let name = document.getElementById('name').value;",
+     "let trade = document.getElementById('trade').value;",
+     "Show: 'Hi ' + name + ', ' + trade + ' is a great choice!'"
+    ],
+    "code": "<input id=\"name\" placeholder=\"Your name\">\n<input id=\"trade\" placeholder=\"A trade\">\n<button id=\"go\">Go</button>\n<p id=\"out\"></p>\n<script>\n  document.getElementById('go').onclick = function () {\n    let name = document.getElementById('name').value;\n    let trade = document.getElementById('trade').value;\n    document.getElementById('out').textContent = 'Hi ' + name + ', ' + trade + ' is a great choice!';\n  };\n</script>"
+   },
    "check": [
-    { "q": "A variable is like…", "opts": ["A labelled box that remembers something", "A button", "A colour"], "a": 0 },
-    { "q": "Which logic colour is variables?", "opts": ["Red", "Blue", "Purple"], "a": 1 },
-    { "q": "What does let name = … do?", "opts": ["Makes a box called name and puts a value in it", "Deletes name", "Prints a page"], "a": 0 }
+    {
+     "q": "A variable is like…",
+     "opts": [
+      "A labelled box that remembers something",
+      "A button",
+      "A colour"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which logic colour is variables?",
+     "opts": [
+      "Red",
+      "Blue",
+      "Purple"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does let name = … do?",
+     "opts": [
+      "Makes a box called name and puts a value in it",
+      "Deletes name",
+      "Prints a page"
+     ],
+     "a": 0
+    }
    ],
-   "say": "A variable is a blue box that remembers what the user typed, so the page can use it."
+   "say": "A variable is a blue box that remembers what the user typed, so the page can use it.",
+   "trainer": {
+    "open": "Variables are boxes that remember things — like the score box in Scratch. Today the page will remember your name.",
+    "props": [
+     "Blue card: VARIABLES",
+     "Apprentice Pathway as the example"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Recall the Scratch score variable. In JavaScript: let name = …"
+     ],
+     [
+      "5 min",
+      "Live-code: read an input, store it in a variable, show a greeting."
+     ],
+     [
+      "8 min",
+      "Kids ask for a name and a trade and show 'Hello Ada, tailoring is a great choice!'."
+     ],
+     [
+      "4 min",
+      "Change the value, run again — what changed? Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Uses let/const with a clear name",
+     "Reads .value from the input",
+     "Can say what's IN the box at each step"
+    ],
+    "fix": [
+     [
+      "Shows [object HTMLInputElement]",
+      "You stored the box, not what's in it — add .value."
+     ],
+     [
+      "Variable named x or a",
+      "Name it for what it holds: tradeName, userName."
+     ]
+    ]
+   }
   },
   {
-   "week": 8, "title": "Conditionals: if this, then that", "part": "JavaScript", "colours": ["red", "blue", "purple"], "project": "SS",
+   "week": 8,
+   "title": "Conditionals: if this, then that",
+   "part": "JavaScript",
+   "colours": [
+    "red",
+    "blue",
+    "purple"
+   ],
+   "project": "SS",
    "goal": "Make the page decide: if a message has scam words, warn the user (red = conditionals).",
    "look": "Scam Shield decides 'risky' or 'looks safe'. That decision is an if.",
-   "research": { "q": "Collect 3 real scam words or phrases people have seen (e.g. 'urgent', 'you have won', 'send your BVN').", "tip": "Ask family. Never call or reply to a scammer." },
-   "build": { "task": "Build a mini scam checker: if the message includes 'urgent', show a red warning.", "steps": ["Add a textarea id=\"msg\" and a Check button", "let text = msg.value.toLowerCase();", "if (text.includes('urgent')) { warn } else { safe }", "Test with a scam message and a normal message"], "code": "<textarea id=\"msg\" placeholder=\"Paste a message\"></textarea>\n<button id=\"check\">Check</button>\n<p id=\"out\"></p>\n<script>\n  document.getElementById('check').onclick = function () {\n    let text = document.getElementById('msg').value.toLowerCase();\n    if (text.includes('urgent')) {\n      document.getElementById('out').textContent = '⚠️ Careful! This looks like a scam.';\n    } else {\n      document.getElementById('out').textContent = '✅ No scam words found. Still be careful.';\n    }\n  };\n</script>" },
+   "research": {
+    "q": "Collect 3 real scam words or phrases people have seen (e.g. 'urgent', 'you have won', 'send your BVN').",
+    "tip": "Ask family. Never call or reply to a scammer."
+   },
+   "build": {
+    "task": "Build a mini scam checker: if the message includes 'urgent', show a red warning.",
+    "steps": [
+     "Add a textarea id=\"msg\" and a Check button",
+     "let text = msg.value.toLowerCase();",
+     "if (text.includes('urgent')) { warn } else { safe }",
+     "Test with a scam message and a normal message"
+    ],
+    "code": "<textarea id=\"msg\" placeholder=\"Paste a message\"></textarea>\n<button id=\"check\">Check</button>\n<p id=\"out\"></p>\n<script>\n  document.getElementById('check').onclick = function () {\n    let text = document.getElementById('msg').value.toLowerCase();\n    if (text.includes('urgent')) {\n      document.getElementById('out').textContent = '⚠️ Careful! This looks like a scam.';\n    } else {\n      document.getElementById('out').textContent = '✅ No scam words found. Still be careful.';\n    }\n  };\n</script>"
+   },
    "check": [
-    { "q": "Which logic colour is if / else?", "opts": ["Red", "Green", "Blue"], "a": 0 },
-    { "q": "What happens if the condition is false?", "opts": ["The else part runs", "Nothing ever runs", "The page closes"], "a": 0 },
-    { "q": "Why did we use toLowerCase()?", "opts": ["So 'URGENT' and 'urgent' both match", "To make text red", "To delete text"], "a": 0 }
+    {
+     "q": "Which logic colour is if / else?",
+     "opts": [
+      "Red",
+      "Green",
+      "Blue"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What happens if the condition is false?",
+     "opts": [
+      "The else part runs",
+      "Nothing ever runs",
+      "The page closes"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why did we use toLowerCase()?",
+     "opts": [
+      "So 'URGENT' and 'urgent' both match",
+      "To make text red",
+      "To delete text"
+     ],
+     "a": 0
+    }
    ],
-   "say": "Conditionals are red: if the message has a scam word, we warn; else we say it looks safe."
+   "say": "Conditionals are red: if the message has a scam word, we warn; else we say it looks safe.",
+   "trainer": {
+    "open": "Real apps make decisions. IF the message says 'urgent', THEN warn the user. You're building a mini Scam Shield today.",
+    "props": [
+     "Red card: CONDITIONALS",
+     "3 real scam messages from Week 1 research (with personal details removed)"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Read a scam message. What word makes it suspicious? That's our IF."
+     ],
+     [
+      "5 min",
+      "Live-code if / else with .includes('urgent'). Use the red colour."
+     ],
+     [
+      "8 min",
+      "Kids add 2 more scam words with else if, and test with real messages."
+     ],
+     [
+      "4 min",
+      "Try to trick a partner's checker. Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Writes if/else with correct brackets",
+     "Tests with a safe message AND a scam message",
+     "Lowercases the text before checking (smart!)"
+    ],
+    "fix": [
+     [
+      "'URGENT' isn't caught",
+      "Use message.toLowerCase() before .includes so capital letters don't fool it."
+     ],
+     [
+      "Only tests the scam case",
+      "A checker must also say 'looks okay' — test both."
+     ]
+    ]
+   }
   },
   {
-   "week": 9, "title": "Loops: do it again and again", "part": "JavaScript", "colours": ["green", "blue", "red", "purple"], "project": "HC",
+   "week": 9,
+   "title": "Loops: do it again and again",
+   "part": "JavaScript",
+   "colours": [
+    "green",
+    "blue",
+    "red",
+    "purple"
+   ],
+   "project": "HC",
    "goal": "Use a loop to show a whole list without typing each item (green = loops).",
    "look": "Harvest Calendar shows many crops. Nobody typed each card by hand — a loop builds them.",
-   "research": { "q": "Find 5 crops grown near your home and the month they are harvested. Ask a farmer or check with a parent.", "tip": "Your list becomes the data for your loop." },
-   "build": { "task": "Store crops in a list and use a loop to show them all.", "steps": ["let crops = ['Maize', 'Yam', 'Cassava', 'Tomato', 'Pepper'];", "for (let i = 0; i < crops.length; i++) { … }", "Inside, add each crop to the page", "Add a 6th crop to the list and watch it appear by itself"], "code": "<ul id=\"list\"></ul>\n<script>\n  let crops = ['Maize', 'Yam', 'Cassava', 'Tomato', 'Pepper'];\n  for (let i = 0; i < crops.length; i++) {\n    let li = document.createElement('li');\n    li.textContent = crops[i];\n    document.getElementById('list').appendChild(li);\n  }\n</script>" },
+   "research": {
+    "q": "Find 5 crops grown near your home and the month they are harvested. Ask a farmer or check with a parent.",
+    "tip": "Your list becomes the data for your loop."
+   },
+   "build": {
+    "task": "Store crops in a list and use a loop to show them all.",
+    "steps": [
+     "let crops = ['Maize', 'Yam', 'Cassava', 'Tomato', 'Pepper'];",
+     "for (let i = 0; i < crops.length; i++) { … }",
+     "Inside, add each crop to the page",
+     "Add a 6th crop to the list and watch it appear by itself"
+    ],
+    "code": "<ul id=\"list\"></ul>\n<script>\n  let crops = ['Maize', 'Yam', 'Cassava', 'Tomato', 'Pepper'];\n  for (let i = 0; i < crops.length; i++) {\n    let li = document.createElement('li');\n    li.textContent = crops[i];\n    document.getElementById('list').appendChild(li);\n  }\n</script>"
+   },
    "check": [
-    { "q": "Which logic colour is loops?", "opts": ["Green", "Purple", "Red"], "a": 0 },
-    { "q": "Why use a loop instead of typing 5 lines?", "opts": ["It repeats work for us and grows with the list", "Loops are slower", "No reason"], "a": 0 },
-    { "q": "In Scratch, 'repeat 10' is like…", "opts": ["a for loop", "an <img>", "a colour"], "a": 0 }
+    {
+     "q": "Which logic colour is loops?",
+     "opts": [
+      "Green",
+      "Purple",
+      "Red"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why use a loop instead of typing 5 lines?",
+     "opts": [
+      "It repeats work for us and grows with the list",
+      "Loops are slower",
+      "No reason"
+     ],
+     "a": 0
+    },
+    {
+     "q": "In Scratch, 'repeat 10' is like…",
+     "opts": [
+      "a for loop",
+      "an <img>",
+      "a colour"
+     ],
+     "a": 0
+    }
    ],
-   "say": "Loops are green: the code repeats for every crop in the list, so adding data adds cards automatically."
+   "say": "Loops are green: the code repeats for every crop in the list, so adding data adds cards automatically.",
+   "trainer": {
+    "open": "Imagine writing the same line 50 times. A loop does the repeating for you — like 'forever' and 'repeat' in Scratch.",
+    "props": [
+     "Green card: LOOPS",
+     "Harvest Calendar crop list as the example"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Recall Scratch 'repeat 10'. Show writing 5 crop lines by hand, then with a loop."
+     ],
+     [
+      "5 min",
+      "Live-code an array + for…of loop that shows each crop."
+     ],
+     [
+      "8 min",
+      "Kids store 5+ crops from research in a list and loop to show them."
+     ],
+     [
+      "4 min",
+      "Add one crop to the list — did the page update by itself? Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Uses an array with [ ] and commas",
+     "Loop shows every item",
+     "Can explain why adding an item 'just works'"
+    ],
+    "fix": [
+     [
+      "Only the last crop shows",
+      "You replaced instead of added — use += or appendChild inside the loop."
+     ],
+     [
+      "Endless loop freezes the phone",
+      "Use for…of over the list so it stops at the end."
+     ]
+    ]
+   }
   },
   {
-   "week": 10, "title": "Put it together and show it", "part": "Showcase", "colours": ["blue", "red", "green", "purple"], "project": "SS",
+   "week": 10,
+   "title": "Put it together and show it",
+   "part": "Showcase",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "project": "SS",
    "goal": "Remix one of our three sites into your own mini version that uses all 4 logic colours, then explain it like a pro.",
    "look": "Pick Scam Shield, Harvest Calendar or Apprentice Pathway. What is ONE thing you would add for your community?",
-   "research": { "q": "Show your mini site to 2 people who are not in ByteBusters. What confused them? What did they like?", "tip": "Fix one thing they said. Judges love that." },
-   "build": { "task": "Build a mini site: HTML structure, CSS style, and JavaScript with a variable, an if, a loop and an event.", "steps": ["Choose your site to remix and write your one new idea", "Build the HTML and CSS (Weeks 1–5)", "Add the button (purple), a variable (blue), an if (red) and a loop (green)", "Ask your trainer to help you put it online", "Practise: 'The problem is… Our site helps by… I built…'"], "code": "" },
+   "research": {
+    "q": "Show your mini site to 2 people who are not in ByteBusters. What confused them? What did they like?",
+    "tip": "Fix one thing they said. Judges love that."
+   },
+   "build": {
+    "task": "Build a mini site: HTML structure, CSS style, and JavaScript with a variable, an if, a loop and an event.",
+    "steps": [
+     "Choose your site to remix and write your one new idea",
+     "Build the HTML and CSS (Weeks 1–5)",
+     "Add the button (purple), a variable (blue), an if (red) and a loop (green)",
+     "Ask your trainer to help you put it online",
+     "Practise: 'The problem is… Our site helps by… I built…'"
+    ],
+    "code": ""
+   },
    "check": [
-    { "q": "Name the 4 logic colours in order: variables, conditionals, loops, events", "opts": ["Blue, red, green, purple", "Red, red, red, red", "Green, blue, purple, red"], "a": 0 },
-    { "q": "A judge asks 'what did YOU build?' The best answer…", "opts": ["Names the exact part you made and why", "Says 'everything'", "Says 'I don't know'"], "a": 0 },
-    { "q": "Why did we ask real people questions every week?", "opts": ["So our sites solve real problems", "To waste time", "Because it is required by law"], "a": 0 }
+    {
+     "q": "Name the 4 logic colours in order: variables, conditionals, loops, events",
+     "opts": [
+      "Blue, red, green, purple",
+      "Red, red, red, red",
+      "Green, blue, purple, red"
+     ],
+     "a": 0
+    },
+    {
+     "q": "A judge asks 'what did YOU build?' The best answer…",
+     "opts": [
+      "Names the exact part you made and why",
+      "Says 'everything'",
+      "Says 'I don't know'"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why did we ask real people questions every week?",
+     "opts": [
+      "So our sites solve real problems",
+      "To waste time",
+      "Because it is required by law"
+     ],
+     "a": 0
+    }
    ],
-   "say": "My site solves a real problem. I used structure, style, and all four logic colours — and I tested it with real people."
+   "say": "My site solves a real problem. I used structure, style, and all four logic colours — and I tested it with real people.",
+   "trainer": {
+    "open": "Today you put it all together — structure, style and logic — and prove you can explain every part.",
+    "props": [
+     "Explain-back sheet",
+     "Timer (60 seconds)",
+     "Their best piece from Weeks 1–9"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Show the 5 signs: Purpose, How it works, Logic, My decisions, Change it."
+     ],
+     [
+      "8 min",
+      "Kids combine HTML + CSS + one JS feature (event + variable + if)."
+     ],
+     [
+      "6 min",
+      "Pairs: 60-second explain-back, partner asks one judge question; swap."
+     ],
+     [
+      "3 min",
+      "Volunteers present. Badge celebration 🎖"
+     ]
+    ],
+    "lookfor": [
+     "Can find all 4 logic colours in their code",
+     "Answers 'how would you change it?' with a real step",
+     "Mentions real users from their research"
+    ],
+    "fix": [
+     [
+      "Copied code they can't explain",
+      "Ask them to change one line and predict what happens — then rebuild that part slowly."
+     ],
+     [
+      "Freezes on questions",
+      "Practise answers out of order; judges jump around."
+     ]
+    ]
+   }
   }
  ]
 }

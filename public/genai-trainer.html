@@ -24,13 +24,14 @@ table.plan td:first-child{white-space:nowrap;font-weight:800;width:62px}
 </div>
 <script>
 (function(){
+var TRACK=window.TRACK||{data:'genai.json'};
 function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 var COL={blue:'Variables',red:'Conditionals',green:'Loops',purple:'Events'},D,cur=0;
 function card(W){var T=W.trainer||{},P=D.projects[W.project];
  return '<section class="tc" id="w'+W.week+'"><div class="kicker">Week '+W.week+' · '+esc(W.part)+' · '+esc(P.name)+' · 20 minutes</div><h2>'+esc(W.title)+'</h2>'+
  (W.colours||[]).map(function(c){return '<span class="chip '+c+'">'+COL[c]+'</span>'}).join(' ')+
  '<p><b>Goal:</b> '+esc(W.goal)+'</p><div class="say">🗣 <b>Open with:</b> "'+esc(T.open)+'"</div>'+
- '<div class="safe">🛡 <b>Safe-AI rule today:</b> '+esc(W.safe)+'</div>'+
+ (W.safe?'<div class="safe">🛡 <b>Safe-AI rule today:</b> '+esc(W.safe)+'</div>':'')+
  '<h3>⏱ Session plan</h3><table class="plan">'+(T.plan||[]).map(function(r){return '<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td></tr>'}).join('')+'</table>'+
  '<div class="two"><div><h3>🎒 Bring</h3><ul>'+(T.props||[]).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'<li>App: <a href="'+esc(P.url)+'">'+esc(P.url.replace('https://',''))+'</a></li></ul>'+
  '<h3>👀 Look for (signs they get it)</h3><ul>'+(T.lookfor||[]).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div>'+
@@ -40,7 +41,7 @@ function card(W){var T=W.trainer||{},P=D.projects[W.project];
  '<p><b>Kids should be able to say:</b> "'+esc(W.say)+'"</p></section>';}
 function show(w){cur=w;location.hash='w'+(w||'');document.getElementById('cards').innerHTML=w?card(D.weeks[w-1]):D.weeks.map(card).join('');
  [].forEach.call(document.querySelectorAll('#pick a'),function(a){a.style.background=+a.dataset.w===w?'var(--brand)':''});}
-fetch('/data/genai.json').then(function(r){return r.json()}).then(function(d){D=d;
+fetch('/data/'+TRACK.data).then(function(r){return r.json()}).then(function(d){D=d;
  document.getElementById('pick').innerHTML='<a href="#" data-w="0" title="All">All</a>'+d.weeks.map(function(W){return '<a href="#w'+W.week+'" data-w="'+W.week+'">'+W.week+'</a>'}).join('');
  [].forEach.call(document.querySelectorAll('#pick a'),function(a){a.onclick=function(e){e.preventDefault();show(+a.dataset.w)}});
  var m=/^#w(\d+)$/.exec(location.hash);show(m?+m[1]:1);

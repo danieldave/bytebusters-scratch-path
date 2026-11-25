@@ -95,7 +95,7 @@ Progress saves to the learner's ID under term `wd` (keys `wdw1`–`wdw10`); week
 - [ ] Remove unused mock IDs after the first week of real logins
 - [x] Gen AI 10-week track (`/genai`)
 - [x] Admin week-by-week grid for Scratch terms, Web Dev and Gen AI (+ "where the class is" summary)
-- [x] Gen AI trainer cards (`/genai-trainer`, printable, one page per week)
+- [x] Gen AI + Web Dev trainer cards (`/genai-trainer`, `/webdev-trainer`, printable)
 - [ ] Trainer edit for `genai.json` inside the Content Studio
 - [ ] Optional: trainer-run live AI mode for the Prompt Checker (uses the trainer's key on the server)
 - [ ] Trainer edit for `webdev.json` inside the Content Studio
