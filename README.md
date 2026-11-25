@@ -46,8 +46,8 @@ Lost card? Find the child in the table on `/admin` and read out their ID. A wron
 ## ByteBusters Studio (projects and puzzles)
 
 - Learners open **/studio** (also linked from the home screen). No ID needed to browse and play; with an ID their stars follow them to any phone.
-- **52 projects**: all 15 showcase projects (9 Scratch, 3 Web, 3 Gen AI, with their live links) 13 new international Scratch projects, and 12 **Web Creator** projects, each in small steps with a "Go and ask" mini-research task and a "Make it yours" idea.
-- **59 puzzles**: read-the-blocks, put-in-order, find-the-bug and quick quizzes for Scratch, Websites and Gen AI. A new puzzle of the day appears automatically.
+- **74 projects**: all 15 showcase projects (9 Scratch, 3 Web, 3 Gen AI, with their live links) 13 new international Scratch projects, and 12 **Web Creator** projects, each in small steps with a "Go and ask" mini-research task and a "Make it yours" idea.
+- **106 puzzles**: read-the-blocks, put-in-order, find-the-bug and quick quizzes for Scratch, Websites and Gen AI. A new puzzle of the day appears automatically.
 - **Scratch checker**: kids pick their saved .sb3 file; the check runs on their device against simple rules (uses a loop, 3+ sprites, etc.).
 - **Content Studio** (**/studio-admin**, same TRAINER_PIN): add, edit, hide or undo anything. Your edits are stored in the database and win over the built-in content, so you never edit code.
 - Built-in content lives in `public/data/content.json` (made by `content/sp_projects.py` and `content/sp_puzzles.py`).
@@ -110,3 +110,9 @@ One engine (`public/journey.js`) runs both:
 - **AI Journey** (separate from the curriculum): Level 1 = `/genai`, Levels 2–4 = `ai2/ai3/ai4.json` with Safe-AI rules and the Prompt Checker.
 - **Designed by Claude (AI), clearly flagged in-app for head-office review:** Year 3 Term 2 Weeks 1–3 (missing in the official curriculum), the whole Year 4 Capstone (process, 12-idea project bank, rubric), and AI Journey Levels 2–4.
 - Edit content in the JSON files; bump `VERSION` in `public/sw.js` so phones refresh.
+
+### Word Dictionary and batch 2
+- **Words** tab in the Studio: 196 tech words in the simplest language (basics, Scratch, websites, Gen AI, safety), with search, an A-Z jump bar, group filters, a tiny example for each, and a word of the day on the Studio home. Add or change words in the Content Studio (Words tab).
+- Batch 2: 10 more Scratch projects, 6 more Web Creator projects, 6 more Prompt Lab projects, and 47 more puzzles. Build everything with `python3 content/build_studio.py`.
+- Tests: `node test/wc.js` (web labs), `node test/ai.js` (prompt labs), `node test/sbcheck.js` (Scratch block text in puzzles must be valid).
+- The toast that appears when a lab is completed now shows at the top, so it no longer covers the editor.

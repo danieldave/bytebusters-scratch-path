@@ -40,15 +40,16 @@ function route(){
   if(h[0]==='p'&&h[1])return project(h[1]);
   if(h[0]==='puzzles')return puzzles(h[1]||'all');
   if(h[0]==='me')return me();
+  if(h[0]==='words')return words(h[1]||'');
   home();
 }
-function tabs(on){return '<div class="tabs"><button class="'+(on==='home'?'on':'')+'" onclick="location.hash=\'#/\'">🏠 Projects</button><button class="'+(on==='puz'?'on':'')+'" onclick="location.hash=\'#/puzzles\'">🧩 Puzzles</button><button class="'+(on==='me'?'on':'')+'" onclick="location.hash=\'#/me\'">⭐ Me</button></div>'}
+function tabs(on){return '<div class="tabs"><button class="'+(on==='home'?'on':'')+'" onclick="location.hash=\'#/\'">🏠 Projects</button><button class="'+(on==='puz'?'on':'')+'" onclick="location.hash=\'#/puzzles\'">🧩 Puzzles</button><button class="'+(on==='words'?'on':'')+'" onclick="location.hash=\'#/words\'">📘 Words</button><button class="'+(on==='me'?'on':'')+'" onclick="location.hash=\'#/me\'">⭐ Me</button></div>'}
 /* ---------- home ---------- */
 function home(){
   var list=C.projects.filter(function(p){return(F.kind==='all'||p.kind===F.kind)&&(!F.level||p.level===F.level)&&(!F.show||p.showcase)});
   var next=C.projects.filter(function(p){return p.level===1&&pstars(p)<3}).concat(C.projects.filter(function(p){return pstars(p)<3}))[0];
   var h=tabs('home')+'<div class="hero"><h1>Pick something. Build it. ⭐</h1><p>Games, animations, websites and AI helpers. Small steps. No pressure.</p>'+(next?'<a class="btn" href="#/p/'+next.id+'">▶ Start: '+esc(next.title)+'</a>':'')+'</div>';
-  h+=daily();
+  h+=daily()+wotd();
   h+='<div class="filters" id="fk">'+chip('kind','all','All')+chip('kind','scratch','🐱 Scratch')+chip('kind','web','🌐 Websites')+chip('kind','ai','🤖 Gen AI')+'</div>';
   h+='<div class="filters" id="fl">'+chip('level',0,'Any level')+chip('level',1,'⭐ Starter')+chip('level',2,'⭐⭐ Builder')+chip('level',3,'⭐⭐⭐ Pro')+'<button class="fchip '+(F.show?'on':'')+'" data-k="show">🏆 Showcase projects</button></div>';
   h+='<div class="grid">'+(list.length?list.map(card).join(''):'<p>Nothing here yet. Try another filter.</p>')+'</div>';
@@ -164,6 +165,26 @@ function done(z,ok){
   var fb=document.getElementById('fb');
   fb.innerHTML='<div class="why"><b>'+(ok?'✅ Yes!':'Not quite.')+'</b> '+esc(z.why||'')+'</div><div class="rowbtn"><button class="btn" id="nx">'+(Q.i+1>=Q.list.length?'See my score':'Next →')+'</button></div>';
   document.getElementById('nx').onclick=function(){Q.i++;runQ()};
+}
+/* ---------- words ---------- */
+var WT={all:'All',basics:'💻 Basics',scratch:'🐱 Scratch',web:'🌐 Web',ai:'🤖 AI',safety:'🛡️ Safety'},WF={t:'all',q:''};
+function wotd(){var W=C.words||[];if(!W.length)return '';var w=W[(Math.floor(Date.now()/864e5)*7)%W.length];return '<div class="daily" style="border-color:var(--purple)"><b>📘 Word of the day: '+esc(w.w)+'</b><br>'+esc(w.d)+' <a href="#/words/'+encodeURIComponent(w.w)+'">All words →</a></div>'}
+function words(q){
+  var W=(C.words||[]).slice();if(q&&!WF.q)WF.q=decodeURIComponent(q);
+  var h=tabs('words')+'<h1>📘 Word Dictionary</h1><p style="margin-top:0;color:var(--mut)">Tech words in the simplest way. Tap the box and type, or tap a letter.</p><input id="wq" type="search" placeholder="Search a word…" value="'+esc(WF.q)+'" style="width:100%;padding:12px;font:inherit;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink)"><div class="filters">'+Object.keys(WT).map(function(k){return '<button class="fchip '+(WF.t===k?'on':'')+'" data-t="'+k+'">'+WT[k]+'</button>'}).join('')+'</div><div class="az" id="az"></div><div id="wl"></div>';
+  APP.innerHTML=h;
+  var draw=function(){
+    var ql=WF.q.trim().toLowerCase(),L=W.filter(function(w){return(WF.t==='all'||w.t===WF.t)&&(!ql||w.w.toLowerCase().indexOf(ql)>=0||w.d.toLowerCase().indexOf(ql)>=0)});
+    L.sort(function(a,b){var an=a.w.toLowerCase().indexOf(ql)===0?0:1,bn=b.w.toLowerCase().indexOf(ql)===0?0:1;return ql&&an!==bn?an-bn:a.w.localeCompare(b.w)});
+    var letters={},out='',cur='';
+    L.forEach(function(w){var l=w.w[0].toUpperCase();if(!ql&&l!==cur){cur=l;letters[l]=1;out+='<h3 class="wl" id="L'+l+'">'+l+'</h3>'}out+='<div class="wd"><b>'+esc(w.w)+'</b> <span class="tag '+(w.t==='scratch'?'scratch':w.t==='web'?'web':w.t==='ai'?'ai':'')+'">'+esc(WT[w.t]||w.t)+'</span><div>'+esc(w.d)+'</div>'+(w.e?'<div class="we">Example: '+esc(w.e)+'</div>':'')+'</div>'});
+    document.getElementById('wl').innerHTML=out||'<p>No word found. Try another spelling, or ask your teacher to add it.</p>';
+    document.getElementById('az').innerHTML=ql?'<span style="color:var(--mut)">'+L.length+' found</span>':Object.keys(letters).map(function(l){return '<a href="#" data-l="'+l+'">'+l+'</a>'}).join('');
+    [].forEach.call(document.querySelectorAll('#az a'),function(a){a.onclick=function(e){e.preventDefault();var t=document.getElementById('L'+a.dataset.l);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}});
+  };
+  document.getElementById('wq').oninput=function(){WF.q=this.value;draw()};
+  [].forEach.call(APP.querySelectorAll('.fchip'),function(b){b.onclick=function(){WF.t=b.dataset.t;words('')}});
+  draw();
 }
 /* ---------- me ---------- */
 function me(){

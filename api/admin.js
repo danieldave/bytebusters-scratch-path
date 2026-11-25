@@ -168,20 +168,20 @@ module.exports = async (req, res) => {
     if (a === 'cget') return send(res, 200, await content.load(true));
     if (a === 'csave') {
       try {
-        const kind = b.what === 'puzzle' ? 'z' : 'p';
-        const item = kind === 'z' ? content.cleanPuzzle(b.item || {}) : content.cleanProject(b.item || {});
+        const kind = b.what === 'puzzle' ? 'z' : b.what === 'word' ? 'w' : 'p';
+        const item = kind === 'z' ? content.cleanPuzzle(b.item || {}) : kind === 'w' ? content.cleanWord(b.item || {}) : content.cleanProject(b.item || {});
         await cmd('HSET', P + 'content', kind + ':' + item.id, JSON.stringify(item));
         return send(res, 200, { ok: true, item });
       } catch (e) { return send(res, 400, { error: e.message }); }
     }
     if (a === 'cvis') {
-      const pre = b.what === 'puzzle' ? 'z' : 'p', id = String(b.itemId || '');
+      const pre = b.what === 'puzzle' ? 'z' : b.what === 'word' ? 'w' : 'p', id = String(b.itemId || '');
       if (!/^[a-z0-9-]{2,50}$/.test(id)) return send(res, 400, { error: 'Bad id' });
       if (b.hidden) await cmd('HSET', P + 'content', 'h:' + pre + ':' + id, '1'); else await cmd('HDEL', P + 'content', 'h:' + pre + ':' + id);
       return send(res, 200, { ok: true });
     }
     if (a === 'crevert') { // drop trainer edits of an item; seed version returns (new items are deleted)
-      const pre = b.what === 'puzzle' ? 'z' : 'p', id = String(b.itemId || '');
+      const pre = b.what === 'puzzle' ? 'z' : b.what === 'word' ? 'w' : 'p', id = String(b.itemId || '');
       if (!/^[a-z0-9-]{2,50}$/.test(id)) return send(res, 400, { error: 'Bad id' });
       await cmd('HDEL', P + 'content', pre + ':' + id); await cmd('HDEL', P + 'content', 'h:' + pre + ':' + id);
       return send(res, 200, { ok: true });

@@ -108,7 +108,7 @@ function drawWeb(term,w,L){
     id:ME.id,progress:function(){return prog(w,term)},
     loadServer:function(key){return post('/api/code',{id:ME.id,key:key,action:'get'}).catch(function(){return null})},
     saveServer:function(key,code){post('/api/code',{id:ME.id,key:key,code:code}).catch(function(){})},
-    onLab:function(lab,won){var cur=prog(w,term).lab||{};if(lab.passed>(cur.passed||0)||lab.peeked!==!!cur.peeked||(lab.total&&!cur.total)){save(w,{lab:lab},term).then(function(){checkWebBadges(term)})}if(won){toast('🎉 Lab complete!')}}
+    onLab:function(lab,won){var cur=prog(w,term).lab||{};if(lab.passed>(cur.passed||0)||lab.peeked!==!!cur.peeked||(lab.total&&!cur.total)){save(w,{lab:lab},term).then(function(){checkWebBadges(term)})}if(won){toast('🎉 Lab complete!');var wn=document.getElementById('win');if(wn&&wn.scrollIntoView)wn.scrollIntoView({block:'center',behavior:'smooth'})}}
   });
 }
 function checkWebBadges(term){
