@@ -82,6 +82,9 @@ No real names live in this repo — they only exist in your Upstash database.
 Each week: goal, Safe-AI rule, look at a real app, research question, tiny build, **Prompt Checker** (scores the child's prompt against the week's rules, blocks phone numbers/emails/addresses — no live AI, nothing leaves the phone), 3 check questions (2 right to finish), "say it like this".
 Progress: term `ga` (keys `gaw1`–`gaw10`), week 10 earns the `genai` badge; admin table + CSV show Gen AI weeks. Content: `public/data/genai.json`.
 
+### Gen AI trainer cards (`/genai-trainer`)
+One printable page per week (from `trainer` in `genai.json`): opening line, Safe-AI rule, 20-minute timed plan, what to bring, signs they get it, "if you see… then say…" fixes, homework and check-question answers. Linked from Admin; the grid's "where the class is" line links to the card for the week most learners are on.
+
 ## Year 2 Web Development track (`/webdev`)
 10 short weeks: HTML (weeks 1–3) → CSS (4–5) → JavaScript with the four logic colours (6 events/purple, 7 variables/blue, 8 conditionals/red, 9 loops/green) → week 10 remix-and-showcase. Worked examples are the live Yewa projects: Scam Shield, Harvest Calendar Naija and Apprentice Pathway Explorer.
 Each week: goal, "look at a real site", **Go and find out** (one research question for real people), a tiny build with tick-off steps and example code, 3 check questions (2 right to finish), and a "Say it like this" line for judges. The next week opens only when the current one is finished.
@@ -90,9 +93,9 @@ Progress saves to the learner's ID under term `wd` (keys `wdw1`–`wdw10`); week
 ## What's left
 - [ ] Paste the real roster for all ~100 learners on `/admin`, print the cards, hand them out
 - [ ] Remove unused mock IDs after the first week of real logins
-- [ ] Show Web Dev weeks in the admin week-by-week grid (currently in the table and CSV only)
 - [x] Gen AI 10-week track (`/genai`)
-- [ ] Show Gen AI weeks in the admin week-by-week grid (table + CSV done)
+- [x] Admin week-by-week grid for Scratch terms, Web Dev and Gen AI (+ "where the class is" summary)
+- [x] Gen AI trainer cards (`/genai-trainer`, printable, one page per week)
 - [ ] Trainer edit for `genai.json` inside the Content Studio
 - [ ] Optional: trainer-run live AI mode for the Prompt Checker (uses the trainer's key on the server)
 - [ ] Trainer edit for `webdev.json` inside the Content Studio

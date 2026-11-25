@@ -1,5 +1,5 @@
 {
- "version": "2026-11-ga1",
+ "version": "2026-11-ga2",
  "title": "Year 2 Generative AI Track",
  "intro": "10 short weeks to become a SAFE, smart AI builder. Each week: one goal, one safety rule, one thing to find out from real people, one tiny build, a prompt to try in the Prompt Checker, and 3 check questions. Our own Yewa College AI apps are the examples.",
  "projects": {
@@ -109,6 +109,46 @@
      }
     ],
     "best": "Explain why bread costs more this year than last year. Use simple words a 12-year-old can understand, in 3 short sentences."
+   },
+   "trainer": {
+    "open": "Today we find out what AI really is. Spoiler: it is not a robot brain — it is a very fast guessing machine. By the end you'll catch it guessing.",
+    "props": [
+     "1 phone with Inflation Explainer open",
+     "Board or paper for the 'next word' game"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Next-word game: 'Jollof rice is very…' — 5 kids shout answers. 'That is exactly what AI does, millions of times.'"
+     ],
+     [
+      "5 min",
+      "Show Inflation Explainer. Ask: who wrote this answer? Let them argue, then explain 'prediction'."
+     ],
+     [
+      "8 min",
+      "Kids write their first prompt in the Prompt Checker (pairs share a phone). Read 2 aloud."
+     ],
+     [
+      "4 min",
+      "Check questions together; everyone says the 'say it like this' line."
+     ]
+    ],
+    "lookfor": [
+     "Uses the word 'guess' or 'predict' — not 'it knows'",
+     "Prompt says who the answer is for",
+     "Can say one way AI could be wrong"
+    ],
+    "fix": [
+     [
+      "'AI is a person / it's alive'",
+      "Ask: does your phone keyboard 'know' you when it suggests the next word? AI is that, but much bigger."
+     ],
+     [
+      "Prompt is one vague word ('prices')",
+      "Ask: prices of WHAT, for WHO, in how many sentences?"
+     ]
+    ]
    }
   },
   {
@@ -193,6 +233,46 @@
      }
     ],
     "best": "Write a polite letter to the Local Government Chairman about a bad road in our community. Explain how it affects students and traders. Do not include any personal details."
+   },
+   "trainer": {
+    "open": "Before we build anything with AI, we build a shield. Five rules that keep you safe — every single time.",
+    "props": [
+     "Paper and markers for shield posters",
+     "The unsafe 'Tobi' prompt written on the board"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Read the unsafe Tobi prompt aloud. Ask: what's dangerous here? Circle the name, address and phone."
+     ],
+     [
+      "5 min",
+      "Teach the 5 rules with actions (hand on mouth = private stays private, 2 fingers = 2 sources…)."
+     ],
+     [
+      "8 min",
+      "Shield posters in pairs; fix the Tobi prompt in the Prompt Checker."
+     ],
+     [
+      "4 min",
+      "Pairs present one rule each; check questions."
+     ]
+    ],
+    "lookfor": [
+     "Removes ALL personal details, not just the phone number",
+     "Can explain 'ask an adult' with a real example",
+     "Says 'I am the boss of my work' in their own words"
+    ],
+    "fix": [
+     [
+      "Keeps the school name + class",
+      "Explain: school + class + first name is enough for a stranger to find you."
+     ],
+     [
+      "Thinks rules are only for strangers' apps",
+      "Even trusted apps store what you type — private stays private everywhere."
+     ]
+    ]
    }
   },
   {
@@ -298,6 +378,46 @@
      }
     ],
     "best": "You are a friendly economics teacher. Explain why garri costs ₦3,000 a paint bucket now instead of ₦1,800. The reader is 12. Use 3 bullet points and one example from the market."
+   },
+   "trainer": {
+    "open": "Good prompts are like good jollof — they need the right ingredients. Today: Role, Task, Context, Format.",
+    "props": [
+     "4 cards labelled ROLE / TASK / CONTEXT / FORMAT",
+     "Prices kids collected from home or market"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Show a weak prompt and a 4-ingredient prompt side by side. Which answer will be better? Why?"
+     ],
+     [
+      "5 min",
+      "Hold up each ingredient card; class builds one prompt together on the board."
+     ],
+     [
+      "8 min",
+      "Kids write their own using the real price they found; run the Prompt Checker until 4/4."
+     ],
+     [
+      "4 min",
+      "2 kids read prompts aloud; class spots each ingredient. Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Includes a real number from their research",
+     "Format is specific (3 bullets, 2 sentences)",
+     "Can point to each ingredient in their prompt"
+    ],
+    "fix": [
+     [
+      "Missing context ('explain inflation')",
+      "Ask: inflation of what, where, from what price to what price?"
+     ],
+     [
+      "Role is random ('you are a lion')",
+      "A role should be someone who'd know the answer — a teacher, a farmer, an economist."
+     ]
+    ]
    }
   },
   {
@@ -392,6 +512,46 @@
      }
     ],
     "best": "What was the price of a litre of petrol in Nigeria in 2024? If you are not sure, say 'I am not sure' and tell me where I can check it."
+   },
+   "trainer": {
+    "open": "AI sometimes makes things up and says them confidently. Today you become fact detectives.",
+    "props": [
+     "Fact-Check Cards (copy from the example)",
+     "One AI answer with a wrong number, prepared in advance"
+    ],
+    "plan": [
+     [
+      "4 min",
+      "Show your prepared AI answer with a wrong fact. Ask: true or fib? How could we know?"
+     ],
+     [
+      "6 min",
+      "Teach 'check 2 sources'; list trusted sources together (teacher, textbook, news, market seller)."
+     ],
+     [
+      "6 min",
+      "Kids fill a Fact-Check Card for one AI fact; write an 'admit you're unsure' prompt in the checker."
+     ],
+     [
+      "4 min",
+      "Share verdicts ✅❓❌; check questions."
+     ]
+    ],
+    "lookfor": [
+     "Names 2 different kinds of source",
+     "Writes a prompt asking AI to say 'I'm not sure'",
+     "Doesn't treat the AI as the second source"
+    ],
+    "fix": [
+     [
+      "Uses the AI again as the 2nd source",
+      "Asking the same guesser twice isn't checking. Find a person, book or trusted site."
+     ],
+     [
+      "Thinks one wrong answer means AI is useless",
+      "It's a tool — useful AND needs checking, like a calculator you typed wrong into."
+     ]
+    ]
    }
   },
   {
@@ -482,6 +642,46 @@
      }
     ],
     "best": "You are a kind career guide. A student loves {subject} and enjoys {hobby}. Suggest 3 careers that fit, with one first step for each."
+   },
+   "trainer": {
+    "open": "Remember variables in Scratch — boxes that hold a value? Prompts have them too. Change the box, change the answer.",
+    "props": [
+     "Blue sticky notes or blue chalk for {blanks}",
+     "Research answers from Week 5 (subjects and jobs)"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Recall Scratch variables (score box). Write a template with {blanks} in blue on the board."
+     ],
+     [
+      "5 min",
+      "Open Career Compass: show how the user's answers fill hidden blanks."
+     ],
+     [
+      "8 min",
+      "Kids write a template with 2–3 {blanks}; fill it 3 ways in their notes; Prompt Checker."
+     ],
+     [
+      "4 min",
+      "Compare: how did the answer change? Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Uses {curly brackets} correctly",
+     "Blanks hold choices/interests, never personal details",
+     "Can say 'variable' when explaining"
+    ],
+    "fix": [
+     [
+      "Puts {name} or {address} as a blank",
+      "Swap to {favourite_subject} — what the AI needs to help, not who you are."
+     ],
+     [
+      "Only one blank",
+      "Add one more — what else changes the advice? hobby? dream job?"
+     ]
+    ]
    }
   },
   {
@@ -572,6 +772,46 @@
      }
     ],
     "best": "You are a school-safe homework helper. IF someone asks for something rude or unsafe, THEN reply: 'I can't help with that, but I can help with your schoolwork.' NEVER ask for personal details."
+   },
+   "trainer": {
+    "open": "Every good AI app has hidden rules that keep it safe. Today you write those rules — IF this, THEN that.",
+    "props": [
+     "Red chalk or red pen for IF/THEN",
+     "One polite and one rude example complaint"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Try a rude complaint in Community Voice AI. It still writes politely — why? Hidden rules."
+     ],
+     [
+      "5 min",
+      "Teach system prompt + IF/THEN + NEVER/ALWAYS. Write one rule together in red."
+     ],
+     [
+      "8 min",
+      "Kids write 2–4 guardrails; test them mentally against the rude example; Prompt Checker."
+     ],
+     [
+      "4 min",
+      "Swap rules with a partner — can they find a way around it? Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Writes a real IF … THEN … rule",
+     "Includes a NEVER rule about personal details",
+     "Tests the rule with a 'bad' example"
+    ],
+    "fix": [
+     [
+      "Rule is too vague ('be good')",
+      "Ask: good how? What exactly should it do IF someone is rude?"
+     ],
+     [
+      "Only blocks, gives no help",
+      "A good guardrail redirects: 'I can't do that, but I can help with…'"
+     ]
+    ]
    }
   },
   {
@@ -677,6 +917,46 @@
      }
     ],
     "best": "You are a career guide. A student loves Biology and drawing. Suggest 3 careers available in Nigeria, what to write in JAMB for each, and a free way to start this month. Use a short table."
+   },
+   "trainer": {
+    "open": "Nobody writes the perfect prompt first time — not even professionals. They loop: test, fix one thing, test again.",
+    "props": [
+     "Prompt Loop Log copies",
+     "Feedback notes from people (Week 7 research)"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Show Round 1 vs Round 3 of a prompt you improved. Ask what changed."
+     ],
+     [
+      "4 min",
+      "Teach the loop rule: change ONE thing per round. Green = loops."
+     ],
+     [
+      "9 min",
+      "Kids run 3 rounds using real feedback; log each; final version in the Prompt Checker."
+     ],
+     [
+      "4 min",
+      "Who improved the most? Read Round 1 and Round 3. Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Log shows ONE change per round",
+     "Uses real feedback to choose the change",
+     "Adds a Nigeria-specific detail (JAMB, naira, local jobs)"
+    ],
+    "fix": [
+     [
+      "Rewrites everything each round",
+      "Then you can't tell what helped. One change, then test."
+     ],
+     [
+      "Stops at Round 1 ('it's fine')",
+      "Ask a feedback question: would a Yewa SS3 student find this useful? What's missing?"
+     ]
+    ]
    }
   },
   {
@@ -772,6 +1052,46 @@
      }
     ],
     "best": "When the user presses the button, the app sends the prompt through the API (the waiter) to the AI model (the kitchen). Then the answer comes back and shows on the screen."
+   },
+   "trainer": {
+    "open": "What actually happens when you press the button in an AI app? Today you'll be able to explain it like a pro — with a restaurant.",
+    "props": [
+     "4 kids as actors: Customer, Waiter, Kitchen, Table",
+     "Paper for the restaurant diagram"
+    ],
+    "plan": [
+     [
+      "5 min",
+      "Act it out: Customer writes an order (prompt), Waiter (API) carries it, Kitchen (AI) cooks the answer, Table shows it."
+     ],
+     [
+      "4 min",
+      "Point to the secret order book (API key) — only the restaurant owner (trainer) keeps it."
+     ],
+     [
+      "7 min",
+      "Kids draw the diagram for one Yewa app; write the 'when…then' explanation in the Prompt Checker."
+     ],
+     [
+      "4 min",
+      "2 kids explain to the class using only the diagram. Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Uses 'when the user presses…' (event)",
+     "Says the key stays on the server / with the trainer",
+     "Explains the answer travelling back to the screen"
+    ],
+    "fix": [
+     [
+      "Thinks the AI lives inside the phone",
+      "The phone is the customer's table — the kitchen is far away; the waiter (API) travels there."
+     ],
+     [
+      "Wants to share the API key 'to help friends'",
+      "The key is like your ATM PIN — whoever has it can spend the money."
+     ]
+    ]
    }
   },
   {
@@ -871,6 +1191,46 @@
      }
     ],
     "best": "I want a tiny web tool that helps SS1 students plan their homework for the week. Before writing any code, ask me 5 questions. Then give me a simple plan I can explain to judges, using easy words."
+   },
+   "trainer": {
+    "open": "You can tell an AI to build things for you. But a real builder stays the boss — you give the intention, you make the decisions, you can explain every part.",
+    "props": [
+     "Trainer phone/laptop with Claude",
+     "Problem ideas from Week 9 research"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Ask: if AI writes your code, whose project is it? Discuss honestly."
+     ],
+     [
+      "5 min",
+      "Live: trainer pastes a student's 'ask me first' prompt into Claude; class answers its questions together."
+     ],
+     [
+      "8 min",
+      "Kids find each logic colour in Claude's plan; write 2 sentences on what THEY decided."
+     ],
+     [
+      "4 min",
+      "Practise the honest answer to 'Did AI write this?'. Check questions."
+     ]
+    ],
+    "lookfor": [
+     "Prompt asks the AI to ask questions first",
+     "Can find blue/red/green/purple in the plan",
+     "Gives an honest, confident 'AI helped, I decided…' answer"
+    ],
+    "fix": [
+     [
+      "Lets the AI decide everything",
+      "Stop: what do YOU want the tool to do? Write that first."
+     ],
+     [
+      "Hides that AI helped",
+      "Judges respect honesty. Say what AI did, then what you chose, changed and tested."
+     ]
+    ]
    }
   },
   {
@@ -972,6 +1332,47 @@
      }
     ],
     "best": "Community Voice AI helps people in our community turn problems like bad roads into polite letters to leaders. It never asks for phone numbers or addresses, and it rewrites rude words politely."
+   },
+   "trainer": {
+    "open": "Today you prove you understand your project — not by memorising, but by explaining it, defending it and saying how you'd make it better.",
+    "props": [
+     "Explain-back sheets",
+     "Timer (60 seconds)",
+     "Optional: Viva explain-back on a phone"
+    ],
+    "plan": [
+     [
+      "3 min",
+      "Show the 5 signs: Purpose, How it works, Logic, My decisions, Change it."
+     ],
+     [
+      "7 min",
+      "Kids fill the 60-second explain-back sheet for their team's app."
+     ],
+     [
+      "7 min",
+      "Pairs: one explains in 60 seconds, the other asks one judge question; swap."
+     ],
+     [
+      "3 min",
+      "2 volunteers present to the class. Badge celebration 🎖"
+     ]
+    ],
+    "lookfor": [
+     "Can answer 'how would you change it?' with a specific step",
+     "Mentions at least one safety rule they built in",
+     "Uses real user feedback as proof"
+    ],
+    "fix": [
+     [
+      "Memorised speech, freezes on questions",
+      "Practise answering out of order — judges jump around."
+     ],
+     [
+      "Only describes what the app looks like",
+      "Ask: what happens inside when I press the button? What rule keeps it safe?"
+     ]
+    ]
    }
   }
  ]
