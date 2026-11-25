@@ -1,0 +1,348 @@
+{
+ "version": "2026-11-c1",
+ "source": "ByteBusters 4-Year Curriculum (Odu'a Investment Foundation)",
+ "years": [
+  {
+   "year": 1,
+   "level": "Beginner",
+   "terms": [
+    {
+     "name": "Scratch Programming",
+     "units": [
+      {
+       "weeks": "1-3",
+       "title": "Introduction to Scratch",
+       "content": "Scratch interface, basic blocks, stage; basic animations and storytelling",
+       "project": "A simple animation/story"
+      },
+      {
+       "weeks": "4-6",
+       "title": "Basic Game Development",
+       "content": "Sprites and movement; scoring and collisions",
+       "project": "A basic interactive game"
+      },
+      {
+       "weeks": "7-10",
+       "title": "Game Development Concepts",
+       "content": "Levels, characters; user interaction, refining mechanics",
+       "project": "Design and code a simple game"
+      }
+     ],
+     "status": "built",
+     "link": "/",
+     "note": "Scratch Path — 10 weeks per school, 9 v7 games"
+    },
+    {
+     "name": "HTML & CSS",
+     "units": [
+      {
+       "weeks": "1-3",
+       "title": "Introduction to HTML/CSS",
+       "content": "HTML structure and tags; basic CSS",
+       "project": "A simple webpage"
+      },
+      {
+       "weeks": "4-6",
+       "title": "Basic Styling Techniques",
+       "content": "Box model, positioning; responsive design with media queries",
+       "project": "—"
+      },
+      {
+       "weeks": "7-10",
+       "title": "Building Interactive Pages",
+       "content": "HTML forms and input; basic JavaScript",
+       "project": "A form with JS validation"
+      }
+     ],
+     "status": "built",
+     "link": "/",
+     "note": "Term 2 in the Scratch Path (trainer opens it in Admin)"
+    },
+    {
+     "name": "JavaScript + PHP",
+     "units": [
+      {
+       "weeks": "1-3",
+       "title": "Introduction to JavaScript",
+       "content": "Syntax, variables, data types; conditionals and loops",
+       "project": "Simple JS programs"
+      },
+      {
+       "weeks": "4-6",
+       "title": "Implementing Interactivity",
+       "content": "Functions and scope; DOM and events",
+       "project": "Interactive page elements"
+      },
+      {
+       "weeks": "7-10",
+       "title": "Introduction to PHP",
+       "content": "PHP syntax and variables; control structures and functions",
+       "project": "Simple PHP programs"
+      }
+     ],
+     "status": "built",
+     "link": "/",
+     "note": "Term 3 in the Scratch Path, with PHP-lite in the browser"
+    }
+   ]
+  },
+  {
+   "year": 2,
+   "level": "Intermediate",
+   "terms": [
+    {
+     "name": "Advanced HTML & CSS",
+     "units": [
+      {
+       "weeks": "1-3",
+       "title": "Advanced CSS Layouts",
+       "content": "Grid and Flexbox; responsive strategies",
+       "project": "A portfolio with advanced layouts"
+      },
+      {
+       "weeks": "4-6",
+       "title": "CSS Animations and Effects",
+       "content": "Animations and transitions; CSS animation libraries",
+       "project": "Interactive CSS-animated elements"
+      },
+      {
+       "weeks": "7-10",
+       "title": "Advanced HTML/CSS Projects",
+       "content": "SASS preprocessor; complex layouts",
+       "project": "A feature-rich site with SASS"
+      }
+     ],
+     "status": "next",
+     "link": null,
+     "note": "Yewa Year 2 is in this term now. /webdev is a Year 1 bridge, not this term."
+    },
+    {
+     "name": "Intermediate JavaScript",
+     "units": [
+      {
+       "weeks": "1-2",
+       "title": "Developing Simple Projects",
+       "content": "Asynchronous JS intro; error handling and debugging",
+       "project": "A simple interactive web app"
+      },
+      {
+       "weeks": "3-4",
+       "title": "Advanced DOM Manipulation",
+       "content": "Advanced DOM; event delegation",
+       "project": "Complex web interactions"
+      },
+      {
+       "weeks": "5-6",
+       "title": "Asynchronous JavaScript",
+       "content": "Promises; AJAX and API integration",
+       "project": "A weather app using APIs"
+      },
+      {
+       "weeks": "7-10",
+       "title": "JavaScript Frameworks",
+       "content": "Intro to React/Vue; basic projects",
+       "project": "A simple app with a JS framework"
+      }
+     ],
+     "status": "planned",
+     "link": null,
+     "note": null
+    },
+    {
+     "name": "PHP + Python",
+     "units": [
+      {
+       "weeks": "1-3",
+       "title": "Handling Forms and Sessions",
+       "content": "Forms and user input; sessions and cookies",
+       "project": "A web app with forms"
+      },
+      {
+       "weeks": "4-7",
+       "title": "Database Integration",
+       "content": "Databases and SQL; PHP with databases",
+       "project": "A CRUD app with PHP/MySQL"
+      },
+      {
+       "weeks": "8-10",
+       "title": "Introduction to Python",
+       "content": "Syntax, variables, data types; conditionals and loops",
+       "project": "Simple Python programs"
+      }
+     ],
+     "status": "planned",
+     "link": null,
+     "note": null
+    }
+   ]
+  },
+  {
+   "year": 3,
+   "level": "Intermediate",
+   "terms": [
+    {
+     "name": "PHP Frameworks & APIs",
+     "units": [
+      {
+       "weeks": "1-3",
+       "title": "PHP Frameworks",
+       "content": "Laravel/CodeIgniter; building apps with frameworks",
+       "project": "A web app with a PHP framework"
+      },
+      {
+       "weeks": "4-6",
+       "title": "Advanced Web Development",
+       "content": "APIs and web services; RESTful APIs",
+       "project": "A web service or API integration"
+      },
+      {
+       "weeks": "7-10",
+       "title": "Advanced PHP Projects",
+       "content": "Scalable architecture; third-party services and payment gateways",
+       "project": "An e-commerce platform"
+      }
+     ],
+     "status": "planned",
+     "link": null,
+     "note": "Needs computer lab days — frameworks don't run on phones"
+    },
+    {
+     "name": "Python: Functions, Data, Files",
+     "units": [
+      {
+       "weeks": "1-3",
+       "title": "(not listed in the curriculum)",
+       "content": "Weeks 1-3 are missing in the source document",
+       "project": "—"
+      },
+      {
+       "weeks": "4-6",
+       "title": "Functions and Data Structures",
+       "content": "Functions, scope, arguments; lists, tuples, dictionaries",
+       "project": "Apps using data structures"
+      },
+      {
+       "weeks": "7-10",
+       "title": "Working with Files",
+       "content": "Reading/writing files; exceptions and debugging",
+       "project": "A text-based data processing script"
+      }
+     ],
+     "status": "planned",
+     "link": null,
+     "note": "Curriculum gap: Weeks 1-3 not defined"
+    },
+    {
+     "name": "Advanced Python",
+     "units": [
+      {
+       "weeks": "1-3",
+       "title": "Advanced Python Concepts",
+       "content": "OOP; modules and packages",
+       "project": "Apps using OOP"
+      },
+      {
+       "weeks": "4-6",
+       "title": "Python for Data Analysis",
+       "content": "Pandas; Matplotlib",
+       "project": "Data analysis projects"
+      },
+      {
+       "weeks": "7-10",
+       "title": "Web Development with Flask",
+       "content": "Flask intro; building Flask web apps",
+       "project": "A basic Flask web app"
+      }
+     ],
+     "status": "planned",
+     "link": null,
+     "note": null
+    }
+   ]
+  },
+  {
+   "year": 4,
+   "level": "Advanced",
+   "terms": [
+    {
+     "name": "Advanced Python",
+     "units": [
+      {
+       "weeks": "1-3",
+       "title": "Advanced Python Libraries",
+       "content": "NumPy, SciPy; machine learning with scikit-learn",
+       "project": "ML models with scikit-learn"
+      },
+      {
+       "weeks": "4-6",
+       "title": "Web Development with Django",
+       "content": "Django architecture; building Django apps",
+       "project": "A Django web app"
+      },
+      {
+       "weeks": "7-10",
+       "title": "Advanced Python Projects",
+       "content": "Scalable apps; automation and scripting",
+       "project": "An automation script"
+      }
+     ],
+     "status": "planned",
+     "link": null,
+     "note": null
+    },
+    {
+     "name": "Java",
+     "units": [
+      {
+       "weeks": "1-3",
+       "title": "Introduction to Java",
+       "content": "Syntax, variables, types; conditionals and loops",
+       "project": "Simple Java programs"
+      },
+      {
+       "weeks": "4-6",
+       "title": "Object-Oriented Programming",
+       "content": "Classes, objects, inheritance; polymorphism, interfaces",
+       "project": "OOP applications"
+      },
+      {
+       "weeks": "7-10",
+       "title": "Handling Exceptions",
+       "content": "Exceptions; file handling and I/O",
+       "project": "File-based Java apps"
+      }
+     ],
+     "status": "planned",
+     "link": null,
+     "note": null
+    },
+    {
+     "name": "Capstone Projects",
+     "units": [
+      {
+       "weeks": "1-10",
+       "title": "Capstone Projects",
+       "content": "Not detailed in the curriculum",
+       "project": "—"
+      }
+     ],
+     "status": "planned",
+     "link": null,
+     "note": "Curriculum gap: capstone has no structure yet"
+    }
+   ]
+  }
+ ],
+ "extra": [
+  {
+   "name": "Web Foundations bridge",
+   "link": "/webdev",
+   "note": "Year 1 Terms 2–3 skills taught through our live sites — catch-up for Year 2 learners who vibe-coded"
+  },
+  {
+   "name": "Generative AI (safety first)",
+   "link": "/genai",
+   "note": "Not in the official curriculum — runs alongside it as an AI strand"
+  }
+ ]
+}

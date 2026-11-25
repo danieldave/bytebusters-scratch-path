@@ -1,7 +1,7 @@
 {
  "version": "2026-11-wd1-t",
- "title": "Year 2 Web Development Track",
- "intro": "10 short weeks. Each week: one goal, one thing to find out from real people, one tiny build, and 3 check questions. Our own Yewa College sites are the examples — you will learn how they were made.",
+ "title": "Web Foundations Bridge",
+ "intro": "A catch-up bridge covering Year 1 Term 2–3 skills (HTML, CSS, JavaScript) for Year 2 builders. 10 short weeks. Each week: one goal, one thing to find out from real people, one tiny build, and 3 check questions. Our own Yewa College sites are the examples — you will learn how they were made.",
  "projects": {
   "SS": {
    "name": "Scam Shield",
