@@ -1,0 +1,974 @@
+{
+ "id": "y3t3",
+ "year": 3,
+ "term": 3,
+ "title": "Advanced Python: OOP, Data & Flask",
+ "level": "Intermediate",
+ "device": "lab",
+ "intro": "This term you learn to organise code with classes, study data with Pandas and charts, and put Python on the web with Flask. You will finish with a school results dashboard that runs in a browser.",
+ "termProject": "SchoolBoard: a Flask results dashboard for a Nigerian secondary school class, using a Student class, Pandas for averages and WAEC-style grades, and charts, all with clearly labelled made-up practice data.",
+ "generated": false,
+ "weeks": [
+  {
+   "week": 1,
+   "unit": "Weeks 1-3 · Advanced Python Concepts",
+   "title": "Classes: a mould for objects",
+   "colours": [
+    "blue",
+    "purple"
+   ],
+   "goal": "Create a class with __init__ and methods, and make objects from it.",
+   "learn": "A class is like a block-moulding machine: one mould, many blocks. Each block (object) has its own data, like each student having their own name and scores. __init__ runs when a new object is made and sets its data with self. Methods are actions the object can do, like working out its own average.",
+   "research": {
+    "q": "Ask a teacher: what information do you keep about each student's results?",
+    "tip": "Those pieces of information become the attributes of your Student class (use made-up names in code)."
+   },
+   "build": {
+    "task": "Make a Student class that stores scores and works out the student's average.",
+    "lang": "python",
+    "steps": [
+     "Type the code into student.py",
+     "Run it and read the average",
+     "Make a second student with different scores",
+     "Add a method that returns the best subject"
+    ],
+    "code": "class Student:\n    def __init__(self, name, form):\n        self.name = name\n        self.form = form\n        self.scores = {}\n\n    def add_score(self, subject, score):\n        self.scores[subject] = score\n\n    def average(self):\n        if not self.scores:\n            return 0\n        return round(sum(self.scores.values()) / len(self.scores), 1)\n\nada = Student(\"Ada\", \"SS2\")          # made-up practice student\nada.add_score(\"Maths\", 72)\nada.add_score(\"English\", 65)\nprint(ada.name, \"in\", ada.form, \"average:\", ada.average())"
+   },
+   "check": [
+    {
+     "q": "A class is like...",
+     "opts": [
+      "A mould that makes many objects",
+      "A single variable",
+      "A CSS file"
+     ],
+     "a": 0
+    },
+    {
+     "q": "When does __init__ run?",
+     "opts": [
+      "Never",
+      "When a new object is created",
+      "Only when the program ends"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does self mean inside a method?",
+     "opts": [
+      "The class name",
+      "The whole program",
+      "This particular object"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I learnt that a class is a mould and each object made from it keeps its own data.",
+   "trainer": {
+    "open": "A block industry doesn't carve each block by hand. They use a mould. Today we make a mould for students!",
+    "plan": [
+     [
+      "3 min",
+      "Block mould analogy"
+     ],
+     [
+      "5 min",
+      "class, __init__, self, methods"
+     ],
+     [
+      "8 min",
+      "Students build two student objects"
+     ],
+     [
+      "4 min",
+      "Share research on what teachers record"
+     ]
+    ],
+    "props": [
+     "A picture of a block mould",
+     "Two paper 'report cards' with made-up names"
+    ],
+    "lookfor": [
+     "Creates two objects with different data",
+     "Uses self correctly in methods",
+     "Explains class vs object"
+    ],
+    "fix": [
+     [
+      "Forgets self in a method definition",
+      "Every method's first parameter is self"
+     ],
+     [
+      "Writes Student.average() instead of ada.average()",
+      "Call the method on the object, not the mould"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 2,
+   "unit": "Weeks 1-3 · Advanced Python Concepts",
+   "title": "Inheritance: Danfo is a Vehicle",
+   "colours": [
+    "blue",
+    "red",
+    "purple"
+   ],
+   "goal": "Use inheritance, super() and __str__ to build a child class from a parent class.",
+   "learn": "A danfo and a keke are both vehicles: they have plate numbers and seats. Inheritance lets Danfo get everything from Vehicle and add its own extras, like the conductor's call. super() runs the parent's setup. An underscore name like _passengers means 'please change this only through methods', which is called encapsulation.",
+   "research": {
+    "q": "Ask a driver or conductor: how many passengers does your bus or keke carry, and what do you do when it's full?",
+    "tip": "Their answer gives you the seats number and the 'full' rule for your class."
+   },
+   "build": {
+    "task": "Build a Vehicle class and a Danfo class that inherits from it and refuses extra passengers.",
+    "lang": "python",
+    "steps": [
+     "Type the code into vehicles.py",
+     "Run and see the second boarding refused",
+     "Make a Keke class with 3 seats",
+     "Give Keke its own call_out method"
+    ],
+    "code": "class Vehicle:\n    def __init__(self, plate, seats):\n        self.plate = plate\n        self.seats = seats\n        self._passengers = 0      # change it only through board()\n\n    def board(self, n=1):\n        if self._passengers + n > self.seats:\n            return \"Full! Wait for the next one.\"\n        self._passengers += n\n        return f\"{n} boarded. {self.seats - self._passengers} seats left.\"\n    def __str__(self):\n        return f\"{type(self).__name__} {self.plate}\"\n\nclass Danfo(Vehicle):\n    def __init__(self, plate):\n        super().__init__(plate, seats=14)\n    def call_out(self):\n        return \"Ilaro! Ilaro! Enter with your change!\"\n\nbus = Danfo(\"OG-123-XY\")\nprint(bus, \"-\", bus.call_out())\nprint(bus.board(10))\nprint(bus.board(5))"
+   },
+   "check": [
+    {
+     "q": "class Danfo(Vehicle) means...",
+     "opts": [
+      "Danfo inherits from Vehicle",
+      "Vehicle inherits from Danfo",
+      "They are not related"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does super().__init__ do?",
+     "opts": [
+      "Deletes the parent",
+      "Prints the class",
+      "Runs the parent's setup"
+     ],
+     "a": 2
+    },
+    {
+     "q": "What does __str__ control?",
+     "opts": [
+      "How fast the code runs",
+      "What print(object) shows",
+      "The number of seats"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I learnt that a child class inherits from a parent class and can add its own special actions.",
+   "trainer": {
+    "open": "Every danfo is a vehicle, but not every vehicle shouts 'Ilaro! Ilaro!' Let's code that difference.",
+    "plan": [
+     [
+      "3 min",
+      "Vehicle family tree on the board"
+     ],
+     [
+      "5 min",
+      "Inheritance, super() and __str__"
+     ],
+     [
+      "8 min",
+      "Students build Danfo and Keke"
+     ],
+     [
+      "4 min",
+      "Use research seat numbers"
+     ]
+    ],
+    "props": [
+     "Toy car or a drawing of danfo and keke"
+    ],
+    "lookfor": [
+     "Builds a new child class alone",
+     "Explains what super() is for",
+     "Changes passengers only through board()"
+    ],
+    "fix": [
+     [
+      "Danfo has no plate attribute",
+      "They forgot super().__init__; the parent setup never ran"
+     ],
+     [
+      "Changes bus._passengers directly",
+      "Use the method so the 'full' rule is always checked"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 3,
+   "unit": "Weeks 1-3 · Advanced Python Concepts",
+   "title": "Modules and packages: share your tools",
+   "colours": [
+    "blue",
+    "red",
+    "green"
+   ],
+   "goal": "Put a function in your own module, import it, and use a standard library module.",
+   "learn": "A module is a .py file full of tools, like a toolbox a mechanic carries from car to car. You import it to use its tools in another file. Python already has many built-in modules, like statistics. Packages from other people are installed with pip, inside a virtual environment so each project keeps its own tools.",
+   "research": {
+    "q": "Ask a teacher or older student: what are the WAEC grade bands, from A1 to F9?",
+    "tip": "Check the bands they give you against the code; if they differ, ask a second teacher."
+   },
+   "build": {
+    "task": "Make a grades.py module with a WAEC-style grade function and use it from main.py.",
+    "lang": "python",
+    "steps": [
+     "Create grades.py with BANDS and grade()",
+     "Create main.py in the same folder",
+     "Run main.py",
+     "Try: python -m venv venv, then activate it and pip install pandas for next week"
+    ],
+    "code": "# ---- file: grades.py (your own module) ----\nBANDS = [(75, \"A1\"), (70, \"B2\"), (65, \"B3\"), (60, \"C4\"), (55, \"C5\"),\n         (50, \"C6\"), (45, \"D7\"), (40, \"E8\"), (0, \"F9\")]\n\ndef grade(score):\n    for lowest, letter in BANDS:\n        if score >= lowest:\n            return letter\n\n# ---- file: main.py ----\nimport grades\nfrom statistics import mean      # built-in module\n\nscores = [78, 64, 51, 39]        # practice scores\nfor s in scores:\n    print(s, \"->\", grades.grade(s))\nprint(\"Class mean:\", mean(scores))"
+   },
+   "check": [
+    {
+     "q": "A module is...",
+     "opts": [
+      "A .py file with tools you can import",
+      "A type of loop",
+      "A website"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which line uses grade() from grades.py?",
+     "opts": [
+      "grade.grades(s)",
+      "import grade(s)",
+      "grades.grade(s)"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why use a virtual environment?",
+     "opts": [
+      "To make the screen bigger",
+      "So each project keeps its own packages",
+      "To delete Python"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I learnt that modules are toolboxes I can import, and pip installs packages from other people.",
+   "trainer": {
+    "open": "A good mechanic doesn't buy a new spanner for every car. He carries his toolbox. Let's make ours!",
+    "plan": [
+     [
+      "3 min",
+      "Toolbox analogy; unit project intro (OOP app)"
+     ],
+     [
+      "5 min",
+      "import, from...import, pip and venv"
+     ],
+     [
+      "8 min",
+      "Students build grades.py and main.py"
+     ],
+     [
+      "4 min",
+      "Compare research grade bands"
+     ]
+    ],
+    "props": [
+     "A small toolbox or pencil case"
+    ],
+    "lookfor": [
+     "Both files in the same folder",
+     "Imports and calls the module correctly",
+     "Explains pip in plain words"
+    ],
+    "fix": [
+     [
+      "ModuleNotFoundError: grades",
+      "main.py and grades.py must be in the same folder"
+     ],
+     [
+      "Names their file statistics.py or pandas.py",
+      "That hides the real module; rename your file"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 4,
+   "unit": "Weeks 4-6 · Python for Data Analysis",
+   "title": "Pandas: a spreadsheet inside Python",
+   "colours": [
+    "blue",
+    "green",
+    "red"
+   ],
+   "goal": "Load practice tuck-shop sales into a Pandas DataFrame, add a column and filter rows.",
+   "learn": "Pandas gives Python a table called a DataFrame, like a spreadsheet the code can read. Each column has a name, like puff_puff or zobo. You can add new columns from old ones, find the best day, and filter rows that match a rule. The data today is MADE-UP practice data for a school tuck-shop.",
+   "research": {
+    "q": "Ask the school tuck-shop seller or a food vendor: which snack sells fastest, and on which day?",
+    "tip": "Compare their answer to what your practice data shows; real data beats guessing."
+   },
+   "build": {
+    "task": "Build a DataFrame of a week's practice tuck-shop sales, total it and find the best day.",
+    "lang": "python",
+    "steps": [
+     "Activate your venv and run: pip install pandas",
+     "Type the code into tuckshop.py",
+     "Run it and read each output",
+     "Save the CSV; we use it again in Week 6"
+    ],
+    "code": "import pandas as pd\n\n# PRACTICE DATA (made up): a school tuck-shop's weekly sales, in units sold\nsales = pd.DataFrame({\n    \"day\":       [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\"],\n    \"puff_puff\": [40, 35, 50, 30, 60],\n    \"meat_pie\":  [12, 15, 10, 18, 20],\n    \"zobo\":      [25, 20, 30, 22, 35],\n})\n\nsales[\"total\"] = sales[\"puff_puff\"] + sales[\"meat_pie\"] + sales[\"zobo\"]\nprint(sales)\n\nbest = sales.loc[sales[\"total\"].idxmax(), \"day\"]\nprint(\"Best day:\", best)\n\nprint(\"Days when zobo sold more than 24:\")\nprint(sales[sales[\"zobo\"] > 24])\n\nprint(sales[[\"puff_puff\", \"meat_pie\", \"zobo\"]].sum())\nsales.to_csv(\"tuckshop.csv\", index=False)"
+   },
+   "check": [
+    {
+     "q": "A Pandas table is called a...",
+     "opts": [
+      "List",
+      "DataFrame",
+      "Tuple"
+     ],
+     "a": 1
+    },
+    {
+     "q": "sales[sales['zobo'] > 24] gives...",
+     "opts": [
+      "Only rows where zobo is above 24",
+      "All rows deleted",
+      "The zobo column renamed"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Our tuck-shop data is...",
+     "opts": [
+      "Official government numbers",
+      "Real sales from Ilaro",
+      "Made-up practice data"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I learnt that Pandas turns data into a table I can add to, filter and summarise with code.",
+   "trainer": {
+    "open": "The tuck-shop seller wants to know what to cook more of. Let's answer with data, not guesses!",
+    "plan": [
+     [
+      "3 min",
+      "Show the table on paper first"
+     ],
+     [
+      "5 min",
+      "DataFrame, columns, new column, filter"
+     ],
+     [
+      "8 min",
+      "Students build and question the data"
+     ],
+     [
+      "4 min",
+      "Compare with research answers"
+     ]
+    ],
+    "props": [
+     "A printed table of the practice sales",
+     "Laptop with pandas installed"
+    ],
+    "lookfor": [
+     "Adds a new column correctly",
+     "Writes a filter for a new rule",
+     "Says clearly that the data is practice data"
+    ],
+    "fix": [
+     [
+      "KeyError on a column name",
+      "Spelling must match exactly, e.g. 'puff_puff' with underscore"
+     ],
+     [
+      "Uses 'and' inside a filter",
+      "Pandas uses & with brackets: (a > 1) & (b < 5)"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 5,
+   "unit": "Weeks 4-6 · Python for Data Analysis",
+   "title": "Matplotlib: draw the sales",
+   "colours": [
+    "blue",
+    "purple"
+   ],
+   "goal": "Draw and save a labelled bar chart of practice sales with Matplotlib.",
+   "learn": "A picture tells the story faster than numbers. Matplotlib draws charts from your data. A bar chart is good for comparing days. Every good chart has a title, axis labels and says where the data came from. savefig saves a picture you can share or print.",
+   "research": {
+    "q": "Ask a parent or seller: would you rather read a table of numbers or a chart? Why?",
+    "tip": "Their reason tells you how to design your chart for real people."
+   },
+   "build": {
+    "task": "Make a bar chart of puff-puff sold per day and save it as a picture.",
+    "lang": "python",
+    "steps": [
+     "Run: pip install matplotlib",
+     "Type the code into bar_chart.py",
+     "Run it and look at the chart",
+     "Change the item to zobo and the colour"
+    ],
+    "code": "import pandas as pd\nimport matplotlib.pyplot as plt\n\n# PRACTICE DATA (made up)\nsales = pd.DataFrame({\n    \"day\": [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\"],\n    \"puff_puff\": [40, 35, 50, 30, 60],\n})\n\nplt.bar(sales[\"day\"], sales[\"puff_puff\"], color=\"orange\")\nplt.title(\"Puff-puff sold per day (practice data)\")\nplt.xlabel(\"Day\")\nplt.ylabel(\"Pieces sold\")\nplt.savefig(\"puffpuff_bar.png\")\nplt.show()"
+   },
+   "check": [
+    {
+     "q": "Which chart is good for comparing days?",
+     "opts": [
+      "A bar chart",
+      "No chart",
+      "A secret chart"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does plt.savefig do?",
+     "opts": [
+      "Deletes the chart",
+      "Prints numbers",
+      "Saves the chart as a picture"
+     ],
+     "a": 2
+    },
+    {
+     "q": "A good chart should have...",
+     "opts": [
+      "No labels",
+      "A title and axis labels",
+      "Only colours"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I learnt that Matplotlib turns data into charts that tell the story quickly.",
+   "trainer": {
+    "open": "If you show the tuck-shop lady a table, she frowns. Show her a chart, she smiles. Let's draw!",
+    "plan": [
+     [
+      "3 min",
+      "Table vs chart: which is faster to read?"
+     ],
+     [
+      "5 min",
+      "plt.bar, labels, savefig"
+     ],
+     [
+      "8 min",
+      "Students draw and change the chart"
+     ],
+     [
+      "4 min",
+      "Gallery walk of saved charts"
+     ]
+    ],
+    "props": [
+     "Graph paper and coloured pens"
+    ],
+    "lookfor": [
+     "Every chart has title and labels",
+     "Saves the picture file",
+     "Says the data is practice data"
+    ],
+    "fix": [
+     [
+      "Chart window shows nothing",
+      "plt.show() must come after the plotting lines"
+     ],
+     [
+      "Saved picture is blank",
+      "Call savefig before show; show can clear the figure"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 6,
+   "unit": "Weeks 4-6 · Python for Data Analysis",
+   "title": "Charts that compare: two lines, one story",
+   "colours": [
+    "blue",
+    "green",
+    "purple"
+   ],
+   "goal": "Read the saved CSV and draw a line chart comparing two snacks with a legend.",
+   "learn": "A line chart shows how things go up and down over time, like NEPA light hours across a week. With two lines you can compare: does zobo rise when puff-puff rises? A legend tells which line is which. Reading the CSV from Week 4 shows a full data journey: save, load, analyse, draw.",
+   "research": {
+    "q": "Ask a food seller: when one snack sells more, does another one also sell more? Which ones go together?",
+    "tip": "Their answer is a guess you can test with a two-line chart."
+   },
+   "build": {
+    "task": "Load tuckshop.csv and draw puff-puff and zobo as two lines with a legend.",
+    "lang": "python",
+    "steps": [
+     "Make sure tuckshop.csv from Week 4 is in the folder",
+     "Type the code into lines.py",
+     "Run it and read the chart",
+     "Unit project: write two sentences about what the charts show"
+    ],
+    "code": "import pandas as pd\nimport matplotlib.pyplot as plt\n\nsales = pd.read_csv(\"tuckshop.csv\")   # saved in Week 4 (practice data)\n\nplt.plot(sales[\"day\"], sales[\"puff_puff\"], marker=\"o\", label=\"Puff-puff\")\nplt.plot(sales[\"day\"], sales[\"zobo\"], marker=\"s\", label=\"Zobo\")\n\nplt.title(\"Tuck-shop week: puff-puff vs zobo (practice data)\")\nplt.xlabel(\"Day\")\nplt.ylabel(\"Units sold\")\nplt.legend()\nplt.grid(True)\nplt.savefig(\"tuckshop_lines.png\")\nplt.show()"
+   },
+   "check": [
+    {
+     "q": "A line chart is best for...",
+     "opts": [
+      "Changes over time",
+      "Spelling words",
+      "Passwords"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does plt.legend() show?",
+     "opts": [
+      "The data file",
+      "Which line is which",
+      "The code"
+     ],
+     "a": 1
+    },
+    {
+     "q": "pd.read_csv('tuckshop.csv') does what?",
+     "opts": [
+      "Deletes the file",
+      "Draws a chart",
+      "Loads the file into a DataFrame"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I learnt to load saved data and compare two things on one line chart with a legend.",
+   "trainer": {
+    "open": "Last week one bar chart. Today two lines telling one story. Data detectives, let's go!",
+    "plan": [
+     [
+      "3 min",
+      "Draw two lines by hand from the table"
+     ],
+     [
+      "5 min",
+      "read_csv, plt.plot, legend"
+     ],
+     [
+      "8 min",
+      "Students build and interpret the chart"
+     ],
+     [
+      "4 min",
+      "Each student says one finding in a sentence"
+     ]
+    ],
+    "props": [
+     "Printed copy of tuckshop.csv"
+    ],
+    "lookfor": [
+     "Loads the CSV without retyping data",
+     "Legend matches the lines",
+     "States a finding without claiming it as real fact"
+    ],
+    "fix": [
+     [
+      "FileNotFoundError: tuckshop.csv",
+      "Run the Week 4 script first, or copy the CSV into this folder"
+     ],
+     [
+      "No legend appears",
+      "Each plt.plot needs label=... before calling plt.legend()"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 7,
+   "unit": "Weeks 7-10 · Web Development with Flask",
+   "title": "Flask: your first Python website",
+   "colours": [
+    "purple",
+    "blue"
+   ],
+   "goal": "Run a Flask web app with two routes, one that reads a name from the address.",
+   "learn": "Flask is a small Python web framework, like Laravel was for PHP. @app.route is a decorator that says 'when someone visits this address, run this function'. Whatever the function returns is shown in the browser. escape() makes sure text from the address can't break the page, like a security guard checking bags.",
+   "research": {
+    "q": "Ask a teacher or school staff: what information do students and parents ask about results most often?",
+    "tip": "Those questions become the pages of your school results dashboard."
+   },
+   "build": {
+    "task": "Make a Flask app with a home page and a /hello/<name> greeting page.",
+    "lang": "python",
+    "steps": [
+     "Run: pip install flask",
+     "Type the code into app.py",
+     "Run: python app.py",
+     "Visit http://127.0.0.1:5000 and /hello/Tolu"
+    ],
+    "code": "from flask import Flask\nfrom markupsafe import escape\n\napp = Flask(__name__)\n\n@app.route(\"/\")\ndef home():\n    return \"<h1>Our School Results Portal (practice)</h1>\"\n\n@app.route(\"/hello/<name>\")\ndef hello(name):\n    return f\"<p>Good morning, {escape(name)}! Ready for WAEC?</p>\"\n\nif __name__ == \"__main__\":\n    app.run(debug=True)"
+   },
+   "check": [
+    {
+     "q": "What does @app.route('/') do?",
+     "opts": [
+      "Connects an address to a function",
+      "Deletes the home page",
+      "Styles the page"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Flask is a framework for...",
+     "opts": [
+      "Drawing charts",
+      "Building web apps in Python",
+      "Editing photos"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why use escape(name)?",
+     "opts": [
+      "To make it bold",
+      "To make the name longer",
+      "So text from the address can't break the page"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I learnt that Flask uses routes to connect web addresses to Python functions.",
+   "trainer": {
+    "open": "Remember Laravel routes? Flask is Python's cousin. Your Python code is about to become a website!",
+    "plan": [
+     [
+      "3 min",
+      "Compare Laravel route and Flask route side by side"
+     ],
+     [
+      "5 min",
+      "Decorators, return, debug mode"
+     ],
+     [
+      "8 min",
+      "Students run the app and add a /about route"
+     ],
+     [
+      "4 min",
+      "List research questions as future pages"
+     ]
+    ],
+    "props": [
+     "Laptop with Flask installed",
+     "Last term's Laravel route printout"
+    ],
+    "lookfor": [
+     "Adds a new route alone",
+     "Explains what the decorator does",
+     "Uses escape for user text"
+    ],
+    "fix": [
+     [
+      "Address already in use",
+      "Another app is running; stop it with Ctrl+C or use app.run(port=5001)"
+     ],
+     [
+      "Changes don't show",
+      "Save the file; debug=True reloads, but only after saving"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 8,
+   "unit": "Weeks 7-10 · Web Development with Flask",
+   "title": "Templates: pages that loop",
+   "colours": [
+    "blue",
+    "green",
+    "red"
+   ],
+   "goal": "Send practice results to a Jinja template that loops and marks pass or needs help.",
+   "learn": "Writing HTML inside Python strings gets messy fast. Templates keep HTML in its own file inside a templates folder. render_template sends data to it. Jinja uses {{ }} to print and {% for %} and {% if %} to loop and decide, just like Blade in Laravel.",
+   "research": {
+    "q": "Ask a teacher: what mark counts as a pass in your subject, and what do you do for students below it?",
+    "tip": "Use their pass mark in the {% if %} and their support idea in the message."
+   },
+   "build": {
+    "task": "Show a list of made-up students and scores, marking each as pass or needs help.",
+    "lang": "python",
+    "steps": [
+     "Create a templates folder beside app.py",
+     "Put results.html inside it",
+     "Type app.py and run it",
+     "Visit /results and change one score"
+    ],
+    "code": "# ---- app.py ----\nfrom flask import Flask, render_template\n\napp = Flask(__name__)\nstudents = [                      # PRACTICE DATA: made-up students\n    {\"name\": \"Tolu\", \"score\": 78},\n    {\"name\": \"Emeka\", \"score\": 61},\n    {\"name\": \"Aisha\", \"score\": 45},\n]\n\n@app.route(\"/results\")\ndef results():\n    return render_template(\"results.html\", students=students)\n\nif __name__ == \"__main__\":\n    app.run(debug=True)\n\n# ---- templates/results.html ----\n# <h1>SS2 Maths Results (practice)</h1>\n# {% for s in students %}\n#   <p>{{ s.name }}: {{ s.score }} - {% if s.score >= 50 %}Pass{% else %}Needs help{% endif %}</p>\n# {% endfor %}"
+   },
+   "check": [
+    {
+     "q": "Where must Flask templates be saved?",
+     "opts": [
+      "In a static folder",
+      "Anywhere on the desktop",
+      "In a templates folder"
+     ],
+     "a": 2
+    },
+    {
+     "q": "In Jinja, {{ s.name }} does what?",
+     "opts": [
+      "Prints the student's name",
+      "Deletes the name",
+      "Starts a loop"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which Jinja tag repeats for each student?",
+     "opts": [
+      "{% if %}",
+      "{% for %}",
+      "{{ end }}"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I learnt that Flask templates keep HTML separate and use Jinja to loop and decide.",
+   "trainer": {
+    "open": "Blade in Laravel, Jinja in Flask. Same idea, new language. Let's show a whole class's results!",
+    "plan": [
+     [
+      "3 min",
+      "Compare Blade and Jinja side by side"
+     ],
+     [
+      "5 min",
+      "templates folder and render_template"
+     ],
+     [
+      "8 min",
+      "Students build the results page"
+     ],
+     [
+      "4 min",
+      "Use research pass marks"
+     ]
+    ],
+    "props": [
+     "Printout of a Blade @foreach next to a Jinja {% for %}"
+    ],
+    "lookfor": [
+     "templates folder is named exactly 'templates'",
+     "Changes the pass mark in the template",
+     "Adds a new made-up student"
+    ],
+    "fix": [
+     [
+      "TemplateNotFound: results.html",
+      "The folder must be called templates and sit beside app.py"
+     ],
+     [
+      "Uses real classmates' names and scores",
+      "Use made-up names only; real results are private"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 9,
+   "unit": "Weeks 7-10 · Web Development with Flask",
+   "title": "Forms in Flask: add a score",
+   "colours": [
+    "purple",
+    "red",
+    "blue"
+   ],
+   "goal": "Accept a subject and score from a form with POST and show the growing list.",
+   "learn": "A web app becomes useful when people can send data, not just read it. A form with method post sends data to Flask, and request.form gives it to you. The browser checks min and max, but the server must check too, because anyone can skip the browser. For practice we keep scores in a list in memory, so they vanish when the server stops.",
+   "research": {
+    "q": "Ask a teacher: what mistakes happen when scores are typed into a computer?",
+    "tip": "Each mistake (like typing 700 instead of 70) is a check your server should make."
+   },
+   "build": {
+    "task": "Build a page with a form to add a subject and score, checked on the server, and list all entries.",
+    "lang": "python",
+    "steps": [
+     "Type the code into scores_app.py",
+     "Run it and add three subjects",
+     "Try a score of 150 and see it refused",
+     "Stop and restart the server: notice the list is gone"
+    ],
+    "code": "from flask import Flask, render_template_string, request\napp = Flask(__name__)\nscores = []      # practice only: lost when the server stops\nPAGE = '''\n<form method=\"post\">\n  <input name=\"subject\" placeholder=\"Subject\" required>\n  <input name=\"score\" type=\"number\" min=\"0\" max=\"100\" required>\n  <button>Add</button>\n</form><p>{{ msg }}</p>\n{% for s in scores %}<p>{{ s.subject }}: {{ s.score }}</p>{% endfor %}\n'''\n\n@app.route(\"/\", methods=[\"GET\", \"POST\"])\ndef home():\n    msg = \"\"\n    if request.method == \"POST\":\n        score = request.form.get(\"score\", \"\")\n        if score.isdigit() and int(score) <= 100:\n            scores.append({\"subject\": request.form[\"subject\"], \"score\": int(score)})\n        else:\n            msg = \"Score must be a number from 0 to 100.\"\n    return render_template_string(PAGE, scores=scores, msg=msg)\n\nif __name__ == \"__main__\":\n    app.run(debug=True)"
+   },
+   "check": [
+    {
+     "q": "Where does Flask put form data?",
+     "opts": [
+      "request.form",
+      "app.route",
+      "print()"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why check the score on the server too?",
+     "opts": [
+      "To make the page pretty",
+      "Anyone can skip the browser's checks",
+      "Servers can't count"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What happens to the scores list when the server stops?",
+     "opts": [
+      "It is saved forever",
+      "It is emailed",
+      "It is lost"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I learnt that Flask reads form data with request.form and must check it on the server.",
+   "trainer": {
+    "open": "A results page that anyone can fill with 700% would be a disaster. Today we guard the door.",
+    "plan": [
+     [
+      "3 min",
+      "Share research on typing mistakes"
+     ],
+     [
+      "5 min",
+      "GET vs POST, request.form, server checks"
+     ],
+     [
+      "8 min",
+      "Students build and try to break the form"
+     ],
+     [
+      "4 min",
+      "Restart demo: why real apps need files or databases"
+     ]
+    ],
+    "props": [
+     "Paper form with subject and score boxes"
+    ],
+    "lookfor": [
+     "Explains GET vs POST",
+     "Tests a bad score and sees the message",
+     "Knows why the list disappears on restart"
+    ],
+    "fix": [
+     [
+      "405 Method Not Allowed",
+      "Add methods=['GET', 'POST'] to the route"
+     ],
+     [
+      "int() crashes on an empty or word score",
+      "Check with .isdigit() before converting"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 10,
+   "unit": "Weeks 7-10 · Web Development with Flask",
+   "title": "Results dashboard: Flask + Pandas",
+   "colours": [
+    "blue",
+    "green",
+    "purple"
+   ],
+   "goal": "Combine Flask and Pandas to show a practice results dashboard with an average and top student.",
+   "learn": "Today all your Year 3 skills meet. Pandas reads a CSV of practice results and does the maths. Flask turns the answer into a web page anyone on the school network can open. to_html() turns a DataFrame into a neat table. This is the heart of your term project: a school results dashboard.",
+   "research": {
+    "q": "Ask a teacher or principal: what one number would you want to see first on a results dashboard?",
+    "tip": "Put that number at the top of your dashboard; design for the real user."
+   },
+   "build": {
+    "task": "Build a Flask page that reads results.csv with Pandas and shows class average, top student and a table.",
+    "lang": "python",
+    "steps": [
+     "Create results.csv with: name,maths,english and 4 made-up students",
+     "Type the code into dashboard.py",
+     "Run it and open the page",
+     "Add a third subject column and refresh"
+    ],
+    "code": "# results.csv (PRACTICE DATA, made up), one row per line:\n# name,maths,english / Tolu,78,70 / Emeka,61,66 / Aisha,45,58\nfrom flask import Flask, render_template_string\nimport pandas as pd\n\napp = Flask(__name__)\nPAGE = '''\n<h1>SS2 Results Dashboard (practice data)</h1>\n<p>Class average: {{ avg }} | Top student: {{ top }}</p>\n{{ table|safe }}\n'''\n\n@app.route(\"/\")\ndef dashboard():\n    df = pd.read_csv(\"results.csv\")\n    subjects = df.columns.drop(\"name\")\n    df[\"average\"] = df[subjects].mean(axis=1).round(1)\n    top = df.loc[df[\"average\"].idxmax(), \"name\"]\n    return render_template_string(PAGE, avg=round(df[\"average\"].mean(), 1),\n                                  top=top, table=df.to_html(index=False))\n\nif __name__ == \"__main__\":\n    app.run(debug=True)"
+   },
+   "check": [
+    {
+     "q": "Which library does the maths in our dashboard?",
+     "opts": [
+      "Flask",
+      "Matplotlib",
+      "Pandas"
+     ],
+     "a": 2
+    },
+    {
+     "q": "What does df.to_html() give?",
+     "opts": [
+      "An HTML table of the data",
+      "A chart picture",
+      "A CSV file"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why does the page say 'practice data'?",
+     "opts": [
+      "To make it longer",
+      "So nobody thinks made-up numbers are real",
+      "Flask needs it"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I learnt to join Flask and Pandas so data from a file becomes a live web dashboard.",
+   "trainer": {
+    "open": "Everything you learnt this year comes together today. Let's build something a real school could use!",
+    "plan": [
+     [
+      "3 min",
+      "Show the finished dashboard; ask what's missing"
+     ],
+     [
+      "5 min",
+      "Walk through read_csv, mean and to_html"
+     ],
+     [
+      "8 min",
+      "Students build and add a subject"
+     ],
+     [
+      "4 min",
+      "Term project plan: add the research number and a chart"
+     ]
+    ],
+    "props": [
+     "Laptop with Flask and Pandas",
+     "A printed sample report sheet (blank, no real names)"
+    ],
+    "lookfor": [
+     "Explains which part Flask does and which part Pandas does",
+     "Adds a subject column without breaking the code",
+     "Keeps all data clearly marked as practice"
+    ],
+    "fix": [
+     [
+      "Table shows as raw HTML text",
+      "Use {{ table|safe }} because to_html returns HTML we made ourselves"
+     ],
+     [
+      "Average includes the name column error",
+      "Drop the 'name' column before taking the mean"
+     ]
+    ]
+   }
+  }
+ ]
+}

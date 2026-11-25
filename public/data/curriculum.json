@@ -112,9 +112,9 @@
        "project": "A feature-rich site with SASS"
       }
      ],
-     "status": "next",
-     "link": null,
-     "note": "Yewa Year 2 is in this term now. /webdev is a Year 1 bridge, not this term."
+     "status": "built",
+     "link": "/journey#y2t1",
+     "note": "Unlocks after Year 1 Third Term or the Web Foundations Bridge."
     },
     {
      "name": "Intermediate JavaScript",
@@ -144,8 +144,8 @@
        "project": "A simple app with a JS framework"
       }
      ],
-     "status": "planned",
-     "link": null,
+     "status": "built",
+     "link": "/journey#y2t2",
      "note": null
     },
     {
@@ -170,8 +170,8 @@
        "project": "Simple Python programs"
       }
      ],
-     "status": "planned",
-     "link": null,
+     "status": "built",
+     "link": "/journey#y2t3",
      "note": null
     }
    ]
@@ -202,8 +202,8 @@
        "project": "An e-commerce platform"
       }
      ],
-     "status": "planned",
-     "link": null,
+     "status": "built",
+     "link": "/journey#y3t1",
      "note": "Needs computer lab days — frameworks don't run on phones"
     },
     {
@@ -228,8 +228,8 @@
        "project": "A text-based data processing script"
       }
      ],
-     "status": "planned",
-     "link": null,
+     "status": "built",
+     "link": "/journey#y3t2",
      "note": "Curriculum gap: Weeks 1-3 not defined"
     },
     {
@@ -254,8 +254,8 @@
        "project": "A basic Flask web app"
       }
      ],
-     "status": "planned",
-     "link": null,
+     "status": "built",
+     "link": "/journey#y3t3",
      "note": null
     }
    ]
@@ -286,8 +286,8 @@
        "project": "An automation script"
       }
      ],
-     "status": "planned",
-     "link": null,
+     "status": "built",
+     "link": "/journey#y4t1",
      "note": null
     },
     {
@@ -312,8 +312,8 @@
        "project": "File-based Java apps"
       }
      ],
-     "status": "planned",
-     "link": null,
+     "status": "built",
+     "link": "/journey#y4t2",
      "note": null
     },
     {
@@ -338,11 +338,6 @@
    "name": "Web Foundations bridge",
    "link": "/webdev",
    "note": "Year 1 Terms 2–3 skills taught through our live sites — catch-up for Year 2 learners who vibe-coded"
-  },
-  {
-   "name": "Generative AI (safety first)",
-   "link": "/genai",
-   "note": "Not in the official curriculum — runs alongside it as an AI strand"
   }
  ]
 }

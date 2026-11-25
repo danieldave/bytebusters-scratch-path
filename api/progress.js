@@ -1,7 +1,8 @@
 const { cmd, P } = require('../lib/redis');
 const ids = require('../lib/ids');
 const { body, send, limited } = require('../lib/http');
-const TERMS = ['t1', 't2', 't3', 'wd', 'ga']; // wd = Year 2 Web Development, ga = Year 2 Generative AI
+const TERMS = ['t1', 't2', 't3', 'wd', 'ga']; // wd = Web Foundations Bridge, ga = AI Journey Level 1
+const JTERM = /^(y[1-4]t[1-3]|ai[2-4])$/; // Journey terms: y2t1..y4t3 (curriculum) and ai2..ai4 (AI Journey)
 const BADGES = ['blue', 'red', 'green', 'purple', 'builder', 'web', 'js', 'php', 'webdev', 'genai'];
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return send(res, 405, { error: 'POST only' });
@@ -10,7 +11,7 @@ module.exports = async (req, res) => {
     const b = body(req);
     const id = ids.normalise(b.id);
     if (ids.validate(id) !== 'ok' || !(await cmd('HGET', P + 'roster', id))) return send(res, 403, { error: 'Unknown ID' });
-    const term = TERMS.includes(b.term) ? b.term : 't1';
+    const term = TERMS.includes(b.term) || JTERM.test(String(b.term || '')) ? b.term : 't1';
     const week = Number(b.week);
     if (!(week >= 1 && week <= 10)) return send(res, 400, { error: 'Bad week' });
     const key = (term === 't1' ? 'w' : term + 'w') + week;
@@ -38,7 +39,7 @@ module.exports = async (req, res) => {
     const ob = await cmd('HGET', P + 'prog:' + id, 'b');
     badges = ob ? JSON.parse(ob) : [];
     if (Array.isArray(b.badges)) {
-      const add = b.badges.filter((x) => BADGES.includes(x) && !badges.includes(x));
+      const add = b.badges.filter((x) => (BADGES.includes(x) || JTERM.test(String(x))) && !badges.includes(x));
       if (add.length) { badges = badges.concat(add); await cmd('HSET', P + 'prog:' + id, 'b', JSON.stringify(badges)); }
     }
     send(res, 200, { ok: true, week, term, saved: next, badges });

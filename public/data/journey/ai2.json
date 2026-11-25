@@ -1,0 +1,1391 @@
+{
+ "id": "ai2",
+ "year": null,
+ "term": null,
+ "level": 2,
+ "title": "AI Creator",
+ "device": "phone",
+ "intro": "Level 2 of the ByteBusters Generative AI Journey: you make pictures, posters, voices and short explainers WITH AI, while you stay the boss who checks, edits and credits. You'll learn to spot fakes, test AI for fairness and make content that includes everybody.",
+ "termProject": "A 60-second AI-assisted explainer about a real problem in your community (e.g. blocked gutters), with checked facts, fair pictures, captions and honest credits, shown in your creator portfolio.",
+ "generated": true,
+ "generatedNote": "The ByteBusters Generative AI Journey is separate from the official coding curriculum. Levels 2–4 were designed by Claude (AI) for review by the ByteBusters team.",
+ "weeks": [
+  {
+   "week": 1,
+   "unit": "Weeks 1-4 · Make with AI: pictures, words, voices",
+   "title": "Paint with words",
+   "colours": [
+    "blue"
+   ],
+   "goal": "Describe a picture so clearly that an AI image tool (run by your trainer) can draw what you imagine.",
+   "learn": "An AI image tool cannot see your mind. It only reads your words, then guesses a picture that matches them. Think of a tailor: if you just say 'sew me a dress', you may get anything. If you say the fabric, the style, the length and the occasion, you get what you wanted. An image prompt works the same way: subject, place, style, light and mood.",
+   "research": {
+    "q": "Ask a tailor, hairdresser or sign-writer: what do customers forget to tell you when they describe what they want?",
+    "tip": "Write down the 2 things they forget most. Those are the details your image prompt must never forget."
+   },
+   "build": {
+    "task": "Write a 5-part image prompt for a picture of your community, and the trainer generates it.",
+    "lang": "none",
+    "steps": [
+     "Pick one scene: a busy Saturday market, a danfo park at sunrise, or your school at break time",
+     "Fill the 5 blanks: SUBJECT, PLACE, STYLE, LIGHT, MOOD",
+     "Read it to a partner. Can they picture it with their eyes closed?",
+     "The trainer generates it on their account. Compare: what did the AI get right or wrong?",
+     "Change ONE blank and generate again. What changed?"
+    ],
+    "code": "IMAGE PROMPT RECIPE\nSUBJECT: a woman selling tomatoes and peppers in baskets\nPLACE: a busy open market in Ogun State, Nigeria\nSTYLE: bright cartoon, like a children's storybook\nLIGHT: early morning sun\nMOOD: cheerful and busy\n\nFull prompt:\nA bright cartoon picture, like a children's storybook, of a cheerful woman selling tomatoes and peppers in baskets at a busy open market in Ogun State, Nigeria, in the early morning sun."
+   },
+   "check": [
+    {
+     "q": "An AI image tool makes a picture from…",
+     "opts": [
+      "The words in your prompt",
+      "Your thoughts",
+      "Photos on your phone"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which prompt will give a better picture?",
+     "opts": [
+      "'A market'",
+      "'A busy Ilaro market at sunset, cartoon style, a boy buying puff-puff'",
+      "'Nice picture please'"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why change only ONE blank at a time?",
+     "opts": [
+      "It is faster to type",
+      "The AI gets tired",
+      "So you can see what that one change did"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "An image prompt is like ordering from a tailor: I say the subject, place, style, light and mood, so the AI can guess what I really want.",
+   "safe": "Only the trainer's account makes AI pictures. Never make an AI picture of a real person without their permission.",
+   "try": {
+    "ask": "Write an image prompt for a picture of a place in your community.",
+    "checks": [
+     {
+      "label": "SUBJECT and PLACE (who/what, where)",
+      "rule": {
+       "minWords": 10
+      }
+     },
+     {
+      "label": "A STYLE (cartoon, photo, painting, drawing)",
+      "rule": {
+       "any": [
+        "cartoon",
+        "photo",
+        "painting",
+        "drawing",
+        "storybook",
+        "style",
+        "sketch"
+       ]
+      }
+     },
+     {
+      "label": "LIGHT or MOOD (sun, night, happy, busy…)",
+      "rule": {
+       "any": [
+        "sun",
+        "morning",
+        "evening",
+        "night",
+        "light",
+        "happy",
+        "cheerful",
+        "busy",
+        "calm",
+        "mood"
+       ]
+      }
+     }
+    ],
+    "best": "A bright cartoon picture of children playing football on a dusty school field in Ilaro, Nigeria, in the evening sun. The mood is happy and busy."
+   },
+   "trainer": {
+    "open": "Today you become picture directors. The AI holds the brush, but YOU tell it exactly what to paint.",
+    "plan": [
+     [
+      "3 min",
+      "Tailor game: one child 'orders' a dress in 3 words, another in 15 words. Which order is clearer?"
+     ],
+     [
+      "5 min",
+      "Show the 5-part recipe. Build one prompt together on the board."
+     ],
+     [
+      "8 min",
+      "Pairs write their own prompt. Trainer generates 2-3 of them and shows the class."
+     ],
+     [
+      "4 min",
+      "Change one blank and regenerate. Check questions."
+     ]
+    ],
+    "props": [
+     "Trainer's phone with an AI image tool (trainer's account)",
+     "Board or paper for the 5 blanks"
+    ],
+    "lookfor": [
+     "Prompt has a clear subject AND place",
+     "Names a style (cartoon, photo, painting)",
+     "Can say what changed when one blank changed"
+    ],
+    "fix": [
+     [
+      "Prompt is just 'a nice picture'",
+      "Ask: of WHAT? WHERE? Drawn HOW? Fill the 5 blanks one by one."
+     ],
+     [
+      "Puts a real classmate's name and face in the prompt",
+      "We never make pictures of real people without permission. Use 'a boy' or 'a girl' instead."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 2,
+   "unit": "Weeks 1-4 · Make with AI: pictures, words, voices",
+   "title": "Real or AI? Spot the fake",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "goal": "Use clues to spot AI pictures and deepfake videos, and check before you forward anything.",
+   "learn": "A deepfake is a picture, voice or video made by AI to look like a real person said or did something. Scammers use them, for example a fake video of a famous person 'giving out free money'. AI pictures often leave clues: strange hands, messy writing, plastic-smooth skin, shadows that don't match, or lips that don't match the voice. But the best clue is the source: who posted it first? It is like a fake N1,000 note: you check the feel, the colour and who gave it to you.",
+   "research": {
+    "q": "Ask 3 adults: have you ever received a picture or video on WhatsApp that turned out to be fake? How did you find out?",
+    "tip": "Write what made them believe it at first. That is the trick fakers use, so you will not fall for it."
+   },
+   "build": {
+    "task": "Build a 'Real or AI?' clue checker that counts clues and gives advice.",
+    "lang": "html",
+    "steps": [
+     "Read the 6 clues in the page",
+     "Look at a picture the trainer shows (some real, some AI)",
+     "Tick the clues you see and press Check",
+     "Find the variable that counts clues (blue), the loop (green) and the if-rule (red)"
+    ],
+    "code": "<!DOCTYPE html>\n<html><body style=\"font-family:sans-serif;padding:12px\">\n<h3>Real or AI? Clue Checker</h3>\n<label><input type=\"checkbox\" class=\"c\"> Strange hands or fingers</label><br>\n<label><input type=\"checkbox\" class=\"c\"> Writing that looks like nonsense</label><br>\n<label><input type=\"checkbox\" class=\"c\"> Skin too smooth, like plastic</label><br>\n<label><input type=\"checkbox\" class=\"c\"> Shadows or light that don't match</label><br>\n<label><input type=\"checkbox\" class=\"c\"> Lips don't match the voice</label><br>\n<label><input type=\"checkbox\" class=\"c\"> No trusted source posted it first</label><br>\n<button onclick=\"check()\">Check</button>\n<p id=\"out\"></p>\n<script>\nfunction check() {\n  let n = 0;\n  for (const box of document.querySelectorAll('.c')) { if (box.checked) n++; }\n  let msg = 'Few clues. Still ask: who posted it first?';\n  if (n >= 3) msg = 'Many clues! It is likely AI or fake. Do not forward it.';\n  else if (n >= 1) msg = 'Some clues. Check a trusted source before you share.';\n  document.getElementById('out').textContent = n + ' clue(s): ' + msg;\n}\n</script>\n</body></html>"
+   },
+   "check": [
+    {
+     "q": "A deepfake is…",
+     "opts": [
+      "A very old photo",
+      "AI-made media that pretends a real person said or did something",
+      "A blurry picture"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What is the BEST way to check a shocking video?",
+     "opts": [
+      "Forward it to ask friends",
+      "See if it has many likes",
+      "Find who posted it first, and check a trusted news source"
+     ],
+     "a": 2
+    },
+    {
+     "q": "In the clue checker, what does n >= 3 do?",
+     "opts": [
+      "It is a red rule: if there are 3 or more clues, warn 'likely fake'",
+      "It repeats 3 times",
+      "It makes a new checkbox"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I check AI pictures for clues like hands, writing and shadows, but the strongest check is who posted it first. If I'm not sure, I don't forward it.",
+   "safe": "If a picture or video shocks you, stop. Check who posted it first before you share it.",
+   "try": {
+    "ask": "Write a kind WhatsApp reply to an uncle who forwarded a video that might be a deepfake.",
+    "checks": [
+     {
+      "label": "Is kind and polite",
+      "rule": {
+       "any": [
+        "please",
+        "uncle",
+        "sir",
+        "kindly",
+        "thank",
+        "good morning",
+        "good evening"
+       ]
+      }
+     },
+     {
+      "label": "Gives one clue or reason to doubt it",
+      "rule": {
+       "any": [
+        "hand",
+        "lips",
+        "voice",
+        "shadow",
+        "writing",
+        "fake",
+        "ai",
+        "deepfake",
+        "source"
+       ]
+      }
+     },
+     {
+      "label": "Asks to check before forwarding",
+      "rule": {
+       "any": [
+        "check",
+        "source",
+        "forward",
+        "share",
+        "news",
+        "confirm"
+       ]
+      }
+     }
+    ],
+    "best": "Good evening uncle, thank you for sharing. Please let us not forward this video yet. The lips don't match the voice, so it may be an AI deepfake. Let us check a trusted news source first."
+   },
+   "trainer": {
+    "open": "Today you become fake-busters. Fake pictures and videos travel fast on WhatsApp. You will be the one in your family who stops them.",
+    "plan": [
+     [
+      "4 min",
+      "Show 4 pictures (2 real photos, 2 AI pictures you made earlier). Kids vote: real or AI?"
+     ],
+     [
+      "4 min",
+      "Reveal answers. Go through the clues. Stress: clues can fail, so always check the source."
+     ],
+     [
+      "8 min",
+      "Kids open the clue checker, test it on the 4 pictures, and find blue, red, green and purple."
+     ],
+     [
+      "4 min",
+      "Role-play: grandma forwards a 'free money' video. What do you say kindly? Check questions."
+     ]
+    ],
+    "props": [
+     "2 real photos and 2 AI pictures (made by the trainer, clearly saved)",
+     "Phone with the clue checker open"
+    ],
+    "lookfor": [
+     "Names at least 3 clues",
+     "Says 'who posted it first?' without being asked",
+     "Can point to the if-rule (red) in the code"
+    ],
+    "fix": [
+     [
+      "'If there are no clues, it must be real'",
+      "New AI tools leave fewer clues. No clues does not mean real. Check the source."
+     ],
+     [
+      "Wants to make a deepfake of a teacher 'for fun'",
+      "That can hurt someone and can be illegal. We only make AI pictures of made-up people."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 3,
+   "unit": "Weeks 1-4 · Make with AI: pictures, words, voices",
+   "title": "AI drafts, I edit",
+   "colours": [
+    "red"
+   ],
+   "goal": "Use AI to draft a story or poster, then edit it with a human editor's eye before anyone sees it.",
+   "learn": "AI can write a first draft very fast, but a draft is not finished work. A good editor asks: is it true? Is it kind? Does it sound like us, in Nigeria? Is the spelling right? Is it short enough? Think of a cook at an owambe: the helper can chop the onions, but the chief cook tastes the stew before it is served. You are the chief cook.",
+   "research": {
+    "q": "Ask a teacher, pastor/imam or anyone who writes notices: what makes a poster or notice easy to read from far away?",
+    "tip": "Write their top tip. It becomes one of your editor's rules."
+   },
+   "build": {
+    "task": "Edit an AI-drafted poster for a school event using the 5 editor's rules.",
+    "lang": "none",
+    "steps": [
+     "Read the AI draft below with a partner",
+     "Check it with the 5 editor's rules (each one is an IF-rule, red)",
+     "Circle every problem: wrong facts, too long, not local, unkind, spelling",
+     "Rewrite the poster in 25 words or less",
+     "Add 'Draft by AI, edited by ___' at the bottom"
+    ],
+    "code": "AI DRAFT (made by the trainer's AI):\n\"Join us for the Amazing Spectacular Clean-Up Extravaganza! Everyone must bring a vacuum cleaner. It will be held on Saturday at 8pm in the snow-free school compound. Don't be lazy!!!\"\n\nEDITOR'S RULES (IF ... THEN fix it)\n1. IF a fact is wrong (time, place, things to bring) THEN correct it\n2. IF it is long THEN cut it to 25 words\n3. IF it doesn't sound like our community THEN make it local\n4. IF any word is unkind THEN make it polite\n5. IF there is a spelling error THEN fix it\n\nMY EDITED POSTER:\n___\nDraft by AI, edited by ___"
+   },
+   "check": [
+    {
+     "q": "Who is responsible for the final poster?",
+     "opts": [
+      "The AI",
+      "Nobody",
+      "The human editor (me)"
+     ],
+     "a": 2
+    },
+    {
+     "q": "The AI draft says 'bring a vacuum cleaner' for a school clean-up. What is the editor's fix?",
+     "opts": [
+      "Leave it, AI knows best",
+      "Change it to brooms and cutlasses, things people really use",
+      "Delete the whole poster"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why add 'Draft by AI, edited by…'?",
+     "opts": [
+      "To be honest about who did what",
+      "To make it longer",
+      "Because AI asks for it"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "AI can write my first draft, but I am the editor: I check that it is true, short, local, kind and well spelt before anyone sees it.",
+   "safe": "AI writes drafts; humans publish. Always edit and fact-check before you share anything AI wrote.",
+   "try": {
+    "ask": "Write a prompt asking AI to draft a short poster for a school or community event, with clear limits.",
+    "checks": [
+     {
+      "label": "Names the event",
+      "rule": {
+       "minWords": 10
+      }
+     },
+     {
+      "label": "Gives a word limit or 'short'",
+      "rule": {
+       "re": "\\d+\\s*words|short|brief"
+      }
+     },
+     {
+      "label": "Asks for local, polite language",
+      "rule": {
+       "any": [
+        "polite",
+        "nigeria",
+        "local",
+        "simple",
+        "friendly",
+        "our community"
+       ]
+      }
+     }
+    ],
+    "best": "Write a short poster, under 25 words, for our school clean-up on Saturday at 8am. Ask people to bring brooms. Use polite, simple words that people in Ilaro, Nigeria will understand."
+   },
+   "trainer": {
+    "open": "AI is a fast helper, but helpers make mistakes. Today you are the chief cook who tastes the stew before it is served.",
+    "plan": [
+     [
+      "3 min",
+      "Read the silly AI draft aloud dramatically. Kids shout every mistake they hear."
+     ],
+     [
+      "5 min",
+      "Introduce the 5 editor's rules as IF-THEN rules (red)."
+     ],
+     [
+      "8 min",
+      "Pairs rewrite the poster in 25 words or less. Put 3 on the board."
+     ],
+     [
+      "4 min",
+      "Vote on the clearest poster from 3 steps away. Check questions."
+     ]
+    ],
+    "props": [
+     "The AI draft printed or on the board",
+     "Markers"
+    ],
+    "lookfor": [
+     "Finds the wrong facts (8pm, vacuum, snow)",
+     "Final poster is short and polite",
+     "Adds the honest credit line"
+    ],
+    "fix": [
+     [
+      "Only fixes spelling, misses the wrong facts",
+      "Ask: would this poster bring people at the right time with the right tools?"
+     ],
+     [
+      "Copies the AI draft and calls it 'my poster'",
+      "Show the credit line. Honest credit is a strength, not a weakness."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 4,
+   "unit": "Weeks 1-4 · Make with AI: pictures, words, voices",
+   "title": "Voices for everyone",
+   "colours": [
+    "blue",
+    "purple"
+   ],
+   "goal": "Use text-to-speech and big captions so Deaf, hard-of-hearing and blind people can all get the message.",
+   "learn": "Not everyone receives information the same way. A blind person can listen but cannot read a poster. A Deaf or hard-of-hearing person can read but may miss an announcement. Text-to-speech turns words into a voice, and captions turn speech into words. Many phones already have a built-in voice; AI voices sound even more natural. It is like a good town crier who also pastes the notice on the notice board, so nobody is left out.",
+   "research": {
+    "q": "Ask someone at home or in your street: do you know anyone who is blind, Deaf or hard-of-hearing? How do they get news and announcements?",
+    "tip": "Do not write their name. Write HOW they get information. That tells you what to build."
+   },
+   "build": {
+    "task": "Build a 'Read It Aloud' page that speaks a message and shows a big caption.",
+    "lang": "html",
+    "steps": [
+     "Type a community message in the box",
+     "Choose Slow or Normal speed",
+     "Press Read aloud: the phone speaks AND shows a big caption",
+     "Find the event (purple button) and the variable holding the text (blue)"
+    ],
+    "code": "<!DOCTYPE html>\n<html><body style=\"font-family:sans-serif;padding:12px\">\n<h3>Read It Aloud</h3>\n<textarea id=\"t\" rows=\"4\" style=\"width:100%\">Clean-up Saturday starts at 8am. Bring a broom. Meet at the school gate.</textarea>\n<p>Speed: <select id=\"s\"><option value=\"0.7\">Slow</option><option value=\"1\" selected>Normal</option></select></p>\n<button onclick=\"speak()\">Read aloud</button>\n<p id=\"cap\" style=\"font-size:24px;background:#ffe;padding:8px\"></p>\n<script>\nfunction speak() {\n  const text = document.getElementById('t').value;\n  // Big caption for Deaf and hard-of-hearing users\n  document.getElementById('cap').textContent = text;\n  if (!('speechSynthesis' in window)) {\n    document.getElementById('cap').textContent += ' (This phone has no voice, but the caption works!)';\n    return;\n  }\n  const voice = new SpeechSynthesisUtterance(text);\n  voice.rate = Number(document.getElementById('s').value);\n  speechSynthesis.cancel();\n  speechSynthesis.speak(voice);\n}\n</script>\n</body></html>"
+   },
+   "check": [
+    {
+     "q": "Who does a big caption help most?",
+     "opts": [
+      "Deaf and hard-of-hearing people",
+      "People who are sleeping",
+      "Only teachers"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Who does text-to-speech help most?",
+     "opts": [
+      "People with fast data",
+      "Blind people and people who find reading hard",
+      "Nobody"
+     ],
+     "a": 1
+    },
+    {
+     "q": "In the code, pressing 'Read aloud' is which logic colour?",
+     "opts": [
+      "Green: loop",
+      "Red: rule",
+      "Purple: event"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I make messages for everyone: a voice for people who cannot see, and big captions for people who cannot hear.",
+   "safe": "Never record or share a voice of a real person without their permission. Voices can be copied by AI.",
+   "try": {
+    "ask": "Write a prompt asking AI to rewrite a community announcement so it is easy to read aloud and caption.",
+    "checks": [
+     {
+      "label": "Names the announcement",
+      "rule": {
+       "minWords": 10
+      }
+     },
+     {
+      "label": "Asks for short or simple sentences",
+      "rule": {
+       "any": [
+        "short",
+        "simple",
+        "easy",
+        "clear"
+       ]
+      }
+     },
+     {
+      "label": "Mentions listening, reading aloud or captions",
+      "rule": {
+       "any": [
+        "aloud",
+        "listen",
+        "voice",
+        "caption",
+        "deaf",
+        "blind",
+        "speech",
+        "hear"
+       ]
+      }
+     }
+    ],
+    "best": "Rewrite this announcement in short, simple sentences that are easy to read aloud and show as captions: the borehole will be closed on Monday for repairs, so fetch water on Sunday."
+   },
+   "trainer": {
+    "open": "A message only works if everyone can get it. Today we build a page that speaks AND shows words, so nobody is left out.",
+    "plan": [
+     [
+      "3 min",
+      "Town crier game: one child whispers a notice, one child holds a paper notice. Who gets left out each time?"
+     ],
+     [
+      "5 min",
+      "Explain text-to-speech and captions. Play the page on your phone at full volume."
+     ],
+     [
+      "8 min",
+      "Kids type their own community message and test Slow and Normal speed."
+     ],
+     [
+      "4 min",
+      "Discuss: where else should our apps speak or show captions? Check questions."
+     ]
+    ],
+    "props": [
+     "Phone with sound on (a small speaker helps)",
+     "A paper notice for the town crier game"
+    ],
+    "lookfor": [
+     "Names who captions help and who voice helps",
+     "Uses the word 'inclusion' or 'nobody left out'",
+     "Finds the button event in the code"
+    ],
+    "fix": [
+     [
+      "Thinks Deaf people can't use phones",
+      "Many Deaf people use phones every day by reading and signing. Captions are for them."
+     ],
+     [
+      "Phone doesn't speak and child gives up",
+      "Some phones have no voice installed. The caption still works, and that is the point of having both."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 5,
+   "unit": "Weeks 5-7 · Fair, honest and checked",
+   "title": "Does AI see us fairly?",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "goal": "Test whether an AI image tool shows Nigerians and Africans fairly, and fix unfair results with better prompts.",
+   "learn": "AI learns from millions of pictures on the internet, and many of them come from other countries. So AI can carry bias: it may picture 'a doctor' or 'an engineer' as a foreign man, or picture Africa as only huts and dust. Bias means being unfair to a group without good reason. It is like a visitor who has only seen one bad street in Lagos and thinks all of Nigeria looks like that. We test, count and correct.",
+   "research": {
+    "q": "Ask 3 people: when you picture a doctor, an engineer and a pilot, who do you see? Then ask: why do you think so?",
+    "tip": "Humans have bias too. Write what surprised you. AI often copies the same bias."
+   },
+   "build": {
+    "task": "Run a fairness test: the trainer generates 4 pictures for each prompt, and you tally what you see.",
+    "lang": "none",
+    "steps": [
+     "Trainer generates 4 pictures each for: 'a doctor', 'an engineer', 'a Nigerian city'",
+     "Tally in the table (blue = your counts)",
+     "Repeat the count for every picture (green = loop)",
+     "Write a fairer prompt and test it again"
+    ],
+    "code": "FAIRNESS TALLY (4 pictures per prompt)\nPrompt            | Looks African | Woman | Modern place\n'a doctor'        |  __ / 4       | __ / 4 | __ / 4\n'an engineer'     |  __ / 4       | __ / 4 | __ / 4\n'a Nigerian city' |  -            | -      | __ / 4\n\nWhat I noticed: ___\n\nFAIRER PROMPT:\n'A Nigerian woman engineer in a hard hat checking solar panels on a modern building in Abeokuta, realistic photo.'"
+   },
+   "check": [
+    {
+     "q": "What is bias in AI?",
+     "opts": [
+      "When AI is too slow",
+      "When AI is unfair to a group, often because of what it learnt from",
+      "When AI uses many colours"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why might AI picture 'a doctor' as a foreign man?",
+     "opts": [
+      "Because it learnt from many pictures that look like that",
+      "Because only foreigners are doctors",
+      "Because the phone is old"
+     ],
+     "a": 0
+    },
+    {
+     "q": "How can YOU reduce bias in your pictures?",
+     "opts": [
+      "Never use AI at all",
+      "Shout at the AI",
+      "Write a clear prompt and test the results again"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "AI can be biased because it learns from the internet. I test it, count what I see, and write fairer prompts so it shows people like us correctly.",
+   "safe": "If an AI result is unfair or hurtful to any group, don't share it. Report it to your trainer.",
+   "try": {
+    "ask": "Write a fairer image prompt for a job that AI often pictures unfairly.",
+    "checks": [
+     {
+      "label": "Names a job",
+      "rule": {
+       "any": [
+        "doctor",
+        "engineer",
+        "pilot",
+        "scientist",
+        "nurse",
+        "farmer",
+        "teacher",
+        "programmer",
+        "coder",
+        "lawyer",
+        "ceo"
+       ]
+      }
+     },
+     {
+      "label": "Says who (e.g. Nigerian, woman, young)",
+      "rule": {
+       "any": [
+        "nigerian",
+        "african",
+        "woman",
+        "girl",
+        "man",
+        "young",
+        "old",
+        "yoruba",
+        "hausa",
+        "igbo"
+       ]
+      }
+     },
+     {
+      "label": "Says where, with a real detail",
+      "rule": {
+       "minWords": 12
+      }
+     }
+    ],
+    "best": "A realistic photo of a young Nigerian woman pilot standing next to a plane at the airport in Lagos, smiling, wearing her uniform."
+   },
+   "trainer": {
+    "open": "Today you are AI inspectors. We will test whether AI sees Nigerians fairly, and you will count the evidence yourself.",
+    "plan": [
+     [
+      "3 min",
+      "Quick poll: 'Close your eyes and picture an engineer.' Who did you see? Talk about bias kindly."
+     ],
+     [
+      "6 min",
+      "Show the trainer-made pictures for each prompt. Kids tally in pairs."
+     ],
+     [
+      "7 min",
+      "Pairs write a fairer prompt. Trainer generates 2 of them. Compare with the first results."
+     ],
+     [
+      "4 min",
+      "Share: what surprised you? Check questions."
+     ]
+    ],
+    "props": [
+     "Pictures pre-generated by the trainer for the 3 prompts (4 each)",
+     "Tally table on paper"
+    ],
+    "lookfor": [
+     "Counts carefully instead of guessing",
+     "Explains bias as coming from the training pictures",
+     "Writes a fairer prompt with clear details"
+    ],
+    "fix": [
+     [
+      "'AI is racist on purpose'",
+      "AI has no purpose. It copies patterns from its pictures. People must fix the data and the prompts."
+     ],
+     [
+      "Fairer prompt becomes a stereotype the other way ('all Nigerians in agbada')",
+      "Fair means real and varied: modern and traditional, men and women, city and village."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 6,
+   "unit": "Weeks 5-7 · Fair, honest and checked",
+   "title": "Credit it right",
+   "colours": [
+    "red"
+   ],
+   "goal": "Know who owns creative work, and always credit what AI made and what you made.",
+   "learn": "Copyright means the person who creates a song, picture or story owns it, and others need permission to copy it. Nigeria has a copyright law that protects creators. AI tools learnt from many people's work, so we must be careful and honest. Rules for us: don't copy a real artist's work, don't ask AI to copy a living artist's style to sell, and always add a credit line. It's like Nollywood: if you copy another producer's film and sell it, that is piracy.",
+   "research": {
+    "q": "Ask a local creator (photographer, musician, sign-writer, cake designer): how would you feel if someone copied your work and didn't mention you?",
+    "tip": "Write one sentence of what they said. That is why credit matters."
+   },
+   "build": {
+    "task": "Write honest credit labels for 3 pieces of work.",
+    "lang": "none",
+    "steps": [
+     "Read the 3 situations below",
+     "Use the IF-rules (red) to decide what the credit must say",
+     "Write a credit label for each one",
+     "Check: would the original creator be happy?"
+    ],
+    "code": "CREDIT RULES\nIF AI made the picture THEN say: 'Image made with AI (tool name) by ___'\nIF a human edited it THEN add: 'edited by ___'\nIF it uses someone else's photo or song THEN ask permission AND name them\nIF you can't get permission THEN don't use it\n\nSITUATIONS\n1. Trainer made an AI poster picture; you added the words.\n   Credit: ___\n2. You used your cousin's photo of the school gate (she said yes).\n   Credit: ___\n3. You want to use a famous musician's song in your video.\n   Decision: ___"
+   },
+   "check": [
+    {
+     "q": "Copyright protects…",
+     "opts": [
+      "Only big companies",
+      "Only books",
+      "The person who created the work"
+     ],
+     "a": 2
+    },
+    {
+     "q": "You used an AI picture in your poster. What should you write?",
+     "opts": [
+      "Nothing",
+      "'Image made with AI by ___, edited by ___'",
+      "'Drawn by me'"
+     ],
+     "a": 1
+    },
+    {
+     "q": "You can't get permission to use a song. What do you do?",
+     "opts": [
+      "Don't use it; choose free music or make your own",
+      "Use it anyway",
+      "Change one second of it"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "Creators own their work. I ask permission, I don't copy, and I always write who made what, including what AI made.",
+   "safe": "Never pretend AI work is all yours, and never use someone's work without permission.",
+   "try": {
+    "ask": "Write a credit line for a poster that used an AI picture and your own words.",
+    "checks": [
+     {
+      "label": "Says AI made something",
+      "rule": {
+       "any": [
+        "ai",
+        "generated",
+        "made with"
+       ]
+      }
+     },
+     {
+      "label": "Says what YOU did",
+      "rule": {
+       "any": [
+        "edited",
+        "written by",
+        "words by",
+        "designed by",
+        "by me",
+        "i wrote",
+        "i edited"
+       ]
+      }
+     },
+     {
+      "label": "Is complete (at least 8 words)",
+      "rule": {
+       "minWords": 8
+      }
+     }
+    ],
+    "best": "Picture made with AI by our trainer. Words written and edited by Tobi, ByteBusters Yewa College."
+   },
+   "trainer": {
+    "open": "Today we talk about owning your work. One day YOUR designs will be copied, so today we learn to give the respect we want.",
+    "plan": [
+     [
+      "4 min",
+      "Story: a cake designer posts a beautiful cake; another shop posts the same photo as theirs. Is that fair?"
+     ],
+     [
+      "4 min",
+      "Explain copyright and credit in simple words. Show the credit rules."
+     ],
+     [
+      "8 min",
+      "Pairs write credits for the 3 situations. Share answers."
+     ],
+     [
+      "4 min",
+      "Everyone writes the credit line for their Week 1 AI picture. Check questions."
+     ]
+    ],
+    "props": [
+     "The 3 situations on the board",
+     "Their Week 1 AI pictures (on the trainer's phone)"
+    ],
+    "lookfor": [
+     "Writes who made what, honestly",
+     "Knows to ask permission for others' work",
+     "Says 'don't use it' when there's no permission"
+    ],
+    "fix": [
+     [
+      "'Everything on Google is free to use'",
+      "Being online does not make it free. Someone owns it. Look for permission or free-to-use labels."
+     ],
+     [
+      "Worried that crediting AI makes them look weak",
+      "Honest credit shows judges you know what you're doing. Hiding it is what looks bad."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 7,
+   "unit": "Weeks 5-7 · Fair, honest and checked",
+   "title": "Summaries with proof",
+   "colours": [
+    "blue",
+    "red"
+   ],
+   "goal": "Ask AI to summarise a topic, then check every fact against a real source before you use it.",
+   "learn": "AI is good at making long things short. But it can mix up facts or invent them, and it may sound very sure while doing it. So every fact in an AI summary needs proof from a real source: your textbook, an official website, or a real expert you can ask. Think of a POS receipt: the agent says 'transfer successful', but you still check your account. Summary first, then proof.",
+   "research": {
+    "q": "Ask a teacher: which 2 sources do you trust most when you need to check a fact for a lesson?",
+    "tip": "Write the 2 sources down. Use them as your proof sources from now on."
+   },
+   "build": {
+    "task": "Check an AI summary about malaria using a Proof Table.",
+    "lang": "none",
+    "steps": [
+     "Trainer asks AI for a 5-fact summary about preventing malaria (prompt below)",
+     "Copy each fact into the Proof Table",
+     "Check each fact in your Basic Science/Health textbook or with a health worker",
+     "Mark each one: TRUE, FALSE or NOT SURE (a red rule decides what you keep)",
+     "Keep only TRUE facts in your final summary"
+    ],
+    "code": "PROMPT (trainer runs it):\nSummarise how families can prevent malaria in 5 short facts. Use simple words for a 13-year-old in Nigeria. Say where each fact comes from.\n\nPROOF TABLE\nFact | Source I checked | TRUE / FALSE / NOT SURE\n1. ___ | ___ | ___\n2. ___ | ___ | ___\n3. ___ | ___ | ___\n4. ___ | ___ | ___\n5. ___ | ___ | ___\n\nRULE: IF a fact is FALSE or NOT SURE THEN it does not go in my final summary."
+   },
+   "check": [
+    {
+     "q": "An AI summary sounds very confident. That means…",
+     "opts": [
+      "It might still be wrong, so I check",
+      "It is definitely right",
+      "I should forward it"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which is a good proof source?",
+     "opts": [
+      "A random WhatsApp voice note",
+      "Your textbook or a health worker",
+      "Another AI answer"
+     ],
+     "a": 1
+    },
+    {
+     "q": "A fact is marked NOT SURE. What do you do?",
+     "opts": [
+      "Keep it anyway",
+      "Make it bold",
+      "Leave it out until you can prove it"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "AI can summarise fast, but I check every fact against a real source and keep only what I can prove.",
+   "safe": "Never share an AI health or money tip as fact until a trusted source or expert confirms it.",
+   "try": {
+    "ask": "Write a prompt asking AI to summarise a school topic AND say where each fact comes from.",
+    "checks": [
+     {
+      "label": "Asks for a summary or short facts",
+      "rule": {
+       "any": [
+        "summar",
+        "facts",
+        "short",
+        "points"
+       ]
+      }
+     },
+     {
+      "label": "Asks for sources",
+      "rule": {
+       "any": [
+        "source",
+        "where",
+        "reference",
+        "comes from"
+       ]
+      }
+     },
+     {
+      "label": "Says who it's for or a number of facts",
+      "rule": {
+       "re": "\\d|simple|year|old|student"
+      }
+     }
+    ],
+    "best": "Summarise how soil erosion happens in 5 short facts for a JSS 3 student in Nigeria, and say where each fact comes from so I can check it."
+   },
+   "trainer": {
+    "open": "AI can read and summarise very fast, but who checks the AI? You do. Today every fact needs proof.",
+    "plan": [
+     [
+      "3 min",
+      "POS story: 'Transfer successful' on the screen but no money arrived. What do you do? Check!"
+     ],
+     [
+      "5 min",
+      "Show the AI malaria summary. Read it together."
+     ],
+     [
+      "8 min",
+      "Pairs check each fact with the textbook (or the trainer reads from a health leaflet)."
+     ],
+     [
+      "4 min",
+      "Compare marks. Did any fact fail? Check questions."
+     ]
+    ],
+    "props": [
+     "A Basic Science or Health textbook, or a health leaflet",
+     "The AI summary, printed or on a phone"
+    ],
+    "lookfor": [
+     "Writes a real source for each fact",
+     "Leaves out NOT SURE facts",
+     "Says 'AI can sound sure and still be wrong'"
+    ],
+    "fix": [
+     [
+      "Uses another AI chat to 'prove' the AI",
+      "Asking the same kind of machine is not proof. Use a book, an official site or a real expert."
+     ],
+     [
+      "Marks everything TRUE quickly",
+      "Ask: where exactly did you see it? Show me the page."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 8,
+   "unit": "Weeks 8-10 · Create for the community",
+   "title": "60-second community explainer",
+   "colours": [
+    "blue",
+    "green",
+    "purple"
+   ],
+   "goal": "Plan and make a short AI-assisted explainer (script, pictures, voice) about one real community problem.",
+   "learn": "An explainer is a short video or slide story that helps people understand a problem and what to do about it. AI can help you draft the script, make pictures and read the words aloud, but YOU choose the problem, check the facts and decide the message. Good explainers have 3 parts: the problem, why it matters, and one thing people can do. It's like a jingle on the radio: short, clear, and people remember it.",
+   "research": {
+    "q": "Ask 3 neighbours: what is ONE problem in our area that people don't understand well? (e.g. blocked gutters causing floods, burning refuse, malaria nets)",
+    "tip": "Pick the problem most people mentioned. Real people chose it, not the AI."
+   },
+   "build": {
+    "task": "Fill a 3-scene storyboard for your explainer; the trainer helps make pictures and voice.",
+    "lang": "none",
+    "steps": [
+     "Choose the problem from your research",
+     "Fill the 3 scenes: PROBLEM, WHY IT MATTERS, WHAT TO DO",
+     "Write one image prompt per scene (use the Week 1 recipe)",
+     "Check every fact (Week 7) and add credits (Week 6)",
+     "Trainer generates pictures and the voice; you edit the order and words"
+    ],
+    "code": "STORYBOARD: 3 scenes, about 20 seconds each\nPROBLEM: Blocked gutters in our street\n\nSCENE 1: THE PROBLEM\n  Words: 'When we throw sachets into the gutter, water cannot pass.'\n  Picture prompt: cartoon of a gutter full of nylon sachets in a Nigerian street\nSCENE 2: WHY IT MATTERS\n  Words: 'When rain comes, the street floods and houses get wet.'\n  Picture prompt: ___\nSCENE 3: WHAT TO DO\n  Words: 'Put waste in a bin. Join the monthly clean-up.'\n  Picture prompt: ___\n\nVoice: read aloud (Week 4) + big captions\nCredits: Pictures made with AI by ___. Script by ___. Facts checked with ___."
+   },
+   "check": [
+    {
+     "q": "Who should choose the community problem?",
+     "opts": [
+      "The AI",
+      "You, using what real people told you",
+      "Whoever is loudest"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What are the 3 parts of a good explainer?",
+     "opts": [
+      "Problem, why it matters, what to do",
+      "Title, music, end",
+      "Jokes, dance, song"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Before you share the explainer, you must…",
+     "opts": [
+      "Add more music",
+      "Make it longer",
+      "Check the facts and add credits"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "AI helped me make pictures, a script and a voice, but I chose the problem, checked the facts and made the message clear in 3 scenes.",
+   "safe": "Don't show real people's faces, houses or children in your explainer without permission. Use cartoons.",
+   "try": {
+    "ask": "Write the prompt for Scene 3 (WHAT TO DO) of your explainer.",
+    "checks": [
+     {
+      "label": "Names the action people should take",
+      "rule": {
+       "minWords": 10
+      }
+     },
+     {
+      "label": "Says the picture style",
+      "rule": {
+       "any": [
+        "cartoon",
+        "drawing",
+        "photo",
+        "storybook",
+        "style",
+        "painting"
+       ]
+      }
+     },
+     {
+      "label": "Has a Nigerian place or detail",
+      "rule": {
+       "any": [
+        "nigeria",
+        "ogun",
+        "ilaro",
+        "lagos",
+        "street",
+        "market",
+        "school",
+        "compound",
+        "estate"
+       ]
+      }
+     }
+    ],
+    "best": "A bright cartoon picture of neighbours in a Nigerian street putting sachets into a bin and clearing a gutter together on a sunny Saturday morning."
+   },
+   "trainer": {
+    "open": "Today all your skills come together: pictures, editing, voices, fairness, credit and fact-checking. You'll plan a real explainer for your community.",
+    "plan": [
+     [
+      "3 min",
+      "Play a short radio jingle or public notice. What made it easy to remember?"
+     ],
+     [
+      "4 min",
+      "Share research: which problems did neighbours mention? Each team picks one."
+     ],
+     [
+      "9 min",
+      "Teams fill the storyboard and write image prompts. Trainer generates pictures for one team as a demo."
+     ],
+     [
+      "4 min",
+      "One team reads their 3 scenes aloud. Class checks: true, short, kind? Check questions."
+     ]
+    ],
+    "props": [
+     "Storyboard sheets",
+     "Trainer's phone with AI image and voice tools"
+    ],
+    "lookfor": [
+     "Problem comes from real research",
+     "Scene 3 gives a clear action people can take",
+     "Credits and fact-checks are included"
+    ],
+    "fix": [
+     [
+      "Picks a problem too big ('fix Nigeria')",
+      "Make it small and local: one street, one habit, one thing to do."
+     ],
+     [
+      "Scene 3 blames or insults people",
+      "Kind words change people. Say what to do, not who is bad."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 9,
+   "unit": "Weeks 8-10 · Create for the community",
+   "title": "The great AI debate",
+   "colours": [
+    "red"
+   ],
+   "goal": "Argue both sides of an AI question using a claim, a reason, an example and a fair rule.",
+   "learn": "Ethics means deciding what is right and fair. With AI, good people disagree, so we learn to argue kindly with reasons, not shouting. A strong point has 4 parts: a CLAIM (what I think), a REASON (why), an EXAMPLE (from real life in Nigeria), and a RULE (what we should do). It's like a good palaver at the family meeting: everyone speaks, everyone listens, and the elders decide with reasons.",
+   "research": {
+    "q": "Ask 2 adults: should students be allowed to use AI for school projects? Why or why not?",
+    "tip": "Write one reason FOR and one AGAINST. You will use them in the debate."
+   },
+   "build": {
+    "task": "Prepare one strong debate point using Claim, Reason, Example, Rule.",
+    "lang": "none",
+    "steps": [
+     "Read the debate question",
+     "Your trainer gives your team a side: FOR or AGAINST",
+     "Fill in the 4 parts using your research",
+     "Practise saying it in 30 seconds",
+     "After the debate, write one IF-THEN rule (red) everyone agrees on"
+    ],
+    "code": "DEBATE QUESTION:\n'Students should be allowed to use AI to make pictures and posters for school projects.'\n\nMY SIDE: FOR / AGAINST\nCLAIM: I think ___\nREASON: because ___\nEXAMPLE: For example, ___ (from my research or real life)\nRULE: So the rule should be: IF ___ THEN ___\n\nAFTER THE DEBATE, OUR CLASS AGREES:\nIF a student uses AI THEN ___"
+   },
+   "check": [
+    {
+     "q": "What makes a debate point strong?",
+     "opts": [
+      "Shouting loudly",
+      "Claim, reason, example and a rule",
+      "Saying 'everybody knows'"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why do we argue BOTH sides?",
+     "opts": [
+      "To understand the question fairly before deciding",
+      "To waste time",
+      "Because we can't decide anything"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which is a fair class rule about AI?",
+     "opts": [
+      "AI is banned forever",
+      "Anything goes",
+      "IF you use AI THEN say how you used it and check it"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I can argue about AI fairly: I give a claim, a reason, an example and a rule, and I listen to the other side.",
+   "safe": "Disagree kindly. In AI discussions, attack ideas, never people.",
+   "try": {
+    "ask": "Write your debate point with a claim, a reason and an example.",
+    "checks": [
+     {
+      "label": "Has a CLAIM (I think / I believe)",
+      "rule": {
+       "any": [
+        "i think",
+        "i believe",
+        "in my opinion",
+        "we should",
+        "students should"
+       ]
+      }
+     },
+     {
+      "label": "Has a REASON (because)",
+      "rule": {
+       "any": [
+        "because",
+        "so that",
+        "since"
+       ]
+      }
+     },
+     {
+      "label": "Has an EXAMPLE",
+      "rule": {
+       "any": [
+        "for example",
+        "e.g",
+        "like when",
+        "for instance",
+        "my uncle",
+        "my mum",
+        "my teacher"
+       ]
+      }
+     }
+    ],
+    "best": "I think students should be allowed to use AI for posters because it saves time for the real work of checking facts. For example, my teacher said a clear poster helps parents read notices faster."
+   },
+   "trainer": {
+    "open": "Today is debate day! There's no single right answer here. What matters is good reasons and good listening.",
+    "plan": [
+     [
+      "3 min",
+      "Read the question. Quick hands-up vote: FOR or AGAINST? Note the count."
+     ],
+     [
+      "5 min",
+      "Teams fill the Claim-Reason-Example-Rule sheet using their research."
+     ],
+     [
+      "8 min",
+      "Debate: 2 speakers per side, 30 seconds each, then 1 reply each. Trainer keeps time."
+     ],
+     [
+      "4 min",
+      "Vote again. Did anyone change? Agree one class IF-THEN rule. Check questions."
+     ]
+    ],
+    "props": [
+     "Debate sheets",
+     "A timer (phone)"
+    ],
+    "lookfor": [
+     "Gives a real Nigerian example, not just opinion",
+     "Listens and replies to the other side's point",
+     "Helps write a fair class rule"
+    ],
+    "fix": [
+     [
+      "Attacks the person ('you are lazy')",
+      "We argue with ideas, not insults. Say: 'I disagree because…'"
+     ],
+     [
+      "No example, only 'I feel'",
+      "Ask: where have you seen this happen? Use your research answers."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 10,
+   "unit": "Weeks 8-10 · Create for the community",
+   "title": "My creator portfolio + showcase",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "goal": "Put your best AI-assisted work in a small portfolio page and present it with the 5 signs of understanding.",
+   "learn": "A portfolio is a collection of your best work that shows what you can do. For AI work, each item must say honestly what AI did and what YOU did. Judges are most impressed when you explain your decisions: why you changed a prompt, a fact you corrected, a bias you fixed. It's like a tailor's catalogue: it shows the styles, but the customer trusts the tailor who explains the cut and the fabric.",
+   "research": {
+    "q": "Show your portfolio to 2 people outside ByteBusters. Ask: which piece is most useful to our community, and why?",
+    "tip": "Their answer tells you which piece to present first at the showcase."
+   },
+   "build": {
+    "task": "Build a portfolio page with 3 pieces, each with an honest 'AI did / I did' label.",
+    "lang": "html",
+    "steps": [
+     "Change the 3 titles to your own work (picture, poster, explainer)",
+     "Fill 'AI did' and 'I did' honestly for each",
+     "Add one thing you would improve",
+     "Practise your 60-second explain-back with the 5 signs: Purpose, How it works, Logic, My decisions, Change it"
+    ],
+    "code": "<!DOCTYPE html>\n<html><body style=\"font-family:sans-serif;padding:12px;background:#f4f7ff\">\n<h2>My AI Creator Portfolio</h2>\n<p>ByteBusters Generative AI Journey, Level 2</p>\n<style>.card{background:#fff;border-left:6px solid #2b6cff;padding:10px;margin:10px 0;border-radius:8px}</style>\n<div class=\"card\"><h3>1. Market Morning (AI picture)</h3>\n<p><b>AI did:</b> drew the picture from my prompt.</p>\n<p><b>I did:</b> wrote the 5-part prompt and changed the style twice.</p></div>\n<div class=\"card\"><h3>2. Clean-Up Saturday poster</h3>\n<p><b>AI did:</b> wrote the first draft.</p>\n<p><b>I did:</b> fixed 3 wrong facts and cut it to 25 words.</p></div>\n<div class=\"card\"><h3>3. Blocked Gutters explainer</h3>\n<p><b>AI did:</b> made 3 pictures and the voice.</p>\n<p><b>I did:</b> chose the problem from neighbours, checked facts, added captions.</p></div>\n<p><b>Next I would improve:</b> add a Yoruba version of the explainer.</p>\n</body></html>"
+   },
+   "check": [
+    {
+     "q": "What must every portfolio item show?",
+     "opts": [
+      "Only the AI's work",
+      "Only the colours",
+      "What AI did and what YOU did"
+     ],
+     "a": 2
+    },
+    {
+     "q": "What impresses judges most?",
+     "opts": [
+      "Explaining your decisions and what you fixed",
+      "The longest portfolio",
+      "Saying AI did everything perfectly"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which is one of the 5 signs of understanding?",
+     "opts": [
+      "Memorise it word for word",
+      "Change it: say how you would improve it",
+      "Speak very fast"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "This is my best AI-assisted work. For each piece I can say what AI did, what I decided, what I fixed and what I'd improve next.",
+   "safe": "In your portfolio, no faces of real people without permission and no personal details: just your first name and school.",
+   "try": {
+    "ask": "Write the 'I did' part for your best portfolio piece, including one decision you made.",
+    "checks": [
+     {
+      "label": "Says what you did",
+      "rule": {
+       "any": [
+        "i wrote",
+        "i chose",
+        "i fixed",
+        "i checked",
+        "i edited",
+        "i changed",
+        "i added",
+        "i made"
+       ]
+      }
+     },
+     {
+      "label": "Names a decision or a fix",
+      "rule": {
+       "any": [
+        "because",
+        "so that",
+        "fixed",
+        "changed",
+        "decided",
+        "corrected"
+       ]
+      }
+     },
+     {
+      "label": "Is detailed (at least 12 words)",
+      "rule": {
+       "minWords": 12
+      }
+     }
+    ],
+    "best": "I chose the blocked gutters problem because 3 neighbours mentioned it. I fixed a wrong fact the AI wrote and added big captions for Deaf viewers."
+   },
+   "trainer": {
+    "open": "Today you become a showcased creator. Your portfolio proves you can make with AI responsibly, and you'll explain it like a pro.",
+    "plan": [
+     [
+      "3 min",
+      "Show a sample portfolio card. Ask: what makes it honest?"
+     ],
+     [
+      "8 min",
+      "Kids edit the portfolio page with their own 3 pieces and labels."
+     ],
+     [
+      "6 min",
+      "Pairs practise the 60-second explain-back using the 5 signs; partner ticks each sign heard."
+     ],
+     [
+      "3 min",
+      "2 volunteers present to the class. Check questions."
+     ]
+    ],
+    "props": [
+     "Phones with the portfolio page open",
+     "5-signs checklist (Purpose, How it works, Logic, My decisions, Change it)"
+    ],
+    "lookfor": [
+     "Each item has honest 'AI did / I did' labels",
+     "Explains one decision or fix without reading",
+     "Says one improvement and how they would do it"
+    ],
+    "fix": [
+     [
+      "'I did' is empty or 'nothing'",
+      "Ask: who chose the problem? Who wrote the prompt? Who fixed the facts? That was you."
+     ],
+     [
+      "Reads the speech from the phone",
+      "Put the phone down. Tell me the story of ONE piece like you'd tell a friend."
+     ]
+    ]
+   }
+  }
+ ]
+}

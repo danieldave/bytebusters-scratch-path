@@ -1,0 +1,971 @@
+{
+ "id": "y2t3",
+ "year": 2,
+ "term": 3,
+ "title": "PHP Forms & Databases + Intro to Python",
+ "level": "Intermediate",
+ "device": "lab",
+ "intro": "This term you will make websites that remember people and store data in a real database, then meet Python, a language used in many jobs. You will build a School Club Registration app and a Python club counter.",
+ "termProject": "'School Club Registration' — a PHP + MySQL CRUD app where students sign up for clubs (Coding, Press, JETS, Drama) using only a nickname and class, plus a Python program that reports which clubs are full.",
+ "generated": false,
+ "weeks": [
+  {
+   "week": 1,
+   "unit": "Weeks 1-3 · Handling Forms and Sessions",
+   "title": "Forms That Listen: $_POST",
+   "colours": [
+    "blue",
+    "red"
+   ],
+   "goal": "I can build a club sign-up form and read what the user typed with PHP.",
+   "learn": "A form is like the register a club secretary passes round: people write, then hand it back. The HTML form sends the answers to the server with method='post'. PHP reads them from $_POST. We clean the text with htmlspecialchars so nobody can sneak in bad code. We only ask for a nickname and club — never personal data.",
+   "research": {
+    "q": "Ask 3 classmates: which school club would they join — Coding, Press, JETS or Drama?",
+    "tip": "Tally the answers — these become the club options in your form."
+   },
+   "build": {
+    "task": "Make a club sign-up form that greets the student by nickname after they submit.",
+    "lang": "php",
+    "steps": [
+     "Write a form with method='post', a nickname box and a club dropdown.",
+     "In PHP, check if the form was sent.",
+     "Read $_POST and clean it with htmlspecialchars.",
+     "Echo a welcome message."
+    ],
+    "code": "<?php\n$msg = \"\";\nif ($_SERVER[\"REQUEST_METHOD\"] === \"POST\") {\n    $nick = htmlspecialchars(trim($_POST[\"nick\"] ?? \"\"));\n    $club = htmlspecialchars($_POST[\"club\"] ?? \"\");\n    if ($nick === \"\") {\n        $msg = \"Please type a nickname.\";\n    } else {\n        $msg = \"Welcome $nick! You chose the $club Club.\";\n    }\n}\n?>\n<form method=\"post\">\n  Nickname: <input name=\"nick\">\n  <select name=\"club\">\n    <option>Coding</option><option>Press</option><option>JETS</option><option>Drama</option>\n  </select>\n  <button>Join</button>\n</form>\n<p><?= $msg ?></p>"
+   },
+   "check": [
+    {
+     "q": "Where does PHP find the typed form answers?",
+     "opts": [
+      "$_POST",
+      "$_FILES only",
+      "console.log"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why use htmlspecialchars?",
+     "opts": [
+      "To add colour",
+      "To stop people sneaking in bad code",
+      "To count clubs"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What should a school form NOT ask children for?",
+     "opts": [
+      "A nickname",
+      "A club choice",
+      "Home address or phone number"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I built a club form and used PHP $_POST to read the answers safely, like a secretary collecting the register.",
+   "trainer": {
+    "open": "The club secretary passes round a register, then reads it. Today PHP becomes our secretary!",
+    "plan": [
+     [
+      "3 min",
+      "Pass round a paper sign-up sheet; ask what info is safe to write."
+     ],
+     [
+      "5 min",
+      "Explain method='post', $_POST, and htmlspecialchars."
+     ],
+     [
+      "8 min",
+      "Kids type and run the form on the lab PC (XAMPP or similar)."
+     ],
+     [
+      "4 min",
+      "Tally club research results on the board."
+     ]
+    ],
+    "props": [
+     "A paper sign-up sheet",
+     "Lab PC with PHP server running"
+    ],
+    "lookfor": [
+     "Explains where $_POST data comes from",
+     "Tests an empty nickname",
+     "Says why we don't collect personal data"
+    ],
+    "fix": [
+     [
+      "Opens the file directly instead of through localhost",
+      "Say: PHP needs the server — open http://localhost/... not the file."
+     ],
+     [
+      "Input name doesn't match $_POST key",
+      "Check spelling: name='nick' must match $_POST['nick']."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 2,
+   "unit": "Weeks 1-3 · Handling Forms and Sessions",
+   "title": "Sessions: The App Remembers You",
+   "colours": [
+    "blue",
+    "red"
+   ],
+   "goal": "I can use a PHP session to remember a student's nickname across pages.",
+   "learn": "A session is like the gateman giving you a visitor tag: while you wear it, every office knows who you are. 'session_start()' gives each visitor a tag. We store data in $_SESSION. Other pages can read it until you log out, when 'session_destroy()' takes the tag back.",
+   "research": {
+    "q": "Ask the school gateman or a security guard: how do they know who a visitor is once inside?",
+    "tip": "Write their method — a session works the same way online."
+   },
+   "build": {
+    "task": "Make a page that remembers the club member's nickname and has a logout link.",
+    "lang": "php",
+    "steps": [
+     "Call session_start() at the very top.",
+     "When the form is sent, save the nickname in $_SESSION.",
+     "If a nickname is saved, greet them.",
+     "Add ?logout=1 to destroy the session."
+    ],
+    "code": "<?php\nsession_start();\nif (isset($_GET[\"logout\"])) {\n    session_destroy();\n    header(\"Location: club.php\");\n    exit;\n}\nif (!empty($_POST[\"nick\"])) {\n    $_SESSION[\"nick\"] = htmlspecialchars($_POST[\"nick\"]);\n}\n?>\n<?php if (isset($_SESSION[\"nick\"])): ?>\n  <h3>Welcome back, <?= $_SESSION[\"nick\"] ?>! 👋</h3>\n  <a href=\"club.php?logout=1\">Log out</a>\n<?php else: ?>\n  <form method=\"post\">\n    Nickname: <input name=\"nick\"> <button>Enter club</button>\n  </form>\n<?php endif; ?>"
+   },
+   "check": [
+    {
+     "q": "What must come first before using $_SESSION?",
+     "opts": [
+      "echo",
+      "session_start()",
+      "exit"
+     ],
+     "a": 1
+    },
+    {
+     "q": "A session is like…",
+     "opts": [
+      "A visitor tag the gateman gives you",
+      "A football match",
+      "A text message"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does session_destroy() do?",
+     "opts": [
+      "Deletes the website",
+      "Saves the nickname forever",
+      "Logs the visitor out"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I used a PHP session so my club page remembers me, like a visitor tag from the gateman.",
+   "trainer": {
+    "open": "When you visit an office, the gateman gives you a tag so everyone knows you're allowed in. Today our site gives tags!",
+    "plan": [
+     [
+      "3 min",
+      "Hand a child a paper 'visitor tag'; they visit 2 'offices' who greet them by name."
+     ],
+     [
+      "5 min",
+      "Explain session_start, $_SESSION and session_destroy."
+     ],
+     [
+      "8 min",
+      "Kids build club.php, log in, refresh, then log out."
+     ],
+     [
+      "4 min",
+      "Share research: how real gatemen track visitors."
+     ]
+    ],
+    "props": [
+     "Paper visitor tags",
+     "Lab PC with PHP server"
+    ],
+    "lookfor": [
+     "Refreshes and sees they are still remembered",
+     "Explains logout",
+     "Puts session_start at the top"
+    ],
+    "fix": [
+     [
+      "Puts HTML before session_start()",
+      "Say: session_start must be the very first thing, before any text."
+     ],
+     [
+      "Saves the file with a different name than club.php",
+      "Name the file club.php so the links work."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 3,
+   "unit": "Weeks 1-3 · Handling Forms and Sessions",
+   "title": "Cookies: A Note Left in the Browser",
+   "colours": [
+    "blue",
+    "red"
+   ],
+   "goal": "I can set and read a cookie to remember a small choice like a favourite theme.",
+   "learn": "A cookie is a tiny note your browser keeps, like a sticky note on the fridge saying 'Bring bread'. 'setcookie' writes the note with an expiry time. Next visit, PHP reads it from $_COOKIE. Sessions live on the server; cookies live in the browser. Never keep secrets or personal data in cookies.",
+   "research": {
+    "q": "Ask an adult: when a website asks 'Accept cookies?', what do they usually click and why?",
+    "tip": "Write their answer — it helps you explain cookies to your family."
+   },
+   "build": {
+    "task": "Remember a student's favourite club colour with a cookie for 7 days.",
+    "lang": "php",
+    "steps": [
+     "Check if a colour was chosen in the link (?c=green).",
+     "Save it with setcookie for 7 days.",
+     "Read $_COOKIE to set the page background.",
+     "Click a colour, close the tab, reopen."
+    ],
+    "code": "<?php\n$allowed = [\"green\", \"orange\", \"purple\"];\n$colour = $_COOKIE[\"theme\"] ?? \"white\";\nif (isset($_GET[\"c\"]) && in_array($_GET[\"c\"], $allowed)) {\n    $colour = $_GET[\"c\"];\n    setcookie(\"theme\", $colour, time() + 7 * 24 * 60 * 60);\n}\n?>\n<body style=\"background: <?= $colour ?>; font-family: sans-serif;\">\n  <h3>Pick your club colour</h3>\n  <a href=\"?c=green\">Green</a> |\n  <a href=\"?c=orange\">Orange</a> |\n  <a href=\"?c=purple\">Purple</a>\n  <p>Saved theme: <?= $colour ?></p>\n</body>"
+   },
+   "check": [
+    {
+     "q": "Where does a cookie live?",
+     "opts": [
+      "On the server",
+      "In the browser",
+      "In the printer"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which reads a saved cookie in PHP?",
+     "opts": [
+      "$_COOKIE",
+      "$_POST",
+      "session_start()"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What should you NEVER store in a cookie?",
+     "opts": [
+      "A theme colour",
+      "A language choice",
+      "Passwords or personal data"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I used a cookie as a small note in the browser to remember my club colour for 7 days.",
+   "trainer": {
+    "open": "A sticky note on the fridge reminds the family of something small. Cookies are sticky notes for websites!",
+    "plan": [
+     [
+      "3 min",
+      "Stick a note on the board; ask what makes a good reminder note."
+     ],
+     [
+      "5 min",
+      "Compare cookie (browser) vs session (server)."
+     ],
+     [
+      "8 min",
+      "Kids build it, choose a colour, close and reopen the tab."
+     ],
+     [
+      "4 min",
+      "Share research on 'Accept cookies?' and recap Unit 1."
+     ]
+    ],
+    "props": [
+     "Sticky notes",
+     "Lab PC with PHP server"
+    ],
+    "lookfor": [
+     "Explains cookie vs session",
+     "Explains why 'allowed' list matters",
+     "Shows the colour survives a closed tab"
+    ],
+    "fix": [
+     [
+      "Expects the cookie to show on the same click",
+      "We set $colour directly too, so it shows now and the cookie remembers next time."
+     ],
+     [
+      "Writes the expiry as 7",
+      "Say: expiry is a time in seconds from now — time() + 7 days in seconds."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 4,
+   "unit": "Weeks 4-7 · Database Integration",
+   "title": "Databases: The Club Register Book",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can create a database table and add and read rows with SQL.",
+   "learn": "A database is like the school's big register book with neat columns. A table has columns (nickname, club, class) and rows (one per student). SQL is the language we use to talk to it. 'CREATE TABLE' draws the columns, 'INSERT' writes a row, and 'SELECT' reads rows back.",
+   "research": {
+    "q": "Ask your class teacher: what columns are in the class register?",
+    "tip": "Write the column names — but for our club table we'll only keep safe ones like nickname and club."
+   },
+   "build": {
+    "task": "Create a 'members' table, add 3 club members and read them back.",
+    "lang": "sql",
+    "steps": [
+     "Write CREATE TABLE with id, nickname, club, class.",
+     "INSERT three members.",
+     "SELECT all members.",
+     "Run it in phpMyAdmin's SQL tab."
+    ],
+    "code": "CREATE TABLE members (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  nickname VARCHAR(30) NOT NULL,\n  club VARCHAR(20) NOT NULL,\n  class VARCHAR(10)\n);\n\nINSERT INTO members (nickname, club, class) VALUES\n  ('Tobi', 'Coding', 'JSS2'),\n  ('Ada', 'Press', 'JSS3'),\n  ('Kunle', 'JETS', 'SSS1');\n\nSELECT * FROM members;"
+   },
+   "check": [
+    {
+     "q": "In a table, one student is one…",
+     "opts": [
+      "Row",
+      "Column",
+      "Database"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which SQL command adds a new row?",
+     "opts": [
+      "SELECT",
+      "INSERT",
+      "CREATE"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does 'SELECT * FROM members' do?",
+     "opts": [
+      "Deletes members",
+      "Makes a new table",
+      "Shows all rows in members"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I used SQL to build a club register table, add members and read them back.",
+   "trainer": {
+    "open": "The school register has neat columns and one line per student. Today we build a digital register!",
+    "plan": [
+     [
+      "3 min",
+      "Draw a register table on the board: columns and rows."
+     ],
+     [
+      "5 min",
+      "Explain CREATE TABLE, INSERT, SELECT."
+     ],
+     [
+      "8 min",
+      "Kids run the SQL in phpMyAdmin and add one more member."
+     ],
+     [
+      "4 min",
+      "Share research: which register columns are safe to store?"
+     ]
+    ],
+    "props": [
+     "A real (old/blank) class register",
+     "Lab PC with MySQL and phpMyAdmin"
+    ],
+    "lookfor": [
+     "Explains rows vs columns",
+     "Adds a new member correctly",
+     "Reads the SELECT result"
+    ],
+    "fix": [
+     [
+      "Forgets quotes around text values",
+      "Say: words go inside 'single quotes'; numbers don't need them."
+     ],
+     [
+      "Misses the semicolon",
+      "Every SQL sentence ends with ; like a full stop."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 5,
+   "unit": "Weeks 4-7 · Database Integration",
+   "title": "SQL Detective: WHERE, UPDATE, DELETE",
+   "colours": [
+    "red"
+   ],
+   "goal": "I can filter, change and remove rows with WHERE, UPDATE and DELETE.",
+   "learn": "WHERE is a rule that picks only some rows, like the teacher saying 'only JSS2 stand up'. 'SELECT ... WHERE club = 'Coding'' finds only coders. 'UPDATE' changes a row, like a member moving clubs. 'DELETE' removes a row. Always use WHERE with UPDATE and DELETE, or you change everybody!",
+   "research": {
+    "q": "Ask a club patron or teacher: how often do students switch clubs, and how do they record it?",
+    "tip": "Write their answer — that's exactly what UPDATE does."
+   },
+   "build": {
+    "task": "Find all Coding members, move Ada to Coding, and remove Kunle.",
+    "lang": "sql",
+    "steps": [
+     "SELECT with WHERE club = 'Coding'.",
+     "UPDATE Ada's club WHERE nickname = 'Ada'.",
+     "DELETE WHERE nickname = 'Kunle'.",
+     "SELECT again with ORDER BY to check."
+    ],
+    "code": "-- 1. Only Coding Club members\nSELECT nickname, class FROM members WHERE club = 'Coding';\n\n-- 2. Ada moves to Coding Club\nUPDATE members SET club = 'Coding' WHERE nickname = 'Ada';\n\n-- 3. Kunle leaves the clubs\nDELETE FROM members WHERE nickname = 'Kunle';\n\n-- 4. Check the register, A to Z\nSELECT * FROM members ORDER BY nickname;\n\n-- 5. How many in each club?\nSELECT club, COUNT(*) AS total FROM members GROUP BY club;"
+   },
+   "check": [
+    {
+     "q": "What does WHERE do?",
+     "opts": [
+      "Picks only rows that match a rule",
+      "Adds a new table",
+      "Shuts down the database"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What happens if you DELETE without WHERE?",
+     "opts": [
+      "Nothing",
+      "Only one row goes",
+      "Every row is deleted"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Which command changes Ada's club?",
+     "opts": [
+      "SELECT",
+      "UPDATE",
+      "CREATE"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I used WHERE to pick only the right rows, and UPDATE and DELETE to change the club register.",
+   "trainer": {
+    "open": "If the teacher says 'everyone sit', all sit. If she says 'only JSS2 sit', that's WHERE!",
+    "plan": [
+     [
+      "3 min",
+      "Game: 'Only those in Coding Club, stand up!' — that's WHERE."
+     ],
+     [
+      "5 min",
+      "Explain WHERE (red rule), UPDATE, DELETE and the danger of no WHERE."
+     ],
+     [
+      "8 min",
+      "Kids run each query and check results."
+     ],
+     [
+      "4 min",
+      "Share research: how club changes are recorded."
+     ]
+    ],
+    "props": [
+     "Club name cards for the stand-up game",
+     "Lab PC with phpMyAdmin"
+    ],
+    "lookfor": [
+     "Always adds WHERE to UPDATE/DELETE",
+     "Predicts which rows a query returns",
+     "Explains GROUP BY counting"
+    ],
+    "fix": [
+     [
+      "Uses double = (==) in SQL",
+      "Say: SQL uses one = for comparing."
+     ],
+     [
+      "Runs DELETE without WHERE",
+      "Re-run last week's INSERT and remind: WHERE is the seatbelt."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 6,
+   "unit": "Weeks 4-7 · Database Integration",
+   "title": "PHP Meets MySQL: PDO Connect & Insert",
+   "colours": [
+    "blue",
+    "red"
+   ],
+   "goal": "I can connect PHP to MySQL with PDO and safely insert a new club member from a form.",
+   "learn": "PDO is PHP's bridge to the database, like the Okada that carries messages between two towns. We connect with the database name, user and password. A prepared statement uses '?' placeholders so attackers can't inject bad SQL. Then 'execute' sends the real values. This is the 'C' (Create) in CRUD.",
+   "research": {
+    "q": "Ask an adult who works in an office: how do they collect and store sign-up forms now?",
+    "tip": "Write their method — our app replaces the paper pile."
+   },
+   "build": {
+    "task": "Connect to the clubs database and insert a new member from the form.",
+    "lang": "php",
+    "steps": [
+     "Create a PDO connection in a try block.",
+     "Check if the form was posted.",
+     "Use a prepared INSERT with ? placeholders.",
+     "Show a success message and the form."
+    ],
+    "code": "<?php\ntry {\n    $pdo = new PDO(\"mysql:host=localhost;dbname=clubs;charset=utf8mb4\", \"root\", \"\");\n    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);\n} catch (PDOException $e) {\n    die(\"Database not reachable. Is MySQL running?\");\n}\n$msg = \"\";\nif ($_SERVER[\"REQUEST_METHOD\"] === \"POST\" && trim($_POST[\"nick\"]) !== \"\") {\n    $stmt = $pdo->prepare(\"INSERT INTO members (nickname, club, class) VALUES (?, ?, ?)\");\n    $stmt->execute([trim($_POST[\"nick\"]), $_POST[\"club\"], $_POST[\"class\"]]);\n    $msg = \"Member added! 🎉\";\n}\n?>\n<form method=\"post\">\n  <input name=\"nick\" placeholder=\"Nickname\">\n  <select name=\"club\"><option>Coding</option><option>Press</option><option>JETS</option></select>\n  <select name=\"class\"><option>JSS1</option><option>JSS2</option><option>JSS3</option><option>SSS1</option></select>\n  <button>Register</button>\n</form>\n<p><?= $msg ?></p>"
+   },
+   "check": [
+    {
+     "q": "What is PDO?",
+     "opts": [
+      "PHP's bridge to the database",
+      "A type of font",
+      "A phone game"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why use '?' placeholders?",
+     "opts": [
+      "To make code look cute",
+      "To ask a question",
+      "To stop bad SQL being injected"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Inserting a new row is which letter of CRUD?",
+     "opts": [
+      "U — Update",
+      "C — Create",
+      "D — Delete"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I connected PHP to MySQL with PDO and safely added a new club member using placeholders.",
+   "trainer": {
+    "open": "An Okada carries messages between two towns. PDO carries data between PHP and MySQL!",
+    "plan": [
+     [
+      "3 min",
+      "Draw two 'towns' (PHP and MySQL) and a road (PDO) between them."
+     ],
+     [
+      "5 min",
+      "Explain connect, prepare, ? placeholders, execute."
+     ],
+     [
+      "8 min",
+      "Kids register 2 members and check them in phpMyAdmin."
+     ],
+     [
+      "4 min",
+      "Share research: how offices store forms now."
+     ]
+    ],
+    "props": [
+     "Picture of an Okada or a road map",
+     "Lab PC with XAMPP running"
+    ],
+    "lookfor": [
+     "Explains why placeholders are safer",
+     "Finds the new row in phpMyAdmin",
+     "Explains what the try/catch does"
+    ],
+    "fix": [
+     [
+      "Wrong database name in the connection",
+      "Check dbname=clubs matches the database you created."
+     ],
+     [
+      "Puts $_POST values straight into the SQL string",
+      "Say: never glue user text into SQL — use ? and execute."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 7,
+   "unit": "Weeks 4-7 · Database Integration",
+   "title": "Full CRUD: Club Registration App",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "goal": "I can read, update and delete members with PDO to finish a simple CRUD app.",
+   "learn": "CRUD means Create, Read, Update, Delete — the four jobs of every register. Last week we did Create. Now we READ all members in a loop, show a 'Delete' link for each, and UPDATE a member's club. It's like a club secretary who can add, view, correct and remove names.",
+   "research": {
+    "q": "Ask a club secretary or class captain: what mistakes do they fix in the register most often?",
+    "tip": "Write the common mistakes — your Update feature should fix them."
+   },
+   "build": {
+    "task": "List all members with a Delete link and a quick 'Move to Coding' update.",
+    "lang": "php",
+    "steps": [
+     "Connect with PDO (same as last week).",
+     "If ?del=id, run a prepared DELETE.",
+     "If ?move=id, run a prepared UPDATE.",
+     "SELECT all and loop with foreach to show the table."
+    ],
+    "code": "<?php\n$pdo = new PDO(\"mysql:host=localhost;dbname=clubs;charset=utf8mb4\", \"root\", \"\");\nif (isset($_GET[\"del\"])) {\n    $pdo->prepare(\"DELETE FROM members WHERE id = ?\")->execute([(int)$_GET[\"del\"]]);\n}\nif (isset($_GET[\"move\"])) {\n    $pdo->prepare(\"UPDATE members SET club = 'Coding' WHERE id = ?\")->execute([(int)$_GET[\"move\"]]);\n}\n$rows = $pdo->query(\"SELECT * FROM members ORDER BY club, nickname\")->fetchAll(PDO::FETCH_ASSOC);\n?>\n<h3>Club Register 📋</h3>\n<table border=\"1\" cellpadding=\"6\">\n  <tr><th>Nickname</th><th>Club</th><th>Class</th><th>Actions</th></tr>\n  <?php foreach ($rows as $r): ?>\n  <tr>\n    <td><?= htmlspecialchars($r[\"nickname\"]) ?></td>\n    <td><?= $r[\"club\"] ?></td><td><?= $r[\"class\"] ?></td>\n    <td><a href=\"?move=<?= $r[\"id\"] ?>\">Move to Coding</a> |\n        <a href=\"?del=<?= $r[\"id\"] ?>\" onclick=\"return confirm('Remove?')\">Delete</a></td>\n  </tr>\n  <?php endforeach; ?>\n</table>"
+   },
+   "check": [
+    {
+     "q": "What does CRUD stand for?",
+     "opts": [
+      "Create, Read, Update, Delete",
+      "Copy, Run, Undo, Draw",
+      "Click, Read, Upload, Download"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which PHP loop shows every member row?",
+     "opts": [
+      "while(false)",
+      "setTimeout",
+      "foreach"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why ask 'Remove?' before deleting?",
+     "opts": [
+      "To slow the app",
+      "So nobody deletes by mistake",
+      "To print the page"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I finished a CRUD app that can add, show, change and remove club members using PHP and MySQL.",
+   "trainer": {
+    "open": "A good secretary can add names, read the list, fix mistakes and remove people who left. Today our app does all four!",
+    "plan": [
+     [
+      "3 min",
+      "Write C-R-U-D on the board; kids give a club example for each."
+     ],
+     [
+      "5 min",
+      "Walk through SELECT + foreach, then DELETE and UPDATE links."
+     ],
+     [
+      "8 min",
+      "Kids run it with last week's form and test each action."
+     ],
+     [
+      "4 min",
+      "Mini demo: Club Registration CRUD done! Share register-mistake research."
+     ]
+    ],
+    "props": [
+     "A register with a few crossed-out corrections",
+     "Lab PC with XAMPP"
+    ],
+    "lookfor": [
+     "Names all four CRUD actions in their app",
+     "Explains why (int) is used on the id",
+     "Uses the confirm before deleting"
+    ],
+    "fix": [
+     [
+      "Table shows nothing",
+      "Check that last week's INSERT worked and the table name is 'members'."
+     ],
+     [
+      "Thinks Delete link removes all rows",
+      "Point to WHERE id = ? — only one row with that id goes."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 8,
+   "unit": "Weeks 8-10 · Introduction to Python",
+   "title": "Hello Python: print and Variables",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can write Python that prints messages and stores data in variables.",
+   "learn": "Python is a friendly language that reads almost like English. 'print()' shows a message on the screen. A variable is a labelled container, like a 'Sugar' tin in the kitchen. In Python you don't need $ or semicolons — just name = value. Indentation (spaces) matters a lot in Python.",
+   "research": {
+    "q": "Ask an adult who uses a computer at work: have they heard of Python, and what is it used for?",
+    "tip": "Write their answer — Python is used in many real jobs, from data to AI."
+   },
+   "build": {
+    "task": "Write a Python welcome card for the Coding Club using variables.",
+    "lang": "python",
+    "steps": [
+     "Store club name, meeting day and number of members in variables.",
+     "Use print to show each one.",
+     "Use an f-string to join words and variables.",
+     "Run it in IDLE or an online Python editor."
+    ],
+    "code": "club = \"ByteBusters Coding Club\"\nschool = \"Yewa College, Ilaro\"\nday = \"Wednesday\"\nmembers = 24\n\nprint(\"Welcome to the\", club)\nprint(f\"We meet every {day} at {school}.\")\nprint(f\"We have {members} members.\")\n\nmembers = members + 1\nprint(f\"A new member joined! Now we are {members}.\")"
+   },
+   "check": [
+    {
+     "q": "What does print() do?",
+     "opts": [
+      "Shows a message on the screen",
+      "Prints on paper only",
+      "Deletes a variable"
+     ],
+     "a": 0
+    },
+    {
+     "q": "In Python, a variable is made with…",
+     "opts": [
+      "$name = value;",
+      "var name",
+      "name = value"
+     ],
+     "a": 2
+    },
+    {
+     "q": "What does the f in f\"...{day}...\" let you do?",
+     "opts": [
+      "Make text bold",
+      "Put variables inside text",
+      "Stop the program"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I wrote Python that stores club info in variables and prints a welcome card.",
+   "trainer": {
+    "open": "We've spoken PHP, JavaScript and SQL. Today we learn the language that reads almost like English — Python!",
+    "plan": [
+     [
+      "3 min",
+      "Show the same 'hello' in PHP, JS and Python; ask which looks simplest."
+     ],
+     [
+      "5 min",
+      "Explain print, variables and f-strings."
+     ],
+     [
+      "8 min",
+      "Kids type it, change values to their real club info."
+     ],
+     [
+      "4 min",
+      "Share research: where adults have heard Python is used."
+     ]
+    ],
+    "props": [
+     "Labelled tins or jars (variables)",
+     "Lab PC with Python/IDLE"
+    ],
+    "lookfor": [
+     "Changes a variable and predicts the output",
+     "Uses an f-string correctly",
+     "Explains that = stores a value"
+    ],
+    "fix": [
+     [
+      "Adds $ like in PHP",
+      "Say: Python variables have no $ sign — just the name."
+     ],
+     [
+      "Forgets the f before the quotes",
+      "Without f, {day} prints as text. Add f in front."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 9,
+   "unit": "Weeks 8-10 · Introduction to Python",
+   "title": "Python Data Types & Lists",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can use Python's main data types — int, float, str, bool — and lists.",
+   "learn": "Data comes in types, like how a market has items sold by count, by weight or by name. int is a whole number (24 members). float has a point (₦1,500.50). str is text ('Coding'). bool is True or False. A list holds many items in order, like a shopping list. type() tells you what type something is.",
+   "research": {
+    "q": "Ask a trader: what do they sell by count (how many) and what by measure (how much)?",
+    "tip": "Write 2 examples of each — count is like int, measure is like float."
+   },
+   "build": {
+    "task": "Store club data in different types and a list, then print their types.",
+    "lang": "python",
+    "steps": [
+     "Make one int, one float, one str and one bool.",
+     "Print each with type().",
+     "Make a list of club names.",
+     "Use len(), append() and index [0]."
+    ],
+    "code": "members = 24                 # int\ndues = 200.50                # float (naira)\nclub = \"Coding\"              # str\nmeets_today = True           # bool\n\nprint(type(members), type(dues), type(club), type(meets_today))\n\nclubs = [\"Coding\", \"Press\", \"JETS\"]\nclubs.append(\"Drama\")\nprint(\"Clubs:\", clubs)\nprint(\"First club:\", clubs[0])\nprint(\"Number of clubs:\", len(clubs))\n\ntotal_dues = members * dues\nprint(f\"Total dues: ₦{total_dues}\")"
+   },
+   "check": [
+    {
+     "q": "Which type is 200.50?",
+     "opts": [
+      "int",
+      "str",
+      "float"
+     ],
+     "a": 2
+    },
+    {
+     "q": "What does clubs[0] give?",
+     "opts": [
+      "The first item",
+      "The last item",
+      "The number of items"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does append() do to a list?",
+     "opts": [
+      "Deletes it",
+      "Adds an item at the end",
+      "Sorts it"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I learnt Python's data types and used a list to store all the school clubs.",
+   "trainer": {
+    "open": "Garri is sold by the cup, eggs by the count, and names are just words. Data has types too!",
+    "plan": [
+     [
+      "3 min",
+      "Hold up items: an egg (count), a cup of garri (measure), a label (text)."
+     ],
+     [
+      "5 min",
+      "Explain int, float, str, bool and lists."
+     ],
+     [
+      "8 min",
+      "Kids run the code and add their own club to the list."
+     ],
+     [
+      "4 min",
+      "Share research on count vs measure."
+     ]
+    ],
+    "props": [
+     "An egg, a cup, a label card",
+     "Lab PC with Python"
+    ],
+    "lookfor": [
+     "Names the type of a value correctly",
+     "Explains why the list starts at 0",
+     "Uses append correctly"
+    ],
+    "fix": [
+     [
+      "Thinks clubs[1] is the first item",
+      "Say: Python counts from 0, like floors — ground floor is 0."
+     ],
+     [
+      "Writes true instead of True",
+      "Python's bool needs a capital T: True."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 10,
+   "unit": "Weeks 8-10 · Introduction to Python",
+   "title": "Python Rules & Loops: Club Counter",
+   "colours": [
+    "red",
+    "green"
+   ],
+   "goal": "I can use if/elif/else and for loops to count and check club members.",
+   "learn": "Conditionals are rules: IF the club is full, say 'No space', ELSE say 'Welcome'. Loops repeat work, like a teacher calling every name on the register. 'for' goes through each item in a list. Together they let us count members in each club quickly — just like our PHP app, but in Python.",
+   "research": {
+    "q": "Ask a club patron: what is the most members a club can take, and why?",
+    "tip": "Write the limit and reason — use it as the 'full' rule in your program."
+   },
+   "build": {
+    "task": "Write a Python program that counts members per club and says if each club is full.",
+    "lang": "python",
+    "steps": [
+     "Make a list of members' clubs.",
+     "Loop with for to count each club in a dictionary.",
+     "Use if/elif/else to check full, almost full or open.",
+     "Print a neat report."
+    ],
+    "code": "signups = [\"Coding\", \"Press\", \"Coding\", \"JETS\", \"Coding\", \"Press\", \"Coding\"]\nlimit = 4\n\ncounts = {}\nfor club in signups:\n    counts[club] = counts.get(club, 0) + 1\n\nprint(\"Club Report 📋\")\nfor club, total in counts.items():\n    if total >= limit:\n        status = \"FULL - join the waiting list\"\n    elif total == limit - 1:\n        status = \"Almost full - hurry!\"\n    else:\n        status = \"Open - welcome!\"\n    print(f\"{club}: {total} members -> {status}\")"
+   },
+   "check": [
+    {
+     "q": "Which keyword checks a second rule after if?",
+     "opts": [
+      "elif",
+      "else if()",
+      "loop"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does 'for club in signups' do?",
+     "opts": [
+      "Deletes signups",
+      "Runs once only",
+      "Goes through each item in the list"
+     ],
+     "a": 2
+    },
+    {
+     "q": "If Coding has 4 and the limit is 4, the status is…",
+     "opts": [
+      "Open - welcome!",
+      "FULL - join the waiting list",
+      "Almost full - hurry!"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I used Python loops to count club members and if/elif/else rules to say which clubs are full.",
+   "trainer": {
+    "open": "Every term the patron says 'Coding Club is full!' Today we write the program that tells us that.",
+    "plan": [
+     [
+      "3 min",
+      "Roll-call game: trainer loops through names; kids stand by club."
+     ],
+     [
+      "5 min",
+      "Explain for loops (green) and if/elif/else (red)."
+     ],
+     [
+      "8 min",
+      "Kids run it, add signups and change the limit from research."
+     ],
+     [
+      "4 min",
+      "Showcase: compare the Python report with the PHP CRUD app."
+     ]
+    ],
+    "props": [
+     "Club name cards",
+     "Lab PC with Python"
+    ],
+    "lookfor": [
+     "Predicts each club's status before running",
+     "Changes the limit and explains the new output",
+     "Explains indentation inside the loop"
+    ],
+    "fix": [
+     [
+      "Forgets the colon after for/if",
+      "Say: in Python, every for, if, elif and else ends with a colon :"
+     ],
+     [
+      "Mixes up indentation",
+      "Use 4 spaces for everything inside the loop or if; keep them lined up."
+     ]
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,974 @@
+{
+ "id": "y3t1",
+ "year": 3,
+ "term": 1,
+ "title": "PHP Frameworks & APIs",
+ "level": "Intermediate",
+ "device": "lab",
+ "intro": "This term you move from plain PHP to Laravel, a real framework used by working developers. Step by step you will build an online shop with its own API and a safe Paystack test checkout.",
+ "termProject": "ChopNow: an online store for a local Ilaro caterer (jollof, moi moi, small chops) in Laravel, with a menu API, naira-to-dollar prices and a Paystack TEST-mode checkout.",
+ "generated": false,
+ "weeks": [
+  {
+   "week": 1,
+   "unit": "Weeks 1-3 · PHP Frameworks",
+   "title": "Laravel: your shop's front gate",
+   "colours": [
+    "purple",
+    "blue"
+   ],
+   "goal": "Set up a Laravel project and make three routes that answer different web addresses.",
+   "learn": "A framework is a ready-made kitchen: the pots, gas and shelves are already there, so you just cook. Laravel is a PHP framework that gives you that kitchen for websites. A route is like the gate-man at an owambe: when a guest comes to a door like /menu, he decides who serves them. In Laravel, all your doors live in routes/web.php.",
+   "research": {
+    "q": "Ask a caterer or food seller: what are the first three things a new customer asks you?",
+    "tip": "Write each question down; each one can become a page (a route) on your shop website."
+   },
+   "build": {
+    "task": "Make three routes for a caterer's shop: home, menu and order/{item}.",
+    "lang": "php",
+    "steps": [
+     "Run: composer create-project laravel/laravel chopnow",
+     "Open routes/web.php and type the code",
+     "Run: php artisan serve",
+     "Visit /, /menu and /order/jollof in the browser"
+    ],
+    "code": "<?php\n// routes/web.php\nuse Illuminate\\Support\\Facades\\Route;\n\nRoute::get('/', function () {\n    return 'Welcome to ChopNow Ilaro!';\n});\n\nRoute::get('/menu', function () {\n    return 'Jollof Rice, Fried Rice, Moi Moi, Small Chops';\n});\n\nRoute::get('/order/{item}', function ($item) {\n    return 'You ordered: ' . e($item);\n});"
+   },
+   "check": [
+    {
+     "q": "Which file holds Laravel's web routes?",
+     "opts": [
+      "routes/web.php",
+      "index.html",
+      "app/menu.css"
+     ],
+     "a": 0
+    },
+    {
+     "q": "In /order/{item}, what is {item}?",
+     "opts": [
+      "A comment",
+      "A changing part of the address",
+      "A CSS class"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What command starts Laravel's small test server?",
+     "opts": [
+      "php run",
+      "npm start",
+      "php artisan serve"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I learnt that a Laravel route is like a gate-man that decides what each web address shows.",
+   "trainer": {
+    "open": "Today we stop building every pot from scratch. Laravel hands us a full kitchen, and we just cook!",
+    "plan": [
+     [
+      "3 min",
+      "Kitchen analogy: plain PHP vs a framework"
+     ],
+     [
+      "5 min",
+      "Show routes/web.php and php artisan serve"
+     ],
+     [
+      "8 min",
+      "Students add three routes and test them"
+     ],
+     [
+      "4 min",
+      "Share research questions; pick which become pages"
+     ]
+    ],
+    "props": [
+     "A laptop with Composer and PHP installed",
+     "A printed caterer's menu or flyer"
+    ],
+    "lookfor": [
+     "Can say what a route does in their own words",
+     "Adds a new route without copying",
+     "Changes {item} in the address and predicts the result"
+    ],
+    "fix": [
+     [
+      "Forgets the semicolon after a closing brace and bracket",
+      "Point at the line: every Route::get(...) ends with ');'"
+     ],
+     [
+      "Visits the page without running php artisan serve",
+      "Ask: is the kitchen gas on? Start the server first."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 2,
+   "unit": "Weeks 1-3 · PHP Frameworks",
+   "title": "Controllers and Blade: the chef and the plate",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "goal": "Move page logic into a controller and show a menu with a Blade view and a loop.",
+   "learn": "As a shop grows, the gate-man cannot also cook. A controller is the chef: it prepares the data. A Blade view is the plate: it shows the food nicely. Blade lets you write {{ $price }} to print data and @foreach to repeat rows. Each part has one job, so the code stays tidy.",
+   "research": {
+    "q": "Ask a caterer: how do you show prices to customers, and how often do they change?",
+    "tip": "If prices change often, that is why we keep data in the controller, not typed into the page."
+   },
+   "build": {
+    "task": "Build a MenuController that sends dishes to a Blade view which lists them with prices.",
+    "lang": "php",
+    "steps": [
+     "Run: php artisan make:controller MenuController",
+     "Add the index method below",
+     "Create resources/views/menu.blade.php",
+     "Point the /menu route at the controller and refresh"
+    ],
+    "code": "<?php\n// app/Http/Controllers/MenuController.php\nnamespace App\\Http\\Controllers;\n\nclass MenuController extends Controller\n{\n    public function index()\n    {\n        $dishes = ['Jollof Rice' => 1500, 'Moi Moi' => 500, 'Small Chops' => 2000];\n        return view('menu', ['dishes' => $dishes]);\n    }\n}\n\n// routes/web.php\n// use App\\Http\\Controllers\\MenuController;\n// Route::get('/menu', [MenuController::class, 'index']);\n\n{{-- resources/views/menu.blade.php --}}\n<h1>Our Menu</h1>\n@foreach ($dishes as $name => $price)\n  <p>{{ $name }} - ₦{{ number_format($price) }}</p>\n@endforeach"
+   },
+   "check": [
+    {
+     "q": "In Laravel, who prepares the data?",
+     "opts": [
+      "The Blade view",
+      "The controller",
+      "The CSS file"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does {{ $price }} do in Blade?",
+     "opts": [
+      "Prints the value safely",
+      "Deletes the price",
+      "Starts a loop"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Blade views end with...",
+     "opts": [
+      ".php.css",
+      ".html.js",
+      ".blade.php"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I learnt that the controller is the chef that prepares data and the Blade view is the plate that shows it.",
+   "trainer": {
+    "open": "Who has seen a busy buka where one person cooks and another serves? Today our code works like that.",
+    "plan": [
+     [
+      "3 min",
+      "Chef and plate analogy"
+     ],
+     [
+      "5 min",
+      "Make the controller live with artisan"
+     ],
+     [
+      "8 min",
+      "Students build the view and add one new dish"
+     ],
+     [
+      "4 min",
+      "Change a price in the controller; watch the page update"
+     ]
+    ],
+    "props": [
+     "A paper plate with a menu written on it",
+     "Laptop with yesterday's project"
+    ],
+    "lookfor": [
+     "Adds a dish in the controller, not in the view",
+     "Explains what @foreach repeats",
+     "Connects the route to the controller correctly"
+    ],
+    "fix": [
+     [
+      "View not found error",
+      "Check the file name: menu.blade.php inside resources/views"
+     ],
+     [
+      "Uses echo inside Blade",
+      "Show that {{ }} is Blade's echo and it also protects the page"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 3,
+   "unit": "Weeks 1-3 · PHP Frameworks",
+   "title": "Order form: a real app",
+   "colours": [
+    "purple",
+    "red",
+    "blue"
+   ],
+   "goal": "Build a small Laravel app with a form, a POST route and validation.",
+   "learn": "An application does work, not just show pages. When a customer fills an order form and presses Order, the browser sends a POST request. Laravel checks the data with validate, like a cashier checking the money is complete. @csrf adds a secret token so strangers cannot send fake orders from other websites.",
+   "research": {
+    "q": "Ask a food seller: what mistakes do customers make when ordering by phone or WhatsApp?",
+    "tip": "Each mistake becomes a validation rule, for example 'plates must be at least 1'."
+   },
+   "build": {
+    "task": "Make an order form for dishes and plates that validates and shows a thank-you page.",
+    "lang": "php",
+    "steps": [
+     "Add the two routes to routes/web.php",
+     "Create order.blade.php with the form",
+     "Create thanks.blade.php",
+     "Try sending empty boxes and see Laravel refuse"
+    ],
+    "code": "<?php\n// routes/web.php\nuse Illuminate\\Http\\Request;\nuse Illuminate\\Support\\Facades\\Route;\n\nRoute::get('/order', fn () => view('order'));\n\nRoute::post('/order', function (Request $request) {\n    $data = $request->validate([\n        'dish'   => 'required|in:Jollof Rice,Moi Moi,Small Chops',\n        'plates' => 'required|integer|min:1|max:50',\n    ]);\n    return view('thanks', $data);\n});\n\n{{-- resources/views/order.blade.php --}}\n<form method=\"POST\" action=\"/order\">\n  @csrf\n  <input name=\"dish\" placeholder=\"Jollof Rice\">\n  <input name=\"plates\" type=\"number\">\n  <button>Order</button>\n</form>\n\n{{-- resources/views/thanks.blade.php --}}\n<p>Thank you! {{ $plates }} plate(s) of {{ $dish }} coming.</p>"
+   },
+   "check": [
+    {
+     "q": "Which request type sends form data to save?",
+     "opts": [
+      "GET",
+      "POST",
+      "LINK"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why do we add @csrf to forms?",
+     "opts": [
+      "To block fake requests from other sites",
+      "To make text bold",
+      "To speed up the page"
+     ],
+     "a": 0
+    },
+    {
+     "q": "'min:1' on plates means...",
+     "opts": [
+      "Plates can be empty",
+      "Plates must be a word",
+      "At least 1 plate"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I learnt that a Laravel app checks form data with validation before it trusts it.",
+   "trainer": {
+    "open": "A shop that accepts '-5 plates' will go bankrupt. Today we teach our app to say no!",
+    "plan": [
+     [
+      "3 min",
+      "Share research: customer ordering mistakes"
+     ],
+     [
+      "5 min",
+      "Explain GET vs POST and @csrf"
+     ],
+     [
+      "8 min",
+      "Build the form and test bad inputs"
+     ],
+     [
+      "4 min",
+      "Add one more rule from the research"
+     ]
+    ],
+    "props": [
+     "Sticky notes for listing order mistakes"
+    ],
+    "lookfor": [
+     "Explains why validation is needed",
+     "Adds a new rule without help",
+     "Knows the form must use method POST"
+    ],
+    "fix": [
+     [
+      "419 Page Expired error",
+      "They forgot @csrf inside the form; add it and retry"
+     ],
+     [
+      "Input names don't match the rules",
+      "The name in <input name> must match the key in validate"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 4,
+   "unit": "Weeks 4-6 · Advanced Web Development",
+   "title": "Talking to other computers: APIs",
+   "colours": [
+    "blue",
+    "red"
+   ],
+   "goal": "Fetch live weather from a free public API with PHP and make a decision with it.",
+   "learn": "An API is like a POS agent: you send a clear request, and you get a clear answer back. Many APIs answer in JSON, a neat list of names and values. PHP can call an API with file_get_contents and turn JSON into an array with json_decode. Open-Meteo is free and needs no key or personal data.",
+   "research": {
+    "q": "Ask a caterer or farmer: how does the weather change your work on an event day?",
+    "tip": "Write one weather rule they use, like 'if it rains, we cover the canopy', and code it."
+   },
+   "build": {
+    "task": "Get Ilaro's current temperature from Open-Meteo and print advice for an outdoor party.",
+    "lang": "php",
+    "steps": [
+     "Copy the code into weather.php",
+     "Run: php weather.php in the terminal",
+     "Read the temperature it prints",
+     "Change the latitude and longitude to another town"
+    ],
+    "code": "<?php\n// weather.php  (Open-Meteo: free, no key needed)\n$url = 'https://api.open-meteo.com/v1/forecast?latitude=6.89&longitude=3.01&current_weather=true';\n\n$json = @file_get_contents($url);\nif ($json === false) {\n    exit(\"No network. Try again later.\\n\");\n}\n\n$data = json_decode($json, true);\n$temp = $data['current_weather']['temperature'];\n\necho \"Ilaro now: {$temp}°C\\n\";\nif ($temp >= 32) {\n    echo \"Very hot! Keep the small chops in the shade.\\n\";\n} elseif ($temp >= 25) {\n    echo \"Warm. Good day for an owambe.\\n\";\n} else {\n    echo \"Cool weather. Bring out the pepper soup!\\n\";\n}"
+   },
+   "check": [
+    {
+     "q": "What does an API give back most of the time?",
+     "opts": [
+      "A photo",
+      "JSON data",
+      "A CSS file"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which PHP function turns JSON into an array?",
+     "opts": [
+      "json_encode",
+      "array_json",
+      "json_decode"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why use Open-Meteo for practice?",
+     "opts": [
+      "It is free and needs no key",
+      "It asks for your phone number",
+      "It only works offline"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I learnt that an API is like a POS agent: I send a request and get data back as JSON.",
+   "trainer": {
+    "open": "Our website can now ask another computer a question and get an answer in one second. Let's ask about the weather!",
+    "plan": [
+     [
+      "3 min",
+      "POS agent analogy for APIs"
+     ],
+     [
+      "5 min",
+      "Open the API link in a browser and read the JSON together"
+     ],
+     [
+      "8 min",
+      "Students run weather.php and change the rules"
+     ],
+     [
+      "4 min",
+      "Share the weather rules from research"
+     ]
+    ],
+    "props": [
+     "Laptop with internet",
+     "A printed copy of a small JSON response"
+    ],
+    "lookfor": [
+     "Can point to the temperature inside the JSON",
+     "Explains json_decode",
+     "Adds a new weather rule"
+    ],
+    "fix": [
+     [
+      "Undefined index error",
+      "Print the whole $data with print_r to see the real keys"
+     ],
+     [
+      "No internet in the lab",
+      "Save one API reply into a .json file and read that file instead"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 5,
+   "unit": "Weeks 4-6 · Advanced Web Development",
+   "title": "Build your own API",
+   "colours": [
+    "blue",
+    "red"
+   ],
+   "goal": "Create RESTful API routes in Laravel that return the menu as JSON.",
+   "learn": "Last week we used someone's API; today we build our own. REST means using clear addresses for things, like /api/dishes for all dishes and /api/dishes/2 for one dish. Laravel turns PHP arrays into JSON with response()->json. A good API also says when something is missing with code 404, like a seller saying 'it has finished'.",
+   "research": {
+    "q": "Ask a caterer: if a phone app could ask your shop one question, what should it ask?",
+    "tip": "Each answer is a possible API address, like /api/dishes or /api/today-special."
+   },
+   "build": {
+    "task": "Make GET /api/dishes and GET /api/dishes/{id} that return JSON, with a 404 for unknown dishes.",
+    "lang": "php",
+    "steps": [
+     "Laravel 11+: run php artisan install:api once",
+     "Paste the code into routes/api.php",
+     "Visit /api/dishes and /api/dishes/1",
+     "Try /api/dishes/9 and see the 404 message"
+    ],
+    "code": "<?php\n// routes/api.php\nuse Illuminate\\Support\\Facades\\Route;\n\n$dishes = [\n    1 => ['name' => 'Jollof Rice', 'price' => 1500],\n    2 => ['name' => 'Moi Moi', 'price' => 500],\n    3 => ['name' => 'Small Chops', 'price' => 2000],\n];\n\nRoute::get('/dishes', fn () => response()->json($dishes));\n\nRoute::get('/dishes/{id}', function ($id) use ($dishes) {\n    if (!isset($dishes[$id])) {\n        return response()->json(['error' => 'Dish not found'], 404);\n    }\n    return response()->json($dishes[$id]);\n});"
+   },
+   "check": [
+    {
+     "q": "In REST, /api/dishes/2 usually means...",
+     "opts": [
+      "Delete all dishes",
+      "Dish number 2",
+      "Page 2 of the website"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What status code means 'not found'?",
+     "opts": [
+      "200",
+      "500",
+      "404"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Routes in routes/api.php start with...",
+     "opts": [
+      "/api",
+      "/web",
+      "/php"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I learnt that a RESTful API uses clear addresses to give data as JSON, and says 404 when something is missing.",
+   "trainer": {
+    "open": "Today our shop becomes the POS agent. Other apps will ask us questions!",
+    "plan": [
+     [
+      "3 min",
+      "Recap: we called an API, now we build one"
+     ],
+     [
+      "5 min",
+      "Explain REST addresses and status codes"
+     ],
+     [
+      "8 min",
+      "Students build and test the two routes"
+     ],
+     [
+      "4 min",
+      "Add a route idea from research"
+     ]
+    ],
+    "props": [
+     "A list of HTTP codes on a card: 200, 201, 404, 500"
+    ],
+    "lookfor": [
+     "Predicts the JSON before visiting the address",
+     "Explains when 404 is returned",
+     "Adds a new dish correctly"
+    ],
+    "fix": [
+     [
+      "Route not found for /api/dishes",
+      "On Laravel 11+ run php artisan install:api so routes/api.php is loaded"
+     ],
+     [
+      "Forgets 'use ($dishes)' in the function",
+      "A normal function can't see outside variables; 'use' passes them in"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 6,
+   "unit": "Weeks 4-6 · Advanced Web Development",
+   "title": "API that saves: create, update, delete",
+   "colours": [
+    "blue",
+    "red",
+    "purple"
+   ],
+   "goal": "Use a database model so the API can add, change and remove dishes.",
+   "learn": "A full REST API has four main actions: GET to read, POST to add, PUT to change and DELETE to remove. To remember data, we use a database table and a Laravel model called Dish. It is like the caterer's notebook: new dishes are written in, prices are crossed out and changed. We test with a tool like Thunder Client or Postman.",
+   "research": {
+    "q": "Ask a trader: how often do you change prices, and who is allowed to change them?",
+    "tip": "This tells us which API actions need protection, like only the owner can PUT a new price."
+   },
+   "build": {
+    "task": "Make a Dish model and API routes to list, add, update and delete dishes.",
+    "lang": "php",
+    "steps": [
+     "Run: php artisan make:model Dish -m",
+     "Add name and price columns in the migration, then php artisan migrate",
+     "Add $fillable to the model and paste the routes",
+     "Test POST, PUT and DELETE with Thunder Client"
+    ],
+    "code": "<?php\n// app/Models/Dish.php  ->  protected $fillable = ['name', 'price'];\n// routes/api.php\nuse App\\Models\\Dish;\nuse Illuminate\\Http\\Request;\nuse Illuminate\\Support\\Facades\\Route;\n\nRoute::get('/dishes', fn () => Dish::all());\n\nRoute::post('/dishes', function (Request $r) {\n    $data = $r->validate(['name' => 'required', 'price' => 'required|integer|min:0']);\n    return response()->json(Dish::create($data), 201);\n});\n\nRoute::put('/dishes/{dish}', function (Request $r, Dish $dish) {\n    $dish->update($r->validate(['price' => 'required|integer|min:0']));\n    return $dish;\n});\n\nRoute::delete('/dishes/{dish}', function (Dish $dish) {\n    $dish->delete();\n    return response()->noContent();\n});"
+   },
+   "check": [
+    {
+     "q": "Which method changes an existing dish?",
+     "opts": [
+      "GET",
+      "DELETE",
+      "PUT"
+     ],
+     "a": 2
+    },
+    {
+     "q": "What does status 201 mean?",
+     "opts": [
+      "Something new was created",
+      "Server crashed",
+      "Page is empty"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why do we add $fillable to the model?",
+     "opts": [
+      "To make it load faster",
+      "To say which fields can be filled from a request",
+      "To delete old data"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I learnt that a REST API uses GET, POST, PUT and DELETE to read, add, change and remove data.",
+   "trainer": {
+    "open": "Our menu was a fixed list. Today it becomes a notebook the shop can write in.",
+    "plan": [
+     [
+      "3 min",
+      "Notebook analogy for the four actions"
+     ],
+     [
+      "5 min",
+      "Model, migration and $fillable demo"
+     ],
+     [
+      "8 min",
+      "Students test each action with Thunder Client"
+     ],
+     [
+      "4 min",
+      "Discuss research: who should be allowed to change prices?"
+     ]
+    ],
+    "props": [
+     "Laptop with Thunder Client or Postman",
+     "A notebook to act out the four actions"
+    ],
+    "lookfor": [
+     "Matches each method to its action",
+     "Reads the status code after each test",
+     "Spots a validation error and fixes the request"
+    ],
+    "fix": [
+     [
+      "MassAssignmentException",
+      "Add the field names to $fillable in the Dish model"
+     ],
+     [
+      "Sends PUT from the browser address bar",
+      "The address bar only does GET; use Thunder Client for PUT and DELETE"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 7,
+   "unit": "Weeks 7-10 · Advanced PHP Projects",
+   "title": "Tidy kitchen: services and config",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "goal": "Move business logic into a service class and settings into config so the app can grow.",
+   "learn": "A small buka can keep everything on one table, but a big catering company has a store, a kitchen and a cashier. Scalable code is organised the same way. A service class does one job, like working out the order total. Settings like the delivery fee go in config and .env, so you change them in one place without touching code.",
+   "research": {
+    "q": "Ask a caterer: what costs change between jobs, like delivery, gas or extra staff?",
+    "tip": "Each changing cost should be a setting in config, not a number buried in your code."
+   },
+   "build": {
+    "task": "Create an OrderService that totals a cart and adds a delivery fee from config.",
+    "lang": "php",
+    "steps": [
+     "Create app/Services/OrderService.php",
+     "Create config/shop.php and add DELIVERY_FEE=1000 to .env",
+     "Use the service in a controller",
+     "Change the fee in .env and refresh"
+    ],
+    "code": "<?php\n// app/Services/OrderService.php\nnamespace App\\Services;\n\nclass OrderService\n{\n    public function total(array $items): int\n    {\n        $sum = 0;\n        foreach ($items as $item) {\n            $sum += $item['price'] * $item['qty'];\n        }\n        return $sum + config('shop.delivery_fee');\n    }\n}\n\n// config/shop.php  ->  return ['delivery_fee' => (int) env('DELIVERY_FEE', 1000)];\n\n// app/Http/Controllers/CartController.php (inside the class)\n// public function show(\\App\\Services\\OrderService $orders) {\n//     $items = [['price' => 1500, 'qty' => 2], ['price' => 500, 'qty' => 3]];\n//     return 'Total: ₦' . $orders->total($items);\n// }"
+   },
+   "check": [
+    {
+     "q": "Where should the delivery fee setting live?",
+     "opts": [
+      "Typed in every page",
+      "In config and .env",
+      "In the CSS file"
+     ],
+     "a": 1
+    },
+    {
+     "q": "A service class should...",
+     "opts": [
+      "Do many unrelated jobs",
+      "Hold only images",
+      "Do one clear job"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Laravel gives the controller the service automatically. This is called...",
+     "opts": [
+      "Dependency injection",
+      "Copy and paste",
+      "Compiling"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I learnt that big apps stay tidy when each class has one job and settings live in config.",
+   "trainer": {
+    "open": "If your delivery fee is written in 20 places, how many places must you change when fuel price goes up?",
+    "plan": [
+     [
+      "3 min",
+      "Buka vs big catering company"
+     ],
+     [
+      "5 min",
+      "Show the service and config files"
+     ],
+     [
+      "8 min",
+      "Students build the service and change the fee"
+     ],
+     [
+      "4 min",
+      "List research costs that should be settings"
+     ]
+    ],
+    "props": [
+     "A drawing of a kitchen with store, cooker and cashier sections"
+    ],
+    "lookfor": [
+     "Explains why the fee is not hard-coded",
+     "Calls the service from a controller",
+     "Adds a new setting to config"
+    ],
+    "fix": [
+     [
+      "Change in .env does nothing",
+      "Run php artisan config:clear; the old settings were cached"
+     ],
+     [
+      "Namespace error for the service",
+      "The namespace must be App\\Services to match the folder"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 8,
+   "unit": "Weeks 7-10 · Advanced PHP Projects",
+   "title": "Shelves and pages: models that relate",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "goal": "Link products to categories with Eloquent relationships and show them page by page.",
+   "learn": "In a supermarket, drinks are on one shelf and snacks on another. A category has many products, and each product belongs to one category. Laravel's hasMany and belongsTo describe this. When the store has hundreds of items, paginate shows a few per page, so phones on slow data still load fast.",
+   "research": {
+    "q": "Ask a shop owner: how do you group your goods so customers find them quickly?",
+    "tip": "Their groups become your categories, for example Rice Dishes, Small Chops, Drinks."
+   },
+   "build": {
+    "task": "Connect Category and Product models and show products 6 per page with their category.",
+    "lang": "php",
+    "steps": [
+     "Make both models with migrations (product has category_id)",
+     "Add the relationship methods",
+     "Add the /shop route and view",
+     "Add 10+ products and click through the pages"
+    ],
+    "code": "<?php\n// app/Models/Category.php\nclass Category extends Model {\n    public function products() { return $this->hasMany(Product::class); }\n}\n\n// app/Models/Product.php\nclass Product extends Model {\n    protected $fillable = ['name', 'price', 'category_id'];\n    public function category() { return $this->belongsTo(Category::class); }\n}\n\n// routes/web.php\nRoute::get('/shop', function () {\n    $products = Product::with('category')->paginate(6);\n    return view('shop', ['products' => $products]);\n});\n\n{{-- resources/views/shop.blade.php --}}\n@foreach ($products as $p)\n  <p>{{ $p->name }} ({{ $p->category->name }}) - ₦{{ $p->price }}</p>\n@endforeach\n{{ $products->links() }}"
+   },
+   "check": [
+    {
+     "q": "'A category has many products' uses...",
+     "opts": [
+      "belongsTo",
+      "hasMany",
+      "paginate"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why paginate a big list?",
+     "opts": [
+      "So pages load fast on slow data",
+      "To hide prices",
+      "To delete old items"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does with('category') help avoid?",
+     "opts": [
+      "Using Blade",
+      "Writing routes",
+      "Asking the database again for every product"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I learnt that models can be related like shelves and goods, and pagination keeps big lists fast.",
+   "trainer": {
+    "open": "Imagine scrolling 500 items on a slow network. Today we fix that with shelves and pages.",
+    "plan": [
+     [
+      "3 min",
+      "Supermarket shelves analogy"
+     ],
+     [
+      "5 min",
+      "Explain hasMany, belongsTo and with()"
+     ],
+     [
+      "8 min",
+      "Students build the shop page"
+     ],
+     [
+      "4 min",
+      "Use research groups as real categories"
+     ]
+    ],
+    "props": [
+     "Pictures of supermarket shelves",
+     "A list of 12 practice products"
+    ],
+    "lookfor": [
+     "Explains the relationship in plain words",
+     "Shows category name beside each product",
+     "Pagination links work"
+    ],
+    "fix": [
+     [
+      "Trying to get property 'name' of null",
+      "A product has a category_id that doesn't exist; fix the data"
+     ],
+     [
+      "Forgets {{ $products->links() }}",
+      "Without it there are pages but no buttons to reach them"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 9,
+   "unit": "Weeks 7-10 · Advanced PHP Projects",
+   "title": "Borrowing other services: exchange rates",
+   "colours": [
+    "blue",
+    "red"
+   ],
+   "goal": "Use Laravel's HTTP client and cache to show naira prices in US dollars from a free service.",
+   "learn": "Big apps don't build everything; they borrow from other services, like a caterer hiring chairs instead of buying them. Laravel's Http::get calls another service easily. Rates don't change every second, so Cache::remember keeps the answer for an hour, saving data and time. Always plan for when the service is down.",
+   "research": {
+    "q": "Ask a family member or neighbour: which outside services does your business use, like POS, delivery riders or chair rental?",
+    "tip": "This shows why apps also use outside services, and what happens when one fails."
+   },
+   "build": {
+    "task": "Add a page that converts a naira price to US dollars using open.er-api.com.",
+    "lang": "php",
+    "steps": [
+     "Paste the route into routes/web.php",
+     "Visit /price-in-dollars/5000",
+     "Visit again and notice it is faster (cached)",
+     "Turn off Wi-Fi, clear cache, and see the friendly error"
+    ],
+    "code": "<?php\n// routes/web.php\nuse Illuminate\\Support\\Facades\\Cache;\nuse Illuminate\\Support\\Facades\\Http;\nuse Illuminate\\Support\\Facades\\Route;\n\nRoute::get('/price-in-dollars/{naira}', function (int $naira) {\n    try {\n        $rates = Cache::remember('ngn_rates', 3600, function () {\n            return Http::timeout(5)->get('https://open.er-api.com/v6/latest/NGN')->json();\n        });\n    } catch (\\Exception $e) {\n        return 'Rate service is not reachable. Try again later.';\n    }\n\n    if (($rates['result'] ?? '') !== 'success') {\n        Cache::forget('ngn_rates');\n        return 'Rate service is down. Try again later.';\n    }\n\n    $usd = round($naira * $rates['rates']['USD'], 2);\n    return \"₦{$naira} is about \\${$usd}\";\n});"
+   },
+   "check": [
+    {
+     "q": "Why do we cache the rates?",
+     "opts": [
+      "To save time and data",
+      "To make prices wrong",
+      "To hide the page"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What should your app do if the service is down?",
+     "opts": [
+      "Crash with an error",
+      "Show a friendly message",
+      "Delete the database"
+     ],
+     "a": 1
+    },
+    {
+     "q": "3600 seconds in Cache::remember means...",
+     "opts": [
+      "One day",
+      "One minute",
+      "One hour"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I learnt that apps borrow other services with an HTTP client, and must cache and plan for failure.",
+   "trainer": {
+    "open": "No caterer buys 500 chairs for one party. They rent. Today our app rents data from another service.",
+    "plan": [
+     [
+      "3 min",
+      "Renting chairs analogy"
+     ],
+     [
+      "5 min",
+      "Show Http::get and Cache::remember"
+     ],
+     [
+      "8 min",
+      "Students build and test with Wi-Fi on and off"
+     ],
+     [
+      "4 min",
+      "Share research: which outside services fail most and why"
+     ]
+    ],
+    "props": [
+     "Laptop with internet",
+     "A picture of rented canopy and chairs"
+    ],
+    "lookfor": [
+     "Explains caching in their own words",
+     "Tests the failure message",
+     "Changes USD to GBP correctly"
+    ],
+    "fix": [
+     [
+      "Prices never update",
+      "The cache is holding old data; run php artisan cache:clear"
+     ],
+     [
+      "Confuses kobo, naira and dollars",
+      "Write the units beside every number in a comment"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 10,
+   "unit": "Weeks 7-10 · Advanced PHP Projects",
+   "title": "Paystack test checkout (no real money!)",
+   "colours": [
+    "purple",
+    "red",
+    "blue"
+   ],
+   "goal": "Connect a Paystack TEST checkout to the shop and confirm the payment on return.",
+   "learn": "A payment gateway like Paystack is a trusted cashier between the buyer and the shop. Paystack gives two kinds of keys: test keys (sk_test_...) for practice, where no real money moves, and live keys for real business. In class we use ONLY test keys, and we never put any key in our code or on GitHub: it stays in .env. Paystack counts money in kobo, so ₦3,500 is 350000.",
+   "research": {
+    "q": "Ask a shop owner who uses POS or transfers: how do you confirm a customer has really paid?",
+    "tip": "Their answer explains why our app must verify every payment with Paystack, not just trust the customer."
+   },
+   "build": {
+    "task": "Send a test order to Paystack's test checkout, then verify it when the customer returns.",
+    "lang": "php",
+    "steps": [
+     "Create a free Paystack account and copy ONLY the test secret key",
+     "Put it in .env and add it to config/services.php",
+     "Paste the routes and make a form that POSTs to /pay with @csrf",
+     "Pay with a test card from Paystack's docs and check /paid"
+    ],
+    "code": "<?php\n// .env -> PAYSTACK_SECRET=sk_test_...   (TEST key only. Never a live key. Never commit .env)\n// config/services.php -> 'paystack' => ['secret' => env('PAYSTACK_SECRET')],\nuse Illuminate\\Support\\Facades\\Http;\nuse Illuminate\\Support\\Facades\\Route;\n\nRoute::post('/pay', function () {\n    $res = Http::withToken(config('services.paystack.secret'))\n        ->post('https://api.paystack.co/transaction/initialize', [\n            'email'        => 'test-buyer@example.com', // dummy email, never a real child's email\n            'amount'       => 3500 * 100,               // kobo: ₦3,500\n            'callback_url' => url('/paid'),\n        ]);\n    return redirect($res->json('data.authorization_url'));\n});\n\nRoute::get('/paid', function () {\n    $ref = urlencode(request('reference', ''));\n    $check = Http::withToken(config('services.paystack.secret'))\n        ->get(\"https://api.paystack.co/transaction/verify/{$ref}\");\n    return $check->json('data.status') === 'success'\n        ? 'Test payment confirmed! (No real money moved.)'\n        : 'Payment not confirmed.';\n});"
+   },
+   "check": [
+    {
+     "q": "Which key do we use in class?",
+     "opts": [
+      "The live key",
+      "The test key (sk_test_...)",
+      "Any key from the internet"
+     ],
+     "a": 1
+    },
+    {
+     "q": "₦3,500 in kobo is...",
+     "opts": [
+      "3500",
+      "35",
+      "350000"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why do we verify after the customer returns?",
+     "opts": [
+      "Because anyone can fake a 'paid' page",
+      "To slow the app down",
+      "To get a discount"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I learnt that a payment gateway is a trusted cashier, and we practise only with test keys so no real money moves.",
+   "trainer": {
+    "open": "Fake 'I have paid' screenshots fool many traders. Today our shop learns to check with the cashier itself.",
+    "plan": [
+     [
+      "3 min",
+      "Fake alert story and the trusted cashier idea"
+     ],
+     [
+      "5 min",
+      "Test keys vs live keys; keys stay in .env"
+     ],
+     [
+      "8 min",
+      "Students run a test checkout and verify"
+     ],
+     [
+      "4 min",
+      "Share research on how traders confirm payment"
+     ]
+    ],
+    "props": [
+     "Laptop with internet",
+     "A card that says TEST KEYS ONLY",
+     "Paystack's test card page open on the projector"
+    ],
+    "lookfor": [
+     "Uses only an sk_test_ key",
+     "Explains why .env is not shared",
+     "Converts naira to kobo correctly"
+    ],
+    "fix": [
+     [
+      "Pastes the secret key straight into the route file",
+      "Move it to .env now; code gets shared, .env does not"
+     ],
+     [
+      "Trusts the /paid page without verify",
+      "Show that anyone can type /paid in the address bar; only verify proves payment"
+     ]
+    ]
+   }
+  }
+ ]
+}

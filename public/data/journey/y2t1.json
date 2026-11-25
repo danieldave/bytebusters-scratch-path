@@ -1,0 +1,968 @@
+{
+ "id": "y2t1",
+ "year": 2,
+ "term": 1,
+ "title": "Advanced HTML & CSS",
+ "level": "Intermediate",
+ "device": "phone",
+ "intro": "This term you will learn the pro tools web designers use: Grid, Flexbox, animations and SASS. Step by step, you will build a real, lively website for a local food business.",
+ "termProject": "A feature-rich, animated, phone-friendly website for 'Mama Titi's Jollof Spot', a buka in Ilaro, using real menu and brand info from your research.",
+ "generated": false,
+ "weeks": [
+  {
+   "week": 1,
+   "unit": "Weeks 1-3 · Advanced CSS Layouts",
+   "title": "Grid: Arrange the Food Tray",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can use CSS Grid to place menu cards in neat rows and columns.",
+   "learn": "CSS Grid cuts your page into rows and columns, like a tray of puff-puff. You tell the box 'display: grid' and say how many columns you want. 'repeat(2, 1fr)' means two equal columns. 'gap' puts space between cards so they don't touch. Every card now sits in its own spot by itself.",
+   "research": {
+    "q": "Ask a food seller near you: what are your 4 best-selling foods?",
+    "tip": "Write the 4 food names down — they become the cards on your Mama Titi menu this term."
+   },
+   "build": {
+    "task": "Make a 2-column grid of four food cards for Mama Titi's Jollof Spot.",
+    "lang": "css",
+    "steps": [
+     "Make a div with class 'menu' and put 4 card divs inside.",
+     "Give .menu 'display: grid'.",
+     "Add 'grid-template-columns: repeat(2, 1fr)'.",
+     "Add a gap and press Run."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n<style>\n  body { font-family: sans-serif; background: #fff8ee; }\n  .menu {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    gap: 10px;\n  }\n  .card { background: #ffb347; padding: 16px; border-radius: 10px; text-align: center; }\n</style>\n</head>\n<body>\n  <h2>Mama Titi's Jollof Spot</h2>\n  <div class=\"menu\">\n    <div class=\"card\">Jollof Rice<br>₦1,500</div>\n    <div class=\"card\">Fried Plantain<br>₦500</div>\n    <div class=\"card\">Moi Moi<br>₦400</div>\n    <div class=\"card\">Chicken<br>₦1,200</div>\n  </div>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "Which line turns a box into a grid?",
+     "opts": [
+      "display: grid;",
+      "grid: on;",
+      "display: table;"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does 'repeat(2, 1fr)' make?",
+     "opts": [
+      "2 rows only",
+      "2 equal columns",
+      "2 pictures"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does 'gap' do?",
+     "opts": [
+      "Hides cards",
+      "Changes colour",
+      "Puts space between cards"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I used CSS Grid to arrange food cards in two neat columns like a tray.",
+   "trainer": {
+    "open": "Look at an egg crate: every egg has its own spot. Today we build an egg crate for our menu with CSS Grid.",
+    "plan": [
+     [
+      "3 min",
+      "Show an egg crate or picture; ask why eggs don't roll around."
+     ],
+     [
+      "5 min",
+      "Explain display: grid, columns and gap on the board."
+     ],
+     [
+      "8 min",
+      "Kids type the menu grid and change 2 columns to 3."
+     ],
+     [
+      "4 min",
+      "Share research: which foods sell most near you?"
+     ]
+    ],
+    "props": [
+     "An egg crate or picture of one",
+     "Food price list from a local buka"
+    ],
+    "lookfor": [
+     "Changes the number of columns without help",
+     "Explains what 1fr means in own words",
+     "Adjusts gap to make space bigger or smaller"
+    ],
+    "fix": [
+     [
+      "Puts display: grid on the cards, not the parent",
+      "Say: the tray is the grid, not the eggs. Move it to .menu."
+     ],
+     [
+      "Writes 'repeat(2 1fr)' without a comma",
+      "Point to the comma and say: repeat needs a comma between the count and size."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 2,
+   "unit": "Weeks 1-3 · Advanced CSS Layouts",
+   "title": "Flexbox: Line Up Like a Danfo",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can use Flexbox to line up a menu bar and spread items across the page.",
+   "learn": "Flexbox puts items in one line, like passengers sitting in a danfo row. 'display: flex' lines up the children side by side. 'justify-content: space-between' pushes them apart to the edges. 'align-items: center' keeps them level in the middle. Grid is for the full tray; Flexbox is for one row.",
+   "research": {
+    "q": "Ask a shop owner: what 3 things must a customer see first on a sign or website?",
+    "tip": "Write the 3 things down — they will go in your navigation bar."
+   },
+   "build": {
+    "task": "Build a navigation bar for Mama Titi's site with Flexbox.",
+    "lang": "css",
+    "steps": [
+     "Make a nav with a logo and 3 links.",
+     "Give nav 'display: flex'.",
+     "Add 'justify-content: space-between' and 'align-items: center'.",
+     "Run it and try 'space-around' too."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n<style>\n  body { font-family: sans-serif; margin: 0; }\n  nav {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background: #c0392b; color: white; padding: 12px;\n  }\n  nav a { color: white; margin-left: 10px; text-decoration: none; }\n</style>\n</head>\n<body>\n  <nav>\n    <strong>Mama Titi 🍛</strong>\n    <div><a href=\"#\">Menu</a><a href=\"#\">Prices</a><a href=\"#\">Call</a></div>\n  </nav>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "Flexbox is best for…",
+     "opts": [
+      "Items in one row or column",
+      "Making sound",
+      "Saving files"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which property spreads items to the edges?",
+     "opts": [
+      "align-items: center",
+      "color: red",
+      "justify-content: space-between"
+     ],
+     "a": 2
+    },
+    {
+     "q": "'align-items: center' keeps items…",
+     "opts": [
+      "Bigger",
+      "Level in the middle",
+      "Hidden"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I used Flexbox to line up my menu bar like passengers in one danfo row.",
+   "trainer": {
+    "open": "In a danfo, passengers sit in one row and the conductor shifts them. Today Flexbox is our conductor!",
+    "plan": [
+     [
+      "3 min",
+      "Line 4 kids in a row; ask them to spread out, then bunch in the centre."
+     ],
+     [
+      "5 min",
+      "Link the movement to justify-content and align-items."
+     ],
+     [
+      "8 min",
+      "Kids build the nav bar and test 3 justify-content values."
+     ],
+     [
+      "4 min",
+      "Share research: what must customers see first?"
+     ]
+    ],
+    "props": [
+     "4 chairs for a 'danfo row'",
+     "Picture of a shop signboard"
+    ],
+    "lookfor": [
+     "Says when to use Grid and when to use Flexbox",
+     "Switches between space-between and space-around",
+     "Centres items vertically"
+    ],
+    "fix": [
+     [
+      "Mixes up justify-content and align-items",
+      "Say: justify goes along the row (left-right), align goes up-down."
+     ],
+     [
+      "Puts display: flex on the links",
+      "Remind them: the parent (nav) gets flex, the children line up inside."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 3,
+   "unit": "Weeks 1-3 · Advanced CSS Layouts",
+   "title": "Responsive: Fits Every Phone",
+   "colours": [
+    "red"
+   ],
+   "goal": "I can use a media query so my page changes for small phones and big screens.",
+   "learn": "A responsive page changes shape for the screen, like a tailor who adjusts one dress for different sizes. A media query is a rule: IF the screen is wider than 600px, THEN use 4 columns. On small phones we stay with 1 column. This is called 'mobile first'. The meta viewport tag tells the phone to show the real size.",
+   "research": {
+    "q": "Ask 3 people: do you mostly browse on a phone or a computer?",
+    "tip": "Count the answers — it shows why we design for phones first."
+   },
+   "build": {
+    "task": "Make the Mama Titi menu show 1 column on phones and 4 on wide screens.",
+    "lang": "css",
+    "steps": [
+     "Add the meta viewport tag.",
+     "Set .menu to 1 column by default.",
+     "Add '@media (min-width: 600px)' with 4 columns.",
+     "Turn your phone sideways or zoom out to test."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<style>\n  .menu { display: grid; grid-template-columns: 1fr; gap: 8px; }\n  .card { background: #ffe0a3; padding: 14px; border-radius: 8px; }\n  @media (min-width: 600px) {\n    .menu { grid-template-columns: repeat(4, 1fr); }\n  }\n</style>\n</head>\n<body>\n  <div class=\"menu\">\n    <div class=\"card\">Jollof ₦1,500</div>\n    <div class=\"card\">Plantain ₦500</div>\n    <div class=\"card\">Moi Moi ₦400</div>\n    <div class=\"card\">Chicken ₦1,200</div>\n  </div>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "A media query is like…",
+     "opts": [
+      "A loop that repeats",
+      "A rule: IF the screen is big, THEN change",
+      "A picture"
+     ],
+     "a": 1
+    },
+    {
+     "q": "'Mobile first' means…",
+     "opts": [
+      "Design for small phones first",
+      "Only computers can open it",
+      "Phones are banned"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does the meta viewport tag do?",
+     "opts": [
+      "Adds colour",
+      "Plays music",
+      "Tells the phone to show the real size"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I made my page responsive, like a tailor adjusting one dress for every size.",
+   "trainer": {
+    "open": "A tailor sews one style but adjusts it for every body. Today our page learns to adjust for every screen.",
+    "plan": [
+     [
+      "3 min",
+      "Show a page on a phone and on a big screen; ask what changed."
+     ],
+     [
+      "5 min",
+      "Explain media queries as IF rules (red logic colour)."
+     ],
+     [
+      "8 min",
+      "Kids add the media query and test by rotating the phone."
+     ],
+     [
+      "4 min",
+      "Tally research: phone vs computer users."
+     ]
+    ],
+    "props": [
+     "A tape measure",
+     "Two devices of different sizes if possible"
+    ],
+    "lookfor": [
+     "Explains a media query as an IF rule",
+     "Changes the breakpoint number and predicts the result",
+     "Remembers the viewport tag"
+    ],
+    "fix": [
+     [
+      "Forgets the closing } of the @media block",
+      "Count the brackets together: every { needs a }."
+     ],
+     [
+      "Uses max-width and gets confused",
+      "Say: min-width means 'from this size and bigger'. Start with that."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 4,
+   "unit": "Weeks 4-6 · CSS Animations and Effects",
+   "title": "Make It Move: Transitions & Keyframes",
+   "colours": [
+    "purple",
+    "green"
+   ],
+   "goal": "I can add a smooth hover transition and a repeating keyframe animation.",
+   "learn": "A transition makes a change happen slowly, like a gate swinging open instead of slamming. 'transition: 0.3s' smooths changes when you hover or tap. A keyframe animation is a little story: start here, end there. 'infinite' makes it repeat again and again, like a fan blade turning.",
+   "research": {
+    "q": "Ask a trader: what makes you notice a shop sign from far away?",
+    "tip": "Write their answer — movement and colour help customers notice an 'Order Now' button."
+   },
+   "build": {
+    "task": "Make an 'Order Now' button that grows on tap and a hot-food icon that bounces.",
+    "lang": "css",
+    "steps": [
+     "Add a button and give it 'transition: transform 0.3s'.",
+     "Add ':hover' and ':active' to scale it up.",
+     "Write '@keyframes bounce' with from and to.",
+     "Attach the animation to the 🍲 icon with 'infinite'."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n<style>\n  body { font-family: sans-serif; text-align: center; padding: 30px; }\n  .btn { background: #27ae60; color: white; border: none; padding: 14px 24px;\n         border-radius: 30px; font-size: 18px; transition: transform 0.3s; }\n  .btn:hover, .btn:active { transform: scale(1.2); }\n  .hot { font-size: 50px; display: inline-block; animation: bounce 0.8s infinite alternate; }\n  @keyframes bounce {\n    from { transform: translateY(0); }\n    to   { transform: translateY(-15px); }\n  }\n</style>\n</head>\n<body>\n  <div class=\"hot\">🍲</div>\n  <h2>Hot Jollof Ready!</h2>\n  <button class=\"btn\">Order Now</button>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "What does a transition do?",
+     "opts": [
+      "Deletes the button",
+      "Makes a change happen smoothly",
+      "Adds a new page"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which word makes an animation repeat forever?",
+     "opts": [
+      "once",
+      "stop",
+      "infinite"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Where do you write the steps of an animation?",
+     "opts": [
+      "@keyframes",
+      "<title>",
+      "@media"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I made my Order button grow smoothly and my food icon bounce forever.",
+   "trainer": {
+    "open": "A gate that slams scares you; a gate that swings is smooth. Today we make our buttons swing, not slam.",
+    "plan": [
+     [
+      "3 min",
+      "Open and close a door fast, then slowly; ask which looks nicer."
+     ],
+     [
+      "5 min",
+      "Explain transition (purple: tap event) and keyframes with infinite (green: repeat)."
+     ],
+     [
+      "8 min",
+      "Kids build the button and bouncing icon; change speed from 0.8s to 0.3s."
+     ],
+     [
+      "4 min",
+      "Share research: what makes a sign catch your eye?"
+     ]
+    ],
+    "props": [
+     "A door or a toy gate",
+     "A table fan to show repeating motion"
+    ],
+    "lookfor": [
+     "Changes the animation speed and explains the effect",
+     "Links :active to a tap event",
+     "Says why 'infinite' repeats"
+    ],
+    "fix": [
+     [
+      "Writes the animation name differently in @keyframes and animation",
+      "Say: the names must match exactly, like a password."
+     ],
+     [
+      "Puts transition only inside :hover",
+      "Move transition to the normal .btn rule so it works both ways."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 5,
+   "unit": "Weeks 4-6 · CSS Animations and Effects",
+   "title": "Animate.css: Ready-Made Moves",
+   "colours": [
+    "purple"
+   ],
+   "goal": "I can link the Animate.css library and use its ready-made animation classes.",
+   "learn": "A CSS library is code someone else already wrote, like buying ready-made pepper soup spice instead of grinding it yourself. Animate.css gives you moves like bounce, fadeIn and pulse. You link it with one <link> tag from a CDN. Then you add two classes: 'animate__animated' and the move you want, like 'animate__bounceIn'.",
+   "research": {
+    "q": "Ask an adult: what ready-made thing do you buy to save time when cooking?",
+    "tip": "Write it down — it's the same idea as using a library instead of writing everything yourself."
+   },
+   "build": {
+    "task": "Link Animate.css and make Mama Titi's welcome sign bounce in.",
+    "lang": "css",
+    "steps": [
+     "Paste the Animate.css <link> tag in the head.",
+     "Give your h1 the classes 'animate__animated animate__bounceIn'.",
+     "Give a paragraph 'animate__fadeInUp' with a delay class.",
+     "Press Run again to replay."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\">\n<style>\n  body { font-family: sans-serif; text-align: center; background: #fff3e0; padding: 30px; }\n</style>\n</head>\n<body>\n  <h1 class=\"animate__animated animate__bounceIn\">Welcome to Mama Titi's!</h1>\n  <p class=\"animate__animated animate__fadeInUp animate__delay-1s\">\n    Hot jollof, sweet plantain, every day in Ilaro.\n  </p>\n  <p class=\"animate__animated animate__pulse animate__infinite\">🔥 Open now</p>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "A CSS library is…",
+     "opts": [
+      "Ready-made code someone already wrote",
+      "A place to borrow books",
+      "A kind of phone"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which TWO classes make Animate.css work?",
+     "opts": [
+      "red and blue",
+      "big and small",
+      "animate__animated plus a move like animate__bounceIn"
+     ],
+     "a": 2
+    },
+    {
+     "q": "How do we add Animate.css to our page?",
+     "opts": [
+      "Draw it",
+      "A <link> tag in the head",
+      "Type it in the footer"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I used Animate.css, a ready-made library, to make my sign bounce in with one class.",
+   "trainer": {
+    "open": "Who here has used ready-made Maggi or spice? Today we use ready-made animations!",
+    "plan": [
+     [
+      "3 min",
+      "Show a seasoning cube; ask why cooks use it."
+     ],
+     [
+      "5 min",
+      "Show the CDN link and the two-class pattern."
+     ],
+     [
+      "8 min",
+      "Kids try 3 different moves: bounceIn, fadeInUp, pulse."
+     ],
+     [
+      "4 min",
+      "Share research: ready-made things adults buy to save time."
+     ]
+    ],
+    "props": [
+     "A seasoning cube",
+     "Printed list of 5 Animate.css move names"
+    ],
+    "lookfor": [
+     "Swaps one animation name for another correctly",
+     "Explains what a library is",
+     "Remembers animate__animated is always needed"
+    ],
+    "fix": [
+     [
+      "Forgets the 'animate__animated' class",
+      "Say: this class switches the library on; the second class picks the move."
+     ],
+     [
+      "Mistypes the CDN link",
+      "Copy it carefully; one wrong letter means nothing loads."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 6,
+   "unit": "Weeks 4-6 · CSS Animations and Effects",
+   "title": "Tap to Animate: Interactive Effects",
+   "colours": [
+    "purple",
+    "red"
+   ],
+   "goal": "I can combine Animate.css with hover and tap effects to make interactive menu cards.",
+   "learn": "Interactive means the page answers you when you touch it, like a POS beeping when you press a key. We can start an Animate.css move only when a user hovers or taps a card. We use ':hover' and ':active' in our own CSS to switch on the library's animation. This makes the menu feel alive.",
+   "research": {
+    "q": "Ask a POS agent: how do customers know their button press worked?",
+    "tip": "Write their answer — a beep or flash is 'feedback', and our cards need it too."
+   },
+   "build": {
+    "task": "Make menu cards that 'tada' when you hover or tap them.",
+    "lang": "css",
+    "steps": [
+     "Link Animate.css.",
+     "Make cards with class 'card'.",
+     "In your CSS, on '.card:hover' and '.card:active', set 'animation-name: tada'.",
+     "Add 'animation-duration: 1s' and test by tapping."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\">\n<style>\n  body { font-family: sans-serif; }\n  .menu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }\n  .card { background: #ffcc80; padding: 18px; border-radius: 10px; text-align: center; }\n  .card:hover, .card:active {\n    animation-name: tada;\n    animation-duration: 1s;\n  }\n</style>\n</head>\n<body>\n  <h2>Tap a meal 👇</h2>\n  <div class=\"menu\">\n    <div class=\"card\">🍛 Jollof<br>₦1,500</div>\n    <div class=\"card\">🍌 Plantain<br>₦500</div>\n    <div class=\"card\">🫘 Moi Moi<br>₦400</div>\n    <div class=\"card\">🍗 Chicken<br>₦1,200</div>\n  </div>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "'Interactive' means…",
+     "opts": [
+      "The page never changes",
+      "The page answers when you touch it",
+      "The page is printed"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which selector reacts to a tap on a phone?",
+     "opts": [
+      ":active",
+      ":first",
+      ":root"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why do buttons need feedback like a flash or beep?",
+     "opts": [
+      "To waste battery",
+      "To hide the price",
+      "So users know their press worked"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I made my menu cards dance when tapped, so customers know their tap worked.",
+   "trainer": {
+    "open": "When you press a POS key, it beeps. Today our menu cards will 'beep' with movement.",
+    "plan": [
+     [
+      "3 min",
+      "Ask: how do you know a button press worked on a phone or POS?"
+     ],
+     [
+      "5 min",
+      "Show animation-name with Animate.css keyframes on :hover/:active."
+     ],
+     [
+      "8 min",
+      "Kids build the cards, then try 'rubberBand' or 'heartBeat'."
+     ],
+     [
+      "4 min",
+      "Share research on feedback; finish the Unit 2 project: interactive menu."
+     ]
+    ],
+    "props": [
+     "A calculator or old keypad phone",
+     "Animate.css names list from last week"
+    ],
+    "lookfor": [
+     "Connects :active to a tap event",
+     "Changes the animation name and it works",
+     "Explains 'feedback' in own words"
+    ],
+    "fix": [
+     [
+      "Uses the class name 'animate__tada' inside animation-name",
+      "Say: inside CSS we use only the keyframe name 'tada'."
+     ],
+     [
+      "Forgets animation-duration so nothing shows",
+      "Add a duration like 1s; without time the move is invisible."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 7,
+   "unit": "Weeks 7-10 · Advanced HTML/CSS Projects",
+   "title": "SASS Variables & Nesting",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can explain SASS variables and nesting and read the CSS they turn into.",
+   "learn": "SASS is a helper language that makes CSS shorter, like writing 'Mama' instead of her full name every time. A variable like '$brand: #c0392b;' stores a colour once so you can reuse it. Nesting lets you write 'nav { a { } }' to show that links live inside the nav. Browsers can't read SASS, so a tool compiles it into normal CSS, which is what runs below.",
+   "research": {
+    "q": "Ask a business owner: what are your brand colours (on your sign, bags or uniform)?",
+    "tip": "Write the colours — you'll store them as SASS variables for Mama Titi's site."
+   },
+   "build": {
+    "task": "Read the SCSS in the comment, then see its compiled CSS run as a branded nav.",
+    "lang": "css",
+    "steps": [
+     "Read the SCSS: find the $brand variable and the nesting.",
+     "Look at the compiled CSS below it and match each line.",
+     "Change the colour in the compiled CSS (where $brand was used).",
+     "Run and say which SASS line made which CSS line."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n<style>\n/* SCSS (what we write):\n   $brand: #c0392b;\n   $light: #fff8ee;\n   nav { background: $brand; padding: 12px;\n     a { color: $light; margin-right: 10px; }\n   }\n   Compiled CSS (what the browser runs): */\nnav { background: #c0392b; padding: 12px; }\nnav a { color: #fff8ee; margin-right: 10px; }\n</style>\n</head>\n<body>\n  <nav><a href=\"#\">Menu</a><a href=\"#\">Prices</a><a href=\"#\">Call Mama Titi</a></nav>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "What does '$brand: #c0392b;' do in SASS?",
+     "opts": [
+      "Stores a colour in a variable",
+      "Deletes red",
+      "Makes a loop"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Nesting 'nav { a { } }' becomes which CSS?",
+     "opts": [
+      "a nav { }",
+      "nav, a { }",
+      "nav a { }"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why must SASS be compiled?",
+     "opts": [
+      "It is too short",
+      "Browsers only read normal CSS",
+      "It has no colour"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I learnt that SASS variables store colours once and nesting shows what lives inside what.",
+   "trainer": {
+    "open": "If Mama Titi changes her brand colour, do we want to change it in 50 places or in 1? SASS lets us change 1.",
+    "plan": [
+     [
+      "3 min",
+      "Ask: if your nickname changed, would you rewrite every exercise book?"
+     ],
+     [
+      "5 min",
+      "Explain variables and nesting; show SCSS beside compiled CSS."
+     ],
+     [
+      "8 min",
+      "Kids match SCSS lines to CSS lines, then change the brand colour."
+     ],
+     [
+      "4 min",
+      "Share research: real brand colours from local businesses."
+     ]
+    ],
+    "props": [
+     "A labelled jar (variable = label, contents = value)",
+     "Printed SCSS vs CSS sheet"
+    ],
+    "lookfor": [
+     "Points to where a variable's value appears in the CSS",
+     "Explains nesting as 'inside'",
+     "Says why browsers need compiling"
+    ],
+    "fix": [
+     [
+      "Thinks the browser reads the $ variables",
+      "Show that the comment is ignored; only the compiled lines run."
+     ],
+     [
+      "Forgets the space in 'nav a'",
+      "Say: the space means 'a inside nav'. Without it, the rule breaks."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 8,
+   "unit": "Weeks 7-10 · Advanced HTML/CSS Projects",
+   "title": "SASS Mixins: One Recipe, Many Pots",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "goal": "I can explain a SASS mixin and see how it repeats the same styles in many places.",
+   "learn": "A mixin is a saved style recipe, like Mama's jollof recipe she reuses for every party. You write '@mixin card-style { }' once. Then '@include card-style;' pastes it into any rule. You can even pass a value, like a colour, so each pot comes out a bit different. The compiler copies the recipe into the CSS for you.",
+   "research": {
+    "q": "Ask an adult cook: which recipe do you repeat the same way for every party?",
+    "tip": "Write the recipe name — a mixin is the coding version of that repeated recipe."
+   },
+   "build": {
+    "task": "Read a mixin with a colour value and see it compiled into two different buttons.",
+    "lang": "css",
+    "steps": [
+     "Find '@mixin pill($bg)' in the SCSS comment.",
+     "Find the two '@include' lines.",
+     "Look at the compiled .order and .call rules — same recipe, different colour.",
+     "Add a third button style in the compiled CSS following the same recipe."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n<style>\n/* SCSS:\n   @mixin pill($bg) { background: $bg; color: white;\n     padding: 12px 20px; border-radius: 30px; border: none; }\n   .order { @include pill(#27ae60); }\n   .call  { @include pill(#2980b9); }\n   Compiled CSS: */\n.order { background: #27ae60; color: white; padding: 12px 20px; border-radius: 30px; border: none; }\n.call  { background: #2980b9; color: white; padding: 12px 20px; border-radius: 30px; border: none; }\n</style>\n</head>\n<body>\n  <button class=\"order\">Order Jollof</button>\n  <button class=\"call\">Call Mama Titi</button>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "A SASS mixin is like…",
+     "opts": [
+      "A broken plate",
+      "A saved recipe you reuse",
+      "A new web page"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which word uses a mixin?",
+     "opts": [
+      "@include",
+      "@media",
+      "@keyframes"
+     ],
+     "a": 0
+    },
+    {
+     "q": "In 'pill(#27ae60)', what is #27ae60?",
+     "opts": [
+      "A file name",
+      "A loop counter",
+      "A value passed in (the colour)"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "A mixin is a style recipe I write once and include anywhere, changing only the colour.",
+   "trainer": {
+    "open": "Mama cooks jollof the same way for every owambe, just adding more pepper sometimes. That is a mixin!",
+    "plan": [
+     [
+      "3 min",
+      "Ask about a family recipe that is repeated for every party."
+     ],
+     [
+      "5 min",
+      "Show @mixin, @include and a passed value."
+     ],
+     [
+      "8 min",
+      "Kids trace the recipe into compiled CSS and add a third button."
+     ],
+     [
+      "4 min",
+      "Compare mixins (repeat = green) and variables (data = blue)."
+     ]
+    ],
+    "props": [
+     "A written recipe card",
+     "Two cups of different colours"
+    ],
+    "lookfor": [
+     "Explains @mixin vs @include",
+     "Identifies the passed value",
+     "Writes a correct third button rule"
+    ],
+    "fix": [
+     [
+      "Thinks @mixin alone adds styles",
+      "Say: writing the recipe doesn't cook; @include is when you cook it."
+     ],
+     [
+      "Mixes up variables and mixins",
+      "Variable = one value; mixin = a group of style lines."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 9,
+   "unit": "Weeks 7-10 · Advanced HTML/CSS Projects",
+   "title": "Complex Layouts with Grid Areas",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can build a full page layout with header, menu, sidebar and footer using grid areas.",
+   "learn": "Big websites have many parts, like a market with sections for pepper, fabric and phones. 'grid-template-areas' lets you draw your page with words. You name each part, like 'head', 'menu', 'side' and 'foot'. Then you tell each box which area it belongs to. On phones we stack them; on big screens they sit side by side.",
+   "research": {
+    "q": "Visit or picture your local market: what sections does it have and where is each one?",
+    "tip": "Draw a small map — your page layout is a map with named sections too."
+   },
+   "build": {
+    "task": "Lay out Mama Titi's full page with named grid areas.",
+    "lang": "css",
+    "steps": [
+     "Give .page 'display: grid'.",
+     "Draw the areas with words in 'grid-template-areas'.",
+     "Give each part a 'grid-area' name.",
+     "Run and swap the 'menu' and 'side' words to see them move."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n<style>\n  .page { display: grid; gap: 6px; font-family: sans-serif;\n    grid-template-columns: 2fr 1fr;\n    grid-template-areas: \"head head\" \"menu side\" \"foot foot\"; }\n  .page div { padding: 14px; border-radius: 6px; }\n  .h { grid-area: head; background: #c0392b; color: white; }\n  .m { grid-area: menu; background: #ffe0a3; }\n  .s { grid-area: side; background: #d5f5e3; }\n  .f { grid-area: foot; background: #333; color: white; }\n</style>\n</head>\n<body>\n  <div class=\"page\">\n    <div class=\"h\">Mama Titi's Jollof Spot</div>\n    <div class=\"m\">Menu: Jollof, Plantain, Moi Moi</div>\n    <div class=\"s\">Open 8am–8pm</div>\n    <div class=\"f\">Ilaro, Ogun State</div>\n  </div>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "What does grid-template-areas let you do?",
+     "opts": [
+      "Draw the layout with words",
+      "Play videos",
+      "Count numbers"
+     ],
+     "a": 0
+    },
+    {
+     "q": "To put a box in the 'side' area you write…",
+     "opts": [
+      "side: grid;",
+      "area = side",
+      "grid-area: side;"
+     ],
+     "a": 2
+    },
+    {
+     "q": "'head head' in one row means…",
+     "opts": [
+      "Two headers",
+      "The header stretches across both columns",
+      "No header"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I drew my whole page with named grid areas, like a market map with sections.",
+   "trainer": {
+    "open": "Every market has a map in the traders' heads: pepper here, fabric there. Today we draw a map for our website.",
+    "plan": [
+     [
+      "3 min",
+      "Kids sketch a quick market map with named sections."
+     ],
+     [
+      "5 min",
+      "Show grid-template-areas as a word map."
+     ],
+     [
+      "8 min",
+      "Kids build the layout and swap areas around."
+     ],
+     [
+      "4 min",
+      "Plan next week's final page: what sections will it have?"
+     ]
+    ],
+    "props": [
+     "Paper and pencils for market maps",
+     "A picture of a local market"
+    ],
+    "lookfor": [
+     "Moves a section by editing only the area words",
+     "Matches grid-area names correctly",
+     "Explains why 'head head' spans"
+    ],
+    "fix": [
+     [
+      "Rows in the areas string have different counts",
+      "Each row must have the same number of words as columns."
+     ],
+     [
+      "Misspells an area name",
+      "Check spelling: 'side' in one place must be 'side' everywhere."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 10,
+   "unit": "Weeks 7-10 · Advanced HTML/CSS Projects",
+   "title": "Showcase: Mama Titi's Full Website",
+   "colours": [
+    "blue",
+    "red",
+    "purple"
+   ],
+   "goal": "I can combine Grid, Flexbox, media queries, animations and SASS ideas into one feature-rich page.",
+   "learn": "Today we put every skill on one plate, like a full owambe party pack: rice, plantain, chicken and drink. Grid arranges the menu. Flexbox lines up the nav. A media query fixes it for phones. Animations make it lively. Our colours come from SASS-style variables, written here as CSS custom properties so it runs in the browser.",
+   "research": {
+    "q": "Show your page to a food seller or family member: what one thing would make them order?",
+    "tip": "Write their answer — real feedback is how real websites improve."
+   },
+   "build": {
+    "task": "Finish a feature-rich website for Mama Titi's Jollof Spot.",
+    "lang": "css",
+    "steps": [
+     "Set brand colours as variables in :root.",
+     "Add the Flexbox nav and the Grid menu.",
+     "Add a media query for wide screens.",
+     "Add the Animate.css welcome and a hover effect, then show someone."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\">\n<style>\n  :root { --brand: #c0392b; --food: #ffcc80; } /* like SASS $brand */\n  body { margin: 0; font-family: sans-serif; }\n  nav { display: flex; justify-content: space-between; background: var(--brand); color: #fff; padding: 12px; }\n  .menu { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px; }\n  .card { background: var(--food); padding: 16px; border-radius: 10px; transition: transform .3s; }\n  .card:active, .card:hover { transform: scale(1.05); }\n  @media (min-width: 600px) { .menu { grid-template-columns: repeat(4, 1fr); } }\n</style>\n</head>\n<body>\n  <nav><b>Mama Titi 🍛</b><span>📞 Order</span></nav>\n  <h2 class=\"animate__animated animate__bounceIn\" style=\"text-align:center\">Hot Food, Ilaro!</h2>\n  <div class=\"menu\">\n    <div class=\"card\">Jollof ₦1,500</div><div class=\"card\">Plantain ₦500</div>\n    <div class=\"card\">Moi Moi ₦400</div><div class=\"card\">Chicken ₦1,200</div>\n  </div>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "Which tool lines up the nav items in one row?",
+     "opts": [
+      "SASS",
+      "Flexbox",
+      "@keyframes"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which rule changes the menu on wide screens?",
+     "opts": [
+      "The media query",
+      "The nav",
+      "The link tag"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why do we ask a real seller for feedback?",
+     "opts": [
+      "To get free food",
+      "To make the page longer",
+      "So the site solves a real need"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I built a full website for a local food business using Grid, Flexbox, animations and brand variables.",
+   "trainer": {
+    "open": "Today is party-pack day: every skill from this term goes on one plate for Mama Titi!",
+    "plan": [
+     [
+      "3 min",
+      "Recap the 4 tools: Grid, Flexbox, media query, animation."
+     ],
+     [
+      "5 min",
+      "Walk through the final code section by section."
+     ],
+     [
+      "8 min",
+      "Kids build and personalise with their research foods and colours."
+     ],
+     [
+      "4 min",
+      "Mini showcase: each child shows one feature and their seller feedback."
+     ]
+    ],
+    "props": [
+     "A party pack (or picture) to show 'everything together'",
+     "Notes from all research weeks"
+    ],
+    "lookfor": [
+     "Names which tool does which job on the page",
+     "Personalises colours via the variables",
+     "Presents feedback from a real person"
+    ],
+    "fix": [
+     [
+      "Copies everything but can't explain parts",
+      "Point to one line and ask: which week did we learn this?"
+     ],
+     [
+      "Breaks the page by deleting a bracket",
+      "Undo and check each { has a matching }."
+     ]
+    ]
+   }
+  }
+ ]
+}

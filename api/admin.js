@@ -65,10 +65,11 @@ module.exports = async (req, res) => {
           if (/^w\d+$/.test(p[i])) { if (o.done) done++; stars += o.quiz || 0; }
           else if (/^wdw\d+$/.test(p[i])) { r.wd = (r.wd || 0) + (o.done ? 1 : 0); }
           else if (/^gaw\d+$/.test(p[i])) { r.ga = (r.ga || 0) + (o.done ? 1 : 0); }
+          else if (/^(y[1-4]t[1-3]|ai[2-4])w\d+$/.test(p[i])) { const jt = p[i].replace(/w\d+$/, ''); r.j = r.j || {}; r.j[jt] = (r.j[jt] || 0) + (o.done ? 1 : 0); }
           else if (/^t[23]w\d+$/.test(p[i])) { const tk = p[i].slice(0, 2); r[tk] = (r[tk] || 0) + (o.done ? 1 : 0); r[tk + 'lab'] = (r[tk + 'lab'] || 0) + ((o.lab && o.lab.total && o.lab.passed >= o.lab.total) ? 1 : 0); }
           last = Math.max(last, o.at || 0);
         }
-        r.done = done; r.stars = stars; r.last = last; r.seen = seen[r.id] || 0; r.t2 = r.t2 || 0; r.t3 = r.t3 || 0; r.t2lab = r.t2lab || 0; r.t3lab = r.t3lab || 0; r.wd = r.wd || 0; r.ga = r.ga || 0;
+        r.done = done; r.stars = stars; r.last = last; r.seen = seen[r.id] || 0; r.t2 = r.t2 || 0; r.t3 = r.t3 || 0; r.t2lab = r.t2lab || 0; r.t3lab = r.t3lab || 0; r.wd = r.wd || 0; r.ga = r.ga || 0; r.j = r.j || {};
       }
       const cf = (await cmd('HGETALL', P + 'cfg')) || []; const open = { t1: true, t2: false, t3: false };
       for (let i = 0; i < cf.length; i += 2) if (cf[i] in open) open[cf[i]] = cf[i + 1] === '1';
@@ -149,6 +150,7 @@ module.exports = async (req, res) => {
       const o = JSON.parse(raw);
       if (b.track !== undefined) { const t = trackName(b.track); if (!t) return send(res, 400, { error: 'Track must be Scratch, Web or GenAI' }); o.track = t; }
       if (b.cls !== undefined) o.cls = String(b.cls).trim().slice(0, 20);
+      if (b.start !== undefined) { const s = String(b.start); if (!/^(y[1-4]t[1-3]|bridge)$/.test(s)) return send(res, 400, { error: 'Bad journey start' }); o.start = s; }
       await cmd('HSET', P + 'roster', id, JSON.stringify(o));
       return send(res, 200, { ok: true });
     }

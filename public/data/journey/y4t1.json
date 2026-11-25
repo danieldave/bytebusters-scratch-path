@@ -1,0 +1,974 @@
+{
+ "id": "y4t1",
+ "year": 4,
+ "term": 1,
+ "title": "Advanced Python: ML, Django & Automation",
+ "level": "Advanced",
+ "device": "lab",
+ "intro": "This term your Python grows up: you will crunch numbers with NumPy and SciPy, teach a computer to guess prices with scikit-learn, and put it all on the web with Django. You will finish by building robots that do boring jobs for real people.",
+ "termProject": "Ogun Crop-Price Helper: a scikit-learn tomato-price predictor trained on clearly labelled practice data, a Django dashboard of real prices learners collect from Ilaro, Owode and Sango markets, and a morning automation script that writes a dollar-rate price note for a local shop.",
+ "generated": false,
+ "weeks": [
+  {
+   "week": 1,
+   "unit": "Weeks 1-3 · Advanced Python Libraries",
+   "title": "NumPy: A Whole Market in One Line",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "goal": "I can store a week of market prices in a NumPy array and find the average, highest and lowest in one line each.",
+   "learn": "A NumPy array is a fast row of numbers that Python can work on all at once. Instead of a loop that visits every price one by one, you write prices * 1.10 and every price changes together. Think of a market woman who raises the price of every tomato basket on her table with one shout, instead of walking to each basket. NumPy also has ready tools like mean(), max() and argmax() that tell you the answer and where it is.",
+   "research": {
+    "q": "Ask a trader or your parent: how much was a basket (or a paint bucket) of tomatoes on two different days this week?",
+    "tip": "Write the two prices and the days. Real prices make your array feel alive, and you will see how fast prices move."
+   },
+   "build": {
+    "task": "Put six days of tomato prices in a NumPy array and print the average, the costliest day and the price with transport added.",
+    "lang": "python",
+    "steps": [
+     "Open a terminal and run: pip install numpy",
+     "Create a file market.py and type the code",
+     "Swap the practice prices for the ones you collected",
+     "Run python market.py and read each line out loud"
+    ],
+    "code": "import numpy as np\n\n# PRACTICE prices (naira) for a basket of tomatoes, Mon-Sat - change to real ones you collect\nprices = np.array([4500, 4800, 5200, 5000, 6100, 5900])\ndays = [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"]\n\nprint(\"Average price:\", round(prices.mean()))\nprint(\"Highest:\", prices.max(), \"on\", days[prices.argmax()])\nprint(\"Lowest:\", prices.min(), \"on\", days[prices.argmin()])\n\n# Add 10% transport cost to EVERY price at once - no loop needed\nwith_transport = (prices * 1.10).round()\nprint(\"With transport:\", with_transport)\n\n# Which days were above average? (True/False for each day)\nabove = prices > prices.mean()\nprint(\"Above-average days:\", [d for d, a in zip(days, above) if a])"
+   },
+   "check": [
+    {
+     "q": "What does prices * 1.10 do to a NumPy array?",
+     "opts": [
+      "Changes only the first price",
+      "Multiplies every price at once",
+      "Gives an error"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which tool tells you the POSITION of the biggest number?",
+     "opts": [
+      "argmax()",
+      "max()",
+      "mean()"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why do data people like NumPy?",
+     "opts": [
+      "It makes phones charge faster",
+      "It only works with words",
+      "It does maths on many numbers quickly"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "NumPy lets me do maths on a whole row of prices in one line, like a trader changing all her baskets at once.",
+   "trainer": {
+    "open": "Today we stop counting tomatoes one by one. With NumPy, one line of Python can handle the whole market table.",
+    "plan": [
+     [
+      "3 min",
+      "Show a list vs an array on the board: [4500, 4800] * 2 vs np.array([4500, 4800]) * 2"
+     ],
+     [
+      "5 min",
+      "Pairs install NumPy and type the code"
+     ],
+     [
+      "8 min",
+      "Swap in their real prices, run, and add one more line of their own (e.g. prices.sum())"
+     ],
+     [
+      "4 min",
+      "Two pairs share their costliest day and guess why it was costly"
+     ]
+    ],
+    "props": [
+     "The tomato prices learners collected",
+     "A small receipt or price list from the market"
+    ],
+    "lookfor": [
+     "Explains that one line changes every price in the array",
+     "Uses argmax() to find the day, not just the price",
+     "Edits the array with their own data and reruns without help"
+    ],
+    "fix": [
+     [
+      "Multiplies a normal Python list and gets the list repeated",
+      "Show that [1,2]*2 repeats the list; wrap it in np.array() to get real maths"
+     ],
+     [
+      "Writes import numpy but then uses np.",
+      "Explain the nickname: import numpy as np makes np the short name"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 2,
+   "unit": "Weeks 1-3 · Advanced Python Libraries",
+   "title": "SciPy: Does Rain Grow More Maize?",
+   "colours": [
+    "blue",
+    "red"
+   ],
+   "goal": "I can use SciPy to find the straight-line link between two sets of numbers and use it to make a careful guess.",
+   "learn": "SciPy sits on top of NumPy and gives scientists ready-made tools for statistics, curves and more. linregress draws the best straight line through your points and tells you the slope: how much one thing goes up when the other goes up. It is like a farmer who notices that every extra rainy week brings a few more bags of maize. The r value tells you how strong the link is: close to 1 is strong, close to 0 is weak. A link is a clue, not a proof.",
+   "research": {
+    "q": "Ask a farmer or an elder who farms: in a good rainy season, how many bags of maize or cassava do you get compared to a dry one?",
+    "tip": "Write the two numbers and what they said about rain. It tells you if rain really matters in your area."
+   },
+   "build": {
+    "task": "Use SciPy linregress on practice rain and maize numbers, then guess the harvest for 9 rainy days.",
+    "lang": "python",
+    "steps": [
+     "Run: pip install scipy",
+     "Type the code into harvest.py",
+     "Run it and read the slope and r value",
+     "Change one maize number a lot and run again: what happens to r?"
+    ],
+    "code": "import numpy as np\nfrom scipy import stats\n\n# PRACTICE DATA (made up for learning): rainy days in a month vs bags of maize harvested\nrain_days = np.array([3, 5, 8, 10, 12, 15])\nmaize_bags = np.array([20, 27, 33, 42, 45, 56])\n\nline = stats.linregress(rain_days, maize_bags)\nprint(\"Each extra rainy day adds about\", round(line.slope, 2), \"bags\")\nprint(\"Starting point (intercept):\", round(line.intercept, 2))\nprint(\"How strong is the link (r):\", round(line.rvalue, 3))\n\nguess = line.slope * 9 + line.intercept\nprint(\"Careful guess for 9 rainy days:\", round(guess), \"bags\")\n\nsummary = stats.describe(maize_bags)\nprint(\"Average bags:\", round(summary.mean, 1), \"| spread (variance):\", round(summary.variance, 1))"
+   },
+   "check": [
+    {
+     "q": "What does the slope tell the farmer?",
+     "opts": [
+      "How many bags change for each extra rainy day",
+      "The name of the farm",
+      "How many farmers there are"
+     ],
+     "a": 0
+    },
+    {
+     "q": "An r value of 0.99 means the link is...",
+     "opts": [
+      "Weak",
+      "Broken",
+      "Very strong"
+     ],
+     "a": 2
+    },
+    {
+     "q": "SciPy is built on top of which library?",
+     "opts": [
+      "Django",
+      "NumPy",
+      "Java"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "SciPy's linregress finds the best straight line through my data, so I can make a careful guess.",
+   "trainer": {
+    "open": "Farmers watch the sky and make guesses. Today we teach Python to make the same guess with numbers.",
+    "plan": [
+     [
+      "3 min",
+      "Draw 5 dots on the board and ask a learner to draw the best straight line through them"
+     ],
+     [
+      "5 min",
+      "Explain slope and r using the board drawing"
+     ],
+     [
+      "8 min",
+      "Pairs run the code, then change one number and watch r drop"
+     ],
+     [
+      "4 min",
+      "Discuss: does more rain ALWAYS mean more maize? (floods!)"
+     ]
+    ],
+    "props": [
+     "Graph paper or the whiteboard",
+     "A small bag of maize or a picture of a maize farm"
+    ],
+    "lookfor": [
+     "Reads the slope as 'bags per rainy day' in their own words",
+     "Notices r drops when the data is messy",
+     "Says a strong link is a clue, not proof"
+    ],
+    "fix": [
+     [
+      "Thinks the guess for 9 rainy days is a sure fact",
+      "Ask: what if pests come? Remind them a model only guesses from past patterns"
+     ],
+     [
+      "Mixes up which array goes first in linregress",
+      "x first (the cause you control or watch), y second (the result)"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 3,
+   "unit": "Weeks 1-3 · Advanced Python Libraries",
+   "title": "scikit-learn: Teach Python to Guess Tomato Prices",
+   "colours": [
+    "blue",
+    "green",
+    "red"
+   ],
+   "goal": "I can train a small machine learning model on labelled practice data, test it on rows it has never seen, and make a prediction.",
+   "learn": "Machine learning means showing the computer many examples so it learns a pattern by itself. In scikit-learn you give it X (the clues, like rainy days and festive season) and y (the answer, like price), then call fit() to learn and predict() to guess. It is like an apprentice at the market who watches the madam for months until she can price tomatoes alone. We always hide some rows during learning and test on them, so we know the model is not just memorising.",
+   "research": {
+    "q": "Ask a tomato seller: in which months is tomato cheapest and in which months is it most costly? Why?",
+    "tip": "Write the months and the reason. This is real 'domain knowledge' that tells you which clues (X) your model needs."
+   },
+   "build": {
+    "task": "Train a LinearRegression model on 6 months of practice data, test it on 2 hidden months, and predict a festive month.",
+    "lang": "python",
+    "steps": [
+     "Run: pip install scikit-learn",
+     "Type the code into predictor.py",
+     "Run it and compare each guess with the real number",
+     "Write one sentence: is the model good enough for a trader to trust?"
+    ],
+    "code": "from sklearn.linear_model import LinearRegression\n\n# PRACTICE DATA (made up for learning, NOT real market prices)\n# X = [rainy days that month, festive month? 1=yes 0=no]   y = basket of tomatoes (naira)\nX = [[0, 1], [2, 0], [5, 0], [8, 0], [12, 0], [15, 0], [3, 1], [10, 0]]\ny = [10400, 8300, 7600, 6500, 5300, 4400, 9600, 5800]\n\nmodel = LinearRegression()\nmodel.fit(X[:6], y[:6])            # learn from the first 6 months only\n\nprint(\"Testing on 2 months the model never saw:\")\nfor clues, real in zip(X[6:], y[6:]):\n    guess = model.predict([clues])[0]\n    print(\"  Clues\", clues, \"guess N\", round(guess), \"| real N\", real)\n\ndecember = [[6, 1]]                 # 6 rainy days, festive season\nprint(\"Prediction for a festive month with 6 rainy days: N\", round(model.predict(december)[0]))"
+   },
+   "check": [
+    {
+     "q": "In scikit-learn, what does fit() do?",
+     "opts": [
+      "Deletes the data",
+      "Prints the answer",
+      "Makes the model learn from examples"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why do we test on rows the model never saw?",
+     "opts": [
+      "To check it learned a pattern, not just memorised",
+      "To make the code longer",
+      "Because Python needs it to run"
+     ],
+     "a": 0
+    },
+    {
+     "q": "In our model, what is y?",
+     "opts": [
+      "The rainy days",
+      "The tomato price we want to predict",
+      "The festive season"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I trained a model with fit(), tested it on hidden months, and used predict() to guess a tomato price.",
+   "trainer": {
+    "open": "Every market madam has an apprentice who learns by watching. Today our computer becomes the apprentice.",
+    "plan": [
+     [
+      "3 min",
+      "Act it out: a learner 'trains' by seeing 4 price cards, then guesses a 5th"
+     ],
+     [
+      "5 min",
+      "Explain X, y, fit, predict on the board"
+     ],
+     [
+      "8 min",
+      "Pairs run the model and record guess vs real"
+     ],
+     [
+      "4 min",
+      "Each pair answers: would a trader trust this? What clue is missing?"
+     ]
+    ],
+    "props": [
+     "Price cards with month and rain on one side, price on the back",
+     "The months learners collected from sellers"
+    ],
+    "lookfor": [
+     "Correctly names X as clues and y as the answer",
+     "Explains why the last 2 months were hidden",
+     "Suggests a better clue (e.g. fuel price, festive season) from their research"
+    ],
+    "fix": [
+     [
+      "Checks the score only on training data and says the model is perfect",
+      "Remind them: an apprentice who only repeats yesterday's prices is not ready - test on new rows"
+     ],
+     [
+      "Passes predict a flat list like [6, 1]",
+      "predict wants a list of rows, so wrap it: [[6, 1]]"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 4,
+   "unit": "Weeks 4-6 · Web Development with Django",
+   "title": "Django Says Hello: Meet M-V-T",
+   "colours": [
+    "purple"
+   ],
+   "goal": "I can start a Django project, explain Model-View-Template, and show my first page in the browser.",
+   "learn": "Django is a Python framework for building big websites fast, used by real companies. It splits the work into three parts: the Model (the data), the View (the brain that decides what to send back) and the Template (the page people see). urls.py is the gateman: when a visitor knocks on a web address, it sends them to the right view. Think of a buka: the store room is the Model, the cook is the View, and the plate of food on your table is the Template.",
+   "research": {
+    "q": "Ask a trader or a farmer: if there was a website showing today's prices in nearby markets, what is the ONE thing you would want to see first?",
+    "tip": "Write their answer word for word. It becomes the first thing your Django home page shows."
+   },
+   "build": {
+    "task": "Create a Django project with one view that shows 'Ilaro Market Prices' in the browser.",
+    "lang": "python",
+    "steps": [
+     "In the terminal run the four setup commands at the top of the code",
+     "Put the home view in prices/views.py",
+     "Replace naijamarket/urls.py with the urls part",
+     "Run python manage.py runserver and open http://127.0.0.1:8000/"
+    ],
+    "code": "# Terminal (one time):\n#   pip install django\n#   django-admin startproject naijamarket\n#   cd naijamarket\n#   python manage.py startapp prices\n\n# ---- prices/views.py  (V = View: the brain that answers a visitor) ----\nfrom django.http import HttpResponse\n\ndef home(request):\n    return HttpResponse(\"<h1>Ilaro Market Prices</h1><p>Prices coming soon!</p>\")\n\n# ---- naijamarket/urls.py  (the gateman: which address goes to which view) ----\nfrom django.contrib import admin\nfrom django.urls import path\nfrom prices import views\n\nurlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"\", views.home),\n]\n\n# Terminal: python manage.py runserver   then open http://127.0.0.1:8000/"
+   },
+   "check": [
+    {
+     "q": "In Django's M-V-T, which part is the page people see?",
+     "opts": [
+      "Model",
+      "View",
+      "Template"
+     ],
+     "a": 2
+    },
+    {
+     "q": "What is the job of urls.py?",
+     "opts": [
+      "It sends each web address to the right view",
+      "It stores the prices",
+      "It colours the page"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which command starts the Django test server?",
+     "opts": [
+      "python manage.py startapp",
+      "python manage.py runserver",
+      "pip install runserver"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "Django splits a website into Model, View and Template, and urls.py sends each visitor to the right view.",
+   "trainer": {
+    "open": "Last term's Python was just you and the terminal. Today, your Python goes on the web.",
+    "plan": [
+     [
+      "3 min",
+      "Act out the buka: one learner is the store room (Model), one the cook (View), one the plate (Template)"
+     ],
+     [
+      "5 min",
+      "Walk through the setup commands together on the projector"
+     ],
+     [
+      "8 min",
+      "Pairs build the home view and see it in the browser"
+     ],
+     [
+      "4 min",
+      "Each pair changes the message to their research answer and shows it"
+     ]
+    ],
+    "props": [
+     "A plate and spoon for the buka role-play",
+     "Printed M-V-T card with the three boxes"
+    ],
+    "lookfor": [
+     "Names the three parts and what each does",
+     "Explains why the page appears at http://127.0.0.1:8000/",
+     "Changes the view text and refreshes to see it"
+    ],
+    "fix": [
+     [
+      "Runs manage.py from the wrong folder and gets 'No such file'",
+      "Use cd naijamarket first - manage.py lives inside the project folder"
+     ],
+     [
+      "Forgets from prices import views and gets NameError",
+      "The gateman must know where the cook is - import the views first"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 5,
+   "unit": "Weeks 4-6 · Web Development with Django",
+   "title": "Django Models: A Price Book That Never Gets Lost",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can build a Django model for crop prices, add it to the admin page, and save real prices into the database.",
+   "learn": "A model is a Python class that describes one kind of record, like a row in a price book. Each field (crop, market, price, date) becomes a column in the database. Django's migrate command builds the database table for you, so you never write the table by hand. The admin page is a free back office where you can add, edit and delete records. It is like the madam's exercise book of prices, but it cannot get wet or torn.",
+   "research": {
+    "q": "Ask two traders or buyers: what are the prices of the same crop (e.g. garri or yam) in two different markets this week?",
+    "tip": "Write crop, market, price and date for each. These become your first real records in the admin."
+   },
+   "build": {
+    "task": "Make a CropPrice model, register it in the admin, and add at least three prices you collected.",
+    "lang": "python",
+    "steps": [
+     "Paste the model into prices/models.py and the admin lines into prices/admin.py",
+     "Add \"prices\" to INSTALLED_APPS in settings.py",
+     "Run makemigrations, migrate and createsuperuser (use a made-up username, not your real name)",
+     "Run the server, open /admin and add three prices"
+    ],
+    "code": "# ---- prices/models.py  (M = Model: the shape of our data) ----\nfrom django.db import models\n\nclass CropPrice(models.Model):\n    crop = models.CharField(max_length=50)\n    market = models.CharField(max_length=50)\n    price = models.PositiveIntegerField(help_text=\"Price in naira\")\n    date = models.DateField()\n\n    def __str__(self):\n        return f\"{self.crop} at {self.market}: N{self.price}\"\n\n# ---- prices/admin.py ----\nfrom django.contrib import admin\nfrom .models import CropPrice\n\nadmin.site.register(CropPrice)\n\n# ---- naijamarket/settings.py: add \"prices\" inside INSTALLED_APPS ----\n# Terminal:\n#   python manage.py makemigrations\n#   python manage.py migrate\n#   python manage.py createsuperuser\n#   python manage.py runserver      then open http://127.0.0.1:8000/admin/"
+   },
+   "check": [
+    {
+     "q": "In a Django model, what does each field become?",
+     "opts": [
+      "A new website",
+      "A column in the database table",
+      "A CSS colour"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which command actually builds the table in the database?",
+     "opts": [
+      "python manage.py migrate",
+      "pip install table",
+      "python manage.py hello"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why is PositiveIntegerField a good choice for price?",
+     "opts": [
+      "It allows words",
+      "It allows only dates",
+      "A price cannot be negative"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "A Django model is like a price book that never gets torn: each field is a column and migrate builds the table.",
+   "trainer": {
+    "open": "Where does a market woman keep her prices? In a little book. Today we build a book that cannot get lost.",
+    "plan": [
+     [
+      "3 min",
+      "Show a real exercise-book price list and map its columns to model fields"
+     ],
+     [
+      "5 min",
+      "Type the model together; explain CharField, PositiveIntegerField, DateField"
+     ],
+     [
+      "8 min",
+      "Pairs run migrations and add their researched prices in /admin"
+     ],
+     [
+      "4 min",
+      "Pairs show their admin list; class spots the costliest market"
+     ]
+    ],
+    "props": [
+     "An exercise book with a hand-written price list",
+     "The prices learners collected"
+    ],
+    "lookfor": [
+     "Maps each column of the book to a model field",
+     "Runs makemigrations then migrate in the right order",
+     "Adds records with correct dates and naira prices"
+    ],
+    "fix": [
+     [
+      "Forgets to add \"prices\" to INSTALLED_APPS, so makemigrations finds nothing",
+      "Django only checks apps it knows - add the app to the list, then try again"
+     ],
+     [
+      "Changes the model but does not run makemigrations again",
+      "Every time the shape changes, you must tell the database: makemigrations, then migrate"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 6,
+   "unit": "Weeks 4-6 · Web Development with Django",
+   "title": "Templates: A Dashboard Traders Can Read",
+   "colours": [
+    "blue",
+    "green",
+    "red"
+   ],
+   "goal": "I can send data from a view to a template and use a loop and an if-rule to show a clean price dashboard.",
+   "learn": "A template is an HTML page with holes that Django fills with real data. {{ p.price }} prints a value, {% for %} repeats a row for every record, and {% if %} adds a rule, like flagging costly prices. The view fetches records with CropPrice.objects and hands them to the template with render(). It is like a bus park chalkboard where the conductor writes today's fares - the board stays, the numbers change.",
+   "research": {
+    "q": "Ask a trader: what would make you trust a price you see on a phone? (Date? Market name? Who posted it?)",
+    "tip": "Write their answer. Trust decides if people will actually use your dashboard, so show what they asked for."
+   },
+   "build": {
+    "task": "Make the home page list every saved price, newest first, with a 'costly this week' warning over N5,000.",
+    "lang": "python",
+    "steps": [
+     "Replace the home view in prices/views.py with the new one",
+     "Create the folders prices/templates/prices/ and save home.html there",
+     "Run the server and open the home page",
+     "Change the 5000 rule to fit the crop you researched"
+    ],
+    "code": "# ---- prices/views.py ----\nfrom django.shortcuts import render\nfrom .models import CropPrice\n\ndef home(request):\n    prices = CropPrice.objects.order_by(\"-date\")      # newest first\n    return render(request, \"prices/home.html\", {\"prices\": prices})\n\n<!-- ---- prices/templates/prices/home.html  (T = Template: what people see) ---- -->\n<h1>Ilaro Market Prices</h1>\n<ul>\n  {% for p in prices %}\n    <li>{{ p.crop }} at {{ p.market }}: N{{ p.price }} ({{ p.date }})\n      {% if p.price > 5000 %}<b> - costly this week!</b>{% endif %}\n    </li>\n  {% empty %}\n    <li>No prices yet. Add some in /admin.</li>\n  {% endfor %}\n</ul>"
+   },
+   "check": [
+    {
+     "q": "Which template tag repeats a row for every price?",
+     "opts": [
+      "{{ p.price }}",
+      "{% for p in prices %}",
+      "{% endif %}"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does render() do in the view?",
+     "opts": [
+      "Joins the data with the template to make the page",
+      "Deletes old prices",
+      "Starts the server"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does order_by(\"-date\") do?",
+     "opts": [
+      "Sorts oldest first",
+      "Removes dates",
+      "Sorts newest first"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "My view fetches the prices and my template uses for and if to show them like a bus park fare board.",
+   "trainer": {
+    "open": "We have a price book in the database. Today we turn it into a board any trader can read in two seconds.",
+    "plan": [
+     [
+      "3 min",
+      "Show a photo or drawing of a bus park fare board and ask what changes daily"
+     ],
+     [
+      "5 min",
+      "Explain {{ }} vs {% %} and the folder path for templates"
+     ],
+     [
+      "8 min",
+      "Pairs build home.html and see their real prices appear"
+     ],
+     [
+      "4 min",
+      "Pairs add one thing from their trust research (e.g. the date in bold)"
+     ]
+    ],
+    "props": [
+     "A drawing of a fare board",
+     "Learners' trust research notes"
+    ],
+    "lookfor": [
+     "Explains that the template stays the same while the data changes",
+     "Uses for and if tags correctly and closes them",
+     "Adds a feature from their research without copying a neighbour"
+    ],
+    "fix": [
+     [
+      "Saves home.html in the wrong folder and gets TemplateDoesNotExist",
+      "Django looks in prices/templates/prices/ - check each folder name carefully"
+     ],
+     [
+      "Forgets {% endfor %} or {% endif %}",
+      "Every tag that opens must close, just like HTML tags - read the error line number"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 7,
+   "unit": "Weeks 7-10 · Advanced Python Projects",
+   "title": "Scalable Apps: Build for One Shop, Ready for a Thousand",
+   "colours": [
+    "blue",
+    "purple"
+   ],
+   "goal": "I can organise code into small functions with one settings dictionary, and use caching so repeated questions are answered instantly.",
+   "learn": "A scalable app keeps working well when users grow from 10 to 10,000. Two habits help: put settings in one place so you change them once, and do not repeat slow work. A cache remembers answers to questions it has already been asked. It is like a POS agent who memorises today's charges after the first customer, instead of calling the boss every time. Python's lru_cache adds this memory to a function in one line.",
+   "research": {
+    "q": "Ask a POS agent or shop owner: what happens to your service when there is a long queue? What slows you down most?",
+    "tip": "Write the slow part they name. Slow parts in real life match slow parts in code - that is where caching helps."
+   },
+   "build": {
+    "task": "Add lru_cache to a slow price lookup and prove that asking three times does not take three seconds.",
+    "lang": "python",
+    "steps": [
+     "Type the code into fast_prices.py",
+     "Run it and note the time",
+     "Remove the @lru_cache line, run again and compare the time",
+     "Change transport_percent in CONFIG only, and see every price update"
+    ],
+    "code": "from functools import lru_cache\nimport time\n\n# ONE place for settings - change it here, not all over the code\nCONFIG = {\"transport_percent\": 10, \"markets\": [\"Ilaro\", \"Owode\", \"Sango\"]}\n\n@lru_cache(maxsize=128)               # remember answers we already worked out\ndef slow_price_lookup(crop, market):\n    time.sleep(1)                      # pretend we are asking a slow server\n    base = {\"tomato\": 5000, \"yam\": 3500, \"pepper\": 2500}   # practice prices\n    return base.get(crop, 0)\n\ndef price_with_transport(crop, market):\n    price = slow_price_lookup(crop, market)\n    return round(price * (1 + CONFIG[\"transport_percent\"] / 100))\n\nstart = time.time()\nfor _ in range(3):                     # the same question, three customers\n    print(\"Tomato at Ilaro: N\", price_with_transport(\"tomato\", \"Ilaro\"))\nprint(\"Took\", round(time.time() - start, 1), \"seconds - not 3!\")"
+   },
+   "check": [
+    {
+     "q": "What does a cache do?",
+     "opts": [
+      "Remembers answers so repeated questions are fast",
+      "Deletes the code",
+      "Makes the screen bigger"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why keep settings in one CONFIG dictionary?",
+     "opts": [
+      "Python needs it to run",
+      "So you change a setting once, in one place",
+      "To hide it from the teacher"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does 'scalable' mean for an app?",
+     "opts": [
+      "It only works on one phone",
+      "It weighs things",
+      "It still works well when many more people use it"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "A scalable app keeps settings in one place and caches repeated work, like a POS agent who remembers today's charges.",
+   "trainer": {
+    "open": "Your price app works for you. But what if every trader in Ogun State opens it on Monday morning?",
+    "plan": [
+     [
+      "3 min",
+      "Role-play: a 'POS agent' who phones the boss for every customer vs one who remembers"
+     ],
+     [
+      "5 min",
+      "Explain CONFIG and lru_cache on the board"
+     ],
+     [
+      "8 min",
+      "Pairs run with and without the cache and write both times"
+     ],
+     [
+      "4 min",
+      "Discuss one slow part from their research and how code could avoid it"
+     ]
+    ],
+    "props": [
+     "A stopwatch (phone timer)",
+     "A paper 'charges list' for the POS role-play"
+    ],
+    "lookfor": [
+     "Measures and compares the two run times",
+     "Explains caching using their own real-life example",
+     "Changes CONFIG once and sees the effect everywhere"
+    ],
+    "fix": [
+     [
+      "Thinks the cache should be used for prices that change every minute",
+      "A cache gives OLD answers - only cache things that stay the same for a while, or clear it"
+     ],
+     [
+      "Copies the 10% number into many functions",
+      "Show how a change would need many edits - put it in CONFIG instead"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 8,
+   "unit": "Weeks 7-10 · Advanced Python Projects",
+   "title": "Big Data, Small Memory: Generators",
+   "colours": [
+    "green",
+    "blue"
+   ],
+   "goal": "I can use a generator to process 100,000 rows one at a time without filling the computer's memory.",
+   "learn": "When data is huge, loading it all at once can freeze a small laptop. A generator uses yield to hand over one item at a time, like a bread seller who brings loaves out of the oven one tray at a time instead of piling the whole day's bread on the table. Your loop works the same way, but memory stays small. Big websites do the same with pagination: they show 20 results per page, not one million.",
+   "research": {
+    "q": "Ask a shop owner or a teacher: how do you keep records when there are too many to fit on one page or book?",
+    "tip": "Write their trick (new book each month? pages by class?). Real people already 'paginate' and 'chunk' - you are copying their wisdom."
+   },
+   "build": {
+    "task": "Create a practice file of 100,000 sales and total them by item using a generator.",
+    "lang": "python",
+    "steps": [
+     "Type the code into big_sales.py",
+     "Run it - it first makes the practice file, then totals it",
+     "Open sales.csv to see how big it is",
+     "Add a new item like \"palm oil\" to the list and run again"
+    ],
+    "code": "import csv, random\n\n# Make a PRACTICE file with 100,000 made-up sales rows\nwith open(\"sales.csv\", \"w\", newline=\"\") as f:\n    w = csv.writer(f)\n    w.writerow([\"item\", \"naira\"])\n    for _ in range(100_000):\n        w.writerow([random.choice([\"garri\", \"rice\", \"beans\"]), random.randint(500, 5000)])\n\ndef read_sales(path):\n    \"\"\"Generator: hands over ONE row at a time, so memory stays small.\"\"\"\n    with open(path, newline=\"\") as f:\n        for row in csv.DictReader(f):\n            yield row\n\ntotals = {}\nfor row in read_sales(\"sales.csv\"):\n    totals[row[\"item\"]] = totals.get(row[\"item\"], 0) + int(row[\"naira\"])\n\nfor item, total in sorted(totals.items()):\n    print(f\"{item}: N{total:,}\")"
+   },
+   "check": [
+    {
+     "q": "Which word turns a function into a generator?",
+     "opts": [
+      "return",
+      "print",
+      "yield"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why use a generator for a huge file?",
+     "opts": [
+      "It reads one row at a time so memory stays small",
+      "It makes the file smaller",
+      "It deletes old rows"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Showing 20 results per page on a website is called...",
+     "opts": [
+      "Caching",
+      "Pagination",
+      "Migration"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "A generator hands me one row at a time with yield, so even 100,000 sales do not freeze my laptop.",
+   "trainer": {
+    "open": "Imagine every sale in Ilaro market for a year. Your laptop cannot hold it all at once - but it can handle one at a time.",
+    "plan": [
+     [
+      "3 min",
+      "Act out the bread seller: one tray at a time vs the whole day's bread on one table"
+     ],
+     [
+      "5 min",
+      "Explain yield vs return on the board"
+     ],
+     [
+      "8 min",
+      "Pairs run the script and check the size of sales.csv"
+     ],
+     [
+      "4 min",
+      "Share their research trick and match it to pagination or chunking"
+     ]
+    ],
+    "props": [
+     "A tray or a stack of exercise books to show chunking",
+     "Learners' record-keeping research"
+    ],
+    "lookfor": [
+     "Explains yield in their own words",
+     "Uses .get(item, 0) to add up totals safely",
+     "Links a real record-keeping habit to pagination"
+    ],
+    "fix": [
+     [
+      "Uses f.readlines() to load the whole file into a list",
+      "That piles all the bread on one table - loop over the file or use a generator"
+     ],
+     [
+      "Adds the naira column as text and gets joined strings",
+      "CSV gives text - change it to a number with int() before adding"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 9,
+   "unit": "Weeks 7-10 · Advanced Python Projects",
+   "title": "Automation: Let Python Tidy the Mess",
+   "colours": [
+    "green",
+    "red"
+   ],
+   "goal": "I can write a script that automatically sorts a messy folder of files into neat folders by type.",
+   "learn": "Automation means giving boring, repeated jobs to the computer. Python's pathlib can see every file in a folder and its type (.jpg, .docx), and shutil can move it. A rule chooses the right folder for each file, and a loop repeats it for every file. It is like a sorting boy at the depot who puts every parcel on the right bus - he never gets tired and never complains.",
+   "research": {
+    "q": "Ask a teacher, a secretary or a business owner: what boring computer or phone task do you repeat every week?",
+    "tip": "Write the task and how long it takes. The best automation scripts solve a real person's weekly headache."
+   },
+   "build": {
+    "task": "Write a script that creates practice files and sorts them into Pictures, Documents, Spreadsheets and Others.",
+    "lang": "python",
+    "steps": [
+     "Type the code into tidy.py in an empty practice folder (never your real files)",
+     "Run it and open the class_work folder",
+     "Add a rule so .mp3 files go to a 'Music' folder",
+     "Run it again with new practice files"
+    ],
+    "code": "from pathlib import Path\nimport shutil\n\n# PRACTICE ONLY: we create fake empty files so no real work is touched\nfolder = Path(\"class_work\")\nfolder.mkdir(exist_ok=True)\nfor name in [\"essay.docx\", \"farm.jpg\", \"scores.xlsx\", \"song.mp3\", \"jollof.jpg\"]:\n    (folder / name).touch()\n\ngroups = {\".jpg\": \"Pictures\", \".docx\": \"Documents\", \".xlsx\": \"Spreadsheets\"}\n\nfor file in list(folder.iterdir()):\n    if file.is_file():                                     # skip folders\n        target = groups.get(file.suffix.lower(), \"Others\")   # the rule\n        (folder / target).mkdir(exist_ok=True)\n        shutil.move(str(file), str(folder / target / file.name))\n        print(\"Moved\", file.name, \"->\", target)"
+   },
+   "check": [
+    {
+     "q": "Which part decides WHERE each file should go?",
+     "opts": [
+      "The groups dictionary and .get() rule",
+      "The print line",
+      "The import line"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why do we test on practice files first?",
+     "opts": [
+      "Python cannot see real files",
+      "Practice files are faster",
+      "So a mistake does not move or lose real work"
+     ],
+     "a": 2
+    },
+    {
+     "q": "What does file.suffix give you for 'farm.jpg'?",
+     "opts": [
+      "farm",
+      ".jpg",
+      "farm.jpg"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "My script uses a loop and a rule to sort every file into the right folder, like a depot boy loading the right bus.",
+   "trainer": {
+    "open": "Somebody in your house spends hours on a boring computer job. Today you learn to hand that job to Python.",
+    "plan": [
+     [
+      "3 min",
+      "Show a messy screenshot of a Downloads folder and ask how long it takes to tidy"
+     ],
+     [
+      "5 min",
+      "Explain Path, suffix and shutil.move"
+     ],
+     [
+      "8 min",
+      "Pairs run the script, then add the Music rule"
+     ],
+     [
+      "4 min",
+      "Share the boring tasks from their research and vote on the best one for next week"
+     ]
+    ],
+    "props": [
+     "A box of mixed papers to sort by hand first",
+     "Learners' 'boring task' research notes"
+    ],
+    "lookfor": [
+     "Adds a new rule to the dictionary without help",
+     "Explains why it uses practice files only",
+     "Picks a real task from research that could be automated"
+    ],
+    "fix": [
+     [
+      "Points the script at a real folder like Documents",
+      "Stop - always test on a copy or practice folder first. Automation is fast at mistakes too"
+     ],
+     [
+      "Gets an error because the target folder does not exist",
+      "Create it first with mkdir(exist_ok=True) before moving files in"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 10,
+   "unit": "Weeks 7-10 · Advanced Python Projects",
+   "title": "Project: The Morning Price Note Robot",
+   "colours": [
+    "purple",
+    "blue",
+    "green"
+   ],
+   "goal": "I can write an automation script that fetches today's dollar-naira rate from a free API and writes a ready price note for a shop.",
+   "learn": "Many Nigerian shop prices move with the dollar, so shop owners check the rate every morning. Our script asks a free public API (open.er-api.com, no key needed) for today's rate, works out naira costs, and saves a neat note to a file. A scheduler (cron on Linux, Task Scheduler on Windows) is the trigger that can run it every morning by itself. It is like a newspaper vendor who drops the paper at your gate at 7am without being asked.",
+   "research": {
+    "q": "Ask a shop owner who sells imported goods: how do you decide when to change your prices?",
+    "tip": "Write what they check and how often. Your robot should give them exactly that information, in their words."
+   },
+   "build": {
+    "task": "Build a script that fetches today's USD-NGN rate and writes price_note.txt for a provision shop.",
+    "lang": "python",
+    "steps": [
+     "Type the code into price_robot.py (needs internet)",
+     "Change the practice USD costs to items from your research",
+     "Run it and open price_note.txt",
+     "Bonus: ask your trainer to help schedule it for 7am"
+    ],
+    "code": "import json, urllib.request\nfrom datetime import date\n\nURL = \"https://open.er-api.com/v6/latest/USD\"     # free public API, no key needed\n\ntry:\n    with urllib.request.urlopen(URL, timeout=10) as reply:\n        naira = json.load(reply)[\"rates\"][\"NGN\"]\nexcept Exception as e:\n    raise SystemExit(f\"No internet or API problem: {e}\")\n\nitems = {\"Imported rice (50kg bag)\": 75, \"Tin tomato (carton)\": 18}   # PRACTICE USD costs\n\nlines = [f\"Shop price note for {date.today()}\", f\"1 USD = N{naira:,.2f}\"]\nfor item, usd in items.items():\n    lines.append(f\"{item}: about N{usd * naira:,.0f}\")\n\nwith open(\"price_note.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"\\n\".join(lines))\nprint(\"\\n\".join(lines))\n# Schedule it: Linux cron  0 7 * * *  python3 price_robot.py   (or Windows Task Scheduler)"
+   },
+   "check": [
+    {
+     "q": "What is the 'trigger' that can run the script every morning by itself?",
+     "opts": [
+      "A scheduler like cron or Task Scheduler",
+      "The print() line",
+      "The json library"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why does the script use try/except around the API call?",
+     "opts": [
+      "To make it faster",
+      "To change the dollar rate",
+      "So it gives a clear message if there is no internet"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why are the item USD costs marked PRACTICE?",
+     "opts": [
+      "Because Python cannot use real numbers",
+      "Because they are made up for learning, not real prices",
+      "Because the API needs them"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "My robot fetches today's dollar rate from a free API and writes a price note, and a scheduler can run it every morning.",
+   "trainer": {
+    "open": "Shop owners wake up and check the dollar. Today you build a robot that does it for them before they open the shop.",
+    "plan": [
+     [
+      "3 min",
+      "Ask: who in your research checks the dollar rate? How?"
+     ],
+     [
+      "5 min",
+      "Walk through the API JSON in a browser: find rates then NGN"
+     ],
+     [
+      "8 min",
+      "Pairs run the robot and edit the items from their research"
+     ],
+     [
+      "4 min",
+      "Show the note; trainer demonstrates a cron or Task Scheduler entry"
+     ]
+    ],
+    "props": [
+     "Internet connection (or a saved sample JSON reply as backup)",
+     "A printed price list from a provision shop"
+    ],
+    "lookfor": [
+     "Finds the NGN value in the API reply on their own",
+     "Explains what happens with no internet",
+     "Adapts items and wording to their research shop owner"
+    ],
+    "fix": [
+     [
+      "Gets KeyError because they typed rates['ngn'] in small letters",
+      "JSON keys are exact - open the API in the browser and copy the key as it appears"
+     ],
+     [
+      "Presents the practice USD costs as real prices",
+      "Remind them to label practice numbers, or collect real costs from the shop owner first"
+     ]
+    ]
+   }
+  }
+ ]
+}

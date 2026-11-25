@@ -1,0 +1,974 @@
+{
+ "id": "y2t2",
+ "year": 2,
+ "term": 2,
+ "title": "Intermediate JavaScript",
+ "level": "Intermediate",
+ "device": "phone",
+ "intro": "This term your JavaScript gets superpowers: waiting, catching errors, talking to the internet and using the Vue framework. You will build a real Market Day Helper that shows live Ilaro weather and a smart market list.",
+ "termProject": "'Market Day Helper' — a Vue phone app that fetches live Ilaro weather from Open-Meteo, gives a market-day tip, and keeps a tickable market list and price book for local traders.",
+ "generated": false,
+ "weeks": [
+  {
+   "week": 1,
+   "unit": "Weeks 1-2 · Developing Simple Projects",
+   "title": "Wait for It: setTimeout",
+   "colours": [
+    "purple",
+    "blue"
+   ],
+   "goal": "I can use setTimeout to make code run after a short wait.",
+   "learn": "Asynchronous means 'don't block, come back later', like ordering suya and chatting while it grills. Normally JavaScript runs line by line. 'setTimeout' tells it: run this code after some milliseconds. 1000 milliseconds is 1 second. The rest of the page keeps working while it waits.",
+   "research": {
+    "q": "Ask a food seller: how many minutes does one order take to be ready?",
+    "tip": "Write the time — our app will 'wait' like the customer does."
+   },
+   "build": {
+    "task": "Make a 'Your jollof is ready!' message that appears 3 seconds after you tap Order.",
+    "lang": "js",
+    "steps": [
+     "Add a button and an empty paragraph.",
+     "On click, show 'Cooking... 🍳'.",
+     "Use setTimeout with 3000 to show 'Ready!'.",
+     "Tap and wait."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<body style=\"font-family:sans-serif; text-align:center; padding:30px\">\n  <h2>Market Day Helper 🧺</h2>\n  <button id=\"order\">Order Jollof</button>\n  <p id=\"msg\"></p>\n  <script>\n    const msg = document.getElementById(\"msg\");\n    document.getElementById(\"order\").onclick = function () {\n      msg.textContent = \"Cooking... 🍳\";\n      setTimeout(function () {\n        msg.textContent = \"Your jollof is ready! 🍛\";\n      }, 3000);\n    };\n  </script>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "How many milliseconds are in 1 second?",
+     "opts": [
+      "10",
+      "100",
+      "1000"
+     ],
+     "a": 2
+    },
+    {
+     "q": "What does setTimeout do?",
+     "opts": [
+      "Runs code after a wait",
+      "Stops the phone",
+      "Deletes text"
+     ],
+     "a": 0
+    },
+    {
+     "q": "While setTimeout waits, the page…",
+     "opts": [
+      "Freezes completely",
+      "Keeps working",
+      "Closes"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I used setTimeout so my app waits, like ordering suya and chatting while it grills.",
+   "trainer": {
+    "open": "When you order suya, do you stand frozen until it's ready? No! You chat. JavaScript can wait like that too.",
+    "plan": [
+     [
+      "3 min",
+      "Act it out: one child 'orders', counts 3 seconds, then gets 'food'."
+     ],
+     [
+      "5 min",
+      "Explain setTimeout and milliseconds; tap event = purple."
+     ],
+     [
+      "8 min",
+      "Kids build it, then change 3000 to the real wait time from research (scaled down)."
+     ],
+     [
+      "4 min",
+      "Share research: how long orders really take."
+     ]
+    ],
+    "props": [
+     "A phone stopwatch",
+     "A paper 'order ticket'"
+    ],
+    "lookfor": [
+     "Changes the delay correctly",
+     "Explains milliseconds",
+     "Says the page still works while waiting"
+    ],
+    "fix": [
+     [
+      "Writes 3 instead of 3000",
+      "Say: JavaScript counts in milliseconds. 3 seconds is 3000."
+     ],
+     [
+      "Calls setTimeout outside the click",
+      "Move it inside the onclick so it starts when you tap."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 2,
+   "unit": "Weeks 1-2 · Developing Simple Projects",
+   "title": "Catch the Mistake: try/catch & console",
+   "colours": [
+    "red"
+   ],
+   "goal": "I can use try/catch to handle errors and console.log to find bugs.",
+   "learn": "Errors happen, like a POS that says 'transaction failed'. A good app does not crash — it shows a kind message. 'try' runs risky code. If something breaks, 'catch' handles the error. 'throw' lets us make our own error, and 'console.log' prints clues to help us debug.",
+   "research": {
+    "q": "Ask a POS agent: what message shows when a transaction fails, and what do they tell the customer?",
+    "tip": "Write it — good error messages are calm and tell people what to do next."
+   },
+   "build": {
+    "task": "Build a price checker that catches a wrong (non-number) price and shows a friendly message.",
+    "lang": "js",
+    "steps": [
+     "Add an input and a button.",
+     "Inside try, turn the text into a number.",
+     "If it is not a number, throw an error.",
+     "In catch, show a kind message and console.log the error."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<body style=\"font-family:sans-serif; padding:20px\">\n  <h3>Price Checker (₦)</h3>\n  <input id=\"price\" placeholder=\"e.g. 500\">\n  <button id=\"go\">Check</button>\n  <p id=\"out\"></p>\n  <script>\n    document.getElementById(\"go\").onclick = function () {\n      const out = document.getElementById(\"out\");\n      try {\n        const p = Number(document.getElementById(\"price\").value);\n        if (isNaN(p) || p <= 0) throw new Error(\"Not a valid price\");\n        out.textContent = \"3 of these cost ₦\" + (p * 3);\n      } catch (err) {\n        console.log(\"Bug clue:\", err.message);\n        out.textContent = \"Oops! Please type a number like 500.\";\n      }\n    };\n  </script>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "Which block runs when something goes wrong?",
+     "opts": [
+      "try",
+      "catch",
+      "setTimeout"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does console.log help with?",
+     "opts": [
+      "Printing clues to find bugs",
+      "Changing colour",
+      "Playing sound"
+     ],
+     "a": 0
+    },
+    {
+     "q": "A good error message should be…",
+     "opts": [
+      "Scary and long",
+      "Hidden",
+      "Calm and tell you what to do"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I used try/catch so my app shows a kind message instead of crashing, like a good POS.",
+   "trainer": {
+    "open": "When a POS fails, the agent doesn't run away — they say 'Let's try again.' Our app will be that calm.",
+    "plan": [
+     [
+      "3 min",
+      "Ask: what happens when a POS transaction fails?"
+     ],
+     [
+      "5 min",
+      "Explain try, catch, throw (red rule) and console.log."
+     ],
+     [
+      "8 min",
+      "Kids build it and test with 'abc', 0 and 500."
+     ],
+     [
+      "4 min",
+      "Share research: real error messages people see."
+     ]
+    ],
+    "props": [
+     "A picture of a POS receipt",
+     "Cards with good and bad test inputs"
+    ],
+    "lookfor": [
+     "Tests with wrong input on purpose",
+     "Explains try vs catch",
+     "Writes a friendly error message"
+    ],
+    "fix": [
+     [
+      "Forgets 'new' in 'new Error'",
+      "Say: we build a new error object, so write 'new Error'."
+     ],
+     [
+      "Can't find console output on phone",
+      "Explain the message on the page is for users; console is for coders on the lab PC."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 3,
+   "unit": "Weeks 3-4 · Advanced DOM Manipulation",
+   "title": "Build the List with Code",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "goal": "I can create, add and remove page elements with JavaScript.",
+   "learn": "The DOM is the page's family tree, and JavaScript can add new children to it. 'createElement' makes a new box, like a trader setting up a new stall. 'textContent' writes inside it. 'appendChild' puts it on the page, and 'remove()' takes it away. A loop can build many stalls at once.",
+   "research": {
+    "q": "Ask a market trader: what 4 items do you sell and their prices today?",
+    "tip": "Write the items and naira prices — they fill your stall list."
+   },
+   "build": {
+    "task": "Use a loop and createElement to build a price list from an array.",
+    "lang": "js",
+    "steps": [
+     "Make an array of items with prices.",
+     "Loop through it with forEach.",
+     "For each, createElement('li') and set its text.",
+     "appendChild it into the ul."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<body style=\"font-family:sans-serif; padding:20px\">\n  <h3>Today's Market Prices 🧺</h3>\n  <ul id=\"list\"></ul>\n  <script>\n    const items = [\n      { name: \"Tomatoes (basket)\", price: 15000 },\n      { name: \"Garri (paint bucket)\", price: 3500 },\n      { name: \"Pepper (small bag)\", price: 2000 },\n      { name: \"Onions (bag)\", price: 5000 }\n    ];\n    const list = document.getElementById(\"list\");\n    items.forEach(function (item) {\n      const li = document.createElement(\"li\");\n      li.textContent = item.name + \" — ₦\" + item.price.toLocaleString();\n      list.appendChild(li);\n    });\n  </script>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "What does createElement do?",
+     "opts": [
+      "Makes a new element",
+      "Deletes the page",
+      "Changes the font"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which puts the new item on the page?",
+     "opts": [
+      "console.log",
+      "setTimeout",
+      "appendChild"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why use a loop here?",
+     "opts": [
+      "To slow the page",
+      "To build many items without repeating code",
+      "To hide prices"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I built a market price list with a loop and createElement, like setting up stalls one by one.",
+   "trainer": {
+    "open": "Imagine opening a new market every morning — stalls go up one by one. Today our code sets up the stalls.",
+    "plan": [
+     [
+      "3 min",
+      "Draw a tree on the board: body → ul → li; that's the DOM."
+     ],
+     [
+      "5 min",
+      "Explain createElement, textContent, appendChild."
+     ],
+     [
+      "8 min",
+      "Kids build it, then add their real research prices."
+     ],
+     [
+      "4 min",
+      "Discuss: why do prices change week to week?"
+     ]
+    ],
+    "props": [
+     "Price notes from the market",
+     "Paper 'stall' cards"
+    ],
+    "lookfor": [
+     "Adds a new item to the array and sees it appear",
+     "Explains appendChild",
+     "Points out the loop (green)"
+    ],
+    "fix": [
+     [
+      "Forgets appendChild so nothing shows",
+      "Say: you made the stall but didn't place it in the market. Append it."
+     ],
+     [
+      "Breaks the array with a missing comma",
+      "Check each { } object has a comma after it except the last."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 4,
+   "unit": "Weeks 3-4 · Advanced DOM Manipulation",
+   "title": "One Ear for Everyone: Event Delegation",
+   "colours": [
+    "purple",
+    "red"
+   ],
+   "goal": "I can use one event listener on a parent to handle clicks on many children.",
+   "learn": "Event delegation means one listener handles many items, like one market announcer listening for all traders. Instead of a listener on every li, we put one on the ul. 'event.target' tells us exactly which item was tapped. This even works for items added later. It keeps code short and fast.",
+   "research": {
+    "q": "Ask a market woman: how does she keep track of which items are sold out?",
+    "tip": "Write her method — our app will mark items 'sold out' with one tap."
+   },
+   "build": {
+    "task": "Tap any item to mark it sold out, using ONE listener on the list.",
+    "lang": "js",
+    "steps": [
+     "Make a ul with a few li items.",
+     "Add one 'click' listener to the ul.",
+     "Check that event.target is an LI.",
+     "Toggle a 'sold' class to strike it through."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<style>\n  li { padding: 10px; margin: 4px; background: #eef; list-style: none; border-radius: 6px; }\n  .sold { text-decoration: line-through; opacity: 0.5; }\n</style>\n<body style=\"font-family:sans-serif\">\n  <h3>Tap to mark sold out ✅</h3>\n  <ul id=\"stall\">\n    <li>Tomatoes</li><li>Pepper</li><li>Garri</li><li>Ugu leaves</li>\n  </ul>\n  <button id=\"add\">Add Yam</button>\n  <script>\n    const stall = document.getElementById(\"stall\");\n    stall.addEventListener(\"click\", function (e) {\n      if (e.target.tagName === \"LI\") e.target.classList.toggle(\"sold\");\n    });\n    document.getElementById(\"add\").onclick = function () {\n      const li = document.createElement(\"li\");\n      li.textContent = \"Yam\"; stall.appendChild(li);\n    };\n  </script>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "Where do we put the ONE listener in delegation?",
+     "opts": [
+      "On every li",
+      "On the parent ul",
+      "On the title"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does event.target tell us?",
+     "opts": [
+      "The exact item that was tapped",
+      "The time",
+      "The page colour"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Does it work for new items added later?",
+     "opts": [
+      "No, never",
+      "Only on Sundays",
+      "Yes, because the parent listens"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I used one listener on the list to handle taps on every item, like one announcer for the whole market.",
+   "trainer": {
+    "open": "A market announcer doesn't stand by every stall — one voice covers everyone. Today one listener covers all items.",
+    "plan": [
+     [
+      "3 min",
+      "Game: trainer is the 'listener'; kids at 'stalls' raise hands; trainer names who."
+     ],
+     [
+      "5 min",
+      "Explain addEventListener on parent, e.target and the IF check (red)."
+     ],
+     [
+      "8 min",
+      "Kids build it, tap items, then add Yam and tap it too."
+     ],
+     [
+      "4 min",
+      "Share research: how traders track sold-out items. Unit project done!"
+     ]
+    ],
+    "props": [
+     "A whistle or bell for the 'announcer'",
+     "Item name cards"
+    ],
+    "lookfor": [
+     "Explains why new items still work",
+     "Uses e.target correctly",
+     "Explains the tagName check"
+    ],
+    "fix": [
+     [
+      "Writes 'li' in lowercase for tagName",
+      "Say: tagName is shouted in CAPITALS — 'LI'."
+     ],
+     [
+      "Adds a listener to each li in a loop",
+      "Show that one parent listener is shorter and catches new items too."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 5,
+   "unit": "Weeks 5-6 · Asynchronous JavaScript",
+   "title": "Promises: I Will Bring It",
+   "colours": [
+    "purple",
+    "red"
+   ],
+   "goal": "I can create a promise and handle it with then and catch.",
+   "learn": "A promise is like a dispatch rider saying 'I will deliver your parcel.' Later, it is either resolved (delivered) or rejected (failed). '.then' runs when it is delivered. '.catch' runs if it fails. Promises help us handle things that take time, like getting data from the internet.",
+   "research": {
+    "q": "Ask someone who orders online: how long did delivery take and did it ever fail?",
+    "tip": "Write both answers — every promise can succeed or fail, so our code must plan for both."
+   },
+   "build": {
+    "task": "Make a fake delivery promise that succeeds or fails, and show the result.",
+    "lang": "js",
+    "steps": [
+     "Write a function that returns a new Promise.",
+     "Use setTimeout inside to wait 2 seconds.",
+     "Resolve if the rider has fuel, else reject.",
+     "Use .then and .catch to show the result."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<body style=\"font-family:sans-serif; padding:20px\">\n  <h3>Dispatch Rider 🏍️</h3>\n  <button onclick=\"send(true)\">Rider has fuel</button>\n  <button onclick=\"send(false)\">Fuel finished</button>\n  <p id=\"out\"></p>\n  <script>\n    function deliver(hasFuel) {\n      return new Promise(function (resolve, reject) {\n        setTimeout(function () {\n          if (hasFuel) resolve(\"Parcel delivered to Ilaro market! 📦\");\n          else reject(\"Delivery failed: no fuel ⛽\");\n        }, 2000);\n      });\n    }\n    function send(fuel) {\n      const out = document.getElementById(\"out\");\n      out.textContent = \"On the way...\";\n      deliver(fuel).then(function (m) { out.textContent = m; })\n        .catch(function (e) { out.textContent = e; });\n    }\n  </script>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "When a promise succeeds, which runs?",
+     "opts": [
+      ".then",
+      ".catch",
+      "throw"
+     ],
+     "a": 0
+    },
+    {
+     "q": "A rejected promise means…",
+     "opts": [
+      "It was delivered",
+      "It is still waiting forever",
+      "It failed"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why are promises useful?",
+     "opts": [
+      "They make text bigger",
+      "They handle things that take time",
+      "They draw pictures"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "A promise is like a dispatch rider: it delivers with .then or fails with .catch.",
+   "trainer": {
+    "open": "When you order something, the rider promises to deliver. Sometimes fuel finishes! Today our code makes promises.",
+    "plan": [
+     [
+      "3 min",
+      "Role-play a rider who sometimes delivers, sometimes fails."
+     ],
+     [
+      "5 min",
+      "Explain resolve/reject and then/catch."
+     ],
+     [
+      "8 min",
+      "Kids build it and test both buttons."
+     ],
+     [
+      "4 min",
+      "Share research on real delivery times and failures."
+     ]
+    ],
+    "props": [
+     "A small parcel (wrapped box)",
+     "Toy bike or picture of a dispatch rider"
+    ],
+    "lookfor": [
+     "Tests both success and failure",
+     "Explains resolve vs reject",
+     "Links promise to waiting (setTimeout from week 1)"
+    ],
+    "fix": [
+     [
+      "Forgets 'return' before new Promise",
+      "Say: the function must hand back the promise, so write return."
+     ],
+     [
+      "Puts .catch before .then and gets confused",
+      "Read it like a story: then (good news) first, catch (bad news) after."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 6,
+   "unit": "Weeks 5-6 · Asynchronous JavaScript",
+   "title": "Fetch: Live Weather for Ilaro",
+   "colours": [
+    "purple",
+    "blue"
+   ],
+   "goal": "I can use fetch to get real weather data from a free API and show it on my page.",
+   "learn": "An API is like a weather man you can phone for answers. 'fetch' sends the question over the internet and returns a promise. '.json()' turns the answer into data we can read. We use Open-Meteo, a free weather API that needs no key or personal info. Our app shows the real temperature in Ilaro.",
+   "research": {
+    "q": "Ask a farmer or trader: how does the weather change what they do on market day?",
+    "tip": "Write their answer — it's the reason our weather app matters."
+   },
+   "build": {
+    "task": "Fetch the live temperature in Ilaro and show it with a market tip.",
+    "lang": "js",
+    "steps": [
+     "Put the Open-Meteo link in a variable.",
+     "Call fetch(url) then .json().",
+     "Read data.current.temperature_2m.",
+     "Show it, and use catch for no network."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<body style=\"font-family:sans-serif; text-align:center; padding:20px\">\n  <h2>Ilaro Weather ☀️🌧️</h2>\n  <button id=\"get\">Check weather</button>\n  <h1 id=\"temp\">--</h1>\n  <p id=\"tip\"></p>\n  <script>\n    const url = \"https://api.open-meteo.com/v1/forecast?latitude=6.89&longitude=3.02&current=temperature_2m\";\n    document.getElementById(\"get\").onclick = function () {\n      fetch(url)\n        .then(function (res) { return res.json(); })\n        .then(function (data) {\n          const t = data.current.temperature_2m;\n          document.getElementById(\"temp\").textContent = t + \"°C\";\n          document.getElementById(\"tip\").textContent =\n            t > 30 ? \"Very hot! Bring an umbrella for shade.\" : \"Nice weather for market.\";\n        })\n        .catch(function () {\n          document.getElementById(\"tip\").textContent = \"No network. Try again later.\";\n        });\n    };\n  </script>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "What does fetch return?",
+     "opts": [
+      "A promise",
+      "A picture",
+      "A number only"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does .json() do?",
+     "opts": [
+      "Deletes the data",
+      "Sends an SMS",
+      "Turns the answer into readable data"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why use Open-Meteo?",
+     "opts": [
+      "It asks for your phone number",
+      "It is free and needs no key or personal info",
+      "It only works at night"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I used fetch to ask a free weather API for Ilaro's real temperature and showed it on my app.",
+   "trainer": {
+    "open": "If you could phone a weather man anytime, you'd ask before going to market. fetch is that phone call!",
+    "plan": [
+     [
+      "3 min",
+      "Ask: who checks the weather before going out? Why?"
+     ],
+     [
+      "5 min",
+      "Explain API, fetch, .json() and reading data.current."
+     ],
+     [
+      "8 min",
+      "Kids build it and get the live Ilaro temperature."
+     ],
+     [
+      "4 min",
+      "Share research; Unit project: weather app done!"
+     ]
+    ],
+    "props": [
+     "An umbrella",
+     "Mobile data or Wi-Fi for the demo"
+    ],
+    "lookfor": [
+     "Finds temperature_2m inside the data",
+     "Explains why there are two .then steps",
+     "Changes the tip message logic"
+    ],
+    "fix": [
+     [
+      "Misspells temperature_2m",
+      "Say: copy the name exactly; the API is strict."
+     ],
+     [
+      "No data or network",
+      "The catch message shows — explain that's the code working correctly; try again with data on."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 7,
+   "unit": "Weeks 7-10 · JavaScript Frameworks",
+   "title": "Hello Vue: Data That Updates Itself",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can set up Vue from a CDN and show data on the page with {{ }}.",
+   "learn": "A framework is a ready-built toolbox, like a mechanic's full kit instead of one spanner. Vue watches your data and updates the page by itself. We put data in 'data()', and show it with double curly braces {{ }}. When the data changes, the page changes too — no getElementById needed.",
+   "research": {
+    "q": "Ask a mechanic: why do they use a full toolbox instead of one tool?",
+    "tip": "Write the answer — it explains why coders use frameworks like Vue."
+   },
+   "build": {
+    "task": "Create a Vue app that shows a trader's name and today's tomato price.",
+    "lang": "js",
+    "steps": [
+     "Add the Vue script tag.",
+     "Make a div with id 'app' and {{ }} inside.",
+     "Write createApp with data().",
+     "Mount it on #app and run."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n  <script src=\"https://unpkg.com/vue@3/dist/vue.global.prod.js\"></script>\n</head>\n<body style=\"font-family:sans-serif; padding:20px\">\n  <div id=\"app\">\n    <h2>{{ trader }}'s Stall 🍅</h2>\n    <p>Tomatoes today: ₦{{ price }} per basket</p>\n    <button @click=\"price = price + 500\">Price went up</button>\n  </div>\n  <script>\n    Vue.createApp({\n      data() {\n        return { trader: \"Iya Bisi\", price: 15000 };\n      }\n    }).mount(\"#app\");\n  </script>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "What is a framework?",
+     "opts": [
+      "A ready-built toolbox for coding",
+      "A picture frame",
+      "A phone case"
+     ],
+     "a": 0
+    },
+    {
+     "q": "How do you show data in Vue HTML?",
+     "opts": [
+      "<data>",
+      "{{ }}",
+      "##"
+     ],
+     "a": 1
+    },
+    {
+     "q": "When data changes in Vue, the page…",
+     "opts": [
+      "Stays the same",
+      "Turns off",
+      "Updates by itself"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I used Vue, a framework, so my page updates by itself when the data changes.",
+   "trainer": {
+    "open": "A mechanic with a full toolbox fixes a car faster. Vue is our full toolbox!",
+    "plan": [
+     [
+      "3 min",
+      "Show a toolbox vs one spanner; ask which is faster."
+     ],
+     [
+      "5 min",
+      "Explain CDN, createApp, data() and {{ }}."
+     ],
+     [
+      "8 min",
+      "Kids build it, change the trader's name and tap the button."
+     ],
+     [
+      "4 min",
+      "Compare: last week we used getElementById; Vue did it for us."
+     ]
+    ],
+    "props": [
+     "A toolbox or picture of one",
+     "Today's market price notes"
+    ],
+    "lookfor": [
+     "Changes data and sees the page update",
+     "Explains {{ }}",
+     "Explains what mount('#app') does"
+    ],
+    "fix": [
+     [
+      "Writes {{ }} outside the #app div",
+      "Say: Vue only controls inside #app. Move it in."
+     ],
+     [
+      "Forgets 'return' in data()",
+      "data() must return an object — add return { }."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 8,
+   "unit": "Weeks 7-10 · JavaScript Frameworks",
+   "title": "Vue Lists & Clicks: v-for and @click",
+   "colours": [
+    "green",
+    "purple"
+   ],
+   "goal": "I can use v-for to show a list and @click to change data in Vue.",
+   "learn": "Vue gives the HTML special powers called directives. 'v-for' repeats an item for every thing in a list, like a conductor calling every passenger. '@click' (short for v-on:click) runs code when tapped. 'v-if' shows something only when a rule is true. Together they make lists that react.",
+   "research": {
+    "q": "Ask 3 people: what one item do they always buy on market day?",
+    "tip": "Write the 3 items — they become the starting list in your Vue app."
+   },
+   "build": {
+    "task": "Show a shopping list with v-for and tap an item to tick it.",
+    "lang": "js",
+    "steps": [
+     "Put an items array in data().",
+     "Use v-for on the li.",
+     "Add @click to toggle 'got'.",
+     "Use v-if to show a ✅ when got is true."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n  <script src=\"https://unpkg.com/vue@3/dist/vue.global.prod.js\"></script>\n</head>\n<body style=\"font-family:sans-serif; padding:20px\">\n  <div id=\"app\">\n    <h3>Market List 🛒</h3>\n    <ul>\n      <li v-for=\"item in items\" @click=\"item.got = !item.got\" style=\"padding:8px\">\n        {{ item.name }} <span v-if=\"item.got\">✅</span>\n      </li>\n    </ul>\n  </div>\n  <script>\n    Vue.createApp({\n      data() {\n        return { items: [{ name: \"Rice\", got: false }, { name: \"Palm oil\", got: false }, { name: \"Crayfish\", got: false }] };\n      }\n    }).mount(\"#app\");\n  </script>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "What does v-for do?",
+     "opts": [
+      "Deletes items",
+      "Repeats an element for every item in a list",
+      "Changes colours"
+     ],
+     "a": 1
+    },
+    {
+     "q": "'@click' is short for…",
+     "opts": [
+      "v-on:click",
+      "v-for:click",
+      "console.click"
+     ],
+     "a": 0
+    },
+    {
+     "q": "When does v-if show the ✅?",
+     "opts": [
+      "Always",
+      "Never",
+      "Only when item.got is true"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I used v-for to repeat my list and @click to tick items, like a conductor calling every passenger.",
+   "trainer": {
+    "open": "A danfo conductor calls every passenger one by one. v-for calls every item in our list!",
+    "plan": [
+     [
+      "3 min",
+      "Conductor game: trainer 'calls' each child's name in a row."
+     ],
+     [
+      "5 min",
+      "Explain v-for (green loop), @click (purple event), v-if (red rule)."
+     ],
+     [
+      "8 min",
+      "Kids build it and add their research items to the array."
+     ],
+     [
+      "4 min",
+      "Share research: what people always buy."
+     ]
+    ],
+    "props": [
+     "A real shopping list",
+     "Pen to tick items"
+    ],
+    "lookfor": [
+     "Adds an item to the array and it appears",
+     "Explains what !item.got does",
+     "Matches each directive to its logic colour"
+    ],
+    "fix": [
+     [
+      "Writes v-for='items' without 'item in'",
+      "Say: Vue needs a name for each one — 'item in items'."
+     ],
+     [
+      "Uses {{ item }} and sees the whole object",
+      "Show they need item.name to get just the name."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 9,
+   "unit": "Weeks 7-10 · JavaScript Frameworks",
+   "title": "Vue Project: Price Book App",
+   "colours": [
+    "blue",
+    "purple",
+    "green"
+   ],
+   "goal": "I can build a small Vue app with v-model to add items and a computed total.",
+   "learn": "Traders keep a price book to track what they sell. 'v-model' links an input box to data, so typing changes the data instantly. A method adds new items to the list. A 'computed' value works out the total by itself, like a calculator that never sleeps. This is a real mini app!",
+   "research": {
+    "q": "Ask a trader: do they write sales in a book, on their phone, or remember them?",
+    "tip": "Write their answer — it shows if a simple price book app could help them."
+   },
+   "build": {
+    "task": "Build a Vue price book where you add items and see the total in naira.",
+    "lang": "js",
+    "steps": [
+     "Add v-model to a name box and a price box.",
+     "Write an add() method that pushes a new item.",
+     "Write a computed total using reduce.",
+     "Add 3 items and check the total."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head><script src=\"https://unpkg.com/vue@3/dist/vue.global.prod.js\"></script></head>\n<body style=\"font-family:sans-serif; padding:20px\">\n  <div id=\"app\">\n    <h3>Iya Bisi's Price Book 📒</h3>\n    <input v-model=\"name\" placeholder=\"Item\"> <input v-model.number=\"price\" placeholder=\"₦\" type=\"number\">\n    <button @click=\"add\">Add</button>\n    <ul><li v-for=\"s in sales\">{{ s.name }} — ₦{{ s.price }}</li></ul>\n    <b>Total: ₦{{ total }}</b>\n  </div>\n  <script>\n    Vue.createApp({\n      data() { return { name: \"\", price: 0, sales: [] }; },\n      methods: {\n        add() { if (this.name && this.price > 0) { this.sales.push({ name: this.name, price: this.price }); this.name = \"\"; this.price = 0; } }\n      },\n      computed: {\n        total() { return this.sales.reduce((sum, s) => sum + s.price, 0); }\n      }\n    }).mount(\"#app\");\n  </script>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "What does v-model do?",
+     "opts": [
+      "Links an input box to data",
+      "Draws a model car",
+      "Stops the app"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Where do we write the add() function?",
+     "opts": [
+      "In data",
+      "In methods",
+      "In the title"
+     ],
+     "a": 1
+    },
+    {
+     "q": "A computed total…",
+     "opts": [
+      "Must be typed by hand",
+      "Only works once",
+      "Updates by itself when items change"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I built a Vue price book that adds sales and works out the naira total by itself.",
+   "trainer": {
+    "open": "Many traders count sales in their head at night. Today we build them a price book that counts for them!",
+    "plan": [
+     [
+      "3 min",
+      "Show a paper sales book; ask how long adding up takes."
+     ],
+     [
+      "5 min",
+      "Explain v-model, methods and computed."
+     ],
+     [
+      "8 min",
+      "Kids build it and add 3 market sales."
+     ],
+     [
+      "4 min",
+      "Share research: how traders track sales now."
+     ]
+    ],
+    "props": [
+     "A small notebook as a 'price book'",
+     "A calculator to compare"
+    ],
+    "lookfor": [
+     "Explains v-model in own words",
+     "Adds items and checks the total is right",
+     "Explains why the IF stops empty items"
+    ],
+    "fix": [
+     [
+      "Forgets 'this.' inside methods",
+      "Say: inside the app, data belongs to 'this' — write this.name."
+     ],
+     [
+      "Total joins numbers like text (5001000)",
+      "Use v-model.number so prices are numbers, not words."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 10,
+   "unit": "Weeks 7-10 · JavaScript Frameworks",
+   "title": "Showcase: Market Day Helper",
+   "colours": [
+    "blue",
+    "red",
+    "purple",
+    "green"
+   ],
+   "goal": "I can combine Vue with fetch to build a Market Day Helper that shows Ilaro weather and a shopping list.",
+   "learn": "Today we join everything, like a full market trip: check the weather, take your list, buy, and tick. Vue's 'mounted()' runs code when the app starts, so we fetch the weather right away. The list uses v-for and @click. A rule (v-if) gives advice when it is hot. This is a real app for real market days.",
+   "research": {
+    "q": "Show your app to a family member who goes to market: what would make it more useful?",
+    "tip": "Write one idea — that's your next feature, chosen by a real user."
+   },
+   "build": {
+    "task": "Build the Market Day Helper: live Ilaro weather plus a tickable market list in Vue.",
+    "lang": "js",
+    "steps": [
+     "Add Vue and the data: temp, items.",
+     "In mounted(), fetch the Open-Meteo link and save the temperature.",
+     "Show a hot-day tip with v-if.",
+     "List items with v-for and tick with @click."
+    ],
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n  <script src=\"https://unpkg.com/vue@3/dist/vue.global.prod.js\"></script>\n</head>\n<body style=\"font-family:sans-serif; padding:20px\">\n  <div id=\"app\">\n    <h2>Market Day Helper 🧺</h2>\n    <p>Ilaro now: <b>{{ temp }}°C</b></p>\n    <p v-if=\"temp > 30\">Hot day! Go to market early and carry water. 💧</p>\n    <ul><li v-for=\"i in items\" @click=\"i.got = !i.got\">{{ i.name }} <span v-if=\"i.got\">✅</span></li></ul>\n  </div>\n  <script>\n    Vue.createApp({\n      data() { return { temp: \"--\", items: [{ name: \"Tomatoes\", got: false }, { name: \"Garri\", got: false }, { name: \"Fish\", got: false }] }; },\n      mounted() {\n        fetch(\"https://api.open-meteo.com/v1/forecast?latitude=6.89&longitude=3.02&current=temperature_2m\")\n          .then(r => r.json())\n          .then(d => { this.temp = d.current.temperature_2m; })\n          .catch(() => { this.temp = \"no network\"; });\n      }\n    }).mount(\"#app\");\n  </script>\n</body>\n</html>"
+   },
+   "check": [
+    {
+     "q": "When does mounted() run?",
+     "opts": [
+      "When the app starts",
+      "Only at midnight",
+      "Never"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which part gives advice only on a hot day?",
+     "opts": [
+      "v-for",
+      "fetch",
+      "v-if"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why ask a real market-goer for feedback?",
+     "opts": [
+      "To make the code longer",
+      "So the next feature solves a real need",
+      "To get money"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I built a Market Day Helper in Vue that fetches Ilaro's weather and tracks my market list.",
+   "trainer": {
+    "open": "Today we build an app your mum or aunty could use before going to market!",
+    "plan": [
+     [
+      "3 min",
+      "Recap: setTimeout, try/catch, DOM, promises, fetch, Vue."
+     ],
+     [
+      "5 min",
+      "Walk through mounted() + fetch + v-if + v-for."
+     ],
+     [
+      "8 min",
+      "Kids build and personalise the list with research items."
+     ],
+     [
+      "4 min",
+      "Mini showcase: each child demos and shares user feedback."
+     ]
+    ],
+    "props": [
+     "A market basket",
+     "Mobile data for live weather"
+    ],
+    "lookfor": [
+     "Explains where the weather comes from",
+     "Points out all 4 logic colours in the code",
+     "Shares a feature idea from a real user"
+    ],
+    "fix": [
+     [
+      "Uses 'function' instead of arrow in .then and this.temp breaks",
+      "Say: arrow functions (=>) keep 'this' pointing at our app."
+     ],
+     [
+      "Temperature shows '--' forever",
+      "Check network; the catch should show 'no network' if offline."
+     ]
+    ]
+   }
+  }
+ ]
+}

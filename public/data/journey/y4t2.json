@@ -1,0 +1,970 @@
+{
+ "id": "y4t2",
+ "year": 4,
+ "term": 2,
+ "title": "Java",
+ "level": "Advanced",
+ "device": "lab",
+ "intro": "This term you learn Java, the strict and powerful language behind Android apps and bank systems. Step by step you will build a real inventory manager for a Nigerian provision shop.",
+ "termProject": "Mama Tunde's Provision Shop Inventory Manager: a Java program with Product classes, promo and perishable rules, friendly error handling for wrong input and out-of-stock orders, and a stock file it saves at closing and reads every morning to flag what to restock.",
+ "generated": false,
+ "weeks": [
+  {
+   "week": 1,
+   "unit": "Weeks 1-3 · Introduction to Java",
+   "title": "Hello Java, Hello Mama Tunde's Shop",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can write, compile and run a Java program that stores shop details in variables and prints them.",
+   "learn": "Java is a strict but powerful language used in Android apps, banks and big company systems. Every Java program lives inside a class, and it starts running from the main method. Every statement ends with a semicolon, and you must say what type a variable is before you use it. Java is like a careful bank teller: everything must be filled in correctly on the slip before she will accept it.",
+   "research": {
+    "q": "Ask a provision shop owner (or your parent): what are the three items you sell the most, and how much is each?",
+    "tip": "Write the item names and prices. They become the variables in your first Java program."
+   },
+   "build": {
+    "task": "Write a Java program that prints a shop name, how many tins of milk are in stock, and their total value.",
+    "lang": "java",
+    "steps": [
+     "Save the code in a file named exactly ShopHello.java",
+     "Compile it: javac ShopHello.java",
+     "Run it: java ShopHello",
+     "Change the values to an item from your research and run again"
+    ],
+    "code": "public class ShopHello {\n    public static void main(String[] args) {\n        String shopName = \"Mama Tunde Provisions\";\n        int tinsOfMilk = 24;\n        double pricePerTin = 450.50;\n\n        System.out.println(\"Welcome to \" + shopName);\n        System.out.println(\"Tins of milk in stock: \" + tinsOfMilk);\n        System.out.println(\"Price per tin: N\" + pricePerTin);\n        System.out.println(\"Value of all milk: N\" + (tinsOfMilk * pricePerTin));\n    }\n}"
+   },
+   "check": [
+    {
+     "q": "Where does a Java program start running?",
+     "opts": [
+      "At the last line",
+      "In the main method",
+      "In the first comment"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What must end almost every Java statement?",
+     "opts": [
+      "A semicolon ;",
+      "A full stop .",
+      "A colon :"
+     ],
+     "a": 0
+    },
+    {
+     "q": "If the class is called ShopHello, the file must be named...",
+     "opts": [
+      "shop.java",
+      "Hello.txt",
+      "ShopHello.java"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "Java starts in main, every statement ends with a semicolon, and every variable must have a type, like a well-filled bank slip.",
+   "trainer": {
+    "open": "You already speak Python and JavaScript. Today you meet Java - the strict bank teller of programming languages.",
+    "plan": [
+     [
+      "3 min",
+      "Show a bank deposit slip and point at the boxes that must be filled correctly"
+     ],
+     [
+      "5 min",
+      "Type ShopHello together; show javac then java"
+     ],
+     [
+      "8 min",
+      "Pairs swap in the items from their research and run"
+     ],
+     [
+      "4 min",
+      "Pairs read out their shop's total stock value"
+     ]
+    ],
+    "props": [
+     "A bank deposit slip (blank)",
+     "Learners' shop research notes"
+    ],
+    "lookfor": [
+     "Names the file to match the class exactly",
+     "Explains the difference between javac (compile) and java (run)",
+     "Changes the variables without breaking the semicolons"
+    ],
+    "fix": [
+     [
+      "Gets 'class ShopHello is public, should be declared in a file named ShopHello.java'",
+      "Java is strict: the file name and the public class name must be the same, capital letters too"
+     ],
+     [
+      "Forgets a semicolon and sees '; expected'",
+      "Read the line number in the error - Java tells you where the slip is incomplete"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 2,
+   "unit": "Weeks 1-3 · Introduction to Java",
+   "title": "Data Types: Cartons, Kilos and True/False",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can choose the right Java data type for each kind of shop information and convert between them.",
+   "learn": "Java has a box type for every kind of data: int for whole numbers (cartons), double for numbers with a point (kilos of sugar), char for one letter, boolean for true or false, and String for text. final makes a value that can never change. Casting with (int) chops off the decimals, like a trader who rounds down N2,450.70 to N2,450. Choosing the right type is like choosing the right container at the market: you do not carry palm oil in a basket.",
+   "research": {
+    "q": "Ask a trader: which things do you count in whole numbers, and which do you measure with scales or cups?",
+    "tip": "Sort their answers into 'whole' (int) and 'measured' (double). That is exactly how Java thinks about numbers."
+   },
+   "build": {
+    "task": "Use int, double, char, boolean, String and final for a noodles stock record and convert a double to an int.",
+    "lang": "java",
+    "steps": [
+     "Save as ShopTypes.java",
+     "Compile and run it",
+     "Change 3.0 to 3 and run again - what changes?",
+     "Add one boolean of your own, like isNepaOn"
+    ],
+    "code": "public class ShopTypes {\n    public static void main(String[] args) {\n        int cartons = 7;                    // whole numbers\n        double sugarKg = 2.5;               // numbers with a point\n        char grade = 'A';                   // one letter, single quotes\n        boolean isOpen = true;              // only true or false\n        String item = \"Noodles\";            // text, double quotes\n        final int MAX_SHELF = 50;           // final = can never change\n\n        int pieces = cartons * 40;          // 40 packs in a carton\n        double perDay = pieces / 3.0;       // 3.0 keeps the decimals\n        int roughPerDay = (int) perDay;     // casting chops off the decimals\n\n        System.out.println(item + \" packs: \" + pieces);\n        System.out.println(\"Per day: \" + perDay + \" (rough: \" + roughPerDay + \")\");\n        System.out.println(\"Sugar: \" + sugarKg + \"kg, shop grade \" + grade);\n        System.out.println(\"Open? \" + isOpen + \" | Shelf full? \" + (pieces > MAX_SHELF));\n    }\n}"
+   },
+   "check": [
+    {
+     "q": "Which type should hold 2.5 kg of sugar?",
+     "opts": [
+      "int",
+      "double",
+      "char"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does (int) 93.7 give you?",
+     "opts": [
+      "94",
+      "93.7",
+      "93"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Which type can only be true or false?",
+     "opts": [
+      "boolean",
+      "String",
+      "double"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I choose the right Java box for each kind of data - int for cartons, double for kilos, boolean for yes or no.",
+   "trainer": {
+    "open": "You do not carry palm oil in a basket. Java also wants the right container for every kind of data.",
+    "plan": [
+     [
+      "3 min",
+      "Show a basket, a bottle and a bag - which holds what? Link to types"
+     ],
+     [
+      "5 min",
+      "Walk through each line of ShopTypes"
+     ],
+     [
+      "8 min",
+      "Pairs run, then change 3.0 to 3 to see integer division"
+     ],
+     [
+      "4 min",
+      "Each learner adds one variable from their research with the correct type"
+     ]
+    ],
+    "props": [
+     "A basket, a bottle and a small bag",
+     "Learners' whole vs measured lists"
+    ],
+    "lookfor": [
+     "Picks int vs double correctly for their own examples",
+     "Explains why pieces / 3 loses the decimals",
+     "Uses single quotes for char and double quotes for String"
+    ],
+    "fix": [
+     [
+      "Writes int price = 450.50; and gets 'possible lossy conversion'",
+      "450.50 has a point - use double, or cast on purpose with (int) if you really want to chop it"
+     ],
+     [
+      "Tries to change a final value",
+      "final means locked - like a fixed government price. Remove final only if it truly needs to change"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 3,
+   "unit": "Weeks 1-3 · Introduction to Java",
+   "title": "Rules and Repeats: The Restock Checker",
+   "colours": [
+    "red",
+    "green"
+   ],
+   "goal": "I can use if/else if/else and for and while loops in Java to check every item and warn when stock is low.",
+   "learn": "An if statement is a rule: if stock is zero, shout 'buy today!'. A for loop repeats the check for every item on the shelf, and a while loop keeps going until something changes, like bread running out. Java uses the same ideas as Python and JavaScript, but with curly braces { } and round brackets around every condition. It is like the shop girl's evening routine: check every shelf, and for each one decide - full, low, or finished.",
+   "research": {
+    "q": "Ask a shop owner: at what number of items left do you decide to restock? Is it the same for every item?",
+    "tip": "Write the item and its restock number. Real restock rules make your if-statements meaningful."
+   },
+   "build": {
+    "task": "Loop through four items, print FINISHED, LOW or OKAY for each, then count down bread sales day by day.",
+    "lang": "java",
+    "steps": [
+     "Save as Restock.java, compile and run",
+     "Change the stock numbers to test each rule",
+     "Change 5 to the restock number from your research",
+     "Make the while loop sell 4 loaves a day instead of 6"
+    ],
+    "code": "public class Restock {\n    public static void main(String[] args) {\n        String[] items = {\"Milk\", \"Sugar\", \"Noodles\", \"Bread\"};\n        int[] stock = {12, 3, 0, 40};\n\n        for (int i = 0; i < items.length; i++) {\n            if (stock[i] == 0) {\n                System.out.println(items[i] + \": FINISHED - buy today!\");\n            } else if (stock[i] < 5) {\n                System.out.println(items[i] + \": LOW (\" + stock[i] + \" left)\");\n            } else {\n                System.out.println(items[i] + \": OKAY (\" + stock[i] + \")\");\n            }\n        }\n\n        int day = 1, bread = 20;\n        while (bread > 0) {\n            bread -= 6;\n            System.out.println(\"Day \" + day + \", bread left: \" + Math.max(bread, 0));\n            day++;\n        }\n    }\n}"
+   },
+   "check": [
+    {
+     "q": "In Java, which sign checks if two numbers are equal?",
+     "opts": [
+      "=",
+      "==",
+      "=>"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which loop is best when you know you must check every item in an array?",
+     "opts": [
+      "for loop",
+      "while loop that never ends",
+      "No loop"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does Math.max(bread, 0) stop from happening?",
+     "opts": [
+      "Bread going above 20",
+      "The loop starting",
+      "Printing a negative number of loaves"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "My for loop checks every shelf and my if-rules decide full, low or finished, just like the shop girl's evening routine.",
+   "trainer": {
+    "open": "Every evening someone in the shop walks round every shelf. Today Java does that walk for us.",
+    "plan": [
+     [
+      "3 min",
+      "Act it out: one learner 'walks the shelves' calling out OKAY, LOW, FINISHED"
+     ],
+     [
+      "5 min",
+      "Compare Java's if and for with Python's on the board"
+     ],
+     [
+      "8 min",
+      "Pairs run Restock and test each rule"
+     ],
+     [
+      "4 min",
+      "Share their research restock numbers and edit the rule"
+     ]
+    ],
+    "props": [
+     "Four empty provision containers with number cards",
+     "Learners' restock research"
+    ],
+    "lookfor": [
+     "Explains each branch of the if/else if/else",
+     "Changes the loop or rule numbers correctly",
+     "Knows = stores a value and == compares"
+    ],
+    "fix": [
+     [
+      "Writes if (stock[i] = 0)",
+      "One = puts a value in the box; two == asks a question. Java wants a question here"
+     ],
+     [
+      "Uses i <= items.length and gets ArrayIndexOutOfBoundsException",
+      "Arrays start at 0, so the last index is length - 1. Use < not <="
+     ]
+    ]
+   }
+  },
+  {
+   "week": 4,
+   "unit": "Weeks 4-6 · Object-Oriented Programming",
+   "title": "Classes and Objects: Every Product Has a Card",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can design a Product class, make objects from it, and use inheritance so a Drink gets everything a Product has.",
+   "learn": "A class is a blueprint, and an object is a real thing made from it. Our Product class says every product has a name, price and quantity, and can work out its stock value. A Drink extends Product, so it inherits all of that and adds one extra thing: whether it is chilled. It is like a tailor's pattern: one pattern for a shirt, and a special version with an extra pocket.",
+   "research": {
+    "q": "Ask a shop owner: what details do you need to know about every product? Is there any item that needs extra details?",
+    "tip": "List the details. Shared details go in the Product class; extra details go in a child class like Drink."
+   },
+   "build": {
+    "task": "Create a Product class and a Drink class that extends it, then print the stock value of rice and zobo.",
+    "lang": "java",
+    "steps": [
+     "Save everything in one file named Shop.java",
+     "Compile and run it",
+     "Make a new Product from your research list",
+     "Add a field like 'brand' to Product and see Drink get it too"
+    ],
+    "code": "class Product {\n    String name;\n    int price;\n    int qty;\n    Product(String name, int price, int qty) {\n        this.name = name; this.price = price; this.qty = qty;\n    }\n    int value() { return price * qty; }\n}\nclass Drink extends Product {\n    boolean chilled;\n    Drink(String name, int price, int qty, boolean chilled) {\n        super(name, price, qty);       // let Product fill the shared details\n        this.chilled = chilled;\n    }\n}\npublic class Shop {\n    public static void main(String[] args) {\n        Product rice = new Product(\"Rice (1 derica)\", 1200, 30);\n        Drink zobo = new Drink(\"Zobo bottle\", 300, 24, true);\n        System.out.println(rice.name + \" stock value: N\" + rice.value());\n        System.out.println(zobo.name + \" stock value: N\" + zobo.value() + \", chilled: \" + zobo.chilled);\n    }\n}"
+   },
+   "check": [
+    {
+     "q": "What is the difference between a class and an object?",
+     "opts": [
+      "They are the same",
+      "A class is the blueprint, an object is a real thing made from it",
+      "An object is the blueprint"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does 'Drink extends Product' mean?",
+     "opts": [
+      "Drink gets everything Product has and can add more",
+      "Drink deletes Product",
+      "Product becomes a Drink"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does super(name, price, qty) do?",
+     "opts": [
+      "Prints the drink",
+      "Makes the price bigger",
+      "Calls the Product constructor to fill the shared details"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "A class is a pattern and objects are real products made from it; Drink inherits from Product like a shirt with an extra pocket.",
+   "trainer": {
+    "open": "A tailor does not draw a new pattern for every customer. Java classes work the same way.",
+    "plan": [
+     [
+      "3 min",
+      "Show a paper pattern (or drawing) and two 'garments' made from it"
+     ],
+     [
+      "5 min",
+      "Build Product, then Drink, explaining extends and super"
+     ],
+     [
+      "8 min",
+      "Pairs run Shop and add a product from their research"
+     ],
+     [
+      "4 min",
+      "Each pair names one more child class a shop needs (e.g. Frozen)"
+     ]
+    ],
+    "props": [
+     "A tailor's paper pattern or a drawing of one",
+     "Product cards from learners' research"
+    ],
+    "lookfor": [
+     "Explains class vs object with their own example",
+     "Uses extends and super correctly",
+     "Proposes a sensible new child class from research"
+    ],
+    "fix": [
+     [
+      "Forgets super(...) in the Drink constructor and gets a constructor error",
+      "The child must let the parent set up first - call super(name, price, qty) as the first line"
+     ],
+     [
+      "Writes Product rice = Product(...) without new",
+      "new is how Java cuts real cloth from the pattern - always use new to make an object"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 5,
+   "unit": "Weeks 4-6 · Object-Oriented Programming",
+   "title": "Polymorphism: Same Call, Different Behaviour",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "goal": "I can override a method in child classes so one loop calls label() and each product answers in its own way.",
+   "learn": "Polymorphism means 'many forms': the same method name can do different things depending on the object. Each child class overrides label() with its own version, marked @Override. Then one loop over a Product array calls p.label(), and Java picks the right version for each object. It is like shouting 'Announce your price!' in the market: the bread seller, the zobo seller and the garri seller all answer, but each in their own way.",
+   "research": {
+    "q": "Ask a trader: how do you call out or advertise different goods? Is it the same for bread and for garri?",
+    "tip": "Write two different 'calls'. Those are two different versions of the same method - polymorphism in real life."
+   },
+   "build": {
+    "task": "Override label() in Drink and Bread, then print every item on a mixed shelf with one loop.",
+    "lang": "java",
+    "steps": [
+     "Save as Shelf.java, compile and run",
+     "Notice the loop has no if-statements but each label is different",
+     "Add a Garri class with its own label()",
+     "Put a Garri object on the shelf and run again"
+    ],
+    "code": "class Product {\n    String name; int price;\n    Product(String name, int price) { this.name = name; this.price = price; }\n    String label() { return name + \" - N\" + price; }\n}\nclass Drink extends Product {\n    Drink(String name, int price) { super(name, price); }\n    @Override\n    String label() { return name + \" (chilled +N50) - N\" + (price + 50); }\n}\nclass Bread extends Product {\n    Bread(String name, int price) { super(name, price); }\n    @Override\n    String label() { return name + \" (fresh today!) - N\" + price; }\n}\npublic class Shelf {\n    public static void main(String[] args) {\n        Product[] shelf = { new Product(\"Garri (1 paint)\", 2500), new Drink(\"Zobo\", 300), new Bread(\"Agege bread\", 1000) };\n        for (Product p : shelf) {\n            System.out.println(p.label());      // same call, different behaviour\n        }\n    }\n}"
+   },
+   "check": [
+    {
+     "q": "What does polymorphism mean?",
+     "opts": [
+      "Many forms - the same call behaves differently for different objects",
+      "Deleting a class",
+      "Running code twice"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does @Override tell Java?",
+     "opts": [
+      "Skip this method",
+      "This method replaces the parent's version",
+      "Make this a new class"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why can the shelf array hold Drink and Bread objects?",
+     "opts": [
+      "Because they are Strings",
+      "Because arrays accept anything",
+      "Because Drink and Bread are kinds of Product"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "With polymorphism, one call to label() makes every product answer in its own way, like sellers calling out in the market.",
+   "trainer": {
+    "open": "In the market, everyone is selling, but nobody advertises bread the same way as garri. Today Java learns that trick.",
+    "plan": [
+     [
+      "3 min",
+      "Role-play: trainer shouts 'Announce!' and three learners answer as different sellers"
+     ],
+     [
+      "5 min",
+      "Show how @Override replaces label() in each child"
+     ],
+     [
+      "8 min",
+      "Pairs run Shelf and add a Garri class"
+     ],
+     [
+      "4 min",
+      "Ask: where would if-statements have been needed without polymorphism?"
+     ]
+    ],
+    "props": [
+     "Three seller name cards (bread, zobo, garri)",
+     "Learners' 'calls' from research"
+    ],
+    "lookfor": [
+     "Adds a new child class with its own label() correctly",
+     "Explains why the loop needs no if-statements",
+     "Uses @Override in the right place"
+    ],
+    "fix": [
+     [
+      "Spells the method differently (Label instead of label) so the parent's version runs",
+      "@Override catches this - add it and Java will complain if the names do not match"
+     ],
+     [
+      "Writes if (p is Drink) checks inside the loop",
+      "Let each object answer for itself - that is the whole point of polymorphism"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 6,
+   "unit": "Weeks 4-6 · Object-Oriented Programming",
+   "title": "Interfaces: The Promo Promise",
+   "colours": [
+    "blue",
+    "red"
+   ],
+   "goal": "I can write an interface as a promise of abilities and have different classes keep that promise in their own way.",
+   "learn": "An interface is a list of abilities a class promises to have, without saying how. Discountable promises 'I can give a discounted price'; Perishable promises 'I can tell you if I expire soon'. A class uses implements to keep the promise, and one class can keep many promises. It is like the badges on a POS agent's stand: 'Transfers here', 'Airtime here' - each badge is a promise, and each agent delivers it their own way.",
+   "research": {
+    "q": "Ask a shop owner: which of your goods can go on promo, and which ones can spoil quickly?",
+    "tip": "Make two lists. Items on both lists are like our Bread: they implement two interfaces."
+   },
+   "build": {
+    "task": "Create Discountable and Perishable interfaces, make Bread implement both and Soap implement one, then run a 20% promo.",
+    "lang": "java",
+    "steps": [
+     "Save as Promo.java, compile and run",
+     "Change the discount from 20 to 10",
+     "Make a new class (e.g. Tomatoes) implement both interfaces",
+     "Add it to the promo array"
+    ],
+    "code": "interface Discountable {\n    int discountedPrice(int percent);\n}\ninterface Perishable {\n    boolean expiresSoon(int daysLeft);\n}\nclass Bread implements Discountable, Perishable {\n    int price = 1000;\n    public int discountedPrice(int percent) { return price - price * percent / 100; }\n    public boolean expiresSoon(int daysLeft) { return daysLeft <= 1; }\n}\nclass Soap implements Discountable {\n    int price = 600;\n    public int discountedPrice(int percent) { return price - price * percent / 100; }\n}\npublic class Promo {\n    public static void main(String[] args) {\n        Bread bread = new Bread();\n        Discountable[] promo = { bread, new Soap() };\n        for (Discountable d : promo) {\n            System.out.println(d.getClass().getSimpleName() + \" promo price: N\" + d.discountedPrice(20));\n        }\n        if (bread.expiresSoon(1)) System.out.println(\"Sell the bread first - it expires tomorrow!\");\n    }\n}"
+   },
+   "check": [
+    {
+     "q": "What is an interface in Java?",
+     "opts": [
+      "A list of abilities a class promises to have",
+      "A type of loop",
+      "A file on the desktop"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which keyword makes a class keep an interface's promise?",
+     "opts": [
+      "extends",
+      "final",
+      "implements"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Can one class implement two interfaces?",
+     "opts": [
+      "No, never",
+      "Yes, like Bread implements Discountable and Perishable",
+      "Only on Sundays"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "An interface is a promise like a POS badge, and each class that implements it keeps the promise in its own way.",
+   "trainer": {
+    "open": "Look at any POS stand: the badges tell you what they can do. In Java, those badges are called interfaces.",
+    "plan": [
+     [
+      "3 min",
+      "Show pictures or drawings of POS stand badges and ask what each promises"
+     ],
+     [
+      "5 min",
+      "Write the two interfaces and explain implements"
+     ],
+     [
+      "8 min",
+      "Pairs run Promo and add a new class from their research"
+     ],
+     [
+      "4 min",
+      "Discuss: when would you use an interface instead of inheritance?"
+     ]
+    ],
+    "props": [
+     "Paper 'badges' labelled Promo and Perishable",
+     "Learners' promo and spoil lists"
+    ],
+    "lookfor": [
+     "Explains an interface as a promise, not a pattern",
+     "Implements every method the interface lists",
+     "Places items from research in the right interfaces"
+    ],
+    "fix": [
+     [
+      "Forgets public on the method and gets 'attempting to assign weaker access privileges'",
+      "Interface methods are public promises - write public before them in the class"
+     ],
+     [
+      "Implements an interface but leaves out one method",
+      "A promise must be kept fully - Java will name the missing method in the error"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 7,
+   "unit": "Weeks 7-10 · Handling Exceptions",
+   "title": "Try and Catch: When the Shop Boy Types 'five'",
+   "colours": [
+    "red"
+   ],
+   "goal": "I can use try/catch to stop bad input from crashing my Java program and give a friendly message instead.",
+   "learn": "An exception is Java's way of saying 'something went wrong here'. Without help, the program crashes and stops. With try { } you attempt the risky line, and with catch you handle the problem calmly, then carry on. Integer.parseInt(\"five\") throws a NumberFormatException, and dividing by zero throws an ArithmeticException. It is like NEPA taking light: a good shop has a lamp ready, so selling continues instead of closing.",
+   "research": {
+    "q": "Ask someone who uses a POS or a shop app: what happens when you type a wrong number? Does the app help you or confuse you?",
+    "tip": "Write what the app said. Friendly error messages are a big part of good software."
+   },
+   "build": {
+    "task": "Read four typed quantities, skip the bad ones with a friendly message, and total only the good ones.",
+    "lang": "java",
+    "steps": [
+     "Save as SafeQty.java, compile and run",
+     "Notice the program does not crash on \"five\" or \"0\"",
+     "Add a new typed value like \"-3\" and think: should that be allowed?",
+     "Write a friendlier message in the catch"
+    ],
+    "code": "public class SafeQty {\n    public static void main(String[] args) {\n        String[] typed = {\"12\", \"five\", \"0\", \"8\"};     // what the shop boy typed\n        int total = 0;\n        for (String t : typed) {\n            try {\n                int qty = Integer.parseInt(t);\n                int perItem = 2400 / qty;               // share N2,400 across the items\n                total += qty;\n                System.out.println(qty + \" items, N\" + perItem + \" each\");\n            } catch (NumberFormatException e) {\n                System.out.println(\"'\" + t + \"' is not a number - please type digits\");\n            } catch (ArithmeticException e) {\n                System.out.println(\"Cannot share by zero items!\");\n            }\n        }\n        System.out.println(\"Total items recorded: \" + total);\n    }\n}"
+   },
+   "check": [
+    {
+     "q": "What happens to a Java program when an exception is NOT caught?",
+     "opts": [
+      "It runs faster",
+      "It crashes and stops",
+      "It fixes itself"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which exception does Integer.parseInt(\"five\") throw?",
+     "opts": [
+      "ArithmeticException",
+      "IOException",
+      "NumberFormatException"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why is total still correct after the bad inputs?",
+     "opts": [
+      "Because the bad lines were caught before total += qty ran",
+      "Because Java ignores numbers",
+      "Because total is final"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "try/catch is my NEPA lamp: when something goes wrong, my program handles it kindly and keeps selling.",
+   "trainer": {
+    "open": "Real people type wrong things all the time. Today we stop one wrong letter from shutting down the whole shop.",
+    "plan": [
+     [
+      "3 min",
+      "Show a crash first: run Integer.parseInt(\"five\") without try"
+     ],
+     [
+      "5 min",
+      "Add try/catch step by step on the projector"
+     ],
+     [
+      "8 min",
+      "Pairs run SafeQty and add their own bad inputs"
+     ],
+     [
+      "4 min",
+      "Share the error messages from their research and rewrite one to be friendlier"
+     ]
+    ],
+    "props": [
+     "A rechargeable lamp or torch for the NEPA analogy",
+     "Learners' app error notes"
+    ],
+    "lookfor": [
+     "Predicts which input causes which exception",
+     "Explains why total skips bad lines",
+     "Writes a clear, kind error message"
+    ],
+    "fix": [
+     [
+      "Wraps the whole program in one try and catches Exception, hiding every problem",
+      "Catch the specific exceptions you expect, close to the risky line, so you know what went wrong"
+     ],
+     [
+      "Leaves the catch block empty",
+      "An empty catch is like a lamp with no battery - always tell the user what happened"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 8,
+   "unit": "Weeks 7-10 · Handling Exceptions",
+   "title": "Throw Your Own: OutOfStockException",
+   "colours": [
+    "red",
+    "purple"
+   ],
+   "goal": "I can create my own exception, throw it when a rule is broken, and use finally for a step that must always happen.",
+   "learn": "Java lets you invent exceptions for your own business rules. OutOfStockException is thrown with throw when a customer asks for more than the shop has. The method warns callers with throws, and the caller must catch it. finally runs every time, problem or not, like a cashier who writes in the daily book after every customer whether they bought or not.",
+   "research": {
+    "q": "Ask a shop owner: what do you say to a customer when you do not have enough of what they want?",
+    "tip": "Write their exact words. Put them in your exception message so the program speaks like a real trader."
+   },
+   "build": {
+    "task": "Make an OutOfStockException and throw it when an order is bigger than the milk in stock.",
+    "lang": "java",
+    "steps": [
+     "Save as Sell.java, compile and run",
+     "Follow the three orders: which one fails and why?",
+     "Put your research words into the exception message",
+     "Change the orders so two of them fail"
+    ],
+    "code": "class OutOfStockException extends Exception {\n    OutOfStockException(String msg) { super(msg); }\n}\npublic class Sell {\n    static int milk = 5;\n    static void sell(int qty) throws OutOfStockException {\n        if (qty > milk) {\n            throw new OutOfStockException(\"Only \" + milk + \" tins left, you asked for \" + qty);\n        }\n        milk -= qty;\n        System.out.println(\"Sold \" + qty + \". Left: \" + milk);\n    }\n    public static void main(String[] args) {\n        int[] orders = {2, 4, 3};\n        for (int q : orders) {\n            try {\n                sell(q);\n            } catch (OutOfStockException e) {\n                System.out.println(\"Sorry o: \" + e.getMessage());\n            } finally {\n                System.out.println(\"-- order written in the daily book --\");\n            }\n        }\n    }\n}"
+   },
+   "check": [
+    {
+     "q": "Which keyword actually raises your own exception?",
+     "opts": [
+      "catch",
+      "throw",
+      "finally"
+     ],
+     "a": 1
+    },
+    {
+     "q": "When does the finally block run?",
+     "opts": [
+      "Only when there is an error",
+      "Never",
+      "Every time, error or not"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why does the order for 4 fail?",
+     "opts": [
+      "Only 3 tins were left after the first sale",
+      "4 is not a number",
+      "Java hates the number 4"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I made my own OutOfStockException, threw it when a rule was broken, and finally always wrote in the daily book.",
+   "trainer": {
+    "open": "A good trader never just goes silent when stock runs out. Today your program learns to say 'Sorry o' properly.",
+    "plan": [
+     [
+      "3 min",
+      "Act it out: a 'shop' with 5 bottle caps and three customers asking for 2, 4 and 3"
+     ],
+     [
+      "5 min",
+      "Show the new exception class, throw, throws and finally"
+     ],
+     [
+      "8 min",
+      "Pairs run Sell and trace the milk count on paper"
+     ],
+     [
+      "4 min",
+      "Pairs change the message to their trader's words"
+     ]
+    ],
+    "props": [
+     "5 bottle caps for the role-play",
+     "A small notebook as the 'daily book'"
+    ],
+    "lookfor": [
+     "Traces the milk count after each order correctly",
+     "Explains throw vs throws",
+     "Says why finally is useful (records, closing files)"
+    ],
+    "fix": [
+     [
+      "Forgets 'throws OutOfStockException' on the method and gets 'unreported exception'",
+      "Java wants a warning sign on the method - add throws so callers know to catch it"
+     ],
+     [
+      "Thinks finally only runs when there is an error",
+      "Watch the output: the daily-book line prints after EVERY order"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 9,
+   "unit": "Weeks 7-10 · Handling Exceptions",
+   "title": "Save It: Writing Stock to a File",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "goal": "I can write a shop's stock list to a text file in Java and handle the IOException safely.",
+   "learn": "Variables disappear when the program closes, like chalk on a board after rain. Files keep data safe. PrintWriter with FileWriter writes lines to a file, and try-with-resources (the brackets after try) closes the file automatically. Writing can fail, for example if the disk is full, so Java makes you catch IOException. We save each item as name,quantity,price - one product per line, called CSV.",
+   "research": {
+    "q": "Ask a shop owner: how do you keep your stock records today - a notebook, a phone, or in your head? What happens if it gets lost?",
+    "tip": "Write their answer. If records get lost, your file-saving program is solving a real problem."
+   },
+   "build": {
+    "task": "Save four provision items with quantities and prices into stock.txt.",
+    "lang": "java",
+    "steps": [
+     "Save as SaveStock.java, compile and run",
+     "Open stock.txt in a text editor to see the lines",
+     "Add an item from your research to all three arrays",
+     "Run again and check the file updated"
+    ],
+    "code": "import java.io.FileWriter;\nimport java.io.IOException;\nimport java.io.PrintWriter;\n\npublic class SaveStock {\n    public static void main(String[] args) {\n        String[] items = {\"Rice\", \"Beans\", \"Garri\", \"Sugar\"};\n        int[] qty = {30, 12, 25, 8};\n        int[] price = {1200, 1500, 800, 1100};\n\n        try (PrintWriter out = new PrintWriter(new FileWriter(\"stock.txt\"))) {\n            for (int i = 0; i < items.length; i++) {\n                out.println(items[i] + \",\" + qty[i] + \",\" + price[i]);\n            }\n            System.out.println(\"Saved \" + items.length + \" items to stock.txt\");\n        } catch (IOException e) {\n            System.out.println(\"Could not save: \" + e.getMessage());\n        }\n    }\n}"
+   },
+   "check": [
+    {
+     "q": "Why save data to a file?",
+     "opts": [
+      "Variables vanish when the program closes; files keep data",
+      "Files make code run faster",
+      "Java cannot print"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does try-with-resources (the brackets after try) do?",
+     "opts": [
+      "Deletes the file",
+      "Prints the file",
+      "Closes the file automatically"
+     ],
+     "a": 2
+    },
+    {
+     "q": "In our file, what does the line Garri,25,800 mean?",
+     "opts": [
+      "25 is the price",
+      "Item Garri, 25 in stock, N800 each",
+      "800 bags of garri"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "My program saves the stock list in a file so it is not lost like chalk in the rain, and it catches IOException safely.",
+   "trainer": {
+    "open": "If the shop's notebook falls in a gutter, the records are gone. Today we give the shop a notebook that cannot get wet.",
+    "plan": [
+     [
+      "3 min",
+      "Write a price on the board, wipe it off: 'that is a variable when the program ends'"
+     ],
+     [
+      "5 min",
+      "Explain PrintWriter, FileWriter and try-with-resources"
+     ],
+     [
+      "8 min",
+      "Pairs run SaveStock and open stock.txt"
+     ],
+     [
+      "4 min",
+      "Pairs add their research items and check the file"
+     ]
+    ],
+    "props": [
+     "A wet or torn notebook page",
+     "Learners' record-keeping research"
+    ],
+    "lookfor": [
+     "Opens the file and reads a line in plain words",
+     "Keeps the three arrays the same length",
+     "Explains why IOException must be caught"
+    ],
+    "fix": [
+     [
+      "Adds an item to items but not to qty and price, then gets ArrayIndexOutOfBoundsException",
+      "The three arrays are three columns of one table - every row needs all three"
+     ],
+     [
+      "Cannot find stock.txt",
+      "It is saved in the folder you ran java from - check that folder"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 10,
+   "unit": "Weeks 7-10 · Handling Exceptions",
+   "title": "Project: Read the Stock, Find the Gaps",
+   "colours": [
+    "green",
+    "red",
+    "blue"
+   ],
+   "goal": "I can read the stock file back into Java, total the shop's stock value and list items that need restocking.",
+   "learn": "BufferedReader reads a file one line at a time, and readLine() gives null when the file ends. split(\",\") cuts each line into pieces, and Integer.parseInt turns text back into numbers. We catch IOException in case the file is missing and NumberFormatException in case a line is broken. Together with last week, this is a real inventory manager: save at closing time, read at opening time, like a shop that counts its goods every morning.",
+   "research": {
+    "q": "Ask a shop owner: every morning, what do you need to know first about your stock?",
+    "tip": "Write their answer. Make your program's first printed line answer exactly that question."
+   },
+   "build": {
+    "task": "Read stock.txt, print a restock warning for items under 10, and print the total stock value.",
+    "lang": "java",
+    "steps": [
+     "Run last week's SaveStock first so stock.txt exists",
+     "Save this as ReadStock.java, compile and run",
+     "Open stock.txt, break one line on purpose (e.g. Rice,abc,1200) and run again",
+     "Change the restock rule to your shop owner's number"
+    ],
+    "code": "import java.io.BufferedReader;\nimport java.io.FileReader;\nimport java.io.IOException;\n\npublic class ReadStock {\n    public static void main(String[] args) {\n        int total = 0;\n        try (BufferedReader in = new BufferedReader(new FileReader(\"stock.txt\"))) {\n            String line;\n            while ((line = in.readLine()) != null) {\n                String[] parts = line.split(\",\");\n                int qty = Integer.parseInt(parts[1].trim());\n                int price = Integer.parseInt(parts[2].trim());\n                total += qty * price;\n                if (qty < 10) System.out.println(\"Restock soon: \" + parts[0]);\n            }\n            System.out.println(\"Total stock value: N\" + total);\n        } catch (IOException e) {\n            System.out.println(\"Could not read stock.txt: \" + e.getMessage());\n        } catch (NumberFormatException e) {\n            System.out.println(\"A line in the file is broken: \" + e.getMessage());\n        }\n    }\n}"
+   },
+   "check": [
+    {
+     "q": "What does readLine() return when the file has no more lines?",
+     "opts": [
+      "0",
+      "null",
+      "An empty array"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does line.split(\",\") do to \"Sugar,8,1100\"?",
+     "opts": [
+      "Cuts it into Sugar, 8 and 1100",
+      "Deletes the commas only",
+      "Adds the numbers"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which exception is caught if stock.txt is missing?",
+     "opts": [
+      "ArithmeticException",
+      "NumberFormatException",
+      "IOException"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "My inventory manager reads the stock file line by line, warns about low items and totals the value, without crashing on bad lines.",
+   "trainer": {
+    "open": "Last week we saved the shop's records. Today the shop opens, and our program tells the owner what she needs to know first.",
+    "plan": [
+     [
+      "3 min",
+      "Recap: save at closing, read at opening"
+     ],
+     [
+      "5 min",
+      "Walk through BufferedReader, readLine, split and parseInt"
+     ],
+     [
+      "8 min",
+      "Pairs run ReadStock, then break a line on purpose to test the catch"
+     ],
+     [
+      "4 min",
+      "Pairs present their inventory manager to a 'shop owner' (a classmate)"
+     ]
+    ],
+    "props": [
+     "The stock.txt file from last week",
+     "Learners' 'what I need first' research"
+    ],
+    "lookfor": [
+     "Traces one line from text to numbers",
+     "Gets a friendly message when the file is broken or missing",
+     "Changes the restock rule to their research number"
+    ],
+    "fix": [
+     [
+      "Runs ReadStock before SaveStock and gets 'Could not read stock.txt'",
+      "That is the catch working! Run SaveStock first so the file exists"
+     ],
+     [
+      "Uses parts[0] as the quantity",
+      "Count from 0: parts[0] is the name, parts[1] the quantity, parts[2] the price"
+     ]
+    ]
+   }
+  }
+ ]
+}
