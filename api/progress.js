@@ -1,8 +1,8 @@
 const { cmd, P } = require('../lib/redis');
 const ids = require('../lib/ids');
 const { body, send, limited } = require('../lib/http');
-const TERMS = ['t1', 't2', 't3', 'wd']; // wd = Year 2 Web Development track
-const BADGES = ['blue', 'red', 'green', 'purple', 'builder', 'web', 'js', 'php', 'webdev'];
+const TERMS = ['t1', 't2', 't3', 'wd', 'ga']; // wd = Year 2 Web Development, ga = Year 2 Generative AI
+const BADGES = ['blue', 'red', 'green', 'purple', 'builder', 'web', 'js', 'php', 'webdev', 'genai'];
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return send(res, 405, { error: 'POST only' });
   try {

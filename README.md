@@ -76,6 +76,12 @@ On `/admin` → **⭐ Paste the real roster**: one learner per line, `Name, Scho
 5. When everyone has a real ID, **Remove unused mock IDs** deletes only mock IDs that were never used. Until then the mock IDs keep working.
 No real names live in this repo — they only exist in your Upstash database.
 
+## Year 2 Generative AI track (`/genai`)
+10 weeks, safety first, built on the three live Yewa AI apps (Inflation Explainer, Naija Career Compass, Community Voice AI):
+1 What is Gen AI · 2 Safe-AI Shield · 3 Prompt Recipe (Role/Task/Context/Format) · 4 Spot the Fib (fact-check with 2 sources) · 5 Prompt variables `{blanks}` (blue) · 6 Guardrails IF/THEN (red) · 7 Prompt loop (green) · 8 How an AI app works — the restaurant/API story (purple) · 9 Vibe-coding with Claude, honestly ("ask me first") · 10 Defend it — 60-second explain-back on the 5 signs of understanding.
+Each week: goal, Safe-AI rule, look at a real app, research question, tiny build, **Prompt Checker** (scores the child's prompt against the week's rules, blocks phone numbers/emails/addresses — no live AI, nothing leaves the phone), 3 check questions (2 right to finish), "say it like this".
+Progress: term `ga` (keys `gaw1`–`gaw10`), week 10 earns the `genai` badge; admin table + CSV show Gen AI weeks. Content: `public/data/genai.json`.
+
 ## Year 2 Web Development track (`/webdev`)
 10 short weeks: HTML (weeks 1–3) → CSS (4–5) → JavaScript with the four logic colours (6 events/purple, 7 variables/blue, 8 conditionals/red, 9 loops/green) → week 10 remix-and-showcase. Worked examples are the live Yewa projects: Scam Shield, Harvest Calendar Naija and Apprentice Pathway Explorer.
 Each week: goal, "look at a real site", **Go and find out** (one research question for real people), a tiny build with tick-off steps and example code, 3 check questions (2 right to finish), and a "Say it like this" line for judges. The next week opens only when the current one is finished.
@@ -85,5 +91,8 @@ Progress saves to the learner's ID under term `wd` (keys `wdw1`–`wdw10`); week
 - [ ] Paste the real roster for all ~100 learners on `/admin`, print the cards, hand them out
 - [ ] Remove unused mock IDs after the first week of real logins
 - [ ] Show Web Dev weeks in the admin week-by-week grid (currently in the table and CSV only)
-- [ ] Gen AI 10-week track (same pattern as `/webdev`, safety rules first)
+- [x] Gen AI 10-week track (`/genai`)
+- [ ] Show Gen AI weeks in the admin week-by-week grid (table + CSV done)
+- [ ] Trainer edit for `genai.json` inside the Content Studio
+- [ ] Optional: trainer-run live AI mode for the Prompt Checker (uses the trainer's key on the server)
 - [ ] Trainer edit for `webdev.json` inside the Content Studio

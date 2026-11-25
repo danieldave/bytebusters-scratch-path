@@ -1,0 +1,978 @@
+{
+ "version": "2026-11-ga1",
+ "title": "Year 2 Generative AI Track",
+ "intro": "10 short weeks to become a SAFE, smart AI builder. Each week: one goal, one safety rule, one thing to find out from real people, one tiny build, a prompt to try in the Prompt Checker, and 3 check questions. Our own Yewa College AI apps are the examples.",
+ "projects": {
+  "IE": {
+   "name": "Inflation Explainer AI",
+   "url": "https://inflation-explainer.vercel.app/",
+   "job": "Explains why prices go up, in words anyone in the market can understand."
+  },
+  "CC": {
+   "name": "Naija Career Compass AI",
+   "url": "https://naija-career-compass-ai.vercel.app/",
+   "job": "Helps students discover careers that fit what they enjoy and are good at."
+  },
+  "CV": {
+   "name": "Community Voice AI",
+   "url": "https://community-voice-ai-ziry.vercel.app/",
+   "job": "Turns a community problem into a polite, formal letter to the people who can fix it."
+  }
+ },
+ "weeks": [
+  {
+   "week": 1,
+   "title": "What is Gen AI, really?",
+   "part": "Understand",
+   "colours": [],
+   "project": "IE",
+   "goal": "Know that Gen AI is a guessing machine: it predicts the next word. It is clever, but it is not a person and it can be wrong.",
+   "look": "Open Inflation Explainer. Ask yourself: who wrote the answer — a person, or a computer guessing words?",
+   "safe": "AI is a tool, not a friend. It does not know you, and it can make mistakes.",
+   "research": {
+    "q": "Ask 3 people at home: what do you think AI is? Have you used it (ChatGPT, Meta AI on WhatsApp, Gemini)?",
+    "tip": "Write their answers in a few words. Many grown-ups are unsure too — you will become the expert at home."
+   },
+   "build": {
+    "task": "Play the 'next word' game, then write your first prompt.",
+    "steps": [
+     "Say to a friend: 'Jollof rice is very…' — what word comes next? That is how AI guesses.",
+     "Read the example prompt below",
+     "Write your own prompt asking AI to explain one thing you see in the market",
+     "Check it in the Prompt Checker below"
+    ],
+    "code": "Explain why the price of tomatoes goes up in the rainy season. Use simple words for a 12-year-old."
+   },
+   "check": [
+    {
+     "q": "How does Gen AI write an answer?",
+     "opts": [
+      "It looks it up in one big book",
+      "It guesses the next word, again and again",
+      "A person types it very fast"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Can AI be wrong?",
+     "opts": [
+      "No, never",
+      "Yes, it can make things up",
+      "Only on Sundays"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does Inflation Explainer help people with?",
+     "opts": [
+      "Understanding why prices go up",
+      "Playing games",
+      "Booking buses"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "Gen AI is a guessing machine. It predicts the next word. It is very useful, but I must still check what it says.",
+   "try": {
+    "ask": "Write a prompt asking AI to explain something about prices in the market.",
+    "checks": [
+     {
+      "label": "Says what you want (explain/tell/describe)",
+      "rule": {
+       "any": [
+        "explain",
+        "tell",
+        "describe",
+        "why",
+        "what"
+       ]
+      }
+     },
+     {
+      "label": "Names a real thing (a food, a price, a market)",
+      "rule": {
+       "minWords": 6
+      }
+     },
+     {
+      "label": "Says who it is for (age or 'simple words')",
+      "rule": {
+       "any": [
+        "simple",
+        "year",
+        "old",
+        "child",
+        "kid",
+        "easy"
+       ]
+      }
+     }
+    ],
+    "best": "Explain why bread costs more this year than last year. Use simple words a 12-year-old can understand, in 3 short sentences."
+   }
+  },
+  {
+   "week": 2,
+   "title": "My Safe-AI Shield",
+   "part": "Stay safe",
+   "colours": [
+    "red"
+   ],
+   "project": "CV",
+   "goal": "Learn the 5 safe-AI rules and use them every time: private stays private, check facts, be kind, ask an adult, I am the boss of my work.",
+   "look": "Open Community Voice AI. Notice it asks about the PROBLEM — not your home address or phone number. That is safe design.",
+   "safe": "Never type your full name, home address, phone number, school name with your class, or photos of yourself into an AI.",
+   "research": {
+    "q": "Ask a parent or teacher: what information should a child NEVER share online? Make a list together.",
+    "tip": "Compare their list with the 5 rules. Did they add anything new? Add it to your shield."
+   },
+   "build": {
+    "task": "Make your own Safe-AI Shield poster (paper or phone).",
+    "steps": [
+     "Draw a shield and split it into 5 parts",
+     "Write one rule in each part: Private stays private · Check facts · Be kind · Ask an adult · I am the boss of my work",
+     "Add one picture or emoji for each rule",
+     "Show it to someone at home and explain each rule"
+    ],
+    "code": "MY SAFE-AI SHIELD\n1. Private stays private (no name, address, phone, photos)\n2. Check facts (2 sources)\n3. Be kind (no rude or hurtful prompts)\n4. Ask an adult when unsure\n5. I am the boss of my work (I decide, I explain)"
+   },
+   "check": [
+    {
+     "q": "Which is SAFE to type into an AI?",
+     "opts": [
+      "My phone number",
+      "My home address",
+      "The problem: our street has no light at night"
+     ],
+     "a": 2
+    },
+    {
+     "q": "If an AI answer looks strange or scary, what do you do?",
+     "opts": [
+      "Keep it secret",
+      "Tell a trusted adult",
+      "Share it with everyone"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Who is the boss of your project?",
+     "opts": [
+      "The AI",
+      "Me — I decide and I can explain it",
+      "Nobody"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "Private stays private. I check facts, I am kind, I ask an adult, and I am the boss of my work.",
+   "try": {
+    "ask": "Fix this unsafe prompt: 'My name is Tobi Adeyemi, I live at 5 Market Road Ilaro, my number is 08012345678. Write a letter about our bad road.' Rewrite it SAFELY.",
+    "checks": [
+     {
+      "label": "Still asks for the letter about the road",
+      "rule": {
+       "any": [
+        "letter"
+       ]
+      }
+     },
+     {
+      "label": "Mentions the road problem",
+      "rule": {
+       "any": [
+        "road"
+       ]
+      }
+     },
+     {
+      "label": "No phone number, email or address",
+      "rule": {
+       "notRe": "\\d{7,}|@|i live at|my address"
+      }
+     }
+    ],
+    "best": "Write a polite letter to the Local Government Chairman about a bad road in our community. Explain how it affects students and traders. Do not include any personal details."
+   }
+  },
+  {
+   "week": 3,
+   "title": "The Prompt Recipe",
+   "part": "Prompting",
+   "colours": [
+    "blue"
+   ],
+   "project": "IE",
+   "goal": "Write prompts with 4 ingredients: ROLE (who AI should act as), TASK (what to do), CONTEXT (the details), FORMAT (how the answer should look).",
+   "look": "In Inflation Explainer, type a price question. Notice the answer is short and simple — someone told the AI that FORMAT.",
+   "safe": "A good prompt has details about the PROBLEM, never private details about people.",
+   "research": {
+    "q": "Ask a market seller or parent: which item's price has gone up the most this year, and by how much?",
+    "tip": "Real numbers make your prompt stronger. Write the item and the old and new price."
+   },
+   "build": {
+    "task": "Write a 4-ingredient prompt about a real price you found.",
+    "steps": [
+     "ROLE: 'You are a friendly economics teacher.'",
+     "TASK: 'Explain why…'",
+     "CONTEXT: add the item and the old and new price you found",
+     "FORMAT: 'in 3 bullet points a 12-year-old understands'",
+     "Put them together and test in the Prompt Checker"
+    ],
+    "code": "You are a friendly economics teacher.\nExplain why the price of a bag of rice went from ₦60,000 to ₦85,000 this year.\nThe reader is a JSS3 student in Ogun State.\nAnswer in 3 short bullet points with one market example."
+   },
+   "check": [
+    {
+     "q": "Which ingredient tells the AI how the answer should LOOK?",
+     "opts": [
+      "Role",
+      "Format",
+      "Context"
+     ],
+     "a": 1
+    },
+    {
+     "q": "'You are a friendly science teacher' is the…",
+     "opts": [
+      "Role",
+      "Task",
+      "Format"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why add real prices from your research?",
+     "opts": [
+      "It makes the answer more true and useful",
+      "It makes the prompt longer for fun",
+      "AI needs money"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "My prompt has a role, a task, the context and the format. The more real details, the better the answer.",
+   "try": {
+    "ask": "Write a prompt using all 4 ingredients (Role, Task, Context, Format).",
+    "checks": [
+     {
+      "label": "ROLE: 'You are…'",
+      "rule": {
+       "any": [
+        "you are",
+        "act as",
+        "pretend you are"
+       ]
+      }
+     },
+     {
+      "label": "TASK: explain/write/list…",
+      "rule": {
+       "any": [
+        "explain",
+        "write",
+        "list",
+        "describe",
+        "tell"
+       ]
+      }
+     },
+     {
+      "label": "CONTEXT: a number or real detail",
+      "rule": {
+       "re": "\\d"
+      }
+     },
+     {
+      "label": "FORMAT: bullet points / sentences / steps",
+      "rule": {
+       "any": [
+        "bullet",
+        "sentence",
+        "steps",
+        "points",
+        "short",
+        "table",
+        "list"
+       ]
+      }
+     }
+    ],
+    "best": "You are a friendly economics teacher. Explain why garri costs ₦3,000 a paint bucket now instead of ₦1,800. The reader is 12. Use 3 bullet points and one example from the market."
+   }
+  },
+  {
+   "week": 4,
+   "title": "Spot the Fib",
+   "part": "Check facts",
+   "colours": [
+    "red"
+   ],
+   "project": "IE",
+   "goal": "Catch AI mistakes (called 'hallucinations') by checking facts with 2 trusted sources.",
+   "look": "Ask Inflation Explainer a question with a number in the answer. Where could you check if that number is true?",
+   "safe": "Never copy an AI answer as 'true' until you have checked it in 2 places.",
+   "research": {
+    "q": "Find one fact AI gave you (a price, a date, a name). Check it with 2 sources: a news site, a textbook, a teacher, or a market seller.",
+    "tip": "Write: AI said ___, Source 1 said ___, Source 2 said ___. Did they agree?"
+   },
+   "build": {
+    "task": "Run a fact-check on one AI answer.",
+    "steps": [
+     "Ask AI (with an adult) one question that has a number in the answer",
+     "Write down the number",
+     "Check it with 2 sources",
+     "Mark it ✅ true, ❓ unsure or ❌ fib",
+     "Try the Spot-the-Fib puzzles in the Prompt Lab"
+    ],
+    "code": "FACT-CHECK CARD\nQuestion: _______\nAI said: _______\nSource 1: _______  Source 2: _______\nVerdict: ✅ / ❓ / ❌"
+   },
+   "check": [
+    {
+     "q": "What is an AI 'hallucination'?",
+     "opts": [
+      "A dream the computer has",
+      "When AI makes up something that sounds true but is false",
+      "A type of game"
+     ],
+     "a": 1
+    },
+    {
+     "q": "How many sources should you check?",
+     "opts": [
+      "None",
+      "At least 2",
+      "Just the AI again"
+     ],
+     "a": 1
+    },
+    {
+     "q": "AI says a price, your market seller says another. What do you do?",
+     "opts": [
+      "Trust the AI",
+      "Check one more source and write down both",
+      "Delete everything"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "AI can sound sure and still be wrong. I check important facts in two places before I trust them.",
+   "try": {
+    "ask": "Write a prompt that asks the AI to be honest about what it is not sure of.",
+    "checks": [
+     {
+      "label": "Asks the question",
+      "rule": {
+       "minWords": 6
+      }
+     },
+     {
+      "label": "Asks AI to say when it is not sure",
+      "rule": {
+       "any": [
+        "not sure",
+        "don't know",
+        "do not know",
+        "uncertain",
+        "if you are unsure",
+        "check"
+       ]
+      }
+     },
+     {
+      "label": "Asks for something you can check (source/date)",
+      "rule": {
+       "any": [
+        "source",
+        "where",
+        "date",
+        "year",
+        "check"
+       ]
+      }
+     }
+    ],
+    "best": "What was the price of a litre of petrol in Nigeria in 2024? If you are not sure, say 'I am not sure' and tell me where I can check it."
+   }
+  },
+  {
+   "week": 5,
+   "title": "Blanks that change: prompt variables",
+   "part": "Logic",
+   "colours": [
+    "blue"
+   ],
+   "project": "CC",
+   "goal": "Build a prompt TEMPLATE with blanks like {subject} and {dream}. Change the blanks and the whole answer changes — just like a variable in Scratch.",
+   "look": "Open Career Compass. It asks what you like — your answers fill blanks in a hidden prompt. Those blanks are variables.",
+   "safe": "Variables should hold interests and choices — not names, addresses or phone numbers.",
+   "research": {
+    "q": "Ask 3 people: what subject did you love in school, and what job do you do now? Is there a link?",
+    "tip": "These real stories become test cases for your template."
+   },
+   "build": {
+    "task": "Make a career prompt template with 3 blanks, then fill it in 3 different ways.",
+    "steps": [
+     "Write the template with {favourite_subject}, {hobby}, {dream}",
+     "Fill it for yourself",
+     "Fill it for 2 people from your research",
+     "Compare: how did changing the blanks change the answer?"
+    ],
+    "code": "You are a kind career guide for Nigerian students.\nA student loves {favourite_subject}, enjoys {hobby} and dreams of {dream}.\nSuggest 3 careers, what to study after SS3 for each, and one free way to start learning this month."
+   },
+   "check": [
+    {
+     "q": "In a prompt template, {hobby} is like a…",
+     "opts": [
+      "Variable — a box that holds a value",
+      "Picture",
+      "Mistake"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What happens when you change what goes in the blanks?",
+     "opts": [
+      "Nothing",
+      "The answer changes to fit",
+      "The app breaks"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which should NEVER go in a variable sent to AI?",
+     "opts": [
+      "Favourite subject",
+      "Hobby",
+      "Home address"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "My template has blanks — variables. When the user fills them, the prompt changes, so the answer fits each person.",
+   "try": {
+    "ask": "Write a prompt TEMPLATE with at least 2 blanks in curly brackets, like {subject}.",
+    "checks": [
+     {
+      "label": "Has at least 2 {blanks}",
+      "rule": {
+       "re": "\\{[^}]+\\}[\\s\\S]*\\{[^}]+\\}"
+      }
+     },
+     {
+      "label": "Has a role",
+      "rule": {
+       "any": [
+        "you are",
+        "act as"
+       ]
+      }
+     },
+     {
+      "label": "Says what to give back",
+      "rule": {
+       "any": [
+        "suggest",
+        "list",
+        "give",
+        "explain",
+        "3",
+        "three"
+       ]
+      }
+     }
+    ],
+    "best": "You are a kind career guide. A student loves {subject} and enjoys {hobby}. Suggest 3 careers that fit, with one first step for each."
+   }
+  },
+  {
+   "week": 6,
+   "title": "Guardrails: if-then rules for AI",
+   "part": "Logic",
+   "colours": [
+    "red"
+   ],
+   "project": "CV",
+   "goal": "Write the hidden 'system prompt' rules that keep an AI app safe and on-topic: IF someone asks for something rude or off-topic, THEN the AI politely refuses.",
+   "look": "Try Community Voice AI with a rude complaint. Does it still write a polite letter? That's a guardrail at work.",
+   "safe": "A safe app has rules for what it must NEVER do — and you test those rules on purpose.",
+   "research": {
+    "q": "Ask a teacher or parent: if you were writing a letter to a chairman or principal, what words must you never use?",
+    "tip": "Turn their answers into IF-THEN rules."
+   },
+   "build": {
+    "task": "Write 4 guardrail rules for a letter-writing AI, then test them.",
+    "steps": [
+     "Start with 'You are Community Voice, a helper that writes polite formal letters.'",
+     "Add: IF the message has insults, THEN rewrite politely",
+     "Add: IF the request is not a community problem, THEN say what you can help with",
+     "Add: NEVER include personal phone numbers or home addresses",
+     "Test with one polite and one rude example"
+    ],
+    "code": "You are Community Voice, a helper that turns community problems into polite formal letters.\nRules:\n- IF the user uses insults, THEN keep the meaning but write it politely.\n- IF the request is not about a community problem, THEN say: 'I can only help write letters about community problems.'\n- NEVER include phone numbers or home addresses.\n- ALWAYS end with a respectful closing."
+   },
+   "check": [
+    {
+     "q": "A guardrail is…",
+     "opts": [
+      "A rule that keeps the AI safe and on-topic",
+      "A fence for goats",
+      "A type of variable"
+     ],
+     "a": 0
+    },
+    {
+     "q": "'IF the user is rude THEN write politely' uses which logic colour?",
+     "opts": [
+      "Blue — variable",
+      "Red — conditional",
+      "Green — loop"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why test guardrails with a bad example on purpose?",
+     "opts": [
+      "To break the app forever",
+      "To prove the rule really works",
+      "For fun only"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "Guardrails are if-then rules in the system prompt. I tested them with good and bad examples to be sure they work.",
+   "try": {
+    "ask": "Write at least 2 guardrail rules using IF … THEN … (or NEVER / ALWAYS).",
+    "checks": [
+     {
+      "label": "Has an IF … THEN rule",
+      "rule": {
+       "re": "\\bif\\b[\\s\\S]*\\bthen\\b"
+      }
+     },
+     {
+      "label": "Has a NEVER or ALWAYS rule",
+      "rule": {
+       "any": [
+        "never",
+        "always",
+        "do not",
+        "don't"
+       ]
+      }
+     },
+     {
+      "label": "Says what the AI is for (role)",
+      "rule": {
+       "any": [
+        "you are",
+        "your job",
+        "you help"
+       ]
+      }
+     }
+    ],
+    "best": "You are a school-safe homework helper. IF someone asks for something rude or unsafe, THEN reply: 'I can't help with that, but I can help with your schoolwork.' NEVER ask for personal details."
+   }
+  },
+  {
+   "week": 7,
+   "title": "Try, test, improve: the prompt loop",
+   "part": "Logic",
+   "colours": [
+    "green"
+   ],
+   "project": "CC",
+   "goal": "Improve a prompt in rounds: write → test → spot what's wrong → change ONE thing → test again. That repeat is a loop.",
+   "look": "Use Career Compass twice with slightly different answers. What changed? Why?",
+   "safe": "Keep a record of your rounds — it proves the work and the thinking are yours.",
+   "research": {
+    "q": "Show your Week 5 career answer to 2 people. Ask: what was useful? What was missing?",
+    "tip": "Their feedback tells you what to change in the next round."
+   },
+   "build": {
+    "task": "Run 3 rounds of the prompt loop and log each one.",
+    "steps": [
+     "Round 1: use your Week 5 prompt, write what was weak",
+     "Round 2: change ONE thing (e.g. add 'jobs available in Nigeria'), test again",
+     "Round 3: change one more thing (e.g. 'with salary range'), test again",
+     "Pick the best round and say why it won"
+    ],
+    "code": "PROMPT LOOP LOG\nRound 1 — prompt: ___ | weak because: ___\nRound 2 — changed: ___ | better? ___\nRound 3 — changed: ___ | better? ___\nWinner: Round __ because ___"
+   },
+   "check": [
+    {
+     "q": "In the prompt loop, how many things should you change each round?",
+     "opts": [
+      "Everything",
+      "One thing",
+      "Nothing"
+     ],
+     "a": 1
+    },
+    {
+     "q": "The prompt loop uses which logic colour?",
+     "opts": [
+      "Green — loops (repeat)",
+      "Purple — events",
+      "Blue — variables"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why log each round?",
+     "opts": [
+      "To prove your thinking and see what worked",
+      "Because AI asks you to",
+      "To waste paper"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I improved my prompt in a loop: test, find the weak part, change one thing, test again. My log shows every round.",
+   "try": {
+    "ask": "Write an IMPROVED version of a prompt — add a detail that makes the answer more useful for Nigeria.",
+    "checks": [
+     {
+      "label": "Has a clear task",
+      "rule": {
+       "any": [
+        "suggest",
+        "explain",
+        "list",
+        "write",
+        "give"
+       ]
+      }
+     },
+     {
+      "label": "Adds a Nigeria/local detail",
+      "rule": {
+       "any": [
+        "nigeria",
+        "naija",
+        "lagos",
+        "ogun",
+        "ibadan",
+        "naira",
+        "₦",
+        "local",
+        "waec",
+        "jamb"
+       ]
+      }
+     },
+     {
+      "label": "Adds a format or limit",
+      "rule": {
+       "any": [
+        "bullet",
+        "3",
+        "three",
+        "short",
+        "table",
+        "steps",
+        "sentences"
+       ]
+      }
+     }
+    ],
+    "best": "You are a career guide. A student loves Biology and drawing. Suggest 3 careers available in Nigeria, what to write in JAMB for each, and a free way to start this month. Use a short table."
+   }
+  },
+  {
+   "week": 8,
+   "title": "How an AI app works (the restaurant)",
+   "part": "Build",
+   "colours": [
+    "purple"
+   ],
+   "project": "CV",
+   "goal": "Explain how an AI app works: the user presses a button (event) → the app sends your prompt to the AI kitchen through a waiter (the API) → the answer comes back to the screen.",
+   "look": "On Community Voice AI, press the button and watch: you wait while the 'waiter' takes your order to the AI kitchen and brings back the letter.",
+   "safe": "The API key is like the restaurant's secret order book — only the adult/trainer keeps it. Never paste a key in a public place.",
+   "research": {
+    "q": "Ask someone who has used Meta AI on WhatsApp: what happens between pressing send and getting the answer? Then explain it to them using the restaurant story.",
+    "tip": "If you can teach it, you understand it."
+   },
+   "build": {
+    "task": "Draw the restaurant diagram for one of our apps.",
+    "steps": [
+     "Box 1 — Customer: the user types and presses the button (EVENT)",
+     "Box 2 — Waiter: the app takes the prompt to the API",
+     "Box 3 — Kitchen: the AI model writes the answer",
+     "Box 4 — Table: the answer shows on screen",
+     "Label where the secret key is kept (with the trainer, on the server)"
+    ],
+    "code": "USER presses 'Write my letter'  (purple: EVENT)\n   ↓\nAPP builds the prompt: rules + {problem} + {who_to_send_to}\n   ↓\nAPI (the waiter) carries it — the secret key stays on the server\n   ↓\nAI MODEL (the kitchen) writes the letter\n   ↓\nSCREEN shows the letter → user copies or prints it"
+   },
+   "check": [
+    {
+     "q": "In the restaurant story, the API is the…",
+     "opts": [
+      "Kitchen",
+      "Waiter",
+      "Customer"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Pressing 'Write my letter' is which logic colour?",
+     "opts": [
+      "Purple — event",
+      "Green — loop",
+      "Red — conditional"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Who should keep the API key?",
+     "opts": [
+      "Anyone who asks",
+      "The trainer/adult, on the server",
+      "Post it in the class WhatsApp group"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "When the user presses the button, the app sends the prompt through the API to the AI, and the answer comes back to the screen. The secret key stays on the server.",
+   "try": {
+    "ask": "Describe in your own words what happens when the user presses the button in an AI app (use 'when … then').",
+    "checks": [
+     {
+      "label": "Uses when/then (an event)",
+      "rule": {
+       "any": [
+        "when"
+       ]
+      }
+     },
+     {
+      "label": "Mentions sending to the AI / API",
+      "rule": {
+       "any": [
+        "api",
+        "send",
+        "ai",
+        "server",
+        "waiter"
+       ]
+      }
+     },
+     {
+      "label": "Mentions the answer coming back to the screen",
+      "rule": {
+       "any": [
+        "screen",
+        "back",
+        "shows",
+        "answer",
+        "display"
+       ]
+      }
+     }
+    ],
+    "best": "When the user presses the button, the app sends the prompt through the API (the waiter) to the AI model (the kitchen). Then the answer comes back and shows on the screen."
+   }
+  },
+  {
+   "week": 9,
+   "title": "Vibe-coding with Claude, the honest way",
+   "part": "Build",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "project": "CV",
+   "goal": "Direct an AI coding tool to build a tiny tool for you — but YOU stay the boss: you tell it your intention, it asks you questions first, and you can explain every part it made.",
+   "look": "Open any of our 3 apps. Pick one feature (a button, a box, a rule) and ask: could I explain how this was made?",
+   "safe": "Say honestly what AI did and what you did. Never hand in AI work as if you typed it all yourself.",
+   "research": {
+    "q": "Ask 3 classmates or family: what small problem at home or school could a tiny AI tool solve? Pick the best idea.",
+    "tip": "Small is good: a homework planner, a polite-message helper, a quiz maker for one subject."
+   },
+   "build": {
+    "task": "With your trainer, ask Claude to plan (not build yet) your tiny tool, then explain the plan back.",
+    "steps": [
+     "Use the 'Ask me first' prompt below with your trainer",
+     "Answer the questions Claude asks you",
+     "Read the plan and find each logic colour in it: blue (inputs), red (rules), green (repeat), purple (button)",
+     "Write 2 sentences on what YOU decided",
+     "Only then let the trainer build v1 with you"
+    ],
+    "code": "I want to build a tiny web tool that helps {who} with {problem}.\nBefore you write any code, ask me 5 questions to understand what I need.\nThen give me a simple plan with: the inputs (variables), the rules (if-then), anything that repeats (loops), and the buttons (events).\nUse simple words — I am 13 and I must explain every part to judges."
+   },
+   "check": [
+    {
+     "q": "In vibe-coding, who is the boss?",
+     "opts": [
+      "The AI",
+      "Me — I give the intention and can explain the result",
+      "The computer"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Why make the AI ask questions first?",
+     "opts": [
+      "So it understands what you really need",
+      "To make it slower",
+      "AI is shy"
+     ],
+     "a": 0
+    },
+    {
+     "q": "A judge asks 'did AI write this?' What's the best answer?",
+     "opts": [
+      "'No, all me' (even if not true)",
+      "Say honestly what AI did and what you decided and changed",
+      "Refuse to answer"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I told the AI my intention, it asked me questions first, and I can explain every part. AI helped — I made the decisions.",
+   "try": {
+    "ask": "Write an 'ask me first' prompt for a tiny tool you want to build.",
+    "checks": [
+     {
+      "label": "Says who it helps and the problem",
+      "rule": {
+       "any": [
+        "help",
+        "helps",
+        "for"
+       ]
+      }
+     },
+     {
+      "label": "Asks the AI to ask YOU questions first",
+      "rule": {
+       "any": [
+        "ask me",
+        "questions first",
+        "before you",
+        "before writing"
+       ]
+      }
+     },
+     {
+      "label": "Asks for simple words / explainable",
+      "rule": {
+       "any": [
+        "simple",
+        "explain",
+        "understand",
+        "age",
+        "year"
+       ]
+      }
+     }
+    ],
+    "best": "I want a tiny web tool that helps SS1 students plan their homework for the week. Before writing any code, ask me 5 questions. Then give me a simple plan I can explain to judges, using easy words."
+   }
+  },
+  {
+   "week": 10,
+   "title": "Defend it like a pro: showcase ready",
+   "part": "Showcase",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "project": "IE",
+   "goal": "Explain and defend your AI project to judges and real users: what problem, who it helps, how it works, the rules that keep it safe, what you decided, and what you would change.",
+   "look": "Pick your team's app. Use it like a stranger would. Write down one thing that confused you — you'll fix or explain it.",
+   "safe": "Tell judges the safety rules you built in (privacy, guardrails, fact-checking). That is a big win.",
+   "research": {
+    "q": "Let 3 real people (not classmates) use your app. Ask: was it useful? What was confusing? Would you use it again?",
+    "tip": "Their words are your proof. Judges love 'a market seller told us…'."
+   },
+   "build": {
+    "task": "Prepare your 60-second explain-back and practise with the 5 signs of understanding.",
+    "steps": [
+     "PURPOSE: what problem and who it helps (1 sentence)",
+     "HOW IT WORKS: button → prompt → API → answer (restaurant story)",
+     "THE LOGIC: one variable, one guardrail rule, one loop you used",
+     "MY DECISIONS: one thing YOU chose or fixed",
+     "CHANGE IT: one improvement you would make next and how",
+     "Practise out loud 3 times — once to someone at home"
+    ],
+    "code": "MY 60-SECOND EXPLAIN-BACK\nProblem & who it helps: ___\nHow it works (restaurant): ___\nVariable / guardrail / loop: ___ / ___ / ___\nWhat I decided or fixed: ___\nWhat I'd change next and how: ___\nSafety rules we built in: ___"
+   },
+   "check": [
+    {
+     "q": "What is the strongest sign you understand your project?",
+     "opts": [
+      "You can say how to change or improve it",
+      "You memorised a speech",
+      "The app looks colourful"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why test with people who are not classmates?",
+     "opts": [
+      "Real users show what's really confusing",
+      "Classmates are boring",
+      "Judges require 10 people"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which should you tell judges about?",
+     "opts": [
+      "The safety rules you built in",
+      "Nothing about safety",
+      "Only the colours"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I can explain the problem, how it works, the logic, what I decided, and how I'd improve it — and the safety rules we built in.",
+   "try": {
+    "ask": "Write your project's one-line purpose + one safety rule you built in.",
+    "checks": [
+     {
+      "label": "Names who it helps",
+      "rule": {
+       "any": [
+        "help",
+        "helps",
+        "for",
+        "students",
+        "people",
+        "traders",
+        "community"
+       ]
+      }
+     },
+     {
+      "label": "Names a problem",
+      "rule": {
+       "minWords": 8
+      }
+     },
+     {
+      "label": "Mentions a safety rule",
+      "rule": {
+       "any": [
+        "safe",
+        "privacy",
+        "private",
+        "never",
+        "guardrail",
+        "check",
+        "polite"
+       ]
+      }
+     }
+    ],
+    "best": "Community Voice AI helps people in our community turn problems like bad roads into polite letters to leaders. It never asks for phone numbers or addresses, and it rewrites rude words politely."
+   }
+  }
+ ]
+}
