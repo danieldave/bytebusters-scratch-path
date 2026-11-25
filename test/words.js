@@ -6,7 +6,7 @@ const { chromium } = require('playwright');
   ok(await pg.locator('.wd').count() === 196, '196 words listed');
   await pg.fill('#wq', 'loop'); ok(await pg.locator('.wd').count() >= 3, 'search loop: ' + await pg.locator('.wd').count());
   ok((await pg.locator('.wd b').first().textContent()).toLowerCase().includes('loop'), 'best match first');
-  await pg.fill('#wq', ''); await pg.click('.fchip[data-t=safety]'); ok(await pg.locator('.wd').count() === 18, 'safety filter ' + await pg.locator('.wd').count());
+  await pg.fill('#wq', ''); await pg.click('.fchip[data-t=safety]'); ok(await pg.locator('.wd').count() === 19, 'safety filter ' + await pg.locator('.wd').count());
   await pg.screenshot({ path: '/tmp/words.png' });
   await pg.goto('http://localhost:3111/studio'); await pg.waitForSelector('.pcard'); ok((await pg.textContent('#app')).includes('Word of the day'), 'word of the day on home');
   await pg.goto('http://localhost:3111/studio-admin'); await pg.fill('#pin', '1234'); await pg.click('#go'); await pg.waitForSelector('#tw'); await pg.click('#tw'); await pg.waitForSelector('.item');
