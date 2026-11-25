@@ -142,19 +142,19 @@ function term(i) {
     var lastUnit = '';
     D.weeks.forEach(function (W) {
       if (W.unit !== lastUnit) { h += '<h3 class="unit">' + esc(W.unit) + '</h3>'; lastUnit = W.unit; }
-      var o = PR[wkKey(T, W.week)] || {}, op = W.week === 1 || (PR[wkKey(T, W.week - 1)] || {}).done;
+      var o = PR[wkKey(T, W.week)] || {}, op = PREVIEW || W.week === 1 || (PR[wkKey(T, W.week - 1)] || {}).done;
       h += '<div class="card"><a class="wk ' + (o.done ? 'done' : '') + (op ? '' : ' lock') + '" data-w="' + W.week + '"><span class="n">' + (o.done ? '✓' : op ? W.week : '🔒') + '</span><span><b>' + esc(W.title) + '</b>' + (W.generated ? ' <span class="chip grey">AI-designed</span>' : '') + '<small>' + (op ? esc(W.goal) : 'Finish Week ' + (W.week - 1) + ' first') + '</small>' + chips(W.colours) + '</span></a></div>';
     });
     if (D.projectBank) h += '<h2>💡 Capstone project bank</h2>' + D.projectBank.map(function (p) { return '<div class="card"><b>' + esc(p.title) + '</b><p class="why" style="margin:.3em 0">' + esc(p.problem) + '</p><small><b>Helps:</b> ' + esc(p.whoItHelps) + ' · <b>Stack:</b> ' + esc(p.suggestedStack) + '</small><p style="margin:.4em 0 0;font-size:.92em">' + esc(p.whyItsAGoodCapstone) + '</p>' + (p.stretchGoal ? '<small class="why">Stretch: ' + esc(p.stretchGoal) + '</small>' : '') + '</div>'; }).join('');
     if (D.assessment) h += '<h2>📋 How capstones are judged</h2><div style="overflow:auto"><table class="rub"><tr><th>Criterion</th><th>Excellent</th><th>Good</th><th>Developing</th></tr>' + D.assessment.map(function (a) { return '<tr><td><b>' + esc(a.criterion) + '</b></td><td>' + esc(a.excellent) + '</td><td>' + esc(a.good) + '</td><td>' + esc(a.developing) + '</td></tr>'; }).join('') + '</table></div>';
     app.innerHTML = h;
     document.getElementById('back').onclick = function (e) { e.preventDefault(); home(); };
-    [].forEach.call(app.querySelectorAll('[data-w]'), function (a) { a.onclick = function () { var w = +a.dataset.w; if (w === 1 || (PR[wkKey(T, w - 1)] || {}).done) week(i, w); else toast('Finish Week ' + (w - 1) + ' first 🙂'); }; });
+    [].forEach.call(app.querySelectorAll('[data-w]'), function (a) { a.onclick = function () { var w = +a.dataset.w; if (PREVIEW || w === 1 || (PR[wkKey(T, w - 1)] || {}).done) week(i, w); else toast('Finish Week ' + (w - 1) + ' first 🙂'); }; });
   }).catch(function () { app.innerHTML = '<p><a href="#" id="back">← Journey map</a></p><h1>' + esc(T.title) + '</h1><p class="why">This term is being prepared. Check back soon.</p>'; document.getElementById('back').onclick = function (e) { e.preventDefault(); home(); }; });
 }
 
 // ── WEEK page ──
-function runnable(lang) { return lang === 'html' || lang === 'css' || lang === 'js' || (lang === 'php' && window.PHPLite); }
+function runnable(lang, device) { return lang === 'html' || lang === 'css' || lang === 'js' || (lang === 'php' && device !== 'lab' && window.PHPLite); }
 function runCode(lang, code, box) {
   if (lang === 'php') { var r = window.PHPLite.run(code); box.innerHTML = '<pre class="code out">' + esc(r.error ? '⚠️ ' + r.error.msg + (r.error.line ? ' (line ' + r.error.line + ')' : '') : r.out) + '</pre>'; return; }
   var src = /<html|<body|<div|<h1|<p|<script|<style|<!doctype/i.test(code) ? code : lang === 'css' ? '<style>' + code + '</style><p>Styled text</p>' : lang === 'js' ? '<script>' + code + '<\/script>' : code;
@@ -175,7 +175,7 @@ function week(i, w) {
     var B = W.build || {}, code = mine[k] != null ? mine[k] : (B.code || '');
     h += '<div class="sec c"><h3>🛠 Tiny build</h3><p><b>' + esc(B.task) + '</b></p><ol class="steps">' + (B.steps || []).map(function (s, j) { return '<li class="' + (steps[j + 1] ? 'on' : '') + '"><label><input type="checkbox" data-s="' + (j + 1) + '" ' + (steps[j + 1] ? 'checked' : '') + '> ' + esc(s) + '</label></li>'; }).join('') + '</ol>';
     if (B.code) {
-      if (runnable(B.lang)) h += '<div class="lab"><div class="row"><b>✏️ Try it here</b><span class="sp"></span><button class="btn alt sm" id="reset">Reset</button> <button class="btn sm" id="run">▶ Run</button></div><textarea id="code" class="codebox" spellcheck="false">' + esc(code) + '</textarea><div id="runout"></div></div>';
+      if (runnable(B.lang, D.device)) h += '<div class="lab"><div class="row"><b>✏️ Try it here</b><span class="sp"></span><button class="btn alt sm" id="reset">Reset</button> <button class="btn sm" id="run">▶ Run</button></div><textarea id="code" class="codebox" spellcheck="false">' + esc(code) + '</textarea><div id="runout"></div></div>';
       else h += '<details open><summary>' + (B.lang && B.lang !== 'none' ? 'The ' + esc(B.lang.toUpperCase()) + ' code' + (D.device === 'lab' ? ' — type it on a lab computer' : '') : 'Template') + '</summary><pre class="code">' + esc(B.code) + '</pre><button class="btn alt sm" id="cp">Copy</button></details>';
     }
     h += '</div>';
@@ -237,7 +237,7 @@ function bindTry(W, k, T, w, steps) {
 // ── boot ──
 function route() {
   var m = /^#((?:y[1-4]t[1-3]|ai[2-4]))(?:-w(\d+))?$/.exec(location.hash);
-  if (m) { var i = LIST.findIndex(function (T) { return T.id === m[1]; }); if (i >= 0 && unlocked(i)) { if (m[2] && (+m[2] === 1 || (PR[wkKey(LIST[i], +m[2] - 1)] || {}).done)) return week(i, +m[2]); return term(i); } }
+  if (m) { var i = LIST.findIndex(function (T) { return T.id === m[1]; }); if (i >= 0 && unlocked(i)) { if (m[2] && (PREVIEW || +m[2] === 1 || (PR[wkKey(LIST[i], +m[2] - 1)] || {}).done)) return week(i, +m[2]); return term(i); } }
   home();
 }
 var id = ls('bb_id');

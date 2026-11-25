@@ -1,0 +1,1114 @@
+{
+ "id": "y4t3",
+ "year": 4,
+ "term": 3,
+ "title": "Capstone Projects",
+ "level": "Advanced",
+ "device": "lab",
+ "intro": "This is your capstone term: you pick one real problem in your community and solve it with everything you learnt in Years 1-4. You will interview real people, build and test your product with them, put it online, and defend it at the showcase.",
+ "termProject": "A capstone product that solves ONE real Nigerian community problem: researched with real people, built in three sprints with any Year 1-4 stack, tested with 5 real users, deployed free, and defended at the ByteBusters showcase using the 5 signs of understanding.",
+ "generated": true,
+ "generatedNote": "The official ByteBusters curriculum lists 'Capstone Projects' for Year 4 Third Term without any content. This capstone structure, project bank and rubric were designed by Claude (AI) for review by the ByteBusters team and head office.",
+ "weeks": [
+  {
+   "week": 1,
+   "unit": "Weeks 1-10 · Capstone Projects",
+   "title": "Find a Real Problem Worth Solving",
+   "colours": [],
+   "goal": "I can interview real people in my community and choose ONE problem my capstone will solve.",
+   "learn": "A capstone is your biggest project: you pick one real problem in your community and build something that truly helps. Great products start with listening, not coding. You will talk to at least 3 people who face the problem and write exactly what they say. It is like a good doctor: she asks questions and listens before she writes any prescription.",
+   "research": {
+    "q": "Ask 3 different people (a trader, a farmer, a teacher, a driver, a neighbour): what is one small problem that wastes your time or money every week?",
+    "tip": "Write their words exactly, not your guess. Never collect names, phone numbers or addresses - just their role (e.g. 'pepper seller')."
+   },
+   "build": {
+    "task": "Fill the Problem Discovery sheet with 3 interviews and circle the problem you will solve.",
+    "lang": "none",
+    "steps": [
+     "Copy the Problem Discovery sheet into your notebook or a doc",
+     "Interview 3 people this week using the questions",
+     "Score each problem from 1-3 on the three questions at the bottom",
+     "Circle the winner and tell your trainer why"
+    ],
+    "code": "PROBLEM DISCOVERY SHEET  (Week 1)\n=================================\nInterview 1 - role only (e.g. \"tomato seller, Ilaro market\"): ____________\n  1. What wastes your time or money every week?  ____________\n  2. How do you handle it now?                     ____________\n  3. What would make it better?                    ____________\n  4. Do you use a phone? Smartphone or small phone? ____________\n\nInterview 2 - role: ____________   (same 4 questions)\nInterview 3 - role: ____________   (same 4 questions)\n\nChoose ONE problem - score each 1 (low) to 3 (high):\n  [ ] Does it happen often to many people?\n  [ ] Could software really help (not just money or a road)?\n  [ ] Can I build a small version in 10 weeks with skills from Years 1-4?\n\nMy chosen problem: ______________________________________\nSafety: no names, phone numbers, addresses or photos of people collected. [ ]"
+   },
+   "check": [
+    {
+     "q": "What is the FIRST step of a capstone?",
+     "opts": [
+      "Start coding straight away",
+      "Listen to real people and find a real problem",
+      "Choose a colour for the website"
+     ],
+     "a": 1
+    },
+    {
+     "q": "When interviewing, what should you write down?",
+     "opts": [
+      "Their exact words and their role, not their name or number",
+      "Their home address",
+      "Only what you think they mean"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Which problem is the best capstone choice?",
+     "opts": [
+      "One you made up alone",
+      "One that needs a new road",
+      "One that happens often and you can build a small fix for in 10 weeks"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I listened to real people first, like a doctor, and picked one problem I can really help with.",
+   "trainer": {
+    "open": "This term you are not doing an exercise - you are solving a real problem for real people. And it starts with listening.",
+    "plan": [
+     [
+      "3 min",
+      "Tell the story of an app nobody used because nobody asked the users first"
+     ],
+     [
+      "5 min",
+      "Model a 2-minute interview with a volunteer learner"
+     ],
+     [
+      "8 min",
+      "Pairs practise the 4 questions on each other"
+     ],
+     [
+      "4 min",
+      "Each learner names who they will interview this week"
+     ]
+    ],
+    "props": [
+     "Printed Problem Discovery sheets",
+     "A sample interview written on chart paper"
+    ],
+    "lookfor": [
+     "Writes people's words, not their own guesses",
+     "Collects no personal data",
+     "Can explain why their chosen problem scored highest"
+    ],
+    "fix": [
+     [
+      "Picks a problem software cannot fix (e.g. bad roads)",
+      "Ask: what part of it could information help? e.g. a route-alert board for bad roads"
+     ],
+     [
+      "Interviews only friends their own age",
+      "Push for at least one adult who lives the problem daily - trader, farmer, teacher, driver"
+     ]
+    ]
+   },
+   "generated": true
+  },
+  {
+   "week": 2,
+   "unit": "Weeks 1-10 · Capstone Projects",
+   "title": "Problem Statement, Persona and the Right Tools",
+   "colours": [
+    "blue"
+   ],
+   "goal": "I can write a one-sentence problem statement, describe my user as a persona, and choose a stack that matches skills I already have.",
+   "learn": "A problem statement says who has the problem, what it is, and why it matters, in one sentence. A persona is a made-up character based on your real interviews, like 'Iya Bisi, 45, pepper seller, uses a small Android phone, poor data'. The stack is your set of tools, chosen to fit the user, not to show off. It is like a mechanic choosing a spanner: the right size for the bolt, not the biggest one in the box.",
+   "research": {
+    "q": "Go back to one person you interviewed: does my one-sentence problem statement describe your problem correctly?",
+    "tip": "Write yes/no and what they corrected. A user correcting you now saves you weeks of building the wrong thing."
+   },
+   "build": {
+    "task": "Complete the Problem Statement, Persona and Stack Choice card.",
+    "lang": "none",
+    "steps": [
+     "Write your problem statement using the sentence frame",
+     "Build your persona from your 3 interviews (no real names)",
+     "Use the stack guide to pick tools that fit your persona's phone and data",
+     "Show the card to your trainer for a quick check"
+    ],
+    "code": "PROBLEM STATEMENT + PERSONA + STACK CARD  (Week 2)\n==================================================\nProblem statement frame:\n  \"[WHO] struggles to [PROBLEM] because [REASON], which costs them [TIME/MONEY/STRESS].\"\n  Mine: ________________________________________________\n\nPersona (made-up name, built from real interviews):\n  Name/role: ________  Age range: ____  Phone: small / smartphone\n  Data/light: ______   Language: English / Yoruba / Pidgin / other\n  Goal: ____________   Biggest frustration: ____________\n\nStack guide - match the user, use skills from Years 1-4:\n  Phone users, info to read  -> HTML/CSS/JS on GitHub Pages or Vercel   (Years 1-2)\n  Records, logins, forms     -> PHP/Laravel + MySQL                      (Year 3)\n  Data, predictions, admin   -> Python Flask/Django (+ scikit-learn)     (Years 3-4)\n  Shop/office desktop tool   -> Java with file storage                  (Year 4)\nMy stack: ____________  Why it fits my persona: ____________"
+   },
+   "check": [
+    {
+     "q": "What does a good problem statement include?",
+     "opts": [
+      "Who has the problem, what it is, and why it matters",
+      "Only the app's name",
+      "A list of colours"
+     ],
+     "a": 0
+    },
+    {
+     "q": "A persona is...",
+     "opts": [
+      "A real person's full name and number",
+      "Your favourite celebrity",
+      "A made-up character built from your real interviews"
+     ],
+     "a": 2
+    },
+    {
+     "q": "How should you choose your stack?",
+     "opts": [
+      "Pick the newest tool online",
+      "Pick tools that fit the user and skills you already have",
+      "Pick the hardest language"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "My problem statement says who, what and why, my persona is built from real interviews, and I picked the right spanner for the bolt.",
+   "trainer": {
+    "open": "Last week you found a problem. Today you describe it so clearly that anyone could understand it in one breath.",
+    "plan": [
+     [
+      "3 min",
+      "Show a weak statement ('people need an app') vs a strong one"
+     ],
+     [
+      "5 min",
+      "Learners write their statements and swap to improve each other's"
+     ],
+     [
+      "8 min",
+      "Build personas and use the stack guide"
+     ],
+     [
+      "4 min",
+      "Three learners read their statement and stack choice; class asks 'why that stack?'"
+     ]
+    ],
+    "props": [
+     "Printed stack guide",
+     "Week 1 interview sheets"
+    ],
+    "lookfor": [
+     "Statement names who, what and why",
+     "Persona details come from real interviews",
+     "Stack choice is justified by the user, not by hype"
+    ],
+    "fix": [
+     [
+      "Writes 'people need an app' as the problem",
+      "That is a solution, not a problem. Ask: who exactly, struggling with what, costing them what?"
+     ],
+     [
+      "Chooses a big framework for a simple info page",
+      "Match the spanner to the bolt - a phone-friendly HTML/JS page may serve the persona better"
+     ]
+    ]
+   },
+   "generated": true
+  },
+  {
+   "week": 3,
+   "unit": "Weeks 1-10 · Capstone Projects",
+   "title": "Design on Paper First: Wireframes",
+   "colours": [
+    "purple"
+   ],
+   "goal": "I can sketch phone-first wireframes for my main screens and test them on paper with one real user.",
+   "learn": "A wireframe is a simple box drawing of each screen: where the title, buttons and lists go, with no colours. Drawing first is cheap; changing code later is expensive. Design for your persona's phone first - big buttons, short words, works on small screens. It is like a tailor who marks the cloth with chalk before cutting: mistakes are easy to rub off.",
+   "research": {
+    "q": "Show your paper wireframe to someone like your persona: where would you tap first to do the main job?",
+    "tip": "Write where they tapped and where they got confused. Confusion on paper is a free lesson."
+   },
+   "build": {
+    "task": "Draw 3 phone-size wireframes (home, main job, result) and test them with one person.",
+    "lang": "none",
+    "steps": [
+     "Fold A4 paper into phone-size boxes",
+     "Draw home, main job and result screens with boxes and labels only",
+     "Draw arrows showing what each button opens",
+     "Test with one person and fix what confused them"
+    ],
+    "code": "WIREFRAME CHECKLIST  (Week 3)\n=============================\nScreens to draw (phone size, pencil, NO colours):\n  [ ] 1. Home - what is this app? one main button\n  [ ] 2. Main job - the ONE thing my persona came to do\n  [ ] 3. Result - what they see after (answer, saved record, price, alert)\n  [ ] Arrows from each button to the screen it opens\n\nPhone-first rules:\n  [ ] Big buttons (thumb-sized), one main action per screen\n  [ ] Short words my persona uses (consider Yoruba/Pidgin labels)\n  [ ] Works on a small screen and slow data (few big images)\n  [ ] Readable text and good contrast (think of users with poor eyesight)\n  [ ] Accessible: does not depend on sound alone or colour alone\n\nPaper test (1 person like my persona):\n  Where did they tap first? ______  Where were they confused? ______\n  One change I made after the test: ______________________________"
+   },
+   "check": [
+    {
+     "q": "Why draw wireframes before coding?",
+     "opts": [
+      "Changes on paper are cheap and fast",
+      "Teachers like drawings",
+      "Code cannot have buttons"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What does 'phone-first' design mean?",
+     "opts": [
+      "Only use phone calls",
+      "Make it for big TVs",
+      "Design for small screens and thumbs first"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why should an app not depend on colour alone to show meaning?",
+     "opts": [
+      "Colour is expensive",
+      "Some users cannot see colours well",
+      "Phones have no colours"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I drew my screens on paper first, like a tailor marking with chalk, and fixed confusion before writing any code.",
+   "trainer": {
+    "open": "Before a tailor cuts expensive Ankara, she marks it with chalk. Today our chalk is pencil and paper.",
+    "plan": [
+     [
+      "3 min",
+      "Show a good and a bad wireframe; class spots the problems"
+     ],
+     [
+      "5 min",
+      "Learners draw their 3 screens"
+     ],
+     [
+      "8 min",
+      "Swap with a partner for a quick 'paper tap' test"
+     ],
+     [
+      "4 min",
+      "Learners share one change they made after testing"
+     ]
+    ],
+    "props": [
+     "A4 paper, pencils and erasers",
+     "A tailor's chalk (for the analogy)"
+    ],
+    "lookfor": [
+     "Each screen has one clear main action",
+     "Applies at least two accessibility rules",
+     "Makes a change based on a real tester"
+    ],
+    "fix": [
+     [
+      "Spends the lesson colouring and choosing fonts",
+      "Colours come later - boxes and words only today. Ask: where does the thumb go?"
+     ],
+     [
+      "Draws 10 screens for every possible feature",
+      "Cut it down to 3 screens for the ONE main job - more can come after the MVP"
+     ]
+    ]
+   },
+   "generated": true
+  },
+  {
+   "week": 4,
+   "unit": "Weeks 1-10 · Capstone Projects",
+   "title": "MVP Plan and Data Model",
+   "colours": [
+    "blue",
+    "red"
+   ],
+   "goal": "I can cut my idea down to a Minimum Viable Product, list its features in order, and plan the data it needs to store.",
+   "learn": "An MVP (Minimum Viable Product) is the smallest version that still solves the main problem. You sort features into Must-have, Nice-to-have and Later. Then you plan your data: what things you store (like Crop, Price, Market) and the fields each one has. It is like a new buka: open with one great jollof pot first, and add the full menu when customers keep coming.",
+   "research": {
+    "q": "Ask a person like your persona: if my app could do only ONE thing for you, what should it be?",
+    "tip": "Write their answer. That one thing is your Must-have number 1."
+   },
+   "build": {
+    "task": "Fill in the MVP plan (Must/Nice/Later) and draw a data model table for your main data.",
+    "lang": "none",
+    "steps": [
+     "List every feature idea on sticky notes or a list",
+     "Sort them into Must-have (max 3), Nice-to-have and Later",
+     "Draw a table for each kind of thing you store, with fields and types",
+     "Write your 3-week build plan, one Must-have per sprint"
+    ],
+    "code": "MVP PLAN + DATA MODEL  (Week 4)\n===============================\nFeatures:\n  MUST-have (max 3) : 1. ______  2. ______  3. ______\n  Nice-to-have      : ______________________________\n  Later (after term): ______________________________\n\nData model - one table per \"thing\" (example shown):\n  Thing: CropPrice\n    field      type         rule (red!)\n    crop       text         required\n    market     text         required\n    price      number       must be more than 0\n    date       date         not in the future\n  My thing 1: ______   fields: ______\n  My thing 2: ______   fields: ______\n\nPrivacy check: [ ] I store NO names, phone numbers or addresses unless my trainer approves why.\n\nBuild plan:  Sprint 1 (W5) = Must 1   Sprint 2 (W6) = Must 2   Sprint 3 (W7) = polish + accessibility"
+   },
+   "check": [
+    {
+     "q": "What is an MVP?",
+     "opts": [
+      "The most expensive version",
+      "The smallest version that still solves the main problem",
+      "A version with no features"
+     ],
+     "a": 1
+    },
+    {
+     "q": "In a data model, a 'field' is...",
+     "opts": [
+      "One piece of information each record has, like price",
+      "A football pitch",
+      "A colour"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why limit Must-haves to 3?",
+     "opts": [
+      "Because 4 is unlucky",
+      "Computers only allow 3",
+      "So you can finish and test something real in 10 weeks"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "My MVP is the one great jollof pot - the smallest thing that solves the problem - and my data model shows what I store.",
+   "trainer": {
+    "open": "Every great business started small. Today you cut your big dream down to something you can finish and test.",
+    "plan": [
+     [
+      "3 min",
+      "Buka story: one pot first, full menu later"
+     ],
+     [
+      "5 min",
+      "Learners sort feature sticky notes into Must/Nice/Later"
+     ],
+     [
+      "8 min",
+      "Draw data tables with fields, types and rules"
+     ],
+     [
+      "4 min",
+      "Pairs challenge each other: 'is that really a Must-have?'"
+     ]
+    ],
+    "props": [
+     "Sticky notes or cut paper",
+     "A sample data model on chart paper"
+    ],
+    "lookfor": [
+     "No more than 3 Must-haves, each linked to the problem",
+     "Data model has sensible fields, types and rules",
+     "Has a privacy reason for every personal field (ideally none)"
+    ],
+    "fix": [
+     [
+      "Lists 10 Must-haves",
+      "Ask: if only this one worked, would the user still be helped? If yes, the rest is Nice-to-have"
+     ],
+     [
+      "Plans to store users' phone numbers 'just in case'",
+      "If you do not need it, do not collect it - it keeps users safe and the app simpler"
+     ]
+    ]
+   },
+   "generated": true
+  },
+  {
+   "week": 5,
+   "unit": "Weeks 1-10 · Capstone Projects",
+   "title": "Build Sprint 1: The Core Feature",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "goal": "I can build Must-have number 1 so it works from start to end, even if it does not look beautiful yet.",
+   "learn": "A sprint is a short, focused burst of building with one clear goal. This week you build only Must-have 1, from the first tap to the final result. Make it work first, make it pretty later. Commit your code to GitHub at the end of each session so nothing is lost. It is like a bricklayer: first the foundation, then the walls, painting comes last.",
+   "research": {
+    "q": "Show a person your rough working feature: does this do the main job you need, even if it looks plain?",
+    "tip": "Write yes/no and one thing they noticed. Early feedback stops you polishing the wrong thing."
+   },
+   "build": {
+    "task": "Build Must-have 1 end to end and commit it to GitHub with a clear message.",
+    "lang": "none",
+    "steps": [
+     "Write today's goal on the sprint card",
+     "Build the smallest working path for Must-have 1",
+     "Test it with your own sample data (clearly labelled as practice)",
+     "Commit to GitHub: git add . then git commit -m \"Core feature works\" then git push"
+    ],
+    "code": "SPRINT CARD  (Week 5 - Sprint 1: Core feature)\n==============================================\nMust-have 1: __________________________________________\nToday's goal (one sentence): ___________________________\n\nDone means:\n  [ ] A user can go from the first screen to the result without my help\n  [ ] It uses my data model (from Week 4)\n  [ ] It handles one wrong input without crashing (red: a rule!)\n  [ ] Practice data is labelled PRACTICE, not real\n  [ ] Code is committed to GitHub with a clear message\n\nStuck? Try in this order:\n  1. Read the error message and the line number\n  2. Print/console.log the value you THINK you have\n  3. Explain the problem out loud to a partner (rubber duck)\n  4. Then ask the trainer\n\nEnd of session: what works ______  what is broken ______  next step ______"
+   },
+   "check": [
+    {
+     "q": "What is the goal of Sprint 1?",
+     "opts": [
+      "Make everything beautiful",
+      "Build all features at once",
+      "Make Must-have 1 work from start to end"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why commit to GitHub after each session?",
+     "opts": [
+      "So no work is lost and you can see your progress",
+      "GitHub pays you",
+      "It makes the code faster"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What should you do FIRST when you get an error?",
+     "opts": [
+      "Delete everything",
+      "Read the error message and its line number",
+      "Copy a friend's code"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I built my core feature end to end first, like a bricklayer laying the foundation before painting.",
+   "trainer": {
+    "open": "Today is building day. One goal, one feature, start to finish.",
+    "plan": [
+     [
+      "3 min",
+      "Each learner reads their sprint goal aloud in one sentence"
+     ],
+     [
+      "5 min",
+      "Silent build time; trainer circulates using the 'Stuck?' ladder"
+     ],
+     [
+      "8 min",
+      "Quick test: partner tries the feature without help"
+     ],
+     [
+      "4 min",
+      "Commit to GitHub and fill the end-of-session line"
+     ]
+    ],
+    "props": [
+     "Printed sprint cards",
+     "A rubber duck or any small toy for 'rubber duck debugging'"
+    ],
+    "lookfor": [
+     "Core path works without the learner's help",
+     "Uses the stuck ladder before asking the trainer",
+     "Commits with a meaningful message"
+    ],
+    "fix": [
+     [
+      "Spends the sprint on colours and logos",
+      "Foundation first - can the user complete the main job? Styling is Week 7"
+     ],
+     [
+      "Never commits, then loses work when the lab PC restarts",
+      "Commit small and often - at least at the end of every session"
+     ]
+    ]
+   },
+   "generated": true
+  },
+  {
+   "week": 6,
+   "unit": "Weeks 1-10 · Capstone Projects",
+   "title": "Build Sprint 2: The Second Feature",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "goal": "I can add Must-have number 2 without breaking Must-have 1, and test both together.",
+   "learn": "Adding a feature can quietly break an old one, so test the old feature every time you add something new. This is called regression testing. Keep a short test list and tick it after every big change. Build the new feature in small steps and commit after each step. It is like adding a new room to a house: you check the old walls still stand.",
+   "research": {
+    "q": "Ask a person like your persona: now that the main job works, what is the next thing that would make you use it every week?",
+    "tip": "Write their answer and check it matches your Must-have 2. If not, discuss with your trainer before building."
+   },
+   "build": {
+    "task": "Build Must-have 2, re-test Must-have 1, and commit both.",
+    "lang": "none",
+    "steps": [
+     "Write today's goal on the sprint card",
+     "Build Must-have 2 in small steps, committing after each",
+     "Run through your regression test list",
+     "Fix anything broken before you go home"
+    ],
+    "code": "SPRINT CARD  (Week 6 - Sprint 2: Second feature)\n================================================\nMust-have 2: __________________________________________\n\nRegression test list - tick after EVERY big change:\n  [ ] Test 1: Must-have 1 still works start to end\n  [ ] Test 2: Must-have 2 works start to end\n  [ ] Test 3: a wrong or empty input shows a friendly message\n  [ ] Test 4: it works on a phone-size screen (browser dev tools or a real phone)\n  [ ] Test 5: ____________ (my own)\n\nSmall steps log:\n  Step 1 ______  committed [ ]\n  Step 2 ______  committed [ ]\n  Step 3 ______  committed [ ]\n\nEnd of session: what works ______  what is broken ______  next step ______"
+   },
+   "check": [
+    {
+     "q": "What is regression testing?",
+     "opts": [
+      "Re-checking old features still work after adding new ones",
+      "Testing only new features",
+      "Deleting old features"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why build in small steps with commits?",
+     "opts": [
+      "Commits are free airtime",
+      "To make the code longer",
+      "If something breaks, you can easily find or undo the step that caused it"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Your Must-have 2 should come from...",
+     "opts": [
+      "A random idea from the internet",
+      "What your real users said would help them most",
+      "The hardest thing you can think of"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I added my second feature in small steps and re-tested the first one, like checking the old walls when adding a new room.",
+   "trainer": {
+    "open": "Last week you laid the foundation. Today we add a new room without cracking the old walls.",
+    "plan": [
+     [
+      "3 min",
+      "Show how adding a feature broke an old one in a demo app"
+     ],
+     [
+      "5 min",
+      "Build time in small steps with commits"
+     ],
+     [
+      "8 min",
+      "Partner runs the regression test list on each other's app"
+     ],
+     [
+      "4 min",
+      "Fix time and commit"
+     ]
+    ],
+    "props": [
+     "Printed regression test lists",
+     "A phone for real-screen testing"
+    ],
+    "lookfor": [
+     "Runs the regression list without being told",
+     "Commits after each small step",
+     "Must-have 2 traces back to user research"
+    ],
+    "fix": [
+     [
+      "Writes all of Feature 2 in one go and cannot find the bug",
+      "Undo to the last commit and add it back step by step, testing each time"
+     ],
+     [
+      "Only tests on the big lab screen",
+      "Your persona uses a phone - shrink the window or open it on a real phone"
+     ]
+    ]
+   },
+   "generated": true
+  },
+  {
+   "week": 7,
+   "unit": "Weeks 1-10 · Capstone Projects",
+   "title": "Build Sprint 3: Polish and Accessibility",
+   "colours": [
+    "purple",
+    "red"
+   ],
+   "goal": "I can make my product clear, friendly and accessible, including for Deaf/Hard-of-Hearing users and users on slow data.",
+   "learn": "Polish means making the product easy and pleasant: clear words, good spacing, friendly error messages. Accessibility means everyone can use it: text alternatives for images (alt text), captions or text for any audio or video, good colour contrast, and buttons big enough for thumbs. A Deaf user should never miss information that is only spoken. It is like a good church usher: welcoming to everyone who walks in, not just the people who look like him.",
+   "research": {
+    "q": "Ask someone who wears glasses, an older person, or a Deaf/Hard-of-Hearing person if you can: what makes apps or phones hard for you to use?",
+    "tip": "Write what they say, respectfully. Fix at least one thing they mentioned this week."
+   },
+   "build": {
+    "task": "Run the polish and accessibility checklist on your product and fix at least 5 items.",
+    "lang": "none",
+    "steps": [
+     "Go through the checklist screen by screen",
+     "Fix at least 5 items, starting with the ones that block users",
+     "Ask a partner to use your app with the phone volume OFF",
+     "Commit: \"Polish and accessibility fixes\""
+    ],
+    "code": "POLISH + ACCESSIBILITY CHECKLIST  (Week 7)\n==========================================\nClear and friendly:\n  [ ] Every screen has a clear title and one main action\n  [ ] Error messages say what went wrong AND what to do next\n  [ ] Words are short and match my persona's language\n\nAccessible to everyone:\n  [ ] Every image has alt text that describes it\n  [ ] Any audio/video has captions or a text version (Deaf/HoH users)\n  [ ] Nothing depends on sound only or colour only\n  [ ] Text contrast is strong; text can grow without breaking the layout\n  [ ] Buttons are thumb-sized and labelled (not just icons)\n  [ ] Form fields have visible labels\n\nWorks in real Nigerian conditions:\n  [ ] Loads on slow data (small images, little extra code)\n  [ ] Works on a small Android screen\n  [ ] Shows something helpful if the internet drops\n\nFixed this week (min 5): 1.____ 2.____ 3.____ 4.____ 5.____"
+   },
+   "check": [
+    {
+     "q": "Why add captions or text to audio and video?",
+     "opts": [
+      "So Deaf and Hard-of-Hearing users get the same information",
+      "To make the file bigger",
+      "Captions are only for films"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What is alt text?",
+     "opts": [
+      "A spare password",
+      "Another font",
+      "A written description of an image for people who cannot see it"
+     ],
+     "a": 2
+    },
+    {
+     "q": "A good error message should...",
+     "opts": [
+      "Just say 'Error'",
+      "Say what went wrong and what to do next",
+      "Blame the user"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I made my product welcoming to everyone, like a good usher, with captions, alt text, clear words and big buttons.",
+   "trainer": {
+    "open": "A product that only some people can use is only half finished. Today we finish it properly.",
+    "plan": [
+     [
+      "3 min",
+      "Try an app with volume off and eyes squinting - what breaks?"
+     ],
+     [
+      "5 min",
+      "Learners run the checklist screen by screen"
+     ],
+     [
+      "8 min",
+      "Partner test with volume OFF"
+     ],
+     [
+      "4 min",
+      "Share the most important fix each learner made"
+     ]
+    ],
+    "props": [
+     "Printed checklists",
+     "A phone with volume turned off for testing"
+    ],
+    "lookfor": [
+     "Fixes blockers first, not decoration",
+     "Adds captions or text for any audio/video",
+     "Can explain why each fix helps a real person"
+    ],
+    "fix": [
+     [
+      "Uses red text alone to show an error",
+      "Some people cannot see red well - add words or an icon with a label too"
+     ],
+     [
+      "Puts important info only in a voice note or video",
+      "Deaf/HoH users miss it - always give the same info in text"
+     ]
+    ]
+   },
+   "generated": true
+  },
+  {
+   "week": 8,
+   "unit": "Weeks 1-10 · Capstone Projects",
+   "title": "User Testing with 5 Real People",
+   "colours": [
+    "red"
+   ],
+   "goal": "I can run a fair user test with 5 real people, record what happened, and fix the biggest problems.",
+   "learn": "User testing means watching real people use your product while you stay quiet. Give them a task, like 'find today's price of yam', and watch where they get stuck. Do not help or explain - their confusion is your data. Five testers usually show you the biggest problems. It is like a cook asking 5 guests to taste the stew before the owambe: one guest might be fussy, but if three say 'salt!', you add salt.",
+   "research": {
+    "q": "Test your product with 5 real people (at least 3 like your persona): can you do this task without my help?",
+    "tip": "Record task done yes/no, where they got stuck, and their exact words. No names or photos - just their role."
+   },
+   "build": {
+    "task": "Run 5 user tests with the testing sheet and fix the top 3 problems.",
+    "lang": "none",
+    "steps": [
+     "Write 2-3 tasks that match your Must-haves",
+     "Test 5 people: give the task, stay quiet, write what you see",
+     "Find problems that 2 or more people had",
+     "Fix the top 3 and commit"
+    ],
+    "code": "USER TESTING SHEET  (Week 8)\n============================\nTasks (match my Must-haves):\n  Task A: ______________________   Task B: ______________________\n\nBefore: \"I am testing my app, not you. Please think out loud. I will not help.\"\n\nTester | role (no names)   | Task A done? | Task B done? | Got stuck at...   | Their words\n  1    | ________________  |  Y / N       |  Y / N       | ________________  | ________\n  2    | ________________  |  Y / N       |  Y / N       | ________________  | ________\n  3    | ________________  |  Y / N       |  Y / N       | ________________  | ________\n  4    | ________________  |  Y / N       |  Y / N       | ________________  | ________\n  5    | ________________  |  Y / N       |  Y / N       | ________________  | ________\n\nProblems 2+ people had (fix these first):\n  1. ________ fixed [ ]   2. ________ fixed [ ]   3. ________ fixed [ ]\nAfter fixes, re-tested with 1 person [ ]   Committed to GitHub [ ]"
+   },
+   "check": [
+    {
+     "q": "During a user test, what should you do when the tester is stuck?",
+     "opts": [
+      "Grab the phone and do it for them",
+      "Explain everything",
+      "Stay quiet and write down where they got stuck"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Which problems should you fix first?",
+     "opts": [
+      "The ones two or more testers had",
+      "Only the ones you like",
+      "None - testers are always wrong"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why say 'I am testing my app, not you'?",
+     "opts": [
+      "To make it quicker",
+      "So testers relax and are honest",
+      "Because it is a rule of Java"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I watched 5 real people use my app without helping, and I fixed the problems that more than one person had, like adding salt when 3 guests say so.",
+   "trainer": {
+    "open": "You have built something real. Now it is time for the bravest step - watching real people use it.",
+    "plan": [
+     [
+      "3 min",
+      "Trainer demos a bad test (helping, explaining) then a good one (quiet, writing)"
+     ],
+     [
+      "5 min",
+      "Learners write their tasks"
+     ],
+     [
+      "8 min",
+      "Practise one test on a classmate; the other 4 are done at home/school with adults"
+     ],
+     [
+      "4 min",
+      "Plan which problems to fix"
+     ]
+    ],
+    "props": [
+     "Printed testing sheets",
+     "A charged phone or lab PC for testers"
+    ],
+    "lookfor": [
+     "Stays quiet while the tester works",
+     "Records real words, not opinions",
+     "Fixes problems seen by 2 or more testers"
+    ],
+    "fix": [
+     [
+      "Tests only with best friends who say 'it is nice'",
+      "Friends are kind, not useful - test with people who really have the problem"
+     ],
+     [
+      "Argues with the tester",
+      "Say 'thank you, that helps' and write it down - the tester is never wrong about being confused"
+     ]
+    ]
+   },
+   "generated": true
+  },
+  {
+   "week": 9,
+   "unit": "Weeks 1-10 · Capstone Projects",
+   "title": "Go Live: Deploy and Document",
+   "colours": [
+    "purple",
+    "blue"
+   ],
+   "goal": "I can deploy my product free online and write a README so anyone can understand, use and run it.",
+   "learn": "Deploying means putting your product on the internet so real people can use it. Free options: GitHub Pages or Vercel for HTML/CSS/JS sites, PythonAnywhere for Flask or Django apps. Some PHP/Laravel or Java projects are easier to show running on the lab PC or shared as a downloadable file. A README is the instruction leaflet: what it does, who it helps, how to use it and how to run it. It is like a new shop: opening the doors is not enough, you also need a clear signboard.",
+   "research": {
+    "q": "Share your live link with one tester from last week: does it open and work on YOUR phone?",
+    "tip": "Write the phone type and whether it worked. A product that only works in the lab is not really live."
+   },
+   "build": {
+    "task": "Deploy your product (or package it) and write a README using the template.",
+    "lang": "none",
+    "steps": [
+     "Pick your hosting from the list below and deploy",
+     "Open the live link on a real phone",
+     "Copy the README template into README.md and fill every section",
+     "Commit and push, then put the live link at the top of the README"
+    ],
+    "code": "DEPLOY + README  (Week 9)\n=========================\nWhere to deploy (free):\n  HTML/CSS/JS            -> GitHub Pages or Vercel\n  Python Flask / Django  -> PythonAnywhere (free account)\n  PHP/Laravel            -> run on the lab PC for the showcase, code on GitHub\n  Java                   -> share the .jar / code on GitHub, demo on the lab PC\n  [ ] No passwords or secret keys in the code or on GitHub\n\nREADME.md template:\n  # Project name\n  Live link: ______\n  ## The problem      (your Week 2 problem statement)\n  ## Who it helps     (your persona, no real names)\n  ## What it does     (your Must-haves, with 1-2 screenshots)\n  ## How to use it    (3-5 simple steps)\n  ## How to run it    (install + run commands)\n  ## Built with       (your stack and why)\n  ## What users said  (2-3 findings from user testing and what you changed)\n  ## What is next     (Nice-to-haves and Later list)\n  ## Made by          (first name or team name, ByteBusters centre)"
+   },
+   "check": [
+    {
+     "q": "Which free host suits a Django or Flask app?",
+     "opts": [
+      "PythonAnywhere",
+      "A USB stick",
+      "WhatsApp status"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What must NEVER go into code on GitHub?",
+     "opts": [
+      "Comments",
+      "Passwords and secret keys",
+      "The README"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What is a README for?",
+     "opts": [
+      "Storing passwords",
+      "Making the app slower",
+      "Explaining what the product does, who it helps, and how to use and run it"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I put my product online for real users and wrote a README signboard so anyone can understand and run it.",
+   "trainer": {
+    "open": "Today your product leaves the lab and goes out into the world.",
+    "plan": [
+     [
+      "3 min",
+      "Show a live ByteBusters site on a phone and a great README"
+     ],
+     [
+      "5 min",
+      "Learners deploy using the hosting guide"
+     ],
+     [
+      "8 min",
+      "Test the live link on a real phone"
+     ],
+     [
+      "4 min",
+      "Fill and commit the README"
+     ]
+    ],
+    "props": [
+     "Lab PCs with internet",
+     "A learner's or trainer's phone for live testing"
+    ],
+    "lookfor": [
+     "Product opens on a real phone (or runs on the lab PC for PHP/Java)",
+     "README explains the problem, users and how to run it",
+     "No secrets are pushed to GitHub"
+    ],
+    "fix": [
+     [
+      "Pushes a database password or API key to GitHub",
+      "Remove it, change the password, and use environment settings or a file listed in .gitignore"
+     ],
+     [
+      "Writes a one-line README",
+      "Use every heading in the template - a stranger should understand it without asking you"
+     ]
+    ]
+   },
+   "generated": true
+  },
+  {
+   "week": 10,
+   "unit": "Weeks 1-10 · Capstone Projects",
+   "title": "Showcase and Defence: Can You Build It? Can You Explain It?",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "goal": "I can present my product and defend it, showing the 5 signs of understanding: purpose, how it works, logic, my decisions, and change it.",
+   "learn": "The showcase is where you prove the ByteBusters motto: knowing isn't enough - can you build? Judges will ask you to explain WHY it exists, HOW it works, the LOGIC inside, the DECISIONS you made, and to CHANGE something live. You also show what real users said and what you changed because of them. It is like a WAEC practical: you do not just say the answer, you show your working.",
+   "research": {
+    "q": "Before the showcase, ask one tester: in one sentence, how did my product help you or how could it help people like you?",
+    "tip": "Write their sentence and put it on your final slide or poster. A real user's words are your strongest evidence."
+   },
+   "build": {
+    "task": "Prepare a 3-minute demo and practise the 5-sign defence with a partner.",
+    "lang": "none",
+    "steps": [
+     "Plan your 3-minute demo using the template",
+     "Practise answering all 5 signs with a partner acting as judge",
+     "Practise one live change (e.g. change a rule, a label or a colour)",
+     "Present at the showcase and note judges' feedback"
+    ],
+    "code": "SHOWCASE + DEFENCE PLAN  (Week 10)\n==================================\n3-minute demo:\n  0:00  The problem + who it helps (one real user quote)\n  0:30  Live demo of Must-have 1 and 2 on a phone or the lab PC\n  2:00  What user testing taught me and what I changed\n  2:30  What is next\n\nThe 5 signs of understanding - be ready for each:\n  [ ] 1. PURPOSE      - Why does this exist? Who does it help?\n  [ ] 2. HOW IT WORKS - Walk through what happens from tap to result\n  [ ] 3. LOGIC        - Show one rule (red), one loop (green), one event (purple), the data (blue)\n  [ ] 4. MY DECISIONS - Why this stack? Why this design? What did I cut and why?\n  [ ] 5. CHANGE IT    - Make a small live change the judge asks for, and explain it\n\nBring: live link / lab PC ready  [ ]  README open  [ ]  user test sheet  [ ]\nJudge feedback I will act on: ______________________________________"
+   },
+   "check": [
+    {
+     "q": "Which of these is one of the 5 signs of understanding?",
+     "opts": [
+      "Having the most colours",
+      "Making a live change the judge asks for",
+      "Speaking the fastest"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What is the strongest evidence that your product helps?",
+     "opts": [
+      "What real users said after testing it",
+      "How long your code is",
+      "How expensive the laptop is"
+     ],
+     "a": 0
+    },
+    {
+     "q": "When a judge asks 'why this stack?', which sign are they checking?",
+     "opts": [
+      "Purpose",
+      "How it works",
+      "My decisions"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I can show my product, explain why it exists, how it works, the logic inside, why I made my choices, and change it live - because I really built it.",
+   "trainer": {
+    "open": "Knowing isn't enough. Can you build? Today you show the world that you can - and that you understand every line.",
+    "plan": [
+     [
+      "3 min",
+      "Recap the 5 signs; trainer models one strong answer for each"
+     ],
+     [
+      "5 min",
+      "Learners rehearse the 3-minute demo with a timer"
+     ],
+     [
+      "8 min",
+      "Partner judges ask all 5 signs, including one live change"
+     ],
+     [
+      "4 min",
+      "Final fixes and showcase set-up"
+     ]
+    ],
+    "props": [
+     "A timer",
+     "Printed 5-sign judge cards"
+    ],
+    "lookfor": [
+     "Explains purpose using a real user's words",
+     "Points to a rule, loop, event and data in their own code",
+     "Makes a live change confidently and explains it"
+    ],
+    "fix": [
+     [
+      "Memorises a speech but cannot answer 'show me where that happens in the code'",
+      "Practise opening the exact file and line for each Must-have - understanding beats memorising"
+     ],
+     [
+      "Freezes when asked to change something live",
+      "Practise 3 small changes beforehand: a label, a rule number, a colour. Breathe, find the line, change, refresh"
+     ]
+    ]
+   },
+   "generated": true
+  }
+ ],
+ "projectBank": [
+  {
+   "title": "Ojà Price Board",
+   "problem": "Traders and buyers in Ilaro, Owode and Sango markets do not know how crop prices compare across nearby markets, so they travel or buy blind.",
+   "whoItHelps": "Market traders, farmers deciding where to sell, and families shopping for foodstuff",
+   "suggestedStack": "Python Django + SQLite, deployed on PythonAnywhere",
+   "whyItsAGoodCapstone": "Uses Year 4 Django models and templates directly, data is easy to collect by asking traders, and success is easy to test: can a trader find today's price in under 10 seconds?",
+   "stretchGoal": "Add a scikit-learn trend line that warns when a price is rising fast, labelled clearly as a guess"
+  },
+  {
+   "title": "Farm Weather Alert",
+   "problem": "Small farmers plant, spray or harvest at the wrong time because they cannot easily read weather forecasts for their village.",
+   "whoItHelps": "Smallholder farmers and farm workers around Ogun State",
+   "suggestedStack": "HTML/CSS/JavaScript with the free Open-Meteo API, hosted on GitHub Pages",
+   "whyItsAGoodCapstone": "A real API with no key, simple JS fetch and if-rules (rain over a set amount = 'do not spray today'), and it works on cheap phones",
+   "stretchGoal": "Show advice in Yoruba and English, and save the last forecast so it still shows when data is off"
+  },
+  {
+   "title": "Clinic Finder and Opening Hours",
+   "problem": "Families waste time and transport money going to health centres that are closed, far, or do not offer the service they need.",
+   "whoItHelps": "Parents, elderly people and caregivers in the community",
+   "suggestedStack": "PHP/Laravel + MySQL (Year 3 skills)",
+   "whyItsAGoodCapstone": "Needs a real data model (centre, services, hours), search and filters, and learners collect information by visiting or calling centres - no patient data at all",
+   "stretchGoal": "An 'open now' badge worked out from the current time and each centre's hours"
+  },
+  {
+   "title": "Danfo Fare and Route Helper",
+   "problem": "New residents and students do not know which bus routes and fares to use between towns like Ilaro, Ifo and Sango-Ota, so they get overcharged or lost.",
+   "whoItHelps": "Students, new residents and visitors",
+   "suggestedStack": "HTML/CSS/JavaScript with a JSON routes file, hosted on Vercel",
+   "whyItsAGoodCapstone": "Learners research real routes by asking drivers and conductors, and practise arrays, loops and search in JS",
+   "stretchGoal": "Let users report today's fare and show the most common recent fare instead of one fixed number"
+  },
+  {
+   "title": "School Fees and Levy Tracker",
+   "problem": "School bursars and class teachers track who has paid levies in paper books that get lost, and parents get confused about what is outstanding.",
+   "whoItHelps": "School administrators and class teachers",
+   "suggestedStack": "Java with file storage (Year 4 Term 2 skills)",
+   "whyItsAGoodCapstone": "Builds directly on the Java inventory manager: classes, exceptions and file I/O, with a clear real user inside the school",
+   "stretchGoal": "Print a term summary report per class, using student ID numbers instead of names in all test data"
+  },
+  {
+   "title": "Sign Along: Basic NSL Vocabulary Helper",
+   "problem": "Hearing classmates and teachers cannot communicate basic words with Deaf/Hard-of-Hearing learners, so those learners are left out of group work.",
+   "whoItHelps": "Deaf/Hard-of-Hearing learners, their classmates and teachers",
+   "suggestedStack": "HTML/CSS/JavaScript, with images or short captioned clips, on GitHub Pages",
+   "whyItsAGoodCapstone": "Real inclusion impact, strong accessibility practice (captions, alt text, no sound-only content), and must be co-designed with Deaf users and checked by someone who knows Nigerian Sign Language",
+   "stretchGoal": "A daily 'word of the day' quiz for classmates, with every sign checked by a Deaf adult or NSL teacher before publishing"
+  },
+  {
+   "title": "Community Issue Reporter",
+   "problem": "Residents notice blocked drains, broken street lights and refuse piles, but there is no simple way to collect and share reports with the community development association.",
+   "whoItHelps": "Residents and community development associations (CDAs)",
+   "suggestedStack": "Python Flask + SQLite on PythonAnywhere",
+   "whyItsAGoodCapstone": "Forms, validation, a data model and an admin list view, with clear civic value; reports are anonymous by design",
+   "stretchGoal": "A simple counter showing how many reports each issue type has this month, plus a 'fixed' status the CDA can update"
+  },
+  {
+   "title": "Provision Shop Credit Book",
+   "problem": "Small shop owners lose money because 'I will pay tomorrow' credit is written on scraps of paper or kept in memory.",
+   "whoItHelps": "Provision shop owners and kiosk operators",
+   "suggestedStack": "PHP/Laravel + MySQL, or Java with file storage",
+   "whyItsAGoodCapstone": "A very real problem every learner has seen, with clear Must-haves (add credit, mark paid, see total owed) and easy testing with real shop owners",
+   "stretchGoal": "A weekly summary of who owes the most, using nicknames chosen by the shop owner instead of full names"
+  },
+  {
+   "title": "Poultry Feed and Vaccine Calendar",
+   "problem": "Small poultry farmers forget vaccine dates and run out of feed, which can cost them birds and money.",
+   "whoItHelps": "Backyard and small-scale poultry farmers",
+   "suggestedStack": "Python Django with a simple automation script for reminders",
+   "whyItsAGoodCapstone": "Uses dates, rules and the Year 4 automation skills, and learners can interview real poultry farmers nearby; schedules must be checked with a vet or an agric extension officer, not invented",
+   "stretchGoal": "A feed calculator that estimates bags needed for the next 2 weeks based on the number of birds the farmer enters"
+  },
+  {
+   "title": "WAEC/JAMB Study Planner",
+   "problem": "SS students preparing for WAEC and JAMB do not plan revision well and leave hard subjects until the last weeks.",
+   "whoItHelps": "SS1-SS3 students",
+   "suggestedStack": "HTML/CSS/JavaScript with localStorage, on Vercel",
+   "whyItsAGoodCapstone": "Learners are the users themselves, so testing is easy; uses dates, arrays and saved data with no login or personal data",
+   "stretchGoal": "A 'weak subject' mode that gives more slots to subjects the student marks as hard"
+  },
+  {
+   "title": "Cassava Yield Estimator",
+   "problem": "Farmers struggle to estimate how much cassava they will harvest and therefore how much to sell to garri processors in advance.",
+   "whoItHelps": "Cassava farmers and garri processors",
+   "suggestedStack": "Python with pandas/NumPy and scikit-learn, shown as a simple Flask page",
+   "whyItsAGoodCapstone": "Real Year 4 machine learning practice; learners must collect data honestly from farmers or label clearly when data is practice, and explain that the model only gives a guess",
+   "stretchGoal": "Compare two models (e.g. linear regression vs decision tree) and explain to a farmer which one to trust and why"
+  },
+  {
+   "title": "Tailor's Order and Measurement Book",
+   "problem": "Tailors mix up customers' orders and collection dates during busy seasons like Christmas and Sallah, leading to late clothes and lost customers.",
+   "whoItHelps": "Tailors, fashion designers and their apprentices",
+   "suggestedStack": "Java desktop app with file storage, or PHP/Laravel + MySQL",
+   "whyItsAGoodCapstone": "Clear records (order, style, measurements, due date), sorting by due date, and exception handling for bad input; tailors are easy to find and interview",
+   "stretchGoal": "An 'overdue and due this week' list sorted so the tailor knows what to sew first each morning"
+  }
+ ],
+ "assessment": [
+  {
+   "criterion": "Real problem and user research",
+   "excellent": "Interviewed 3+ real people, the problem statement names who, what and why, and the persona and features clearly come from what users said",
+   "good": "Interviewed real people and has a clear problem statement, but some features are not linked to the research",
+   "developing": "Problem is mostly guessed, with little or no evidence from real people"
+  },
+  {
+   "criterion": "Working product (MVP)",
+   "excellent": "All Must-haves work from start to end on a phone or the lab PC, handle wrong input kindly, and the product is deployed or properly packaged",
+   "good": "Most Must-haves work, with small bugs or one missing error check",
+   "developing": "The main feature does not yet work from start to end"
+  },
+  {
+   "criterion": "User testing and improvement",
+   "excellent": "Tested with 5 real people, recorded their actions and words, fixed the top problems and re-tested",
+   "good": "Tested with some real people and made at least one fix based on what they found",
+   "developing": "Little or no testing with real users, or no changes made after testing"
+  },
+  {
+   "criterion": "Accessibility, safety and documentation",
+   "excellent": "Meets the accessibility checklist (alt text, captions, contrast, labels), stores no unnecessary personal data, has no secrets on GitHub, and has a complete README",
+   "good": "Meets most accessibility and safety checks, and the README covers the main sections",
+   "developing": "Accessibility, safety or documentation is mostly missing"
+  },
+  {
+   "criterion": "Defence: the 5 signs of understanding",
+   "excellent": "Clearly explains purpose, how it works, the logic in the code and their decisions, and makes a live change confidently",
+   "good": "Explains most of the 5 signs, but needs help with the logic or the live change",
+   "developing": "Can show the product but cannot explain how it works or change it"
+  }
+ ]
+}

@@ -99,3 +99,14 @@ Progress saves to the learner's ID under term `wd` (keys `wdw1`–`wdw10`); week
 - [ ] Trainer edit for `genai.json` inside the Content Studio
 - [ ] Optional: trainer-run live AI mode for the Prompt Checker (uses the trainer's key on the server)
 - [ ] Trainer edit for `webdev.json` inside the Content Studio
+
+## The Journey (`/journey`) and the AI Journey (`/ai-journey`)
+One engine (`public/journey.js`) runs both:
+- **Coding Journey** = the official ByteBusters 4-year curriculum, 12 terms. Year 1 lives in the Scratch Path (keys `w`, `t2w`, `t3w`); Years 2–4 are in `public/data/journey/y2t1.json … y4t3.json` (keys `y2t1w1…`).
+- **Unlocking:** a term is finished at **8 of 10 weeks**, which unlocks the next. The **Web Foundations Bridge** (`/webdev`) also unlocks Year 2 — "basics first" for Year 2 builders. Weeks inside a term unlock one by one (2 of 3 check questions right).
+- **Journey start** (Admin → All learners): set where a learner begins (Year 1, "Year 2 builder — basics first", or any term).
+- **Week page:** goal, idea, research question, tiny build, live editor + preview for HTML/CSS/JS (PHP-lite on phone terms; Python/Java/SQL shown for lab days), 3 check questions, "say it like this".
+- **Trainer cards:** `/journey-trainer?t=y2t1` (any term id). **Trainer preview** (link at the bottom of the map) opens everything for checking content; nothing saves as unlocked.
+- **AI Journey** (separate from the curriculum): Level 1 = `/genai`, Levels 2–4 = `ai2/ai3/ai4.json` with Safe-AI rules and the Prompt Checker.
+- **Designed by Claude (AI), clearly flagged in-app for head-office review:** Year 3 Term 2 Weeks 1–3 (missing in the official curriculum), the whole Year 4 Capstone (process, 12-idea project bank, rubric), and AI Journey Levels 2–4.
+- Edit content in the JSON files; bump `VERSION` in `public/sw.js` so phones refresh.

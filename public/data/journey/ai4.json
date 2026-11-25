@@ -1,0 +1,1409 @@
+{
+ "id": "ai4",
+ "year": null,
+ "term": null,
+ "level": 4,
+ "title": "AI Agents & Leadership",
+ "device": "phone",
+ "intro": "Level 4 of the ByteBusters Generative AI Journey: you learn to direct AI agents that take actions, with humans approving, checking and staying in charge. You'll also lead: research AI and jobs in Nigeria, teach younger pupils, write your club's AI rules and defend a capstone for a real local need.",
+ "termProject": "A capstone AI project for a real local need (e.g. a rain-check and spraying-tip tool for small farmers near Ilaro), planned with an agent-style step list, human approval, verified outputs and real-user testing, then defended with the 5 signs of understanding.",
+ "generated": true,
+ "generatedNote": "The ByteBusters Generative AI Journey is separate from the official coding curriculum. Levels 2–4 were designed by Claude (AI) for review by the ByteBusters team.",
+ "weeks": [
+  {
+   "week": 1,
+   "unit": "Weeks 1-4 · Directing AI agents safely",
+   "title": "From chatbot to agent",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "goal": "Explain the difference between a chatbot that talks and an agent that takes actions with tools and a plan.",
+   "learn": "A chatbot answers questions. An AI agent goes further: it is given a GOAL, TOOLS (like search, a calculator, sending a message), a PLAN of steps, and it repeats 'think, act, check' (green: a loop) until the goal is done. Agents can save time, but because they ACT, mistakes cost more. It's like sending a younger cousin to the market: you give the goal (buy ingredients for jollof), the tools (money, a list, your phone number) and the limits (don't spend above ₦5,000, call me if tomatoes are too costly).",
+   "research": {
+    "q": "Ask an adult who sends people on errands (a shop owner, a parent): what instructions do you give so the errand goes well?",
+    "tip": "Write their instructions. They are the same as an agent's goal, tools and limits."
+   },
+   "build": {
+    "task": "Fill an Agent Card for a market-errand agent: goal, tools, limits, check-ins.",
+    "lang": "none",
+    "steps": [
+     "Read the example Agent Card",
+     "Underline the GOAL, circle the TOOLS, box the LIMITS",
+     "Write your own Agent Card for a school task (e.g. planning a class party)",
+     "Swap with a partner: can they find a missing limit?"
+    ],
+    "code": "AGENT CARD\nGOAL: Find the best price for ingredients for jollof for 20 people\nTOOLS: price search, calculator, shopping list writer\nPLAN (repeat until done):\n  1. THINK: what do I need next?\n  2. ACT: use one tool\n  3. CHECK: did it work? If not, try again\nLIMITS:\n  - Budget: not more than ₦30,000\n  - Never pay or send messages without a human's YES\n  - Stop and ask if anything is unclear\nCHECK-INS: show the plan before starting; show the final list before buying"
+   },
+   "check": [
+    {
+     "q": "What makes an agent different from a chatbot?",
+     "opts": [
+      "It has a nicer voice",
+      "It uses tools and takes actions to reach a goal",
+      "It is always right"
+     ],
+     "a": 1
+    },
+    {
+     "q": "'Think, act, check, repeat' is which logic colour?",
+     "opts": [
+      "Green: a loop",
+      "Purple: an event",
+      "Blue: a variable"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why do agents need LIMITS?",
+     "opts": [
+      "To make them slower",
+      "Limits are not needed",
+      "Because they act, and mistakes cost more"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "A chatbot talks, but an agent acts: it has a goal, tools, a plan and limits, and repeats think-act-check until the job is done.",
+   "safe": "An agent must never spend money, send messages or share data without a human saying YES first.",
+   "try": {
+    "ask": "Write an agent's instructions: the GOAL, one TOOL and one LIMIT.",
+    "checks": [
+     {
+      "label": "Has a goal",
+      "rule": {
+       "any": [
+        "goal",
+        "find",
+        "plan",
+        "make",
+        "organise",
+        "organize"
+       ]
+      }
+     },
+     {
+      "label": "Names a tool",
+      "rule": {
+       "any": [
+        "tool",
+        "search",
+        "calculator",
+        "list",
+        "calendar",
+        "spreadsheet"
+       ]
+      }
+     },
+     {
+      "label": "Has a limit",
+      "rule": {
+       "any": [
+        "never",
+        "not more than",
+        "budget",
+        "ask me",
+        "only",
+        "stop",
+        "limit"
+       ]
+      }
+     }
+    ],
+    "best": "Goal: find the 3 cheapest data plans for our club. Tool: search. Limit: never buy anything, and ask me before you send any message."
+   },
+   "trainer": {
+    "open": "Today we meet the next big thing in AI: agents, AIs that DO things, not just talk. You'll learn to be the boss who sends them on errands safely.",
+    "plan": [
+     [
+      "3 min",
+      "Errand game: one kid sends another to 'the market' with only 'buy food'. What goes wrong? Now add goal, tools, limits."
+     ],
+     [
+      "5 min",
+      "Explain agent = goal + tools + plan loop + limits. Read the Agent Card."
+     ],
+     [
+      "8 min",
+      "Pairs write an Agent Card for a school task; partners hunt for a missing limit."
+     ],
+     [
+      "4 min",
+      "Share 2 cards. Check questions."
+     ]
+    ],
+    "props": [
+     "Agent Card sheets",
+     "Board for the errand game"
+    ],
+    "lookfor": [
+     "Names goal, tools and limits correctly",
+     "Includes a 'human says YES' limit",
+     "Explains the think-act-check loop"
+    ],
+    "fix": [
+     [
+      "Thinks an agent can do anything on its own",
+      "Agents only use the tools they're given and only within the limits a human sets."
+     ],
+     [
+      "Writes no money or messaging limits",
+      "Ask: what's the worst thing that could happen if it did this without asking you?"
+     ]
+    ]
+   }
+  },
+  {
+   "week": 2,
+   "unit": "Weeks 1-4 · Directing AI agents safely",
+   "title": "Break the goal into steps",
+   "colours": [
+    "blue",
+    "green"
+   ],
+   "goal": "Break a big goal into small, checkable steps that an agent (or a person) can follow one by one.",
+   "learn": "Agents work best with small steps. A big goal like 'organise the inter-house sports snack stand' is too vague. Small steps are clear: list snacks, check prices, choose a budget, get approval, buy, set prices, sell. Each step should be checkable: you can tell when it is done. It's like cooking jollof: nobody cooks 'jollof' in one move; you wash rice, blend pepper, fry the stew, add rice, and check it at each stage.",
+   "research": {
+    "q": "Ask a cook, tailor or mechanic: what are the steps of one job you do, from start to finish?",
+    "tip": "Count the steps. Experts break big jobs into small steps without thinking about it."
+   },
+   "build": {
+    "task": "Build a step tracker that loops through a plan and counts how many steps are done.",
+    "lang": "html",
+    "steps": [
+     "Read the 6 steps in the plan list (blue: an array)",
+     "Find the loop (green) that puts each step on the screen",
+     "Tick steps as done and watch the counter",
+     "Change the steps to your own goal"
+    ],
+    "code": "<!DOCTYPE html>\n<html><body style=\"font-family:sans-serif;padding:12px\">\n<h3>Goal: Snack stand for inter-house sports</h3>\n<div id=\"list\"></div>\n<p id=\"count\"></p>\n<script>\nconst plan = ['List 5 snacks people like', 'Check prices in 2 shops', 'Set a budget',\n  'Get the teacher\\'s YES', 'Buy the snacks', 'Set selling prices'];\nconst list = document.getElementById('list');\nfunction update() {\n  const done = document.querySelectorAll('input:checked').length;\n  document.getElementById('count').textContent = done + ' of ' + plan.length + ' steps done' +\n    (done === plan.length ? '. Goal complete!' : '');\n}\nfor (let i = 0; i < plan.length; i++) {\n  const row = document.createElement('label');\n  row.innerHTML = '<input type=\"checkbox\"> Step ' + (i + 1) + ': ' + plan[i] + '<br>';\n  row.querySelector('input').onchange = update;\n  list.appendChild(row);\n}\nupdate();\n</script>\n</body></html>"
+   },
+   "check": [
+    {
+     "q": "Which is a good, checkable step?",
+     "opts": [
+      "'Be organised'",
+      "'Make it nice'",
+      "'Check prices of puff-puff in 2 shops'"
+     ],
+     "a": 2
+    },
+    {
+     "q": "In the code, what does the for loop do?",
+     "opts": [
+      "Puts each step from the plan on the screen",
+      "Deletes the plan",
+      "Buys the snacks"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why do agents work better with small steps?",
+     "opts": [
+      "Small steps are more fun",
+      "Each step is clear and you can check when it's done",
+      "Agents can't read long words"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "I break a big goal into small steps I can check one by one, so an agent or a person can follow the plan without guessing.",
+   "safe": "Put a human approval step before any step that spends money or contacts people.",
+   "try": {
+    "ask": "Break this goal into 5 short steps: 'Help our class collect old textbooks for JSS 1 students.'",
+    "checks": [
+     {
+      "label": "Has numbered steps",
+      "rule": {
+       "re": "1[.):].*2[.):]"
+      }
+     },
+     {
+      "label": "Uses doing words",
+      "rule": {
+       "any": [
+        "list",
+        "ask",
+        "collect",
+        "check",
+        "sort",
+        "make",
+        "count",
+        "give"
+       ]
+      }
+     },
+     {
+      "label": "Has an approval or check step",
+      "rule": {
+       "any": [
+        "approv",
+        "permission",
+        "teacher",
+        "principal",
+        "check",
+        "yes"
+       ]
+      }
+     }
+    ],
+    "best": "1. Ask the principal for permission. 2. Make a poster asking for old textbooks. 3. Collect books at the gate. 4. Sort and check them by subject. 5. Give them to the JSS 1 class teacher."
+   },
+   "trainer": {
+    "open": "Big goals scare people, and confuse AI agents. Today you learn the leader's trick: turn any big goal into small, clear steps.",
+    "plan": [
+     [
+      "3 min",
+      "Ask a volunteer to 'cook jollof' in one sentence. Then list the real steps together."
+     ],
+     [
+      "4 min",
+      "Show what makes a step checkable: you can tell when it's done."
+     ],
+     [
+      "9 min",
+      "Kids run the tracker, then change the plan to their own goal (6 steps)."
+     ],
+     [
+      "4 min",
+      "Swap phones: can a partner follow your plan? Check questions."
+     ]
+    ],
+    "props": [
+     "Phones with the step tracker",
+     "Board for the jollof steps"
+    ],
+    "lookfor": [
+     "Every step starts with a doing word (list, check, buy)",
+     "Includes an approval step before spending",
+     "Finds the loop in the code"
+    ],
+    "fix": [
+     [
+      "Steps are vague ('prepare well')",
+      "Ask: how would I know when 'prepare well' is DONE? Make it something you can see."
+     ],
+     [
+      "Breaks the code by removing quotes or commas in the list",
+      "Each step is text in quotes, with a comma between steps."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 3,
+   "unit": "Weeks 1-4 · Directing AI agents safely",
+   "title": "Human in the loop: you say YES",
+   "colours": [
+    "red",
+    "purple"
+   ],
+   "goal": "Design an agent plan where risky actions wait for a human to approve or stop them.",
+   "learn": "Human-in-the-loop means a person must approve important actions before an agent does them. Safe actions (searching, making a list) can run on their own. Risky actions (paying money, sending messages, deleting files, sharing data) must stop and wait for a human YES. A rule decides (red), and a button press is the human's decision (purple). It's like a POS agent who asks you to confirm the amount before pressing 'send', because once money goes, it's hard to bring back.",
+   "research": {
+    "q": "Ask a POS agent or bank worker: what do they ALWAYS confirm with the customer before sending money?",
+    "tip": "Write the things they confirm. Your agent needs the same 'confirm before you act' habit."
+   },
+   "build": {
+    "task": "Build an approval screen: safe actions run, risky actions wait for Approve or Stop.",
+    "lang": "html",
+    "steps": [
+     "Read the 4 actions the agent wants to do",
+     "See which are marked risky (red rule)",
+     "Press Approve or Stop on each risky one (purple event)",
+     "Add one more risky action of your own"
+    ],
+    "code": "<!DOCTYPE html>\n<html><body style=\"font-family:sans-serif;padding:12px\">\n<h3>Agent plan: snack stand</h3>\n<div id=\"list\"></div>\n<script>\nconst actions = [\n  { do: 'Make a list of snacks to sell', risky: false }, { do: 'Compare biscuit prices', risky: false },\n  { do: 'Send a message to all parents', risky: true },\n  { do: 'Pay ₦5,000 deposit to a supplier', risky: true }\n];\nactions.forEach((a, i) => {\n  const row = document.createElement('p');\n  row.textContent = (i + 1) + '. ' + a.do + ' ';\n  if (a.risky) {\n    for (const choice of ['Approve', 'Stop']) {\n      const b = document.createElement('button');\n      b.textContent = choice;\n      b.onclick = () => { row.textContent = (i + 1) + '. ' + a.do + (choice === 'Approve' ? ': APPROVED by a human' : ': STOPPED by a human'); };\n      row.appendChild(b);\n    }\n  } else { row.textContent += ': safe, the agent can do it'; }\n  document.getElementById('list').appendChild(row);\n});\n</script>\n</body></html>"
+   },
+   "check": [
+    {
+     "q": "Which action should wait for a human YES?",
+     "opts": [
+      "Making a list of snacks",
+      "Paying a supplier",
+      "Counting how many snacks"
+     ],
+     "a": 1
+    },
+    {
+     "q": "What does 'human in the loop' mean?",
+     "opts": [
+      "A person approves important actions before the agent does them",
+      "A human is stuck inside the computer",
+      "The agent repeats forever"
+     ],
+     "a": 0
+    },
+    {
+     "q": "In the code, what decides if an action needs approval?",
+     "opts": [
+      "The colour of the button",
+      "The number of words",
+      "The rule: if (a.risky)"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "Safe actions can run on their own, but risky ones like paying or messaging wait for a human to press Approve. I stay in the loop.",
+   "safe": "Before you press Approve, read what the agent will do. Approving without reading is the same as no approval.",
+   "try": {
+    "ask": "Write a rule for an agent: which actions need a human YES?",
+    "checks": [
+     {
+      "label": "Uses IF ... THEN",
+      "rule": {
+       "re": "\\bif\\b[\\s\\S]*\\bthen\\b"
+      }
+     },
+     {
+      "label": "Names a risky action",
+      "rule": {
+       "any": [
+        "pay",
+        "money",
+        "send",
+        "message",
+        "delete",
+        "share",
+        "buy",
+        "post"
+       ]
+      }
+     },
+     {
+      "label": "Says a human must approve",
+      "rule": {
+       "any": [
+        "approve",
+        "human",
+        "yes",
+        "permission",
+        "ask",
+        "confirm"
+       ]
+      }
+     }
+    ],
+    "best": "IF the agent wants to pay money, send a message or delete a file THEN it must stop and ask a human to approve first."
+   },
+   "trainer": {
+    "open": "Agents are fast, but fast mistakes are still mistakes. Today you design the 'you say YES' button that keeps humans in charge.",
+    "plan": [
+     [
+      "3 min",
+      "POS story: why does the agent confirm the amount before sending?"
+     ],
+     [
+      "4 min",
+      "Sort 8 action cards into SAFE or NEEDS YES as a class."
+     ],
+     [
+      "9 min",
+      "Kids run the approval screen, then add a new risky action and test it."
+     ],
+     [
+      "4 min",
+      "Discuss: what if the human just presses Approve without reading? Check questions."
+     ]
+    ],
+    "props": [
+     "8 action cards (e.g. search, pay, delete, message, list)",
+     "Phones with the approval screen"
+    ],
+    "lookfor": [
+     "Sorts money, messages, deleting and sharing as risky",
+     "Explains the if (a.risky) rule",
+     "Says approval means reading first, not just tapping"
+    ],
+    "fix": [
+     [
+      "Marks everything risky 'to be safe'",
+      "Then the human is asked too often and starts tapping YES without reading. Only truly risky actions need a stop."
+     ],
+     [
+      "Thinks approval is the agent's job",
+      "The agent can't approve itself. A human must decide."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 4,
+   "unit": "Weeks 1-4 · Directing AI agents safely",
+   "title": "Check the agent's work",
+   "colours": [
+    "blue",
+    "green",
+    "red"
+   ],
+   "goal": "Verify an agent's report by checking its numbers, sources and actions before you trust it.",
+   "learn": "An agent may report 'Done! Total cost ₦14,200', but agents can make mistakes in maths, use old prices, or do extra things nobody asked for. So we verify: redo the important maths, check the sources, and compare what it did with what we asked. It's like counting your change after buying at the market: the seller is usually honest, but you still count before you walk away.",
+   "research": {
+    "q": "Ask an adult: have you ever been given the wrong change or a wrong bill? How did you catch it?",
+    "tip": "Write how they caught it. That's a verification habit you can teach an app."
+   },
+   "build": {
+    "task": "Build a checker that recalculates the agent's shopping total with a loop.",
+    "lang": "html",
+    "steps": [
+     "Read the items list and what the agent claimed (sample prices, not real data)",
+     "Find the loop (green) that adds price × quantity",
+     "Run it: does the agent's total match?",
+     "Change agentSaid to the correct total and run again"
+    ],
+    "code": "<!DOCTYPE html>\n<html><body style=\"font-family:sans-serif;padding:12px\">\n<h3>Check the agent's total</h3>\n<p id=\"out\"></p>\n<script>\n// Sample prices for practice\nconst items = [\n  { name: 'Biscuits (carton)', price: 4500, qty: 2 },\n  { name: 'Sachet water (bag)', price: 500, qty: 6 },\n  { name: 'Paper cups (pack)', price: 1200, qty: 1 }\n];\nconst agentSaid = 14200; // what the agent's report claims\nlet real = 0;\nfor (const it of items) {\n  real += it.price * it.qty;\n}\nlet msg = 'Correct! The agent\\'s total matches: ₦' + real;\nif (real !== agentSaid) {\n  msg = 'Mismatch! Agent said ₦' + agentSaid + ' but the real total is ₦' + real + '. Do not pay yet.';\n}\ndocument.getElementById('out').textContent = msg;\n</script>\n</body></html>"
+   },
+   "check": [
+    {
+     "q": "The agent says 'Done!' What should you do?",
+     "opts": [
+      "Trust it, agents are computers",
+      "Check its numbers, sources and actions",
+      "Ask it if it's sure"
+     ],
+     "a": 1
+    },
+    {
+     "q": "The real total doesn't match what the agent said. Next step?",
+     "opts": [
+      "Pay the agent's number",
+      "Pay the bigger number",
+      "Don't pay; find and fix the mistake first"
+     ],
+     "a": 2
+    },
+    {
+     "q": "What else should you check besides the maths?",
+     "opts": [
+      "That it didn't do extra things you never asked for",
+      "The font size",
+      "How fast it worked"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I don't just trust 'Done!' I recheck the maths, check the sources, and make sure the agent did only what I asked.",
+   "safe": "Never act on an agent's report (pay, send, publish) until a human has checked it.",
+   "try": {
+    "ask": "Write 3 checks you would do before trusting an agent that says it found the cheapest school bus hire.",
+    "checks": [
+     {
+      "label": "Checks numbers or prices",
+      "rule": {
+       "any": [
+        "price",
+        "number",
+        "total",
+        "maths",
+        "math",
+        "cost",
+        "add"
+       ]
+      }
+     },
+     {
+      "label": "Checks a source",
+      "rule": {
+       "any": [
+        "source",
+        "call",
+        "confirm",
+        "website",
+        "visit",
+        "ask"
+       ]
+      }
+     },
+     {
+      "label": "Checks it did only what was asked",
+      "rule": {
+       "any": [
+        "extra",
+        "only",
+        "didn't",
+        "did not",
+        "asked",
+        "booked",
+        "paid"
+       ]
+      }
+     }
+    ],
+    "best": "1. Add up the prices again myself. 2. Call or visit the bus company to confirm the price source. 3. Check it did only what I asked and did not book or pay."
+   },
+   "trainer": {
+    "open": "Agents sound very confident, even when they're wrong. Today you become the inspector who counts the change.",
+    "plan": [
+     [
+      "3 min",
+      "Market change role-play: the 'seller' gives wrong change; the class catches it."
+     ],
+     [
+      "4 min",
+      "List the 3 checks: numbers, sources, actions."
+     ],
+     [
+      "9 min",
+      "Kids run the checker, find the mismatch, fix agentSaid, and add one new item."
+     ],
+     [
+      "4 min",
+      "Discuss: what if the agent used last year's prices? Check questions."
+     ]
+    ],
+    "props": [
+     "Phones with the checker page",
+     "Play money for the role-play (optional)"
+    ],
+    "lookfor": [
+     "Recalculates instead of trusting",
+     "Finds the ₦1,000 mismatch",
+     "Mentions checking sources and extra actions too"
+    ],
+    "fix": [
+     [
+      "Changes the item prices to match the agent",
+      "That's hiding the mistake! Fix the report, not the facts."
+     ],
+     [
+      "Thinks checking means asking the agent 'are you sure?'",
+      "The agent may just say yes. Check with your own maths and real sources."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 5,
+   "unit": "Weeks 5-8 · AI in our school, work and community",
+   "title": "Automate a real school task",
+   "colours": [
+    "purple",
+    "red",
+    "green"
+   ],
+   "goal": "Design a safe automation for a real school or community task using WHEN, IF and REPEAT, with a human check.",
+   "learn": "An automation is a set of steps that runs by itself when something happens. It has a TRIGGER (purple: WHEN something happens), RULES (red: IF this, THEN that), sometimes a REPEAT (green: every week), and a HUMAN CHECK before anything goes out. Good automations save boring work so people have time for important work. It's like the school bell: nobody has to shout 'break time!'; the bell does it on time every day, but the principal decides the timetable.",
+   "research": {
+    "q": "Ask a teacher, club patron or school clerk: what boring task do you repeat every week that a computer could help with?",
+    "tip": "Write the task. A real problem from a real person makes the best automation."
+   },
+   "build": {
+    "task": "Write a WHEN-IF-THEN automation plan for a club task; the trainer builds it with a real tool.",
+    "lang": "none",
+    "steps": [
+     "Pick a real task from your research",
+     "Write the TRIGGER (WHEN), the RULES (IF/THEN) and any REPEAT",
+     "Add the HUMAN CHECK before anything is sent",
+     "Write what could go wrong and how you'd stop it",
+     "Trainer builds it with a school-approved tool and shows the result"
+    ],
+    "code": "AUTOMATION PLAN: Weekly ByteBusters reminder\nWHEN (trigger): every Monday at 7am  (purple + green repeat)\nIF it is a public holiday THEN skip this week  (red)\nTHEN the AI drafts a short reminder: day, time, what to bring\nHUMAN CHECK: the club patron reads and edits it\nIF the patron approves THEN send it to the club notice board / parents' group\n\nWHAT COULD GO WRONG?\n- Wrong date or time -> the patron checks before sending\n- Sends at night -> only send between 7am and 6pm\n- Personal data in the message -> never include names or phone numbers"
+   },
+   "check": [
+    {
+     "q": "In an automation, 'every Monday at 7am' is the…",
+     "opts": [
+      "Trigger (WHEN)",
+      "Rule (IF)",
+      "Human check"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why add a human check before the reminder is sent?",
+     "opts": [
+      "Humans like reading",
+      "To slow it down for fun",
+      "To catch mistakes before people receive them"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Which task is a good first automation?",
+     "opts": [
+      "Deciding who gets expelled",
+      "A weekly club reminder",
+      "Marking WAEC scripts"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "My automation runs WHEN something happens, follows IF-THEN rules, and a human checks it before anything is sent.",
+   "safe": "Never automate decisions about people (grades, punishments, money) and never automate sending messages without a human check.",
+   "try": {
+    "ask": "Write an automation using WHEN, IF and THEN for a school or community task.",
+    "checks": [
+     {
+      "label": "Has a WHEN trigger",
+      "rule": {
+       "any": [
+        "when",
+        "every"
+       ]
+      }
+     },
+     {
+      "label": "Has an IF rule",
+      "rule": {
+       "re": "\\bif\\b"
+      }
+     },
+     {
+      "label": "Has a human check",
+      "rule": {
+       "any": [
+        "check",
+        "approve",
+        "teacher",
+        "patron",
+        "human",
+        "read"
+       ]
+      }
+     }
+    ],
+    "best": "When it is Friday afternoon, the AI drafts a list of next week's club activities. If it is a holiday then skip. The patron must check and approve it before it is posted."
+   },
+   "trainer": {
+    "open": "Imagine a helper that never forgets the weekly reminder. Today you design it, and you design the safety checks too.",
+    "plan": [
+     [
+      "3 min",
+      "School bell story: who decides the timetable, and who rings the bell?"
+     ],
+     [
+      "4 min",
+      "Show the plan: label WHEN (purple), IF (red), REPEAT (green), HUMAN CHECK."
+     ],
+     [
+      "9 min",
+      "Teams write an automation plan for a task from their research, including 'what could go wrong'."
+     ],
+     [
+      "4 min",
+      "Trainer picks one plan and demos it (e.g. drafting the reminder with AI, then reading it). Check questions."
+     ]
+    ],
+    "props": [
+     "Automation plan sheets",
+     "Trainer's phone with an approved tool (e.g. AI chat + a calendar reminder)"
+    ],
+    "lookfor": [
+     "Plan has a clear trigger and rule",
+     "Puts a human check before sending",
+     "Names at least one thing that could go wrong"
+    ],
+    "fix": [
+     [
+      "Automates a serious decision about people (punishments, grades)",
+      "Decisions about people need human judgement. Automate the boring parts, not the judging."
+     ],
+     [
+      "No plan for what goes wrong",
+      "Ask: what if the date is wrong? What if it sends at midnight? Add a rule for it."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 6,
+   "unit": "Weeks 5-8 · AI in our school, work and community",
+   "title": "AI and jobs in Nigeria",
+   "colours": [
+    "blue"
+   ],
+   "goal": "Interview a local worker to find which parts of their job AI could help with and which parts need a human.",
+   "learn": "People worry that AI will take jobs. The truth is more interesting: AI changes TASKS inside jobs. A business-centre typist may type less but design more. A tailor may use AI for pattern ideas but still measures and sews by hand. Some parts need human skills: trust, hands-on work, care and judgement. We find out by asking real workers, not by guessing. It's like when POS machines came: some cashier tasks changed, and new jobs like POS agents appeared.",
+   "research": {
+    "q": "Interview one local worker (tailor, mechanic, POS agent, hairdresser, trader, typist): which part of your work is boring or repeated? Which part needs YOU?",
+    "tip": "Write their words. Don't write their name or phone number: just their job and area."
+   },
+   "build": {
+    "task": "Fill a Job Task Map from your interview and sort each task.",
+    "lang": "none",
+    "steps": [
+     "List 5 tasks the worker does (blue: your data)",
+     "Sort each: AI COULD HELP / NEEDS A HUMAN / BOTH",
+     "Write one new skill the worker could learn to use AI well",
+     "Share with the class; compare different jobs"
+    ],
+    "code": "JOB TASK MAP\nJob: Tailor   Area: Ilaro\nTask                         | AI could help | Needs a human | Both\n1. Take customer measurements |               |      X        |\n2. Suggest new styles         |               |               |  X\n3. Cut and sew fabric         |               |      X        |\n4. Remind customers of pickup |      X        |               |\n5. Price a job fairly         |               |               |  X\n\nNew skill they could learn: using AI to draw style ideas to show customers\nMy conclusion (my own words): ___"
+   },
+   "check": [
+    {
+     "q": "What does AI usually change first?",
+     "opts": [
+      "Whole jobs overnight",
+      "Some tasks inside a job",
+      "Nothing at all"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which task most needs a human?",
+     "opts": [
+      "Measuring a customer for a dress",
+      "Writing a pickup reminder",
+      "Listing fabric colours"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Where should your conclusions about AI and jobs come from?",
+     "opts": [
+      "A scary video online",
+      "Guessing",
+      "Real interviews with workers"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "AI changes tasks, not whole jobs. From my interview I learnt which tasks AI could help with and which ones need a human's hands, trust and judgement.",
+   "safe": "When you interview people, ask permission first and never write their name, phone number or address.",
+   "try": {
+    "ask": "Write a short summary of your interview: the job, one task AI could help with, and one task that needs a human.",
+    "checks": [
+     {
+      "label": "Names the job",
+      "rule": {
+       "any": [
+        "tailor",
+        "mechanic",
+        "pos",
+        "hairdresser",
+        "trader",
+        "typist",
+        "farmer",
+        "teacher",
+        "driver",
+        "barber",
+        "cook",
+        "seller",
+        "nurse",
+        "carpenter",
+        "vulcanizer",
+        "welder"
+       ]
+      }
+     },
+     {
+      "label": "A task AI could help with",
+      "rule": {
+       "any": [
+        "ai could",
+        "ai can",
+        "help with",
+        "could help"
+       ]
+      }
+     },
+     {
+      "label": "A task that needs a human",
+      "rule": {
+       "any": [
+        "human",
+        "needs a person",
+        "by hand",
+        "trust",
+        "needs me",
+        "needs him",
+        "needs her"
+       ]
+      }
+     }
+    ],
+    "best": "I interviewed a mechanic in Ilaro. AI could help him write receipts and reminders for customers. Finding the fault by listening to the engine needs a human."
+   },
+   "trainer": {
+    "open": "Will AI take our jobs? Instead of guessing, today you become a researcher and ask real workers.",
+    "plan": [
+     [
+      "3 min",
+      "Quick vote: will AI take jobs? Then ask: how could we find out properly?"
+     ],
+     [
+      "4 min",
+      "Show the Job Task Map with the tailor example."
+     ],
+     [
+      "9 min",
+      "Kids fill maps from their interviews. Group the same jobs together."
+     ],
+     [
+      "4 min",
+      "Each group shares one surprise. Check questions."
+     ]
+    ],
+    "props": [
+     "Job Task Map sheets",
+     "Their interview notes"
+    ],
+    "lookfor": [
+     "Lists real tasks from a real interview",
+     "Sorts with reasons",
+     "Avoids scary claims without evidence"
+    ],
+    "fix": [
+     [
+      "'AI will take all jobs' or 'AI can't do anything'",
+      "Look at your map: some tasks yes, some no. The truth is in the details."
+     ],
+     [
+      "Writes the worker's name and number",
+      "Only job and area. We protect the people who help our research."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 7,
+   "unit": "Weeks 5-8 · AI in our school, work and community",
+   "title": "Teach the little ones",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "goal": "Plan and run a 5-minute AI safety lesson for younger pupils, using a simple tap game.",
+   "learn": "You learn something best when you teach it. Younger pupils (JSS 1 or primary) are already meeting AI on phones, often with no guide. A peer mentor teaches with simple words, a story and a game, and keeps the rules to 3. Patience matters more than big words. It's like an older sibling teaching a younger one to cross the road: hold hands, look left and right, and practise together.",
+   "research": {
+    "q": "Ask a younger child at home (with a parent nearby): have you seen AI on a phone, like Meta AI on WhatsApp? What do you think it is?",
+    "tip": "Write their answer. It shows you where to start your lesson."
+   },
+   "build": {
+    "task": "Build a 'Safe or Not?' tap game for younger pupils.",
+    "lang": "html",
+    "steps": [
+     "Play the game yourself first",
+     "Find the cards list (blue), the score rule (red) and the buttons (purple)",
+     "Add one more card that fits our community",
+     "Teach it to a younger pupil with your trainer present"
+    ],
+    "code": "<!DOCTYPE html>\n<html><body style=\"font-family:sans-serif;padding:12px;font-size:20px\">\n<h3>Safe or Not?</h3>\n<p id=\"card\"></p>\n<button onclick=\"answer('safe')\">Safe</button> <button onclick=\"answer('not')\">Not safe</button>\n<p id=\"score\"></p>\n<script>\nconst cards = [\n  ['Tell the AI your home address', 'not'], ['Ask AI to explain fractions', 'safe'],\n  ['Believe AI without checking', 'not'], ['Ask a grown-up before using a new app', 'safe'],\n  ['Give a chatbot your mum\\'s phone number', 'not']\n];\nlet i = 0, score = 0;\nfunction show() {\n  document.getElementById('card').textContent = i < cards.length ? cards[i][0] : 'Well done! You know the AI safety rules.';\n  document.getElementById('score').textContent = 'Score: ' + score + ' / ' + cards.length;\n}\nfunction answer(choice) {\n  if (i >= cards.length) return;\n  if (choice === cards[i][1]) score++;\n  i++; show();\n}\nshow();\n</script>\n</body></html>"
+   },
+   "check": [
+    {
+     "q": "How many rules should a lesson for younger pupils have?",
+     "opts": [
+      "As many as possible",
+      "Just a few, like 3, with a game",
+      "None"
+     ],
+     "a": 1
+    },
+    {
+     "q": "A younger pupil gets an answer wrong. What do you do?",
+     "opts": [
+      "Laugh",
+      "Skip them",
+      "Explain kindly with an example and let them try again"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Why does teaching help YOU learn?",
+     "opts": [
+      "You must understand it well enough to explain it simply",
+      "It doesn't",
+      "Teachers get free AI"
+     ],
+     "a": 0
+    }
+   ],
+   "say": "I can teach younger pupils 3 AI safety rules with a story and a game, and teaching them makes me understand AI safety better.",
+   "safe": "Mentor younger pupils only with your trainer or a teacher present, and never collect their details.",
+   "try": {
+    "ask": "Write the 3 AI safety rules you'll teach younger pupils, in very simple words.",
+    "checks": [
+     {
+      "label": "A privacy rule",
+      "rule": {
+       "any": [
+        "secret",
+        "address",
+        "phone",
+        "name",
+        "private",
+        "personal"
+       ]
+      }
+     },
+     {
+      "label": "A grown-up rule",
+      "rule": {
+       "any": [
+        "grown-up",
+        "grown up",
+        "adult",
+        "teacher",
+        "parent",
+        "mum",
+        "dad"
+       ]
+      }
+     },
+     {
+      "label": "An 'AI can be wrong' rule",
+      "rule": {
+       "any": [
+        "wrong",
+        "check",
+        "mistake",
+        "not always right"
+       ]
+      }
+     }
+    ],
+    "best": "1. Keep your name, address and phone number secret from AI. 2. Ask a grown-up before you use a new app. 3. AI can be wrong, so check with your teacher."
+   },
+   "trainer": {
+    "open": "You've learnt a lot about AI. Now it's your turn to protect younger kids. Today you become a peer mentor.",
+    "plan": [
+     [
+      "3 min",
+      "Older sibling story: how did someone teach you something when you were small?"
+     ],
+     [
+      "4 min",
+      "Agree the 3 rules for little ones: keep secrets secret, check with a grown-up, AI can be wrong."
+     ],
+     [
+      "9 min",
+      "Kids play the game, add a card, then practise teaching it to a partner who acts as a JSS 1 pupil."
+     ],
+     [
+      "4 min",
+      "Plan the real mini-lesson with a JSS 1 class (with the trainer). Check questions."
+     ]
+    ],
+    "props": [
+     "Phones with the game",
+     "Permission arranged with a JSS 1 or primary teacher"
+    ],
+    "lookfor": [
+     "Uses simple words and a story",
+     "Stays patient with wrong answers",
+     "Adds a card that is clear and local"
+    ],
+    "fix": [
+     [
+      "Uses big words like 'algorithm' and 'deepfake' with small kids",
+      "Ask: would your little cousin understand that word? Say 'a computer that guesses' instead."
+     ],
+     [
+      "Makes the game scary ('AI will steal you')",
+      "We want them careful, not afraid. Keep it calm and friendly."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 8,
+   "unit": "Weeks 5-8 · AI in our school, work and community",
+   "title": "Our club's AI rules",
+   "colours": [
+    "red"
+   ],
+   "goal": "Write a clear, fair AI-use policy for your ByteBusters club that everyone can follow.",
+   "learn": "A policy is a short set of agreed rules. A good AI-use policy says what AI is allowed for, what is NOT allowed, how to credit AI, how to protect privacy, who holds the accounts and keys, and what to do if something goes wrong. Good rules are clear, fair and short enough to remember. Everyone helps write them, so everyone owns them. It's like the rules of a football match: everyone knows them before kick-off, and the referee applies them fairly.",
+   "research": {
+    "q": "Ask your school principal, a teacher or a parent: what one rule should every student follow when using AI for schoolwork?",
+    "tip": "Write their rule. Real adults' views make your policy fair to the school, not just to students."
+   },
+   "build": {
+    "task": "Write a one-page AI-use policy for your club using the template.",
+    "lang": "none",
+    "steps": [
+     "Read the 6 sections of the template",
+     "Use your research: what did adults want in the rules?",
+     "Write 1-2 IF-THEN rules (red) for each section",
+     "Read it aloud: is it clear to a JSS 1 pupil?",
+     "Vote to adopt it; the club patron signs"
+    ],
+    "code": "BYTEBUSTERS CLUB AI-USE POLICY\n1. ALLOWED: We use AI to brainstorm, explain, draft and test.\n2. NOT ALLOWED: IF it's an exam or test THEN no AI. No deepfakes of real people.\n3. CREDIT: IF AI helped THEN we write what AI did and what we did.\n4. PRIVACY: We never type names, numbers, addresses or photos of people into AI.\n5. ACCOUNTS & KEYS: Only the trainer holds AI accounts and API keys.\n6. IF SOMETHING GOES WRONG: IF AI shows something harmful or upsetting THEN stop and tell the trainer at once.\n\nAgreed by the club on ___   Patron: ___"
+   },
+   "check": [
+    {
+     "q": "What makes a good policy?",
+     "opts": [
+      "Long and full of hard words",
+      "Clear, fair and short enough to remember",
+      "Written by one person secretly"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Who should hold AI accounts and API keys in the club?",
+     "opts": [
+      "The trainer",
+      "Any student",
+      "Whoever asks first"
+     ],
+     "a": 0
+    },
+    {
+     "q": "AI shows something upsetting. Our policy says…",
+     "opts": [
+      "Share it to warn friends",
+      "Ignore it",
+      "Stop and tell the trainer at once"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "Our club's AI policy is short, clear and fair: what's allowed, what's not, how to credit, how to protect privacy, who holds keys, and what to do if something goes wrong.",
+   "safe": "Our policy protects people first: privacy, honesty, and telling an adult when something is wrong.",
+   "try": {
+    "ask": "Write 2 rules for your club's AI-use policy using IF ... THEN.",
+    "checks": [
+     {
+      "label": "Uses IF ... THEN",
+      "rule": {
+       "re": "\\bif\\b[\\s\\S]*\\bthen\\b"
+      }
+     },
+     {
+      "label": "Covers credit, privacy or keys",
+      "rule": {
+       "any": [
+        "credit",
+        "privacy",
+        "private",
+        "key",
+        "name",
+        "phone",
+        "account"
+       ]
+      }
+     },
+     {
+      "label": "Has 2 rules (long enough)",
+      "rule": {
+       "minWords": 16
+      }
+     }
+    ],
+    "best": "IF AI helped with our project THEN we write what AI did and what we did. IF a prompt needs a name or phone number THEN we leave it out to protect privacy."
+   },
+   "trainer": {
+    "open": "Today you're the lawmakers! You'll write the AI rules for our own club, and because you write them, you'll keep them.",
+    "plan": [
+     [
+      "3 min",
+      "Football rules chat: what happens in a match with no agreed rules?"
+     ],
+     [
+      "4 min",
+      "Show the 6 sections. Share research: what rules did adults suggest?"
+     ],
+     [
+      "9 min",
+      "Groups each write one section; combine them into one policy on the board."
+     ],
+     [
+      "4 min",
+      "Read it aloud, vote, and the patron signs. Check questions."
+     ]
+    ],
+    "props": [
+     "Policy template on chart paper",
+     "A marker for the patron to sign"
+    ],
+    "lookfor": [
+     "Rules are specific and testable",
+     "Includes privacy and keys",
+     "Listens to others' suggestions and votes fairly"
+    ],
+    "fix": [
+     [
+      "Rules are too strict to follow ('never touch AI')",
+      "Rules people can't keep get ignored. Make them fair and realistic."
+     ],
+     [
+      "Rules are vague ('use AI well')",
+      "Ask: how would the referee know if someone broke this rule? Make it clear."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 9,
+   "unit": "Weeks 9-10 · Capstone and defence",
+   "title": "Capstone: AI for a real local need",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "goal": "Plan a capstone AI project for a real need in your community, with users, steps, safety rules and a test plan.",
+   "learn": "Your capstone brings everything together: a REAL problem from real people, a small AI tool or agent plan that helps, safety rules, human checks, and a test plan. Keep it small and doable: one problem, one group of users, one clear result. Use the trainer's AI account for building (e.g. honest vibe-coding with Claude). It's like a final-year project at a polytechnic: not the biggest idea, but the one you can build, test and defend well.",
+   "research": {
+    "q": "Ask 5 people in one group (traders, farmers, parents, teachers): what problem takes your time every week that information could help with?",
+    "tip": "Pick the problem that 3 or more people mention. That's your evidence that the need is real."
+   },
+   "build": {
+    "task": "Fill the Capstone Plan and write the planning prompt the trainer will use with the AI.",
+    "lang": "none",
+    "steps": [
+     "Choose the problem from your research (the need)",
+     "Fill the plan: users, what the tool does, data, rules, human check, test",
+     "Write the planning prompt (bottom) and ask your trainer to run it with Claude",
+     "Choose the smallest version you can build in 2 weeks"
+    ],
+    "code": "CAPSTONE PLAN\nNEED (from research): Farmers in our area guess when to spray, then rain washes it off\nUSERS: small farmers near Ilaro\nTOOL: shows tomorrow's rain chance (free Open-Meteo API) + an AI tip in Yoruba or English\nDATA: area name only (no names, no numbers)\nRULES: IF rain chance is high THEN advise waiting. IF unsure THEN say 'ask an extension worker'\nHUMAN CHECK: a farmer and the trainer check AI tips before launch\nTEST: 10 inputs (Level 3 test set) + 5 real farmers\n\nPLANNING PROMPT (trainer runs it):\nI want to build a small, safe tool that helps {users} with {need}.\nBefore any code, ask me 5 questions. Then give a simple plan: inputs (variables),\nrules (if-then), repeats (loops) and buttons (events). Use simple words. I am 15\nand I must explain every part to judges."
+   },
+   "check": [
+    {
+     "q": "Where should your capstone problem come from?",
+     "opts": [
+      "The coolest AI video online",
+      "What the trainer likes",
+      "Real people who face the problem every week"
+     ],
+     "a": 2
+    },
+    {
+     "q": "Your idea is very big. What should you do?",
+     "opts": [
+      "Build the smallest version that still helps",
+      "Give up",
+      "Promise everything to the judges"
+     ],
+     "a": 0
+    },
+    {
+     "q": "Why ask the AI to ask YOU 5 questions first?",
+     "opts": [
+      "To waste time",
+      "So the plan fits the real need and you understand it",
+      "Because AI is shy"
+     ],
+     "a": 1
+    }
+   ],
+   "say": "My capstone solves a real local need. I planned the users, data, rules, human checks and tests, and I chose a small version I can build and explain.",
+   "safe": "Your capstone must collect the least data possible, keep keys with the trainer, and be checked by real users before launch.",
+   "try": {
+    "ask": "Write your capstone's planning prompt for the AI, using {blanks} for users and need.",
+    "checks": [
+     {
+      "label": "Has {blanks}",
+      "rule": {
+       "re": "\\{[^}]+\\}[\\s\\S]*\\{[^}]+\\}"
+      }
+     },
+     {
+      "label": "Asks the AI to ask questions first",
+      "rule": {
+       "any": [
+        "ask me",
+        "questions"
+       ]
+      }
+     },
+     {
+      "label": "Asks for a simple plan",
+      "rule": {
+       "any": [
+        "plan",
+        "steps"
+       ]
+      }
+     }
+    ],
+    "best": "I want to build a small, safe tool that helps {users} with {need}. Before any code, ask me 5 questions. Then give me a simple plan with inputs, rules, loops and buttons, in simple words."
+   },
+   "trainer": {
+    "open": "This is the big one: your capstone. Today you plan an AI project for a real need, small enough to build and strong enough to defend.",
+    "plan": [
+     [
+      "3 min",
+      "Share research: which problems did 3 or more people mention?"
+     ],
+     [
+      "5 min",
+      "Walk through the farmer example plan. Point out the 4 colours in it."
+     ],
+     [
+      "8 min",
+      "Teams fill their Capstone Plan and the planning prompt. Trainer runs one prompt with Claude live."
+     ],
+     [
+      "4 min",
+      "Each team says its need and smallest version in one sentence. Check questions."
+     ]
+    ],
+    "props": [
+     "Capstone Plan sheets",
+     "Trainer's laptop/phone with Claude (trainer's account)"
+    ],
+    "lookfor": [
+     "Need is backed by research",
+     "Plan includes rules, a human check and a test",
+     "Picks a small, buildable version"
+    ],
+    "fix": [
+     [
+      "'Our app will end poverty in Nigeria'",
+      "Great dream! Now shrink it: which ONE group, ONE problem, ONE result can you show in 2 weeks?"
+     ],
+     [
+      "Plan collects personal data 'to make it better'",
+      "Ask: does the tool truly need it? Use area names, not people's details."
+     ]
+    ]
+   }
+  },
+  {
+   "week": 10,
+   "unit": "Weeks 9-10 · Capstone and defence",
+   "title": "Defend it: the 5 signs",
+   "colours": [
+    "blue",
+    "red",
+    "green",
+    "purple"
+   ],
+   "goal": "Defend your capstone to judges with the 5 signs of understanding, real-user evidence and your safety choices.",
+   "learn": "Judges don't just want to see that your project works; they want proof that YOU understand it. The 5 signs are: PURPOSE (the problem and who it helps), HOW IT WORKS (button, prompt, API or agent steps, answer), LOGIC (a variable, a rule, a loop, an event), MY DECISIONS (what you chose and why, including AI you directed), and CHANGE IT (what you'd improve and how). Add your safety and leadership story: approvals, privacy, policy, mentoring. It's like a lawyer in court: facts, evidence and calm answers.",
+   "research": {
+    "q": "Do a practice defence for 2 adults (a parent, a teacher). Ask them to ask you the hardest question they can think of.",
+    "tip": "Write their question and your best answer. Judges often ask the same kind."
+   },
+   "build": {
+    "task": "Prepare and practise your 90-second capstone defence with the 5 signs.",
+    "lang": "none",
+    "steps": [
+     "Fill each of the 5 signs in 1-2 sentences",
+     "Add one piece of real-user evidence and one safety choice",
+     "Practise 3 times; a partner ticks each sign they hear",
+     "Answer 2 tough judge questions from your partner",
+     "Final: defend to the class or the visiting judges"
+    ],
+    "code": "MY 90-SECOND DEFENCE\n1. PURPOSE: The problem is ___ and it helps ___\n2. HOW IT WORKS: When the user ___, the app/agent ___, then ___\n3. LOGIC: variable ___ | rule (IF) ___ | loop ___ | event ___\n4. MY DECISIONS: I chose ___ because ___. I directed the AI to ___ and checked ___\n5. CHANGE IT: Next I would ___ by ___\nEVIDENCE: A real user said: '___'\nSAFETY & LEADERSHIP: human approval for ___; privacy: ___; our club policy: ___\n\nTOUGH QUESTIONS TO PRACTISE\n- 'Did the AI do all the work?'\n- 'What happens if the AI gives a wrong answer?'"
+   },
+   "check": [
+    {
+     "q": "A judge asks 'Did AI do all the work?' The best answer…",
+     "opts": [
+      "'Yes, I just pressed a button'",
+      "Explains what you decided, directed and checked, and what AI drafted",
+      "'No, AI did nothing'"
+     ],
+     "a": 1
+    },
+    {
+     "q": "Which of the 5 signs shows you could keep building it?",
+     "opts": [
+      "Change it",
+      "Purpose",
+      "How it works"
+     ],
+     "a": 0
+    },
+    {
+     "q": "What makes a defence most believable?",
+     "opts": [
+      "Speaking very fast",
+      "Reading from the phone",
+      "Real-user evidence and clear reasons for your decisions"
+     ],
+     "a": 2
+    }
+   ],
+   "say": "I can defend my AI project: the purpose, how it works, the logic, the decisions I made (including how I directed and checked the AI), how I'd change it, and how we kept people safe.",
+   "safe": "Be honest about AI help. Say what AI drafted, what you directed, and what you checked.",
+   "try": {
+    "ask": "Write your answer to the judge's question: 'Did the AI do all the work?'",
+    "checks": [
+     {
+      "label": "Says what AI did",
+      "rule": {
+       "any": [
+        "ai drafted",
+        "ai wrote",
+        "ai helped",
+        "ai made",
+        "ai suggested",
+        "the ai"
+       ]
+      }
+     },
+     {
+      "label": "Says what YOU did",
+      "rule": {
+       "any": [
+        "i chose",
+        "i decided",
+        "i checked",
+        "i tested",
+        "i directed",
+        "i fixed",
+        "we chose",
+        "we tested",
+        "we checked"
+       ]
+      }
+     },
+     {
+      "label": "Gives evidence or a reason",
+      "rule": {
+       "any": [
+        "because",
+        "users",
+        "tested",
+        "farmers",
+        "traders",
+        "real"
+       ]
+      }
+     }
+    ],
+    "best": "No. The AI drafted some code and tips, but I chose the problem from interviews, directed the AI step by step, and we tested every tip with 5 real farmers because wrong advice could waste their money."
+   },
+   "trainer": {
+    "open": "Today you show the judges what Level 4 means: you don't just use AI, you direct it, check it and lead others to use it safely.",
+    "plan": [
+     [
+      "3 min",
+      "Recap the 5 signs with hand signs (one finger per sign)."
+     ],
+     [
+      "7 min",
+      "Pairs practise; partners tick each sign heard and ask a tough question."
+     ],
+     [
+      "7 min",
+      "3 teams defend to the class; the class asks one judge question each."
+     ],
+     [
+      "3 min",
+      "Celebrate! Each child says their 'say it' line. Check questions."
+     ]
+    ],
+    "props": [
+     "5-signs checklist",
+     "Capstone demo (or demo mode) on a phone",
+     "Timer"
+    ],
+    "lookfor": [
+     "Covers all 5 signs without reading",
+     "Answers 'Did AI do it?' honestly and confidently",
+     "Names a real safety choice and real-user evidence"
+    ],
+    "fix": [
+     [
+      "Freezes on a tough question",
+      "Breathe, repeat the question, then answer with one sign: 'My decision was… because…'"
+     ],
+     [
+      "Hides that AI was used",
+      "Honesty wins. Say how you directed and checked the AI; that's the real skill."
+     ]
+    ]
+   }
+  }
+ ]
+}

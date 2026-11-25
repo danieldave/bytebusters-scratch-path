@@ -230,7 +230,7 @@
      ],
      "status": "built",
      "link": "/journey#y3t2",
-     "note": "Curriculum gap: Weeks 1-3 not defined"
+     "note": "Weeks 1-3 were missing in the official curriculum — a 3-week Python bridge was designed by Claude (AI), clearly marked, for head-office review."
     },
     {
      "name": "Advanced Python",
@@ -321,23 +321,28 @@
      "units": [
       {
        "weeks": "1-10",
-       "title": "Capstone Projects",
-       "content": "Not detailed in the curriculum",
-       "project": "—"
+       "title": "Capstone (designed by Claude — for review)",
+       "content": "Discover a real problem → design → build sprints → test with 5 real users → deploy → defend",
+       "project": "One real Nigerian community product per learner/team"
       }
      ],
-     "status": "planned",
-     "link": null,
-     "note": "Curriculum gap: capstone has no structure yet"
+     "status": "built",
+     "link": "/journey#y4t3",
+     "note": "The official curriculum gives no content — the 10-week capstone process, 12-idea project bank and rubric were designed by Claude (AI), clearly marked, for head-office review."
     }
    ]
   }
  ],
  "extra": [
   {
-   "name": "Web Foundations bridge",
+   "name": "The AI Journey (separate)",
+   "link": "/ai-journey",
+   "note": "Its own 4-level journey — not part of the official curriculum. Level 1 Safe AI Builder; Levels 2–4 designed by Claude (AI) for review."
+  },
+  {
+   "name": "Web Foundations Bridge",
    "link": "/webdev",
-   "note": "Year 1 Terms 2–3 skills taught through our live sites — catch-up for Year 2 learners who vibe-coded"
+   "note": "Year 1 Term 2–3 basics for Year 2 builders — finishing it unlocks Year 2 in the journey"
   }
  ]
 }
