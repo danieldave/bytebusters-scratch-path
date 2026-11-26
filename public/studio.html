@@ -2,15 +2,29 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ByteBusters Studio</title>
 <meta name="description" content="Games, animations, websites and AI projects for young builders. Pick one and start.">
-<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="studio.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1d2433"><link rel="icon" href="/icon.svg"></head>
+<link rel="stylesheet" href="/ds/ds.css"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="studio.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#08090a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)"><link rel="icon" href="/icon.svg"></head>
 <body>
-<div class="bar"><a class="back" href="/">← Scratch Path</a><b>ByteBusters Studio</b><span id="stars">⭐ 0</span></div>
-<div class="wrap" id="app"><p>Loading…</p></div>
+<div class="bar"><a class="back" href="/" aria-label="Back to Scratch Path">←<span class="t"> Scratch Path</span></a><b><span class="bbmark" aria-hidden="true"></span>ByteBusters Studio</b><span class="bar-r"><button class="kbtn" id="srch" aria-label="Find anything (Ctrl+K)">⌕ <span class="o-kbd">Ctrl K</span></button><span id="stars">⭐ 0</span></span></div>
+<main class="wrap" id="app"><div class="o-skel" style="height:150px;border-radius:18px;margin:10px 0 14px"></div><div class="o-skel" style="height:40px;margin:10px 0"></div><div class="o-skel" style="height:120px;margin:10px 0"></div><div class="o-skel" style="height:120px;margin:10px 0"></div></main>
 <div class="toast" id="toast"></div>
 <script src="vendor/scratchblocks.min.js" defer></script>
 <script src="vendor/jszip.min.js" defer></script>
 <script src="studio-rules.js"></script>
 <script src="promptlab.js"></script>
 <script src="lab.js" defer></script>
+<script src="/ds/cmdk.js"></script>
 <script src="studio.js"></script>
+<script>
+if(window.ODS&&ODS.cmdk){function H(h){return function(){location.hash=h}}ODS.cmdk([
+ {group:'Studio',icon:'🏠',title:'Projects',hint:'Games, animations, websites and AI helpers',keywords:'home all',run:H('#/')},
+ {group:'Studio',icon:'🧩',title:'Puzzles',hint:'Quick brain teasers',run:H('#/puzzles')},
+ {group:'Studio',icon:'📅',title:'Daily puzzle',keywords:'today',run:H('#/puzzles/daily')},
+ {group:'Studio',icon:'📘',title:'Word Dictionary',hint:'Tech words in simple English',keywords:'words meaning',run:H('#/words')},
+ {group:'Studio',icon:'⭐',title:'My stars',hint:'Your projects and progress',keywords:'me profile',run:H('#/me')},
+ {group:'Go to',icon:'←',title:'Scratch Path home',href:'/'},
+ {group:'Go to',icon:'💻',title:'Web Foundations Bridge',href:'/webdev'},
+ {group:'Go to',icon:'🗺',title:'Your Coding Journey',href:'/journey'},
+ {group:'Go to',icon:'🤖',title:'The AI Journey',href:'/ai-journey'}
+]);document.getElementById('srch').onclick=function(){ODS.openCmdk()}}
+</script>
 </body></html>

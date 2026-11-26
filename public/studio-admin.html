@@ -1,21 +1,29 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Content Studio · ByteBusters</title><meta name="robots" content="noindex">
-<link rel="stylesheet" href="style.css">
+<meta name="theme-color" content="#08090a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)"><link rel="icon" href="/icon.svg">
+<link rel="stylesheet" href="/ds/ds.css"><link rel="stylesheet" href="style.css">
 <style>
-.wrap{max-width:900px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-input,select,textarea{font:inherit;padding:9px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);width:100%}
-label{display:block;font-weight:700;font-size:14px;margin:10px 0 3px}.hint{font-weight:400;color:var(--mut);font-size:13px}
-textarea{min-height:90px;font-family:ui-monospace,Menlo,monospace;font-size:14px}
-.item{display:flex;gap:8px;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 10px;margin:6px 0}
-.item.hid{opacity:.55}.item .t{flex:1;min-width:0}.item small{color:var(--mut)}
-.sm{padding:6px 10px;min-height:0;font-size:14px;border-radius:9px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}@media(max-width:560px){.g2{grid-template-columns:1fr}}
-.err{color:var(--red);font-weight:700}.okk{color:var(--green);font-weight:700}
-.tag{display:inline-block;border-radius:8px;padding:1px 8px;font-size:12px;font-weight:700;background:var(--line);margin-right:4px}
-</style></head><body>
-<div class="bar"><b>Content Studio</b><span><a href="/admin" style="color:inherit">Dashboard</a> · <a href="/studio" style="color:inherit">Learner view</a></span></div>
-<div class="wrap" id="app"></div><div class="toast" id="toast"></div>
+.admin .wrap{max-width:960px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select,textarea{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line-2);border-radius:10px;background:var(--surface);color:var(--text);width:100%}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+input:disabled{opacity:.6;background:var(--bg-2)}
+label{display:block;font-weight:600;font-size:13.5px;margin:12px 0 4px;color:var(--text-2)}.hint{font-weight:400;color:var(--muted);font-size:12.5px;background:none;padding:0;margin:0;font-family:inherit;white-space:normal;border-radius:0}
+textarea{min-height:90px;font-family:var(--mono);font-size:13.5px}
+.item{display:flex;gap:8px;align-items:center;justify-content:space-between;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 14px;margin:0;transition:background var(--t-1)}
+.item:hover{background:var(--bg-2)}.item:last-child{border-bottom:0}
+.list{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow-1);margin:10px 0}
+.item.hid{opacity:.55}.item .t{flex:1;min-width:0}.item .t b{font-weight:600;font-size:14.5px}.item small{color:var(--muted)}
+.sm{padding:6px 10px!important;min-height:34px!important;font-size:13px!important;border-radius:9px!important}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}@media(max-width:560px){.g2{grid-template-columns:1fr}}
+.err{color:var(--red);font-weight:650}.okk{color:var(--accent);font-weight:650}
+.tag{display:inline-flex;align-items:center;border-radius:6px;padding:0 7px;height:20px;font-size:11.5px;font-weight:600;background:var(--bg-2);border:1px solid var(--line);color:var(--text-2);margin-right:4px}
+.tag.hidt{color:var(--red);border-color:color-mix(in srgb,var(--red) 40%,transparent);background:color-mix(in srgb,var(--red) 8%,transparent)}
+.form{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-3);padding:6px 18px 18px;box-shadow:var(--shadow-1)}
+</style></head><body class="ods admin">
+<div class="bar"><b>Content Studio</b><span class="bar-r"><button class="kbtn" id="srch" aria-label="Command palette (Ctrl+K)">⌕ <span class="o-kbd">Ctrl K</span></button><a href="/admin" class="o-btn ghost" style="height:36px">Dashboard</a><a href="/studio" class="o-btn ghost" style="height:36px">Learner view</a></span></div>
+<main class="wrap" id="app"><div class="o-skel" style="height:30px;width:40%;margin:24px 0 12px"></div><div class="o-skel" style="height:44px;margin:10px 0"></div><div class="o-skel" style="height:260px;margin:10px 0"></div></main><div class="toast" id="toast"></div>
+<script src="/ds/cmdk.js"></script>
 <script src="studio-rules.js"></script>
 <script>
 var PIN=sessionStorage.getItem('bb_pin')||'',D=null,TAB='p',ED=null,Q='';
@@ -23,18 +31,20 @@ var app=document.getElementById('app');
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function toast(m){var t=document.getElementById('toast');t.textContent=m;t.className='toast on';setTimeout(function(){t.className='toast'},2500)}
 function api(b){b.pin=PIN;return fetch('/api/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||'Error');return j})})}
-function login(){app.innerHTML='<div class="card"><h2 style="margin-top:0">Trainer PIN</h2><input id="pin" type="password" placeholder="PIN"><p id="e" class="err"></p><button class="btn" id="go">Open</button></div>';
+function login(){app.innerHTML='<div class="card o-in" style="max-width:400px;margin:9vh auto 0"><h2 style="margin-top:0">Trainer PIN</h2><p class="why" style="margin-top:0">Edit Studio projects, puzzles and words.</p><label for="pin">PIN</label><input id="pin" type="password" placeholder="PIN" autocomplete="current-password"><p id="e" class="err" role="alert"></p><button class="btn" id="go" style="width:100%">Open</button></div>';
+  document.getElementById('pin').onkeydown=function(e){if(e.key==='Enter')document.getElementById('go').click()};
   document.getElementById('go').onclick=function(){PIN=document.getElementById('pin').value;load().catch(function(e){document.getElementById('e').textContent=e.message})}}
 function load(){return api({action:'cget'}).then(function(j){D=j;sessionStorage.setItem('bb_pin',PIN);list()})}
 var PK=['scratch','web','ai'];
 function list(){
   var items=(TAB==='p'?D.projects:TAB==='w'?D.words:D.puzzles).filter(function(x){return !Q||JSON.stringify(x).toLowerCase().indexOf(Q)>=0});
-  var h='<h1>Content Studio</h1><p style="color:var(--mut)">Add, edit or hide projects and puzzles. Changes show to learners within a minute. You never need to touch the code.</p>';
+  var h='<div class="adm-h" style="padding-bottom:0"><div><span class="o-eyebrow">ByteBusters · Trainer</span><h1>Content Studio</h1></div></div><p style="color:var(--mut);font-size:14px">Add, edit or hide projects and puzzles. Changes show to learners within a minute. You never need to touch the code.</p>';
   h+='<div class="tabs"><button class="'+(TAB==='p'?'on':'')+'" id="tp">Projects ('+D.projects.length+')</button><button class="'+(TAB==='z'?'on':'')+'" id="tz">Puzzles ('+D.puzzles.length+')</button><button class="'+(TAB==='w'?'on':'')+'" id="tw">Words ('+(D.words||[]).length+')</button></div>';
-  h+='<div class="row"><input id="q" placeholder="Search…" style="flex:1" value="'+esc(Q)+'"><button class="btn" id="new">+ New '+(TAB==='p'?'project':'puzzle')+'</button></div>';
-  h+=items.map(function(x){var name=TAB==='p'?x.emoji+' '+x.title:TAB==='w'?x.w+' — '+x.d:(x.q||x.title||x.id);
-    return '<div class="item '+(x.hidden?'hid':'')+'"><div class="t"><b>'+esc(name).slice(0,90)+'</b><br><small><span class="tag">'+esc(TAB==='p'?x.kind:TAB==='w'?x.t:x.type)+'</span><span class="tag">'+x.src+'</span>'+(x.showcase?'<span class="tag">showcase</span>':'')+(x.hidden?'<span class="tag" style="background:#f5c">hidden</span>':'')+'</small></div>'+
-    '<button class="btn alt sm" data-a="edit" data-id="'+x.id+'">Edit</button><button class="btn alt sm" data-a="vis" data-id="'+x.id+'">'+(x.hidden?'Show':'Hide')+'</button></div>'}).join('');
+  h+='<div class="row"><input id="q" type="search" placeholder="Search…" aria-label="Search" style="flex:1;width:auto" value="'+esc(Q)+'"><button class="btn" id="new">+ New '+(TAB==='p'?'project':'puzzle')+'</button></div>';
+  h+=items.length?'':'<div class="list"><p class="empty" style="margin:0;border:0">'+(Q?'Nothing matches “'+esc(Q)+'”.':'Nothing here yet. Press + New to add one.')+'</p></div>';
+  h+=(items.length?'<div class="list">':'')+items.map(function(x){var name=TAB==='p'?x.emoji+' '+x.title:TAB==='w'?x.w+' — '+x.d:(x.q||x.title||x.id);
+    return '<div class="item '+(x.hidden?'hid':'')+'"><div class="t"><b>'+esc(name).slice(0,90)+'</b><br><small><span class="tag">'+esc(TAB==='p'?x.kind:TAB==='w'?x.t:x.type)+'</span><span class="tag">'+x.src+'</span>'+(x.showcase?'<span class="tag">showcase</span>':'')+(x.hidden?'<span class="tag hidt">hidden</span>':'')+'</small></div>'+
+    '<button class="btn alt sm" data-a="edit" data-id="'+x.id+'">Edit</button><button class="btn alt sm" data-a="vis" data-id="'+x.id+'">'+(x.hidden?'Show':'Hide')+'</button></div>'}).join('')+(items.length?'</div>':'');
   app.innerHTML=h;
   document.getElementById('tp').onclick=function(){TAB='p';Q='';list()};document.getElementById('tz').onclick=function(){TAB='z';Q='';list()};document.getElementById('tw').onclick=function(){TAB='w';Q='';list()};
   document.getElementById('q').oninput=function(){Q=this.value.toLowerCase();var p=this.selectionStart;list();var q=document.getElementById('q');q.focus();q.setSelectionRange(p,p)};
@@ -50,8 +60,8 @@ function edit(id){
 }
 function L(a){return (a||[]).join('\n')}
 function form(){
-  var it=ED.item,h='<p><a href="#" id="back">← Back to list</a></p><h1>'+(ED.orig?'Edit':'New')+' '+(TAB==='p'?'project':'puzzle')+'</h1>';
-  h+='<div class="row"><button class="btn alt sm" id="mode">'+(ED.json?'Use the form':'Edit as JSON (advanced)')+'</button></div>';
+  var it=ED.item,h='<p><a href="#" id="back">← Back to list</a></p><h1>'+(ED.orig?'Edit':'New')+' '+(TAB==='p'?'project':'puzzle')+'</h1><div class="form">';
+  h+='<div class="row" style="margin-top:12px"><button class="btn alt sm" id="mode">'+(ED.json?'Use the form':'Edit as JSON (advanced)')+'</button></div>';
   if(TAB==='w'){h+='<label>Word</label><input id="f_w" value="'+esc(it.w)+'"><label>Meaning <span class="hint">simplest words, one sentence</span></label><textarea id="f_d" style="min-height:60px">'+esc(it.d)+'</textarea><label>Tiny example</label><input id="f_e" value="'+esc(it.e||'')+'"><label>Group</label><select id="f_t">'+[['basics','Computer basics'],['scratch','Scratch'],['web','Websites'],['ai','Gen AI'],['safety','Safety']].map(function(k){return '<option value="'+k[0]+'" '+(it.t===k[0]?'selected':'')+'>'+k[1]+'</option>'}).join('')+'</select>'}
   else if(ED.json){h+='<label>JSON</label><textarea id="js" style="min-height:420px">'+esc(JSON.stringify(it,null,2))+'</textarea>'}
   else if(TAB==='p'){
@@ -76,7 +86,7 @@ function form(){
     }
     h+='<label>Why <span class="hint">shown after the answer</span></label><textarea id="f_why" style="min-height:60px">'+esc(it.why||'')+'</textarea>';
   }
-  h+='<p id="msg"></p><div class="row"><button class="btn" id="save">💾 Save and publish</button>'+(ED.orig&&ED.orig.src!=='seed'?'<button class="btn alt" id="rev">'+(ED.orig.src==='new'?'Delete':'Undo my edits')+'</button>':'')+'</div>';
+  h+='<p id="msg" role="status"></p><div class="row"><button class="btn" id="save">💾 Save and publish</button>'+(ED.orig&&ED.orig.src!=='seed'?'<button class="btn alt" id="rev">'+(ED.orig.src==='new'?'Delete':'Undo my edits')+'</button>':'')+'</div></div>';
   app.innerHTML=h;
   document.getElementById('back').onclick=function(e){e.preventDefault();list()};
   if(TAB==='w')document.getElementById('mode').style.display='none';document.getElementById('mode').onclick=function(){collect(true);ED.json=!ED.json;form()};
@@ -107,4 +117,13 @@ function save(){
   api({action:'csave',what:TAB==='p'?'project':TAB==='w'?'word':'puzzle',item:ED.item}).then(function(){return load()}).then(function(){toast('Saved. Learners will see it shortly.');TAB=TAB;list()}).catch(function(e){m.className='err';m.textContent=e.message})
 }
 if(PIN)load().catch(login);else login();
+if(window.ODS&&ODS.cmdk){var need=function(f){return function(){if(!D){toast('Type the trainer PIN first');return}f()}};ODS.cmdk([
+ {group:'Content',icon:'🎮',title:'Projects',keywords:'tab projects',run:need(function(){TAB='p';Q='';list()})},
+ {group:'Content',icon:'🧩',title:'Puzzles',keywords:'tab puzzles',run:need(function(){TAB='z';Q='';list()})},
+ {group:'Content',icon:'📘',title:'Words',keywords:'tab words dictionary',run:need(function(){TAB='w';Q='';list()})},
+ {group:'Actions',icon:'＋',title:'New item',hint:'In the current tab',keywords:'add create new',run:need(function(){edit(null)})},
+ {group:'Actions',icon:'⌕',title:'Search this list',keywords:'find filter',run:need(function(){if(!document.getElementById('q'))list();document.getElementById('q').focus()})},
+ {group:'Go to',icon:'▦',title:'Trainer dashboard',href:'/admin'},
+ {group:'Go to',icon:'🏠',title:'Learner Studio',href:'/studio'}
+]);document.getElementById('srch').onclick=function(){ODS.openCmdk()}}
 </script></body></html>

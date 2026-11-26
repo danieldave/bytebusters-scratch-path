@@ -1,6 +1,6 @@
 // Offline support. Bump VERSION when you change app files so phones refresh.
-const VERSION = 'bbp-v12';
-const SHELL = ['/', '/style.css', '/app.js', '/data/path.json', '/data/manifests.json', '/manifest.webmanifest', '/icon.svg', '/lab.js', '/studio', '/studio.js', '/studio.css', '/studio-rules.js', '/promptlab.js', '/studio-admin', '/data/content.json', '/php-lite.js', '/data/web.json', '/assets/stall.svg', '/assets/basket.svg', '/assets/coin.svg', '/webdev', '/webdev.js', '/data/webdev.json', '/genai', '/genai.js', '/data/genai.json', '/genai-trainer', '/webdev-trainer', '/curriculum', '/data/curriculum.json', '/journey', '/ai-journey', '/journey.js', '/journey-trainer'];
+const VERSION = 'bbp-v13';
+const SHELL = ['/', '/ds/ds.css', '/ds/cmdk.js', '/style.css', '/app.js', '/data/path.json', '/data/manifests.json', '/manifest.webmanifest', '/icon.svg', '/lab.js', '/studio', '/studio.js', '/studio.css', '/studio-rules.js', '/promptlab.js', '/studio-admin', '/data/content.json', '/php-lite.js', '/data/web.json', '/assets/stall.svg', '/assets/basket.svg', '/assets/coin.svg', '/webdev', '/webdev.js', '/data/webdev.json', '/genai', '/genai.js', '/data/genai.json', '/genai-trainer', '/webdev-trainer', '/curriculum', '/data/curriculum.json', '/journey', '/ai-journey', '/journey.js', '/journey-trainer'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== VERSION).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', (e) => {

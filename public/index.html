@@ -2,10 +2,12 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ByteBusters Scratch Path</title>
 <meta name="description" content="Your 10-week Scratch journey with ByteBusters. Learn with real games.">
-<link rel="stylesheet" href="style.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1d2433"><link rel="icon" href="/icon.svg"></head>
+<link rel="stylesheet" href="/ds/ds.css"><link rel="stylesheet" href="style.css"><link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#08090a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)"><link rel="icon" href="/icon.svg"></head>
 <body>
-<div class="bar"><b>ByteBusters · Scratch Path</b><span id="who"></span></div>
-<div class="wrap" id="app"></div>
-<div class="toast" id="toast"></div>
+<div class="bar"><b>ByteBusters</b><span class="bar-r"><button class="kbtn" id="srch" aria-label="Find anything (Ctrl+K)">⌕ <span class="o-kbd">Ctrl K</span></button><span id="who"></span></span></div>
+<main class="wrap" id="app"><div class="o-skel" style="height:34px;width:60%;margin:28px 0 14px"></div><div class="o-skel" style="height:120px;margin:12px 0"></div><div class="o-skel" style="height:72px;margin:12px 0"></div><div class="o-skel" style="height:72px;margin:12px 0"></div></main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/ds/cmdk.js"></script>
 <script src="app.js"></script>
 </body></html>

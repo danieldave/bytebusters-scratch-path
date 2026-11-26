@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Game player</title>
-<style>html,body{margin:0;background:#111;color:#fff;font:16px system-ui,sans-serif;height:100%}
+<style>html,body{margin:0;background:#0d0e10;color:#f7f8f8;font:16px/1.5 "Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;height:100%}
 #w{max-width:480px;margin:0 auto}canvas{width:100%;aspect-ratio:4/3;display:block;background:#fff;touch-action:none}
-.b{display:flex;gap:8px;padding:8px}button{flex:1;font:inherit;font-weight:700;padding:12px;border:0;border-radius:10px;background:#ffb800;color:#111}button.s{background:#e0483a;color:#fff}
-#m{padding:0 10px 10px;color:#ccc;font-size:14px}</style></head>
+.b{display:flex;gap:8px;padding:8px}button{flex:1;min-height:48px;font:inherit;font-weight:650;padding:12px;border:0;border-radius:12px;background:#ffb800;color:#1a1205;cursor:pointer;transition:transform .12s}button:active{transform:scale(.98)}button.s{background:#16171a;color:#f7f8f8;border:1px solid rgba(255,255,255,.14)}
+button:focus-visible{outline:2px solid #3ccf7f;outline-offset:2px}
+#m{padding:0 10px 10px;color:#a0a5ad;font-size:14px}canvas{border-radius:10px}@media (prefers-reduced-motion:reduce){button{transition:none}}</style></head>
 <body><div id="w"><canvas id="c" width="480" height="360"></canvas>
 <div class="b"><button id="f">▶ Start</button><button id="x" class="s">■ Stop</button></div><div id="m">Loading the game player…</div></div>
 <script>

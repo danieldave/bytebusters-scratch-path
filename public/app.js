@@ -30,7 +30,7 @@ function banner(){var b=document.getElementById('off');if(!b){b=document.createE
 
 function login(msg){
   who.textContent='';
-  app.innerHTML='<h1>Welcome, game maker!</h1><p>Type your access ID from your ID card.</p><div class="card"><input id="id" type="text" inputmode="text" autocapitalize="characters" autocomplete="off" placeholder="UHS-4K7M" maxlength="9"><p class="err" id="err">'+(msg||'')+'</p><button class="btn" id="go" style="width:100%">Let me in</button></div><p style="color:var(--mut);font-size:15px">Lost your card? Ask your ByteBusters trainer. Your stars and lessons are saved on your ID, so you can continue on any phone.</p>';
+  app.innerHTML='<div class="login o-in"><div class="mark" aria-hidden="true"></div><h1>Welcome, game maker!</h1><p class="lead">Type your access ID from your ID card.</p><div class="card"><label for="id" class="o-eyebrow" style="display:block;margin-bottom:8px">Access ID</label><input id="id" type="text" inputmode="text" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="UHS-4K7M" maxlength="9"><p class="err" id="err" role="alert">'+(msg||'')+'</p><button class="btn" id="go" style="width:100%;min-height:54px;font-size:1.08rem">Let me in</button></div><p style="color:var(--mut);font-size:15px;text-align:center">Lost your card? Ask your ByteBusters trainer. Your stars and lessons are saved on your ID, so you can continue on any phone.</p></div>';
   var inp=document.getElementById('id');inp.value=ls('bb_id')||'';
   function go(){var b=document.getElementById('go');b.disabled=true;b.textContent='Checking...';
     doLogin(inp.value).then(function(){route()}).catch(function(e){document.getElementById('err').textContent=e.message;b.disabled=false;b.textContent='Let me in'})}
@@ -49,16 +49,15 @@ function badgeRow(){
 
 function home(){
   var S=school(),n=doneCount(),term=ls('bb_term')||'t1';
-  who.innerHTML=esc(ME.name||ME.id)+' · <button id="out">Exit</button>';document.getElementById('out').onclick=logout;
-  var h='<h1>Hello'+(ME.name?', '+esc(ME.name.split(' ')[0]):'')+'!</h1><p style="color:var(--mut)">'+esc(S.name)+' · your ID <b>'+esc(ME.id)+'</b></p>';
-  h+='<a class="card" href="/studio" style="display:block;text-decoration:none;color:inherit;border:2px solid var(--brand)"><b>🎮 ByteBusters Studio</b><br><span style="color:var(--mut)">Fun projects, puzzles and the showcase games. Earn stars!</span></a>';
-  h+='<a class="card" href="/webdev" style="display:block;text-decoration:none;color:inherit;border:2px solid var(--green)"><b>💻 Web Foundations Bridge</b><br><span style="color:var(--mut)">10 weeks: HTML, CSS and JavaScript with Scam Shield, Harvest Calendar and Apprentice Pathway.</span></a>';
-  h+='<a class="card" href="/journey" style="display:block;text-decoration:none;color:inherit;border:2px solid var(--brand)"><b>🗺 Your Coding Journey</b><br><span style="color:var(--mut)">Four years, twelve terms — from Scratch to a real capstone. Each term you finish unlocks the next.</span></a>';
-  h+='<a class="card" href="/ai-journey" style="display:block;text-decoration:none;color:inherit;border:2px solid var(--purple)"><b>🤖 The AI Journey</b><br><span style="color:var(--mut)">Its own four-level path: Safe AI Builder → AI Creator → AI App Builder → AI Agents & Leadership.</span></a>';
+  who.innerHTML='<span style="max-width:34vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(ME.name||ME.id)+'</span><button id="out" aria-label="Exit and log out">Exit</button>';document.getElementById('out').onclick=logout;
+  var nx=0;for(var w0=1;w0<=10;w0++)if(!prog(w0).done){nx=w0;break}
+  var h='<div class="hello o-glow o-in"><span class="o-eyebrow">'+esc(S.name)+'</span><h1>Hello'+(ME.name?', '+esc(ME.name.split(' ')[0]):'')+'! 👋</h1><p style="color:var(--mut);margin:0">Your ID <span class="idchip">'+esc(ME.id)+'</span></p></div>';
+  h+='<div class="places">'+[['/studio','🎮','ByteBusters Studio','Fun projects, puzzles and the showcase games. Earn stars!','var(--bb-yellow)'],['/webdev','💻','Web Foundations Bridge','10 weeks: HTML, CSS and JavaScript with Scam Shield, Harvest Calendar and Apprentice Pathway.','var(--bb-green)'],['/journey','🗺','Your Coding Journey','Four years, twelve terms — from Scratch to a real capstone. Each term you finish unlocks the next.','var(--bb-yellow)'],['/ai-journey','🤖','The AI Journey','Its own four-level path: Safe AI Builder → AI Creator → AI App Builder → AI Agents & Leadership.','var(--purple)']].map(function(x){return '<a class="card place" href="'+x[0]+'" style="--c:'+x[4]+'"><span class="ic" aria-hidden="true">'+x[1]+'</span><b>'+x[2]+'</b><span class="d">'+x[3]+'</span></a>'}).join('')+'</div>';
   h+='<div class="tabs">'+DATA.terms.map(function(t){return '<button data-t="'+t.id+'" class="'+(t.id===term?'on':'')+'">'+esc(t.name.split(':')[0])+(t.ready?'':' 🔒')+'</button>'}).join('')+'</div>';
   if(term!=='t1'){h+=termHome(term);app.innerHTML=h;bindTabs();window.scrollTo(0,0);return}
-  h+='<div class="card"><b>'+n+' of 10 weeks done</b><div class="prog" style="margin-top:8px"><i style="width:'+n*10+'%"></i></div><p style="margin:.7em 0 0">'+badgeRow()+'</p></div>';
+  h+='<div class="card"><div class="next"><div class="grow"><b>'+n+' of 10 weeks done</b><div class="prog" style="margin-top:8px"><i style="width:'+n*10+'%"></i></div></div>'+(nx?'<a class="btn go" href="#w'+nx+'">'+(n?'Continue':'Start')+' Week '+nx+' →</a>':'')+'</div><p style="margin:.9em 0 0">'+badgeRow()+'</p></div>';
   h+='<div class="card"><b>Your 3 games</b><p style="margin:.3em 0">'+S.games.map(function(g){return esc(g.name)}).join(' → ')+'</p><p class="why">You finish with a game that uses all 4 logic colours.</p><p>'+chips(['blue','red','green','purple'])+'</p></div>';
+  h+='<div class="sec-h"><h2>Your 10 weeks</h2><span class="why">Tap a week to open it</span></div>';
   S.lessons.forEach(function(L){var p=prog(L.week);
     h+='<a class="card week'+(p.done?' done':'')+'" href="#w'+L.week+'"><span class="n">'+(p.done?'✓':L.week)+'</span><span><b>'+esc(L.title)+'</b><small>'+esc(L.game.name)+' · '+esc(L.topic)+'</small>'+(p.quiz!=null?'<small>Quiz: '+'⭐'.repeat(p.quiz)+'☆'.repeat(Math.max(0,3-p.quiz))+'</small>':'')+'</span></a>'});
   if(n===10)h+='<div class="card cert"><h2>🏆 You did it!</h2><p>You finished the ByteBusters Scratch Path.</p><a class="btn" href="#cert">See my certificate</a></div>';
@@ -221,11 +220,28 @@ function route(){
   if(!DATA||!ME)return;var m=/^#w(\d+)/.exec(location.hash),m2=/^#(t[23])w(\d+)/.exec(location.hash);if(window.BBLabRoot&&window.BBLabRoot._off){window.BBLabRoot._off();window.BBLabRoot=null}if(location.hash==='#cert')cert();else if(m2)webLesson(m2[1],+m2[2]);else if(m)lesson(+m[1]);else home();
 }
 window.addEventListener('hashchange',route);
+/* ---- Ctrl/⌘K palette: jump anywhere ---- */
+function need(f){return function(){if(!ME||!DATA){toast('Type your ID first');var i=document.getElementById('id');if(i)i.focus();return}f()}}
+function goTerm(t){return need(function(){ls('bb_term',t);if(location.hash&&location.hash!=='#')location.hash='';else home()})}
+if(window.ODS&&ODS.cmdk){ODS.cmdk([
+  {group:'My learning',icon:'🏠',title:'My weeks',hint:'Home: progress, badges and all 10 weeks',keywords:'home start',run:need(function(){if(location.hash&&location.hash!=='#')location.hash='';else home()})},
+  {group:'My learning',icon:'▶',title:'Continue my next week',hint:'Opens the first week you have not finished',keywords:'next resume lesson',run:need(function(){for(var w=1;w<=10;w++)if(!prog(w).done){location.hash='#w'+w;return}toast('All 10 weeks done 🎉')})},
+  {group:'My learning',icon:'1',title:'Term 1: Scratch',run:goTerm('t1'),keywords:'scratch term'},
+  {group:'My learning',icon:'2',title:'Term 2: HTML & CSS',run:goTerm('t2'),keywords:'web html css term'},
+  {group:'My learning',icon:'3',title:'Term 3: JavaScript & PHP',run:goTerm('t3'),keywords:'js php term'},
+  {group:'My learning',icon:'🏆',title:'My certificate',hint:'After you finish all 10 weeks',run:need(function(){if(doneCount()<10)toast('Finish all 10 weeks first ⭐');else location.hash='#cert'})},
+  {group:'Places',icon:'🎮',title:'ByteBusters Studio',hint:'Projects, puzzles, showcase games',href:'/studio',keywords:'games puzzles stars'},
+  {group:'Places',icon:'💻',title:'Web Foundations Bridge',hint:'HTML, CSS and JavaScript',href:'/webdev',keywords:'web html'},
+  {group:'Places',icon:'🗺',title:'Your Coding Journey',hint:'Four years, twelve terms',href:'/journey',keywords:'journey years'},
+  {group:'Places',icon:'🤖',title:'The AI Journey',hint:'Four AI levels',href:'/ai-journey',keywords:'ai genai'},
+  {group:'Me',icon:'👪',title:'Share with my parent',hint:'WhatsApp link with first name and progress only',keywords:'parent whatsapp',run:need(function(){window.open('https://wa.me/?text='+encodeURIComponent('See my ByteBusters Scratch progress: '+location.origin+'/parent?t='+ME.share),'_blank')})},
+  {group:'Me',icon:'🚪',title:'Exit',hint:'Log out on this phone',keywords:'logout sign out',run:need(function(){logout()})}
+]);var sb=document.getElementById('srch');if(sb)sb.onclick=function(){ODS.openCmdk()};var kk=sb&&sb.querySelector('.o-kbd');if(kk&&/Mac|iP/.test(navigator.platform))kk.textContent='⌘K'}
 if('serviceWorker' in navigator)window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});
 banner();
 fetch('/api/config').then(function(r){return r.json()}).then(function(j){CFG=j.open;lsj('bb_cfg',CFG);if(ME)route()}).catch(function(){});
 fetch('/data/path.json').then(function(r){return r.json()}).then(function(d){
   DATA=d;var id=ls('bb_id');
   if(id)doLogin(id).then(route).catch(function(){login()});else login();
-}).catch(function(){app.innerHTML='<p class="err">Cannot load. Check your data and refresh.</p>'});
+}).catch(function(){app.innerHTML='<div class="card" style="margin-top:28px;text-align:center"><h2 style="margin-top:0">📡 Cannot load</h2><p class="err">Check your data and refresh.</p><button class="btn" onclick="location.reload()">Try again</button></div>'});
 })();
