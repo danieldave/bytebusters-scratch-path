@@ -1,32 +1,11 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Your Coding Journey · ByteBusters</title><meta name="description" content="The ByteBusters 4-year coding journey: Scratch, HTML & CSS, JavaScript, PHP, Python, Java and a capstone. Each term unlocks the next.">
-<link rel="stylesheet" href="style.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#1d2433"><link rel="icon" href="/icon.svg">
-<style>
-.k{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
-.cont{display:flex;justify-content:space-between;align-items:center;gap:12px;border:2px solid var(--brand)}
-.yh{margin:22px 0 8px}.path{position:relative;padding-left:6px}
-.path::before{content:"";position:absolute;left:33px;top:20px;bottom:20px;width:4px;border-radius:4px;background:var(--line)}
-.node{position:relative;display:flex;gap:14px;align-items:center;padding:8px 6px;margin:6px 0;text-decoration:none;color:inherit;cursor:pointer;border-radius:16px}
-.node:hover{background:var(--card)}.node .rg{position:relative;flex:none;width:54px;height:54px;background:var(--bg);border-radius:50%}
-.node .ic{position:absolute;inset:0;display:grid;place-items:center;font-weight:800;font-size:18px}
-.node.lock{opacity:.5}.node.fin .ic{color:var(--green)}.node .tx small{display:block;color:var(--mut)}
-.node.side{margin-left:34px;border:2px dashed var(--line)}.node.side .rg{width:46px;height:46px}
-.wk{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit;cursor:pointer}
-.wk .n{flex:none;width:44px;height:44px;border-radius:12px;background:var(--brand);color:#1d2433;font-weight:800;display:grid;place-items:center;font-size:20px}
-.wk.done .n{background:var(--green);color:#fff}.wk.lock{opacity:.45;cursor:default}.wk.lock .n{background:var(--line)}.wk small{color:var(--mut);display:block}
-.unit{margin:18px 0 4px;font-size:.95em;color:var(--mut)}
-.sec{border-left:5px solid var(--brand);padding-left:12px;margin:14px 0}.sec.r{border-color:var(--purple)}.sec.b{border-color:var(--blue)}.sec.c{border-color:var(--green)}.sec h3{margin:.2em 0}
-pre.code{background:#1d2433;color:#f3efe4;padding:12px;border-radius:12px;overflow:auto;font-size:13.5px;line-height:1.45;white-space:pre-wrap;word-break:break-word}
-pre.out{background:#0f1622}
-.codebox{width:100%;min-height:200px;font:13.5px/1.45 ui-monospace,Menlo,Consolas,monospace;background:#1d2433;color:#f3efe4;border-radius:12px;padding:12px;border:0;margin-top:8px}
-.prev{width:100%;height:280px;border:2px solid var(--line);border-radius:12px;background:#fff;margin-top:8px}
-.lab .row,.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.sp{flex:1}.btn.sm{min-height:34px;padding:4px 12px}
-.gen{background:#eef0ff;color:#2a2f6b;border-radius:12px;padding:10px 12px;margin:12px 0;font-size:.92em}
-table.rub{border-collapse:collapse;font-size:.88em}table.rub td,table.rub th{border:1px solid var(--line);padding:6px;vertical-align:top;text-align:left}
-</style></head><body>
-<div class="bar"><a href="/" style="color:inherit;text-decoration:none">← Home</a><b>🗺 Coding Journey</b><span id="who"></span></div>
-<div class="wrap" id="app"><p>Loading…</p></div>
-<div class="toast" id="toast"></div>
+<title>Your Coding Journey · ByteBusters</title><meta name="description" content="The ByteBusters 4-year coding journey: Scratch, HTML &amp; CSS, JavaScript, PHP, Python, Java and a capstone. Each term unlocks the next.">
+<link rel="stylesheet" href="/ds/ds.css"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="journey.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#08090a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)"><link rel="icon" href="/icon.svg"></head>
+<body>
+<div class="bar"><a class="back" href="/" aria-label="Back to Home">←<span class="t"> Home</span></a><b class="ttl"><span class="bbmark" aria-hidden="true"></span>Coding Journey</b><span class="bar-r"><button class="kbtn" id="srch" aria-label="Find anything (Ctrl+K)">⌕ <span class="o-kbd">Ctrl K</span></button><span id="who"></span></span></div>
+<main class="wrap" id="app" aria-live="polite"><div class="o-skel" style="height:16px;width:30%;margin:30px 0 12px"></div><div class="o-skel" style="height:34px;width:70%;margin:0 0 12px"></div><div class="o-skel" style="height:96px;margin:16px 0"></div><div class="o-skel" style="height:220px;margin:16px 0"></div></main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/ds/cmdk.js"></script>
 <script>window.JMODE='code';</script><script src="php-lite.js"></script><script src="journey.js"></script>
 </body></html>

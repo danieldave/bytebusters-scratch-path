@@ -1,27 +1,15 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Web Dev Trainer Cards · ByteBusters</title><meta name="robots" content="noindex">
-<link rel="stylesheet" href="style.css"><link rel="icon" href="/icon.svg"><meta name="theme-color" content="#1d2433">
-<style>
-.tc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0}
-.tc h2{margin:.1em 0 .3em}.kicker{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
-.say{border-left:5px solid var(--brand);padding:8px 12px;background:rgba(255,184,0,.12);border-radius:0 12px 12px 0;font-size:1.05em}
-.safe{border:2px solid var(--red);border-radius:12px;padding:8px 12px;margin:10px 0}
-table.plan{width:100%;border-collapse:collapse;margin:6px 0}table.plan td{border-top:1px solid var(--line);padding:7px 6px;vertical-align:top}
-table.plan td:first-child{white-space:nowrap;font-weight:800;width:62px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:640px){.two{grid-template-columns:1fr}}
-.tc h3{font-size:.95em;margin:.8em 0 .3em}.tc ul{margin:.2em 0;padding-left:20px}
-.fix b{display:block}.fix div{margin:6px 0}
-.wkpick{display:flex;gap:6px;flex-wrap:wrap}.wkpick a{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--card);border:1px solid var(--line);text-decoration:none;color:inherit;font-weight:800}
-@media print{.bar,.noprint{display:none!important}.tc{page-break-after:always;border:0;margin:0;padding:0}body{background:#fff;color:#000}.wrap{max-width:none}}
-</style></head><body>
-<div class="bar"><a href="/admin" style="color:inherit;text-decoration:none">← Admin</a><b>💻 Web Dev Trainer Cards</b><a href="/webdev" style="color:inherit">Learner view</a></div>
-<div class="wrap">
-  <div class="noprint"><h1>Web Dev Trainer Cards</h1><p class="why">One page per week. A 20-minute session plan anyone can run: what to say, what to bring, what to look for, and how to fix common mistakes. Print one week or all ten.</p>
+<link rel="stylesheet" href="/ds/ds.css"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="journey.css"><link rel="icon" href="/icon.svg"><meta name="theme-color" content="#08090a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)"></head><body>
+<div class="bar"><a class="back" href="/admin" aria-label="Back to Admin">←<span class="t"> Admin</span></a><b class="ttl"><span class="bbmark" aria-hidden="true"></span>Web Dev Trainer Cards</b><span class="bar-r"><button class="kbtn" id="srch" aria-label="Find anything (Ctrl+K)">⌕ <span class="o-kbd">Ctrl K</span></button><a class="o-btn ghost" id="lv" href="/webdev" style="height:36px">Learner view</a></span></div>
+<main class="wrap">
+  <div class="noprint tp-h"><span class="o-eyebrow">For trainers · print one card per page</span><h1>Web Dev Trainer Cards</h1><p class="why">One page per week. A 20-minute session plan anyone can run: what to say, what to bring, what to look for, and how to fix common mistakes. Print one week or all ten.</p>
   <div class="wkpick" id="pick"></div>
-  <p style="margin-top:12px"><button class="btn" id="pAll">🖨 Print all 10</button> <button class="btn alt" id="pOne">🖨 Print this week</button></p></div>
-  <div id="cards"><p>Loading…</p></div>
-</div>
+  <p class="o-row" style="margin-top:14px"><button class="btn" id="pAll">🖨 Print all 10</button> <button class="btn alt" id="pOne">🖨 Print this week</button></p></div>
+  <div id="cards" aria-live="polite"><div class="o-skel" style="height:520px;border-radius:18px;margin:16px 0"></div></div>
+</main>
+<script src="/ds/cmdk.js"></script>
 <script>window.TRACK={data:'webdev.json'};</script>
 <script>
 (function(){
@@ -31,7 +19,7 @@ var COL={blue:'Variables',red:'Conditionals',green:'Loops',purple:'Events'},D,cu
 function card(W){var T=W.trainer||{},P=D.projects[W.project];
  return '<section class="tc" id="w'+W.week+'"><div class="kicker">Week '+W.week+' · '+esc(W.part)+' · '+esc(P.name)+' · 20 minutes</div><h2>'+esc(W.title)+'</h2>'+
  (W.colours||[]).map(function(c){return '<span class="chip '+c+'">'+COL[c]+'</span>'}).join(' ')+
- '<p><b>Goal:</b> '+esc(W.goal)+'</p><div class="say">🗣 <b>Open with:</b> "'+esc(T.open)+'"</div>'+
+ '<p><b>Goal:</b> '+esc(W.goal)+'</p><div class="say">🗣 <b>Open with:</b> “'+esc(T.open)+'”</div>'+
  (W.safe?'<div class="safe">🛡 <b>Safe-AI rule today:</b> '+esc(W.safe)+'</div>':'')+
  '<h3>⏱ Session plan</h3><table class="plan">'+(T.plan||[]).map(function(r){return '<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td></tr>'}).join('')+'</table>'+
  '<div class="two"><div><h3>🎒 Bring</h3><ul>'+(T.props||[]).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'<li>App: <a href="'+esc(P.url)+'">'+esc(P.url.replace('https://',''))+'</a></li></ul>'+
@@ -41,14 +29,16 @@ function card(W){var T=W.trainer||{},P=D.projects[W.project];
  '<h3>✅ Check questions (answers in bold)</h3><ol>'+W.check.map(function(Q){return '<li>'+esc(Q.q)+' — '+Q.opts.map(function(o,i){return i===Q.a?'<b>'+esc(o)+'</b>':esc(o)}).join(' / ')+'</li>'}).join('')+'</ol>'+
  '<p><b>Kids should be able to say:</b> "'+esc(W.say)+'"</p></section>';}
 function show(w){cur=w;location.hash='w'+(w||'');document.getElementById('cards').innerHTML=w?card(D.weeks[w-1]):D.weeks.map(card).join('');
- [].forEach.call(document.querySelectorAll('#pick a'),function(a){a.style.background=+a.dataset.w===w?'var(--brand)':''});}
+ [].forEach.call(document.querySelectorAll('#pick a'),function(a){var on=+a.dataset.w===w;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});}
 fetch('/data/'+TRACK.data).then(function(r){return r.json()}).then(function(d){D=d;
  document.getElementById('pick').innerHTML='<a href="#" data-w="0" title="All">All</a>'+d.weeks.map(function(W){return '<a href="#w'+W.week+'" data-w="'+W.week+'">'+W.week+'</a>'}).join('');
  [].forEach.call(document.querySelectorAll('#pick a'),function(a){a.onclick=function(e){e.preventDefault();show(+a.dataset.w)}});
- var m=/^#w(\d+)$/.exec(location.hash);show(m?+m[1]:1);
-}).catch(function(){document.getElementById('cards').innerHTML='<p>Could not load. Check your internet.</p>'});
+ var m=/^#w(\d+)$/.exec(location.hash);show(m?+m[1]:1);pal();
+}).catch(function(){document.getElementById('cards').innerHTML='<div class="empty" style="margin-top:16px">📡 Could not load the cards. Check your internet and try again.</div>'});
 document.getElementById('pAll').onclick=function(){var c=cur;show(0);setTimeout(function(){print();show(c||1)},200)};
 document.getElementById('pOne').onclick=function(){print()};
+function pal(){if(!(window.ODS&&ODS.cmdk))return;var it=[{group:'Print',icon:'🖨',title:'Print all 10 cards',hint:'One card per page',keywords:'print all',run:function(){document.getElementById('pAll').click()}},{group:'Print',icon:'🖨',title:'Print this week',keywords:'print one',run:function(){print()}},{group:'Weeks',icon:'☰',title:'Show all 10 weeks',keywords:'all',run:function(){show(0)}}];D.weeks.forEach(function(W){it.push({group:'Weeks',icon:String(W.week),title:'Week '+W.week+': '+W.title,hint:W.part||W.unit||'',keywords:'week '+W.week,run:function(){show(W.week);scrollTo(0,0)}})});it.push({group:'Go to',icon:'▶',title:'Learner view',hint:'What learners see',href:document.getElementById('lv').getAttribute('href'),keywords:'learner continue'});it.push({group:'Other trainer cards',icon:'🤖',title:'Gen AI (AI Level 1)',href:'/genai-trainer',keywords:'genai trainer'},{group:'Other trainer cards',icon:'💻',title:'Web Foundations Bridge',href:'/webdev-trainer',keywords:'webdev trainer'});[['y2t1','Year 2 First Term'],['y2t2','Year 2 Second Term'],['y2t3','Year 2 Third Term'],['y3t1','Year 3 First Term'],['y3t2','Year 3 Second Term'],['y3t3','Year 3 Third Term'],['y4t1','Year 4 First Term'],['y4t2','Year 4 Second Term'],['y4t3','Year 4 Capstone'],['ai2','AI Level 2'],['ai3','AI Level 3'],['ai4','AI Level 4']].forEach(function(t){it.push({group:'Other trainer cards',icon:'🧑🏽‍🏫',title:t[1],href:'/journey-trainer?t='+t[0],keywords:'trainer '+t[0]})});it.push({group:'Go to',icon:'▦',title:'Curriculum map',href:'/curriculum',keywords:'curriculum'},{group:'Go to',icon:'🗺',title:'Coding Journey',href:'/journey',keywords:'journey'},{group:'Go to',icon:'🤖',title:'AI Journey',href:'/ai-journey',keywords:'ai journey'},{group:'Go to',icon:'⚙',title:'Trainer admin',href:'/admin',keywords:'admin'});ODS.cmdk(it)}
+var sb=document.getElementById('srch');if(sb&&window.ODS){sb.onclick=function(){ODS.openCmdk()};var kk=sb.querySelector('.o-kbd');if(kk&&/Mac|iP/.test(navigator.platform))kk.textContent='⌘K'}
 })();
 </script>
 </body></html>

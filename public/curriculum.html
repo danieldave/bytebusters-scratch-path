@@ -1,47 +1,49 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>4-Year Curriculum Map · ByteBusters</title>
-<meta name="description" content="The ByteBusters 4-year coding curriculum: Scratch, HTML & CSS, JavaScript, PHP, Python, Java and capstone projects — and where each term lives in the ByteBusters Studio.">
-<link rel="stylesheet" href="style.css"><link rel="icon" href="/icon.svg"><meta name="theme-color" content="#1d2433">
-<style>
-.yr{margin:22px 0 8px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}.yr h2{margin:0}
-.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media(max-width:820px){.terms{grid-template-columns:1fr}}
-.tm{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;border-top:6px solid var(--line)}
-.tm.built{border-top-color:var(--green)}.tm.next{border-top-color:var(--brand)}.tm.planned{border-top-color:var(--line)}
-.tm h3{margin:.1em 0 .4em;font-size:1.05em}.k{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
-.u{border-top:1px solid var(--line);padding:7px 0;font-size:.92em}.u b{display:block}.u small{color:var(--mut)}
-.st{display:inline-block;font-size:12px;font-weight:800;padding:2px 9px;border-radius:99px;color:#fff}
-.st.built{background:var(--green)}.st.next{background:#c98a00}.st.planned{background:#8a8f9c}
-.note{font-size:.85em;color:var(--mut);margin-top:6px}
-.legend{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}
-@media print{.bar{display:none}.tm{break-inside:avoid}}
-</style></head><body>
-<div class="bar"><a href="/" style="color:inherit;text-decoration:none">← Home</a><b>🗺 Curriculum Map</b><a href="#" onclick="print();return false" style="color:inherit">Print</a></div>
-<div class="wrap">
-<h1>ByteBusters 4-Year Curriculum</h1>
-<p class="why">Every term of the official curriculum, and where it lives in the Studio. Three terms a year, ten weeks a term.</p>
-<div class="legend"><span class="st built">Built — in the Studio</span><span class="st next">Next to build</span><span class="st planned">Planned</span></div>
-<div id="m"><p>Loading…</p></div>
-</div>
+<meta name="description" content="The ByteBusters 4-year coding curriculum: Scratch, HTML &amp; CSS, JavaScript, PHP, Python, Java and capstone projects — and where each term lives in the ByteBusters Studio.">
+<link rel="stylesheet" href="/ds/ds.css"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="journey.css"><link rel="icon" href="/icon.svg"><meta name="theme-color" content="#08090a" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+<style>.cwrap{max-width:1100px}@media print{.tm .open{display:none}}</style></head><body>
+<div class="bar"><a class="back" href="/" aria-label="Back to Home">←<span class="t"> Home</span></a><b class="ttl"><span class="bbmark" aria-hidden="true"></span>Curriculum Map</b><span class="bar-r"><button class="kbtn" id="srch" aria-label="Find anything (Ctrl+K)">⌕ <span class="o-kbd">Ctrl K</span></button><button id="prt" type="button" aria-label="Print the curriculum map">Print</button></span></div>
+<main class="wrap cwrap">
+<div class="jhero o-glow o-in"><span class="o-eyebrow">Official curriculum · 4 years</span><h1>ByteBusters 4-Year Curriculum</h1>
+<p class="o-lead">Every term of the official curriculum, and where it lives in the Studio. Three terms a year, ten weeks a term.</p>
+<div class="legend"><span class="st built">Built — in the Studio</span><span class="st next">Next to build</span><span class="st planned">Planned</span></div></div>
+<div id="m" aria-live="polite"><div class="o-skel" style="height:22px;width:30%;margin:30px 0 12px"></div><div class="terms"><div class="o-skel" style="height:260px"></div><div class="o-skel" style="height:260px"></div><div class="o-skel" style="height:260px"></div></div></div>
+</main>
+<script src="/ds/cmdk.js"></script>
 <script>
 (function(){
 function esc(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 var TN=['First Term','Second Term','Third Term'],SL={built:'Built',next:'Next to build',planned:'Planned'};
+document.getElementById('prt').onclick=function(){print()};
+var P=[];
 fetch('/data/curriculum.json').then(function(r){return r.json()}).then(function(d){
  var h='';
  d.years.forEach(function(Y){var b=Y.terms.filter(function(t){return t.status==='built'}).length;
-  h+='<div class="yr"><h2>Year '+Y.year+'</h2><span class="why">'+esc(Y.level)+' · '+b+' of 3 terms built</span></div><div class="terms">';
+  P.push({group:'Years',icon:String(Y.year),title:'Year '+Y.year+' · '+Y.level,hint:b+' of 3 terms built',keywords:'year '+Y.year,run:function(){document.getElementById('y'+Y.year).scrollIntoView({behavior:'smooth'})}});
+  h+='<div class="yr" id="y'+Y.year+'"><h2>Year '+Y.year+'</h2><span class="why">'+esc(Y.level)+' · <span class="o-num">'+b+' of 3</span> terms built<span class="ydots" aria-hidden="true">'+Y.terms.map(function(t){return '<i class="'+(t.status==='built'?'y':'')+'"></i>'}).join('')+'</span></span></div><div class="terms">';
   Y.terms.forEach(function(T,i){
-   h+='<div class="tm '+T.status+'"><div class="k">'+TN[i]+'</div><h3>'+esc(T.name)+'</h3><span class="st '+T.status+'">'+SL[T.status]+'</span>'+
-   T.units.map(function(u){return '<div class="u"><b>Weeks '+esc(u.weeks)+' · '+esc(u.title)+'</b>'+esc(u.content)+(u.project&&u.project!=='—'?'<br><small>Project: '+esc(u.project)+'</small>':'')+'</div>'}).join('')+
-   (T.note?'<div class="note">ℹ️ '+esc(T.note)+'</div>':'')+(T.link?'<p style="margin:8px 0 0"><a class="btn alt" href="'+esc(T.link)+'">Open →</a></p>':'')+'</div>';
+   if(T.link)P.push({group:'Open a term',icon:'↗',title:'Year '+Y.year+' '+TN[i]+': '+T.name,hint:SL[T.status],href:T.link,keywords:'term '+T.name});
+   h+='<div class="tm '+T.status+'"><div class="th"><span class="k">'+TN[i]+'</span><span class="st '+T.status+'">'+SL[T.status]+'</span></div><h3>'+esc(T.name)+'</h3>'+
+   T.units.map(function(u){return '<div class="u"><span class="wr">Wk '+esc(u.weeks)+'</span><b>'+esc(u.title)+'</b><span>'+esc(u.content)+'</span>'+(u.project&&u.project!=='—'?'<small>Project: '+esc(u.project)+'</small>':'')+'</div>'}).join('')+
+   (T.note?'<div class="note">ℹ️ '+esc(T.note)+'</div>':'')+(T.link?'<div class="open"><a href="'+esc(T.link)+'">Open →</a></div>':'')+'</div>';
   });
   h+='</div>';
  });
- h+='<div class="yr"><h2>Alongside the curriculum</h2></div><div class="terms">'+d.extra.map(function(x){return '<div class="tm built"><h3>'+esc(x.name)+'</h3><div class="note">'+esc(x.note)+'</div><p style="margin:8px 0 0"><a class="btn alt" href="'+esc(x.link)+'">Open →</a></p></div>'}).join('')+'</div>';
- h+='<p class="why" style="margin-top:20px">Source: '+esc(d.source)+'.</p>';
- document.getElementById('m').innerHTML=h;
-}).catch(function(){document.getElementById('m').innerHTML='<p>Could not load.</p>'});
+ h+='<div class="yr" id="extra"><h2>Alongside the curriculum</h2></div><div class="terms">'+d.extra.map(function(x){P.push({group:'Alongside',icon:'↗',title:x.name,hint:x.note,href:x.link,keywords:'extra'});return '<div class="tm built"><div class="th"><span class="k">Alongside</span><span class="st built">Built</span></div><h3>'+esc(x.name)+'</h3><div class="note" style="margin-top:0">'+esc(x.note)+'</div><div class="open"><a href="'+esc(x.link)+'">Open →</a></div></div>'}).join('')+'</div>';
+ h+='<p class="why" style="margin:24px 0 40px">Source: '+esc(d.source)+'.</p>';
+ document.getElementById('m').innerHTML=h;pal();
+}).catch(function(){document.getElementById('m').innerHTML='<div class="empty" style="margin-top:24px">📡 Could not load the curriculum. Check your internet and try again.<br><br><button class="btn" onclick="location.reload()">Try again</button></div>'});
+function pal(){if(!(window.ODS&&ODS.cmdk))return;ODS.cmdk([
+ {group:'Journeys',icon:'▶',title:'Continue my Coding Journey',hint:'Opens the journey map',href:'/journey',keywords:'continue journey'},
+ {group:'Journeys',icon:'🤖',title:'The AI Journey',href:'/ai-journey',keywords:'ai genai'},
+ {group:'Journeys',icon:'💻',title:'Web Foundations Bridge',href:'/webdev',keywords:'webdev bridge'}].concat(P).concat([
+ {group:'Actions',icon:'🖨',title:'Print the curriculum map',keywords:'print pdf',run:function(){print()}},
+ {group:'Actions',icon:'🧑🏽‍🏫',title:'Trainer cards: Gen AI',href:'/genai-trainer',keywords:'trainer'},
+ {group:'Actions',icon:'🧑🏽‍🏫',title:'Trainer cards: Web Foundations Bridge',href:'/webdev-trainer',keywords:'trainer'},
+ {group:'Actions',icon:'🏠',title:'Scratch Path home',href:'/',keywords:'home'}]))}
+pal();var sb=document.getElementById('srch');if(sb&&window.ODS){sb.onclick=function(){ODS.openCmdk()};var kk=sb.querySelector('.o-kbd');if(kk&&/Mac|iP/.test(navigator.platform))kk.textContent='⌘K'}
 })();
 </script>
 </body></html>
